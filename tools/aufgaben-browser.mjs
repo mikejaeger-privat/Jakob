@@ -66,6 +66,13 @@ for (const f of katalog.fertigkeiten) {
       await warte(120);
       const a = await page.evaluate(() => window.__aufgabe);
       if (FOTOS && j === 0) await page.screenshot({ path: `${FOTOS}/${f.id}-${s}.png` });
+      // Nichts ragt über den Bildschirmrand (Kopfzeile, Bühne, Knöpfe)
+      if (j === 0) {
+        const raus = await page.evaluate(() => [...document.querySelectorAll('.kind-oben > *, .k-aufgabe .buehne button, .k-aufgabe .buehne [role="button"], .kind-unten > *')]
+          .filter((el) => el.offsetParent !== null && !el.classList.contains('versteckt')).map((el) => el.getBoundingClientRect())
+          .filter((r) => r.width > 0 && (r.right > innerWidth + 2 || r.left < -2)).length);
+        if (raus) probleme.push(`${f.id}/${s} [${a.typ}]: ${raus} Elemente ragen über den Bildschirmrand`);
+      }
       const falsch = j === 0 && stufen % 5 === 0;
       let erwartet;
       try { erwartet = await loese(a, falsch); }

@@ -2,7 +2,8 @@
 //
 // Haben zwei Geräte seit dem letzten Abgleich denselben Bereich geändert, wird zusammengeführt, wo das sinnvoll ist:
 // Lernstand, Karteikasten, gesehene Aufgaben, Messungen und Übungstage Eintrag für Eintrag (der weiter geübte gewinnt),
-// Lernwörter, Meldungen und Schatzkarten als Vereinigung, im Sammelbild gehen keine Teile verloren.
+// Lernwörter, Meldungen, Schatzkarten und Pakete als Vereinigung, im Sammelbild gehen keine Teile verloren, die Entdeckerrunde
+// behält die Tage und Proben beider Geräte.
 // Bei den übrigen Bereichen (Einstellungen, Tagesplan …) gilt die neuere Änderung.
 
 export const SAMMLUNGEN = new Set(['stand', 'kasten', 'gesehen', 'messung', 'tage']);
@@ -13,6 +14,8 @@ const klon = (x) => (x === undefined ? x : JSON.parse(JSON.stringify(x)));
 function mischeEintrag(a, b, bGewinnt) {
   if (istObjekt(a) && istObjekt(b)) {
     if (typeof a.na === 'number' && typeof b.na === 'number') return a.na === b.na ? (bGewinnt ? b : a) : (b.na > a.na ? b : a);
+    // Karteikarten und Übungstage zählen mit «n»: mehr = weiter geübt
+    if (typeof a.n === 'number' && typeof b.n === 'number') return a.n === b.n ? (bGewinnt ? b : a) : (b.n > a.n ? b : a);
     const r = { ...a };
     for (const [k, v] of Object.entries(b)) r[k] = k in a ? mischeEintrag(a[k], v, bGewinnt) : v;
     return r;
@@ -35,7 +38,9 @@ const ohne = (x, felder) => { const r = { ...x }; for (const f of felder) delete
 // Sammelbild: Teile und fertige Bilder beider Seiten behalten
 function mischeSammelbild(lokal, fern, fernGewinnt) {
   const neu = fernGewinnt ? { ...lokal, ...fern } : { ...fern, ...lokal };
-  neu.teile = vereinige(lokal.teile || [], fern.teile || [], (t) => t.id, fernGewinnt);
+  // Teile beider Geräte, nach Tag geordnet und neu nummeriert (sonst stünden zwei Teile auf demselben Platz)
+  neu.teile = vereinige(lokal.teile || [], fern.teile || [], (t) => t.id, fernGewinnt)
+    .sort((a, b) => (a.tag ?? 0) - (b.tag ?? 0) || String(a.id).localeCompare(String(b.id))).map((t, i) => ({ ...t, nr: i }));
   neu.album = vereinige(lokal.album || [], fern.album || [], (a) => a.id, fernGewinnt);
   return neu;
 }
@@ -45,6 +50,18 @@ const MISCHEN = {
   meldungen: (l, f, g) => (Array.isArray(l) && Array.isArray(f)
     ? vereinige(l, f, (x) => ohne(x, ['erledigt']), g).map((x) => ({ ...x, erledigt: [...l, ...f].some((y) => ohne(y, ['erledigt']) === ohne(x, ['erledigt']) && y.erledigt) })) : null),
   sammelbild: (l, f, g) => (istObjekt(l) && istObjekt(f) ? mischeSammelbild(l, f, g) : null),
+  // Entdeckerrunde: Tage beider Geräte, je Fertigkeit die weiter gekommene Probe
+  entdecker: (l, f, g) => {
+    if (!istObjekt(l) || !istObjekt(f)) return null;
+    const proben = { ...(l.proben || {}) };
+    for (const [id, p] of Object.entries(f.proben || {})) {
+      const q = proben[id];
+      proben[id] = !q ? p : (p.s > q.s || (p.s === q.s && p.fertig && !q.fertig)) ? p : (p.s === q.s && !g) ? q : (p.s < q.s ? q : p);
+    }
+    return { ...(g ? { ...l, ...f } : { ...f, ...l }), tage: [...new Set([...(l.tage || []), ...(f.tage || [])])].sort((a, b) => a - b), proben, fertig: !!(l.fertig || f.fertig) };
+  },
+  // Pakete: beide Seiten, gleiche ID nur einmal (die neuere Seite gewinnt)
+  imports: (l, f, g) => (istObjekt(l) && istObjekt(f) ? { ...(g ? { ...l, ...f } : { ...f, ...l }), pakete: vereinige(l.pakete || [], f.pakete || [], (p) => p.id, g) } : null),
 };
 for (const k of SAMMLUNGEN) MISCHEN[k] = (l, f, g) => (istObjekt(l) && istObjekt(f) ? mischeSammlung(l, f, g) : null);
 

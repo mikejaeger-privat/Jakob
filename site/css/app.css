@@ -164,8 +164,10 @@ body.kindmodus { overflow: hidden; touch-action: manipulation; user-select: none
 .art-symbol { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--creme); color: var(--rinde-2); box-shadow: var(--schatten); }
 .art-symbol .sym { width: 32px; height: 32px; }
 .k-aufgabe.fm .art-symbol { color: var(--see); } .k-aufgabe.fd .art-symbol { color: var(--beere); }
-.k-mitte-oben { display: flex; align-items: center; gap: 14px; }
-.fortschritt { display: flex; gap: 7px; }
+.k-mitte-oben { display: flex; align-items: center; gap: 14px; min-width: 0; flex: 1 1 auto; justify-content: center; }
+.fortschritt { display: flex; flex-wrap: wrap; gap: 7px; min-width: 0; justify-content: center; }
+.kind { grid-template-columns: minmax(0, 1fr); }
+.kind-oben > .kk, .kind-oben > .k-platz, .kind-oben > .kk-eltern { flex: none; }
 .fp { width: 12px; height: 12px; border-radius: 50%; background: var(--stein); }
 .fp.fertig { background: var(--moos); } .fp.jetzt { background: var(--sonne); box-shadow: 0 0 0 3px rgba(244, 197, 66, .35); }
 .kk-haus { width: 56px; height: 56px; border: 0; border-radius: 16px; background: transparent; color: var(--rinde-2); opacity: .5; display: grid; place-items: center; cursor: pointer; }
@@ -455,6 +457,26 @@ button.ze-einer { padding: 0; min-width: 44px; min-height: 44px; background-clip
 .al-stufen { display: flex; gap: 8px; margin: 8px 0 4px; flex-wrap: wrap; }
 .btn.aus { opacity: .4; pointer-events: none; }
 .al-texte { margin: 4px 0 0; padding-left: 1.4em; }
+/* Elternbereich: Stand, Heute, Schatzkarten, Rückmeldungen */
+.st-gruppe { border-top: 1px solid var(--linie); padding: 8px 0; }
+.st-gruppe > summary { cursor: pointer; padding: 4px 0; }
+.st-liste { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 6px; }
+.st-liste li { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; justify-content: space-between; }
+.st-name { flex: 1 1 220px; }
+.st-stufen { display: flex; gap: 6px; flex-wrap: wrap; }
+.st-chip { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .82rem; border: 1px solid var(--linie); white-space: nowrap; }
+.st-neu { color: var(--rinde-2); }
+.st-vermutet { border-style: dashed; border-color: var(--moos); }
+.st-ueben { background: rgba(244, 197, 66, .22); }
+.st-fast { background: var(--moos-hell); border-color: var(--moos); }
+.st-sicher { background: var(--moos); color: var(--creme); border-color: var(--moos); }
+.heute-liste { margin: 8px 0; } .heute-liste > summary { cursor: pointer; }
+.heute-liste li { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.schatz-bericht { border-top: 1px solid var(--linie); padding-top: 8px; margin-top: 8px; }
+.schatz-bericht h3 { margin: 4px 0; font-size: 1rem; }
+.hinweis-blatt { border-left: 5px solid var(--sonne); }
+.block { display: block; }
+.vorschau-melden { font: 600 .9rem var(--schrift); border: 0; border-radius: 999px; padding: 6px 12px; background: var(--creme); color: var(--rinde-2); box-shadow: var(--schatten); cursor: pointer; }
 .lw-eingabe { display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items: end; } .lw-liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; } .lw-liste li { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border-top: 1px solid var(--linie); padding-top: 8px; } .lw-liste li .btn { margin-left: auto; }
 @media (max-width: 640px) { .lw-eingabe { grid-template-columns: 1fr; } }
 
@@ -632,15 +654,18 @@ select.feld { appearance: auto; }
 .regler input[type=range] { flex: 1; min-width: 180px; accent-color: var(--moos); }
 .wahlreihe { display: flex; flex-wrap: wrap; gap: 8px 16px; font-weight: 400; }
 .wahl { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
-.wahl input, .schalter input, .bkachel input { width: 22px; height: 22px; accent-color: var(--moos); }
+.wahl input, .schalter input, .bk-wahl input { width: 22px; height: 22px; accent-color: var(--moos); }
 .schalter { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-top: 1px solid var(--linie); }
 .schalter span { display: grid; }
 .anleitung ol { padding-left: 1.3em; } .anleitung li { margin-bottom: .4em; }
 .hoertest { border-top: 1px solid var(--linie); padding-top: 12px; margin-top: 12px; }
 .hoertest-kopf { display: flex; gap: 10px; align-items: center; }
 .bkacheln { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; margin-top: 10px; }
-.bkachel { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 8px; align-items: center; padding: 8px 10px; border-radius: 12px; background: var(--wiese); cursor: pointer; }
-.bkachel input { grid-row: span 2; }
+.bkachel { display: flex; align-items: center; justify-content: space-between; gap: 4px; padding: 6px 6px 6px 10px; border-radius: 12px; background: var(--wiese); }
+.bk-wahl { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 8px; align-items: center; cursor: pointer; min-width: 0; }
+.bk-wahl input { grid-row: span 2; }
+.bk-pfeile { display: flex; flex-direction: column; gap: 2px; }
+.bk-pfeil { width: 26px; height: 22px; border: 0; border-radius: 6px; background: var(--creme); color: var(--rinde-2); font: 700 16px/1 var(--schrift); cursor: pointer; padding: 0; }
 .bk-zeichen { font-size: 1.25rem; font-weight: 700; }
 .bk-wort { font-size: .8rem; }
 .gefahr-blatt h2 { color: var(--gefahr); }
@@ -660,6 +685,7 @@ details summary { cursor: pointer; color: var(--moos); margin: 6px 0; }
 
 @media (max-width: 640px) {
   .kind { font-size: 24px; }
+  .k-mitte-oben { gap: 8px; } .fortschritt { gap: 4px; max-width: 150px; } .fp { width: 9px; height: 9px; }
   .kk { width: 72px; height: 72px; } .kk .sym { width: 44px; height: 44px; }
   .k-platz { width: 72px; height: 72px; }
   .blatt { padding: 18px 16px; }
@@ -677,3 +703,14 @@ details summary { cursor: pointer; color: var(--moos); margin: 6px 0; }
 @media (prefers-reduced-motion: reduce) { .sammelbild .teil.neu > g { animation: sbild-einblenden .6s ease both !important; } }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sammelbild { filter: brightness(.9); } }
 :root[data-theme="dark"] .sammelbild { filter: brightness(.9); }
+
+/* Schmale Geräte: Karten mit Szenen, Zehner und Einer, Dinge in Gruppen (zuletzt, damit es die Grundregeln überschreibt) */
+@media (max-width: 640px) {
+  .zkarte { max-width: 44vw; }
+  .zkarte .szene.lage { width: 96px; height: 92px; } .zkarte .szene.lage .bezug { font-size: 50px; } .zkarte .szene.lage .ding { font-size: 28px; }
+  .zkarte .szene.menge { flex-wrap: wrap; justify-content: center; max-width: 40vw; } .zkarte .szene.menge .emoji { font-size: 26px; }
+  .zkarte .szene.groesse.gross .emoji { font-size: 60px; } .zkarte .szene.groesse.klein .emoji { font-size: 26px; }
+  .ze-quellen { gap: 12px; flex-wrap: wrap; justify-content: center; } .ze-zehner svg, .ze-quelle svg { width: min(190px, 52vw); }
+  .ze-flaeche { min-width: 0; width: 100%; box-sizing: border-box; }
+  .ding { font-size: 30px; } .dinge { gap: 12px; } .dinge-gruppe { gap: 4px; padding: 6px 8px; }
+}

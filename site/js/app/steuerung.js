@@ -4,11 +4,13 @@ import { ladeGrundlagen } from './inhalte.js';
 import { speicherStatus } from './db.js';
 import { heuteNr, tagNr } from '../core/util.js';
 import { kalender } from '../core/kalender.js';
+import { wendePaketeAn } from '../core/paket.js';
 
 export let G = null;     // Grundlagen: { k, P, Z: ziele, LM: lehrmittel, B: buchstaben, W: woerter }
 export let K = null;     // Kalender
 export async function init() {
   G = await ladeGrundlagen();
+  wendePaketeAn(G, Z.imports?.pakete || []);   // eigene Inhalte aus Paketen (INHALTE.md)
   K = kalender(G.Z);
   try { speicher = await speicherStatus(); } catch { /* egal */ }
   // Neue Buchstaben oder Verbindungen im Plan: mit ihrem Standard ergänzen, eigene Haken bleiben

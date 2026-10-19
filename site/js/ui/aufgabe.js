@@ -73,6 +73,7 @@ export async function spieleAufgabe(wurzel, a, { modus = 'normal', fortschritt =
     });
     const mitte = rahmen.querySelector('.k-mitte-oben');
     mitte.append(h('span.art-symbol', symbol(T.symbol)));
+    if (modus === 'vorschau') mitte.append(h('button.vorschau-melden', { type: 'button', onclick: () => import('./eltern-teile.js').then((m) => m.meldeAufgabe({ f: a.f, s: a.s, sig: a.sig, typ: a.typ, frage: a.frage })) }, 'Melden'));
     if (fortschritt) mitte.append(h('span.fortschritt', Array.from({ length: fortschritt.von }, (_, i) => h('span.fp' + (i < fortschritt.jetzt ? '.fertig' : i === fortschritt.jetzt ? '.jetzt' : '')))));
     api.aenderung();
 

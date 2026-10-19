@@ -79,7 +79,7 @@ export async function spieleStein(W, L, io, plan, i) {
     if (r.abbruch) { W.speichere('tagesplan'); return { abbruch: true, ergebnisse }; }
     vermeiden.push(a.sig);
     L.verbucheAntwort(e, a, r, { entdecker: plan.art === 'entdecker' });
-    io.protokoll({ t, fach: a.fach, f: a.f, s: a.s, wert: r.wert, versuche: r.versuche, hilfe: r.hilfe, ms: r.ms, typ: a.typ, sig: a.sig, grund: e.grund, karte: e.karte || null });
+    io.protokoll({ tag: t, fach: a.fach, f: a.f, s: a.s, frage: a.frage, wert: r.wert, versuche: r.versuche, hilfe: r.hilfe, ms: r.ms, typ: a.typ, sig: a.sig, grund: e.grund, karte: e.karte || null });
     e.erg.push({ wert: r.wert });
     ergebnisse.push(r);
     lauf.im++; lauf.n++; lauf.sek += Math.min(180, r.ms / 1000) + 2;
@@ -135,7 +135,7 @@ async function erfolgsAufgabe(W, L, io, vermeiden) {
     const r = await io.spiele(a, {});
     if (!r.abbruch) {
       L.verbucheAntwort({ f: x.f, s: x.s }, a, r);
-      io.protokoll({ t: W.heute(), fach: a.fach, f: a.f, s: a.s, wert: r.wert, versuche: r.versuche, hilfe: r.hilfe, ms: r.ms, typ: a.typ, sig: a.sig, grund: 'erfolg' });
+      io.protokoll({ tag: W.heute(), fach: a.fach, f: a.f, s: a.s, frage: a.frage, wert: r.wert, versuche: r.versuche, hilfe: r.hilfe, ms: r.ms, typ: a.typ, sig: a.sig, grund: 'erfolg' });
     }
     return r;
   }

@@ -16,7 +16,7 @@ export function matheCtx() {
 let deutschCache = null;
 export function deutschCtx({ vorschau = false } = {}) {
   const freigabe = new Set(Object.entries(Z.buchstaben?.frei || {}).filter(([, v]) => v).map(([k]) => k));
-  const schluessel = [[...freigabe].sort().join(','), stimmeDa(), Z.einstellungen.silben, Z.einstellungen.dehnlaute, vorschau, (Z.lernwoerter || []).filter((x) => !x.geloescht).map((x) => x.wort).join(',')].join('|');
+  const schluessel = [[...freigabe].sort().join(','), stimmeDa(), Z.einstellungen.silben, Z.einstellungen.dehnlaute, vorschau, (Z.lernwoerter || []).filter((x) => !x.geloescht).map((x) => x.wort).join(','), G.stand || 0].join('|');
   if (deutschCache?.schluessel === schluessel) return deutschCache.ctx;
   const ctx = {
     lexikon: G.W, buchstaben: G.B, freigabe, inhalte: G.IN, dehnlautText: G.P.sprache.dehnlautText,
@@ -56,7 +56,7 @@ export async function spieleFolge(wurzel, auswahl, { modus = 'normal' } = {}) {
       const r = await spieleAufgabe(wurzel, a, { modus, fortschritt: { jetzt: i, von: auswahl.length } });
       if (r.abbruch) { ergebnisse.abbruch = true; break; }
       ergebnisse.push(r);
-      if (!vorschau) protokolliere({ t: heute(), fach: a.fach, f: a.f, s: a.s, wert: r.wert, versuche: r.versuche, hilfe: r.hilfe, ms: r.ms, typ: a.typ, sig: a.sig });
+      if (!vorschau) protokolliere({ tag: heute(), fach: a.fach, f: a.f, s: a.s, wert: r.wert, versuche: r.versuche, hilfe: r.hilfe, ms: r.ms, typ: a.typ, sig: a.sig });
     }
   } finally {
     document.body.classList.remove('in-sitzung');

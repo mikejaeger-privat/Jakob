@@ -121,7 +121,8 @@ Für jeden Typ: Felder, Darstellung, Eingabe, Prüfung, Erleichterung nach dem e
 
 ### `reihenfolge`
 - Felder: `teile` (richtige Folge; Text, Bild oder Hörkarte), `art` (`text`, `bild`, `hoeren`), `alternativen`, `richtung` (`auf` oder `ab`, als Pfeil gezeigt).
-- Eingabe: Karten in der richtigen Reihenfolge antippen (sie rücken in eine Zeile) oder ziehen.
+- Felder (Deutsch): `szene` (Bild zum Satz: Aktion, Lage, Grösse) oder `bild`; `ende` (fester Abschluss, z. B. der Punkt).
+- Eingabe: Karten in der richtigen Reihenfolge antippen (sie rücken in eine Zeile) oder ziehen. Hörkarten werden zuerst angetippt und angehört (sie leuchten), beim zweiten Antippen gelegt.
 - Erleichterung: Die ersten richtig gelegten Karten bleiben, der Rest kommt zurück.
 
 ### `muster`
@@ -140,7 +141,7 @@ Für jeden Typ: Felder, Darstellung, Eingabe, Prüfung, Erleichterung nach dem e
 - Ablauf: Das Kind liest einer erwachsenen Person vor; diese tippt «geklappt» oder «üben wir noch». Ergebnis «richtig» bzw. «geübt», nie «falsch». Höchstens eine pro Sitzung und nur, wenn im Elternbereich eingeschaltet (Standard: aus).
 
 ### `antippen`
-- Felder: `zeige` (Wort, Satz, Zahlenstrahl, Gitter), `ziel` (was gesucht ist), `loesung` (Indizes aller richtigen Stellen).
+- Felder: `zeige` (Wort, Satz, Zahlenstrahl, Gitter), `ziel` (was gesucht ist; bei Buchstaben im Wort wird es gross über dem Wort gezeigt, z. B. «a» oder «A a»), `einheit` (`buchstabe` oder `wort` bei Text), `loesung` (Indizes aller richtigen Stellen).
 - Eingabe: Stellen antippen (markieren und wieder entmarkieren), Haken.
 - Prüfung: Menge gleich `loesung`. Erleichterung: richtige Markierungen bleiben.
 
@@ -189,7 +190,7 @@ export const generatoren = {
 ### Vertrag der Wortgeneratoren
 
 - Bausteine in `site/js/deutsch/lib.js`: `A`, `sig`, `auswahl` (wie Mathematik), `werkzeug(ctx)` mit `woerter`, `wort(t)`, `vonBild(b)`, `lesbar(braucht)`, `lesbaresWort(w)`, `sichtwoerter(gruppe)`, `istSichtwort(t)`, `klangKonflikt(a, b)` (Regel 1), `nieZusammen(a, b)`, `verwechselbar(a, b)`, `zusammenOk(liste)`, `bildOk(w, { gesprochen, zaehlen })` (Regel 4), `silbenSprich(w)`, `dehnlaut(laut)`, `mitArtikel(w)`, `waehle(r, kandidaten, n, passt)`; dazu `zerlege(wort)` (Einheiten wie im Buchstabenplan), `brauchtText(text)`, `reimteil(wort)`, `reimen(a, b)` (Regel 2), `grundlaut(einheit)`, `lautZahl(w, laut)` und `lautStelle(w, laut)` (Regel 3), Listen `NAMEN`, `FARBEN`, `FARBE_ID`, `WOCHENTAGE`, `ZAHLWOERTER`, `HOERFARBEN`, `bildOption(w)`.
-- `ctx`: `lexikon` (woerter.json), `buchstaben` (buchstaben.json), `freigabe` (Set der eingeführten Buchstaben und Verbindungen), `stimme`, `silben`, `dehnlaute` (Ergebnis des Hörtests), `dehnlautText`, `inhalte` (feste Inhalte, zusammengeführt), `zuletzt` (Signaturen der letzten 14 Tage), `stufe` (Katalogeintrag der Stufe, z. B. `stufe.auswahl`, `stufe.gruppe`).
+- `ctx`: `lexikon` (woerter.json), `buchstaben` (buchstaben.json), `freigabe` (Set der eingeführten Buchstaben und Verbindungen), `stimme`, `silben`, `dehnlaute` (Ergebnis des Hörtests), `dehnlautText`, `inhalte` (feste Inhalte, zusammengeführt), `zuletzt` (Signaturen der letzten 14 Tage), `stufe` (Katalogeintrag der Stufe, z. B. `stufe.auswahl`, `stufe.gruppe`). Dazu `lernwoerter` (Wörter der Eltern) und für den Karteikasten `karte`: D-BU-01 und D-BU-02 (Buchstabe, z. B. `m`), D-BU-07 (Verbindung, z. B. `au`), D-LE-07 (Sichtwort) bilden dann genau diese Aufgabe; passt sie nicht (Buchstabe ohne Anlautwort), liefern sie `null`. `daten.buchstabe`, `daten.verbindung` bzw. `daten.wort` nennen, was geübt wurde.
 - Das Register (`site/js/deutsch/index.js`) spielt eine Stufe nur, wenn Stimme, Hörtest (`bedingung`) und Freigabe (`braucht`, `auswahl`) passen, und verwirft jede Aufgabe, deren `braucht` nicht eingeführt ist. Trotzdem prüft jeder Generator die Freigabe selbst und gibt `null` zurück, wenn nichts möglich ist.
 - **`braucht`** listet alle Buchstaben und Verbindungen, die das Kind sieht (Lesetext, Wortkarten, Buchstabenkacheln, Silbenkarten, gezeigter Buchstabe), kleingeschrieben, nach `zerlege`. Sichtwörter brauchen nur ihre Einzelbuchstaben. Reine Höraufgaben mit Bildern haben `braucht: []`.
 

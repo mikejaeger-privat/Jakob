@@ -106,3 +106,23 @@ test('Nach dem Hochladen: nur angenommene und seither unveränderte Schlüssel s
   assert.deepEqual(S.offen, ['b', 'c', 'd'], 'b geändert, c nicht gesendet, d abgelehnt');
   assert.deepEqual(S.basis, { a: 11, b: 11 });
 });
+
+test('Karteikasten und Übungstage: bei gleicher Karte gewinnt die öfter geübte', () => {
+  const Z = { kasten: { 'b:a': { fach: 3, n: 4, faellig: 10 }, 'b:m': { fach: 1, n: 1 } }, tage: { 100: { n: 12, sek: 300 } } };
+  const S = S0({ ts: { kasten: 5, tage: 5 }, offen: ['kasten', 'tage'] });
+  wendeAn(Z, S, { kasten: { wert: { 'b:a': { fach: 1, n: 2, faellig: 3 }, 'b:l': { fach: 2, n: 1 } }, ts: 9 }, tage: { wert: { 100: { n: 5, sek: 100 }, 101: { n: 3, sek: 60 } }, ts: 9 } });
+  assert.deepEqual(Z.kasten['b:a'], { fach: 3, n: 4, faellig: 10 });
+  assert.ok(Z.kasten['b:l'] && Z.kasten['b:m']);
+  assert.equal(Z.tage[100].n, 12); assert.equal(Z.tage[101].n, 3);
+});
+
+test('Entdeckerrunde und Pakete: beide Seiten bleiben erhalten', () => {
+  const Z = { entdecker: { tage: [1, 2], proben: { 'M-ZA-01': { s: 2, fertig: false } }, fertig: false }, imports: { pakete: [{ id: 'a', titel: 'A' }] } };
+  const S = S0({ ts: { entdecker: 5, imports: 5 }, offen: ['entdecker', 'imports'] });
+  wendeAn(Z, S, { entdecker: { wert: { tage: [3], proben: { 'M-ZA-01': { s: 3, fertig: true }, 'D-BU-01': { s: 1, fertig: true } }, fertig: true }, ts: 9 }, imports: { wert: { pakete: [{ id: 'b', titel: 'B' }] }, ts: 9 } });
+  assert.deepEqual(Z.entdecker.tage, [1, 2, 3]);
+  assert.deepEqual(Z.entdecker.proben['M-ZA-01'], { s: 3, fertig: true });
+  assert.ok(Z.entdecker.proben['D-BU-01']);
+  assert.equal(Z.entdecker.fertig, true);
+  assert.deepEqual(Z.imports.pakete.map((p) => p.id).sort(), ['a', 'b']);
+});

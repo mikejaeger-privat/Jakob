@@ -1,0 +1,22 @@
+{
+ "id": "beispiel",
+ "titel": "Beispielpaket",
+ "fach": "D",
+ "hinweis": "Zeigt alle Teile eines Pakets (INHALTE.md). Prüfen mit: node tools/pruefe_paket.mjs tools/beispiele/paket-beispiel.json",
+ "lernwoerter": [
+  { "wort": "Sonne", "test": "2026-11-06" },
+  { "wort": "rot" },
+  "Mama"
+ ],
+ "woerter": [
+  { "id": "w-p-wolle", "wort": "Wolle", "artikel": "die", "silben": ["Wol", "le"], "laute": ["W", "o", "ll", "e"], "anlaut": "w", "endlaut": "ə", "bild": "🧶", "mehrzahl": null, "ober": "Dinge", "reim": null, "merk": ["doppel"], "lautgetreu": false, "braucht": ["w", "o", "l", "e"], "lautzaehlbar": true, "silbenSprechbar": false }
+ ],
+ "inhalte": {
+  "geschichten": [
+   { "id": "P1-HG-01", "saetze": ["Die Katze spielt mit der Wolle.", "Dann schläft sie ein."], "frage": "Womit spielt die Katze?", "optionen": [{ "bild": "🧶", "wort": "Wolle" }, { "bild": "⚽", "wort": "Ball" }, { "bild": "🧸", "wort": "Teddy" }], "richtig": 0, "erklaerung": "Die Katze spielt mit der Wolle.", "stufen": { "D-HV-02": 1 } }
+  ],
+  "bildergeschichten": [
+   { "id": "P1-BG-01", "bilder": ["🌱", "🌷", "💐"], "sprich": ["Eine Blume wächst.", "Die Tulpe blüht.", "Lea pflückt einen Strauss."], "stufen": { "D-WS-05": 2 } }
+  ]
+ }
+}

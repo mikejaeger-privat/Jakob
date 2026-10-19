@@ -1,7 +1,7 @@
 // Elternbereich hinter der Eltern-PIN (nur Kindersicherung). Eigener Übungsmassstab, keine Beurteilung, keine Prognose.
 import { h, leere, meldung, dialog, dateiKnopf } from './dom.js';
 import { Z, S, speichere, pruefePin, setzePin, exportiere, importiere, zuruecksetzen } from '../app/zustand.js';
-import { G, K, heute, speicher, backupTage, istLerntag, freiGrund } from '../app/steuerung.js';
+import { G, heute, speicher, backupTage, istLerntag } from '../app/steuerung.js';
 import { status as abgleich, gleicheAb, neuAnmelden, zuruecksetzenUeberall } from '../app/abgleich.js';
 import { dauerhaftSpeichern, speicherStatus } from '../app/db.js';
 import { datumText, isoVonNr, tagNr } from '../core/util.js';
@@ -10,9 +10,11 @@ import { setzeTon } from '../app/klang.js';
 import { stopp } from '../app/sprache.js';
 import { symbol } from './figuren.js';
 import { spielbar } from './baustein.js';
+import { L } from '../app/lernen.js';
 import { zerlege } from '../deutsch/lib.js';
+import { teilUeberblick, teilStand, teilRueckmeldungen, paketAbschnitt, vorsprechen } from './eltern-teile.js';
 
-const TEILE = [['ueberblick', 'Überblick'], ['buchstaben', 'Buchstaben'], ['mathematik', 'Mathematik'], ['lernwoerter', 'Lernwörter'], ['aufgaben', 'Aufgaben'], ['einstellungen', 'Einstellungen'], ['daten', 'Daten'], ['grenzen', 'Grenzen']];
+const TEILE = [['ueberblick', 'Überblick'], ['stand', 'Stand'], ['buchstaben', 'Buchstaben'], ['mathematik', 'Mathematik'], ['lernwoerter', 'Lernwörter'], ['aufgaben', 'Aufgaben'], ['rueckmeldungen', 'Rückmeldungen'], ['einstellungen', 'Einstellungen'], ['daten', 'Daten'], ['grenzen', 'Grenzen']];
 const OFFEN_MS = 15 * 60 * 1000;
 const TAGE = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
 
@@ -40,7 +42,7 @@ export function zeigeEltern(wurzel, rest = []) {
   leere(main, h('div.eltern-kopf', h('h1', 'Elternbereich'),
     h('button.btn.leise', { type: 'button', onclick: () => { schliesseEltern(); location.hash = '#/'; } }, symbol('haus', { klasse: 'btn-sym' }), 'Zum Kinderbereich')), nav, inhalt);
   const neu = () => zeigeEltern(wurzel, [teil]);
-  const f = { ueberblick: teilUeberblick, buchstaben: teilBuchstaben, mathematik: teilMathematik, lernwoerter: teilLernwoerter, aufgaben: teilAufgaben, einstellungen: teilEinstellungen, daten: teilDaten, grenzen: teilGrenzen }[teil];
+  const f = { ueberblick: teilUeberblickMitBanner, stand: teilStand, buchstaben: teilBuchstaben, mathematik: teilMathematik, lernwoerter: teilLernwoerter, aufgaben: teilAufgaben, rueckmeldungen: teilRueckmeldungen, einstellungen: teilEinstellungen, daten: teilDaten, grenzen: teilGrenzen }[teil];
   Promise.resolve(f(inhalt, neu)).catch((e) => { console.error(e); leere(inhalt, h('p.fehlertext', String(e.message || e))); });
   main.focus({ preventScroll: true });
   window.scrollTo(0, 0);
@@ -95,26 +97,12 @@ function teilAufgaben(el) {
     abschnitte);
 }
 
-// --- Überblick ---
-function teilUeberblick(el) {
+// --- Überblick (Inhalt in eltern-teile.js), mit Erinnerung an die Sicherung ---
+function teilUeberblickMitBanner(el, neu) {
   const t = heute();
-  const plan = Z.tagesplan?.tag === t ? Z.tagesplan : null;
-  const frei = freiGrund(t);
-  const naechsteFerien = K.ferien.find((f) => f.bis >= t);
-  const etappen = K.etappen.filter((e) => e.tag >= t);
   const letzte = Z.backup?.letztes;
-  leere(el,
-    !letzte || t - letzte > backupTage() ? h('p.banner', letzte ? `Die letzte Sicherung ist vom ${datumText(letzte)}. Bitte unter «Daten» eine neue herunterladen.` : 'Es gibt noch keine Sicherung. Bitte unter «Daten» eine herunterladen.') : null,
-    h('section.blatt', h('h2', 'Heute'),
-      h('p', `${datumText(t, true)}: ${frei ? (frei === 'kein Lerntag' ? 'kein Lerntag (in den Einstellungen änderbar).' : `${frei}, nichts geplant.`) : `Lerntag, ${Z.einstellungen.minuten} Minuten.`}`),
-      plan ? h('p.leise', `Steine heute: ${plan.steine.length}, erledigt: ${plan.erledigt.length}.`) : null,
-      naechsteFerien ? h('p.leise.klein', `Nächste Ferien: ${naechsteFerien.name}, ${datumText(naechsteFerien.von)} bis ${datumText(naechsteFerien.bis)}.`) : null),
-    h('section.blatt', h('h2', 'Stand'), h('p.massstab', 'Eigener Übungsmassstab dieser App, keine Beurteilung der Schule.'),
-      h('p.leise', 'Der Stand je Fertigkeit (neu, am Üben, fast sicher, sicher) erscheint hier, sobald das Kind übt.')),
-    h('section.blatt', h('h2', 'Etappen zur Orientierung'),
-      h('p.leise.klein', G.Z.etappenHinweis),
-      h('ul.liste', etappen.map((e) => h('li', h('strong', e.name), ` – ${datumText(e.tag)}`)))),
-    h('p.leise.klein', `Version ${document.documentElement.dataset.version || ''}`));
+  const banner = !letzte || t - letzte > backupTage() ? h('p.banner', letzte ? `Die letzte Sicherung ist vom ${datumText(letzte)}. Bitte unter «Daten» eine neue herunterladen.` : 'Es gibt noch keine Sicherung. Bitte unter «Daten» eine herunterladen.') : null;
+  return teilUeberblick(el, neu, { sicherungsBanner: banner });
 }
 
 // --- Buchstabenplan ---
@@ -122,24 +110,35 @@ function teilBuchstaben(el) {
   const B = Z.buchstaben;
   const info = new Map(G.B.liste.map((b) => [b.id, b]));
   const gruppe = (art) => B.reihenfolge.filter((id) => info.get(id) && (art === 'verbindung' ? info.get(id).art === 'verbindung' : info.get(id).art !== 'verbindung'));
+  // Reihenfolge: mit einem Buchstaben derselben Gruppe tauschen (bestimmt, in welcher Folge neue Karten kommen)
+  const schiebe = (id, richtung) => {
+    const liste = gruppe(info.get(id).art === 'verbindung' ? 'verbindung' : 'einzel');
+    const i = liste.indexOf(id), j = i + richtung;
+    if (j < 0 || j >= liste.length) return;
+    const a = B.reihenfolge.indexOf(id), c = B.reihenfolge.indexOf(liste[j]);
+    [B.reihenfolge[a], B.reihenfolge[c]] = [B.reihenfolge[c], B.reihenfolge[a]];
+    speichere('buchstaben'); zeichne();
+  };
   const kachel = (id) => {
     const b = info.get(id);
     const box = h('input', { type: 'checkbox', checked: !!B.frei[id], onchange: () => { B.frei[id] = box.checked; speichere('buchstaben'); } });
-    return h('label.bkachel', box, h('span.bk-zeichen', b.anzeige), h('span.bk-wort.leise', `${b.wort}${b.form === 'mehrzahl' ? ' (Mehrzahl)' : ''}`));
+    return h('div.bkachel',
+      h('label.bk-wahl', box, h('span.bk-zeichen', b.anzeige), h('span.bk-wort.leise', `${b.wort}${b.form === 'mehrzahl' ? ' (Mehrzahl)' : ''}`)),
+      h('span.bk-pfeile', h('button.bk-pfeil', { type: 'button', 'aria-label': `${b.anzeige} früher`, title: 'früher', onclick: () => schiebe(id, -1) }, '‹'),
+        h('button.bk-pfeil', { type: 'button', 'aria-label': `${b.anzeige} später`, title: 'später', onclick: () => schiebe(id, 1) }, '›')));
   };
   const alle = (ids, wert, neu) => () => { for (const id of ids) B.frei[id] = wert; speichere('buchstaben'); neu(); };
-  const einzeln = gruppe('einzel'), verb = gruppe('verbindung');
-  const zeichne = () => leere(el,
+  const zeichne = () => { const einzeln = gruppe('einzel'), verb = gruppe('verbindung'); leere(el,
     h('section.blatt', h('h2', 'Buchstabenplan'),
-      h('p', 'Lese- und Schreibaufgaben verwenden nur Buchstaben und Verbindungen, die hier abgehakt sind. Hören und Lautieren dürfen alle Laute nutzen. Bitte die Reihenfolge und den Stand der Schule übernehmen.'),
-      h('p.leise.klein', G.B.hinweis)),
+      h('p', 'Lese- und Schreibaufgaben verwenden nur Buchstaben und Verbindungen, die hier abgehakt sind. Hören und Lautieren dürfen alle Laute nutzen. Bitte die Reihenfolge und den Stand der Schule übernehmen: Mit ‹ und › lässt sich ein Buchstabe früher oder später einreihen; in dieser Folge kommen neue Karten in den Karteikasten.'),
+      h('p.leise.klein', 'Angenommen: alle Einzelbuchstaben und die Verbindungen Sch, Ei und Au sind eingeführt (die Klasse kennt laut Rückmeldung alle Buchstaben). Die Reihenfolge ist ein Vorschlag: zuerst Selbstlaute und Laute, die sich dehnen lassen.')),
     h('section.blatt', h('h2', 'Einzelbuchstaben'),
       h('div.knopfreihe', h('button.btn.klein', { type: 'button', onclick: alle(einzeln, true, zeichne) }, 'Alle abhaken'), h('button.btn.klein.leise', { type: 'button', onclick: alle(einzeln, false, zeichne) }, 'Alle entfernen')),
       h('div.bkacheln', einzeln.map(kachel))),
     h('section.blatt', h('h2', 'Verbindungen'),
       h('p.leise.klein', 'Welche Verbindungen die Klasse schon hat, weiss die Lehrperson. Angenommen sind Sch, Ei und Au. Häufige Wörter wie «ich», «die» oder «nicht» übt die App als Wortbild auch ohne ch und ie.'),
       h('div.knopfreihe', h('button.btn.klein', { type: 'button', onclick: alle(verb, true, zeichne) }, 'Alle abhaken'), h('button.btn.klein.leise', { type: 'button', onclick: alle(verb, false, zeichne) }, 'Alle entfernen')),
-      h('div.bkacheln', verb.map(kachel))));
+      h('div.bkacheln', verb.map(kachel)))); };
   zeichne();
 }
 
@@ -147,9 +146,10 @@ function teilBuchstaben(el) {
 function teilMathematik(el, neu) {
   const e = Z.einstellungen;
   const kap = G.LM.faecher.M.kapitel;
-  const wahl = h('select.feld', { 'aria-label': 'Aktuelles Kapitel', onchange: () => { e.kapitel = wahl.value || null; speichere('einstellungen'); meldung('Gespeichert.'); } },
-    h('option', { value: '', selected: !e.kapitel }, 'Automatisch nach Datum (Jahresplanung)'),
-    kap.map((k) => h('option', { value: k.name, selected: e.kapitel === k.name }, `${k.name} (${monatText(k.monat)})`)));
+  const gewaehlt = Number.isInteger(e.kapitel) ? e.kapitel : kap.findIndex((k) => k.name === e.kapitel);
+  const wahl = h('select.feld', { 'aria-label': 'Aktuelles Kapitel', onchange: () => { e.kapitel = wahl.value === '' ? null : Number(wahl.value); speichere('einstellungen'); meldung('Gespeichert.'); } },
+    h('option', { value: '', selected: gewaehlt < 0 }, `Automatisch nach Datum (jetzt: ${kap[L.mKapitel()]?.name || '–'})`),
+    kap.map((k, i) => h('option', { value: String(i), selected: gewaehlt === i }, `${k.name} (${monatText(k.monat)})`)));
   const raum = [10, 20, 100].map((n) => h('label.wahl', h('input', { type: 'radio', name: 'raum', value: n, checked: e.zahlenraum === n, onchange: () => { e.zahlenraum = n; speichere('einstellungen'); meldung(`Zahlenraum bis ${n} freigegeben.`); neu(); } }), ` bis ${n}`));
   leere(el,
     h('section.blatt', h('h2', 'Aktuelles Kapitel'),
@@ -182,13 +182,13 @@ function teilLernwoerter(el, neu) {
   const nichtFrei = (w) => zerlege(w).filter((e) => !frei.has(e));
   leere(el,
     h('section.blatt', h('h2', 'Lernwörter der Woche'),
-      h('p', 'Hier die Lernwörter der Schule eintragen, wenn es welche gibt. Die App übt sie durch Abschreiben und Legen aus Buchstaben; die Stimme spricht sie vor. Die Schreibweise prüft die App nicht, bitte genau abtippen.'),
+      h('p', 'Hier die Lernwörter der Schule eintragen, wenn es welche gibt. Die App übt sie im Aufwärmen (Karteikasten) und in den drei Tagen vor dem Wörtertest auch im Deutsch-Stein: abschreiben, dann hören und aus Buchstaben legen. Die Schreibweise prüft die App nicht, bitte genau abtippen; mit dem Lautsprecher lässt sich anhören, wie die Stimme das Wort spricht.'),
       h('div.lw-eingabe', h('label.formular', 'Wort', wort), h('label.formular', 'Wörtertest am (freiwillig)', datum),
         h('div.knopfreihe', h('button.btn.haupt', { type: 'button', onclick: hinzufuegen }, 'Hinzufügen'))), fehler),
     h('section.blatt', h('h2', aktiv.length ? `Liste (${aktiv.length})` : 'Liste'),
       aktiv.length ? h('ul.lw-liste', aktiv.map((x) => {
         const fehlt = nichtFrei(x.wort);
-        return h('li', h('strong', x.wort), x.test ? h('span.leise.klein', ` Test am ${datumText(x.test)}`) : null,
+        return h('li', h('button.btn.leise.klein', { type: 'button', 'aria-label': `«${x.wort}» anhören`, onclick: () => vorsprechen(x.wort) }, symbol('lautsprecher', { klasse: 'btn-sym' })), h('strong', x.wort), x.test ? h('span.leise.klein', ` Test am ${datumText(x.test)}`) : null,
           fehlt.length ? h('span.chip', `wird geübt, sobald eingeführt: ${fehlt.join(', ')}`) : null,
           h('button.btn.leise.klein', { type: 'button', onclick: () => entfernen(x) }, 'Entfernen'));
       })) : h('p.leise', 'Noch keine Lernwörter eingetragen.'),
@@ -303,6 +303,7 @@ function teilDaten(el, neu) {
       !speicher.installiert ? h('p.leise.klein', 'Sicherer auf dem iPad: in Safari «Teilen › Zum Home-Bildschirm» und die Lernwelt danach immer über das Symbol öffnen. Safari-Tab und Symbol haben getrennte Speicher: vorher hier sichern und im Symbol wieder einspielen.') : null,
       !gut ? h('div.knopfreihe', h('button.btn', { type: 'button', onclick: async () => { await dauerhaftSpeichern(); Object.assign(speicher, await speicherStatus()); neu(); } }, 'Dauerhaft speichern anfragen')) : null,
       h('p.leise.klein', `Erinnerung an die Sicherung nach ${backupTage()} Tagen.`)),
+    paketAbschnitt(neu),
     h('section.blatt.gefahr-blatt', h('h2', 'Zurücksetzen'),
       h('p', mitServer ? 'Löscht alle Lernstände und Einstellungen online und auf allen Geräten (braucht eine Verbindung). Vorher sichern.' : 'Löscht alle Lernstände und Einstellungen auf diesem Gerät. Vorher sichern.'),
       h('button.btn.gefahr', { type: 'button', onclick: async () => {
@@ -328,6 +329,6 @@ function teilGrenzen(el) {
       h('li', '«Sicher» ist ein eigener Übungsmassstab aus wenigen Aufgaben, keine Beurteilung der Schule und keine Prognose.'),
       h('li', 'Die Stimme des Geräts ist eine Annäherung. Laute klingen nicht wie bei der Lehrperson. Sprechen und Vorlesen prüft die App nicht (kein Mikrofon).'),
       h('li', 'Nachspuren ist Übung, keine Beurteilung der Handschrift.'),
-      h('li', 'Die Inhalte sind KI-erzeugt und automatisch geprüft, aber von keinem Menschen gegengelesen. Fehler bitte über «Aufgabe melden» festhalten.'),
+      h('li', 'Die Inhalte sind KI-erzeugt und automatisch geprüft, aber von keinem Menschen gegengelesen. Was nicht stimmt, bitte melden (Überblick oder Aufgaben, Liste unter «Rückmeldungen»).'),
       h('li', h('strong', 'Die App ersetzt keine Förderung. '), 'Halten Schwierigkeiten mit Lauten, Zahlen oder Mengen an, ist das Gespräch mit der Lehrperson der richtige Weg. Eine Abklärung organisiert die Schule.'))));
 }

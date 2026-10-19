@@ -6,11 +6,11 @@ Geschwisterprojekt der «Lernplattform» (`mikejaeger-privat/Lernplattform`): Te
 
 - **Bereitstellen:** über GitHub; jeder Push auf `main` baut und veröffentlicht automatisch.
 - **Konzept und Parameter:** [KONZEPT.md](KONZEPT.md)
-- **Eigene Inhalte (Lernwörter, Pakete):** `INHALTE.md` (folgt in Etappe 6)
+- **Eigene Inhalte (Lernwörter, Pakete):** [INHALTE.md](INHALTE.md)
 
 ## Stand
 
-**Etappe 5 von 7: Lernmodell und Tagesplan.** Lauffähig sind Einrichtung (Name, PIN, Stimme mit Hörtest), Startseite mit Fuchs, gesprochene Einführung, Elternbereich, Sicherung, Abgleich und Offline-Betrieb, beide Fächer vollständig (50 Mathematik- und 42 Deutsch-Fertigkeiten mit je drei Stufen, feste Deutsch-Inhalte, Nachspuren in Basisschrift) und das Lernen selbst: Jeden Lerntag stellt die App aus dem Lernmodell einen Weg mit Steinen zusammen (Aufwärmen mit Karteikasten, Deutsch und Mathematik in der Reihenfolge, die das Kind wählt, Schlussstein), hält die eingestellte Zeit ein, beginnt mit einer dreitägigen Entdeckerrunde, bietet «Zeig, was du kannst»-Runden und alle sechs Schulwochen eine Schatzkarte an und schliesst mit der Schlusskarte und dem Sammelbild. Im Elternbereich lassen sich die Lernwörter der Woche eintragen, und «Aufgaben» zeigt jede Stufe so, wie das Kind sie sieht und hört. Es folgen Elternbereich mit Stand und Berichten, Sicherung und Pakete (6), Prüfung, Simulation und Dokumentation (7).
+**Etappe 6 von 7: Elternbereich, Abgleich und Pakete.** Lauffähig ist die ganze App: Einrichtung (Name, PIN, Stimme mit Hörtest), beide Fächer vollständig (50 Mathematik- und 42 Deutsch-Fertigkeiten mit je drei Stufen), der tägliche Weg aus dem Lernmodell (Aufwärmen mit Karteikasten, Deutsch und Mathematik, Schlussstein; Entdeckerrunde, «Zeig, was du kannst», Schatzkarte, Sammelbild) und der Elternbereich: Heute geübt, Stand je Fertigkeit, Schatzkarten-Berichte, Etappen zur Orientierung, Buchstabenplan, Mathematik-Kapitel, Lernwörter, Aufgaben ausprobieren, Rückmeldungen, Einstellungen, Sicherung, Abgleich zwischen Geräten und Pakete mit eigenen Inhalten ([INHALTE.md](INHALTE.md)). Es folgt die Schlussprüfung mit Dokumentation (7).
 
 ## Ordner
 
@@ -73,7 +73,7 @@ Hinweise:
 
 Ohne diese Schritte speichert jedes Gerät für sich. Mit ihnen gleichen alle Geräte der Familie denselben Lernstand ab: beim Öffnen, nach dem Üben, beim Wechsel in eine andere App und alle 5 Minuten. Offline geht das Üben normal weiter; abgeglichen wird, sobald wieder Verbindung besteht.
 
-**Was gespeichert wird:** Lernstände, Karteikasten, Lerntage, Einstellungen, Buchstabenplan, Tagesplan, Sammelbild und Schatzkarten in einer D1-Datenbank des eigenen Cloudflare-Kontos. **Nicht** gespeichert wird der Vorname: Er wird auf jedem Gerät einmal eingetippt und verlässt das Gerät nie. Die Daten sind nicht Ende-zu-Ende verschlüsselt; Cloudflare könnte sie technisch lesen. Den Zugriff schützen Cloudflare Access und eine zusätzliche Prüfung des Access-Tokens in der Function. Ohne vollständige Einrichtung bleibt der Abgleich aus.
+**Was gespeichert wird:** Lernstände, Karteikasten, Lerntage, Einstellungen, Buchstabenplan, Lernwörter, Tagesplan, Entdeckerrunde, Sammelbild, Schatzkarten, Rückmeldungen, Pakete und das Protokoll der Antworten in einer D1-Datenbank des eigenen Cloudflare-Kontos. **Nicht** gespeichert wird der Vorname: Er wird auf jedem Gerät einmal eingetippt und verlässt das Gerät nie. Die Daten sind nicht Ende-zu-Ende verschlüsselt; Cloudflare könnte sie technisch lesen. Den Zugriff schützen Cloudflare Access und eine zusätzliche Prüfung des Access-Tokens in der Function. Ohne vollständige Einrichtung bleibt der Abgleich aus.
 
 Einrichten (einmalig, im Cloudflare-Dashboard):
 
@@ -87,7 +87,7 @@ Einrichten (einmalig, im Cloudflare-Dashboard):
 
 Hinweise:
 - **Reihenfolge:** Zuerst auf dem Gerät mit dem aktuellen Stand die App öffnen (lädt den Stand hoch), dann auf den anderen Geräten. Ein neues Gerät erkennt den vorhandenen Stand und fragt nur nach dem Namen.
-- **Auf zwei Geräten zwischen zwei Abgleichen üben** (etwa offline unterwegs): Lernstand, Karteikasten und Lerntage werden Fertigkeit für Fertigkeit zusammengeführt (der weiter geübte Eintrag gewinnt), Lernwörter, Meldungen, Schatzkarten und Sammelbild-Teile werden vereinigt. Bei Einstellungen und Tagesplan gilt die neuere Änderung.
+- **Auf zwei Geräten zwischen zwei Abgleichen üben** (etwa offline unterwegs): Lernstand, Karteikasten und Lerntage werden Eintrag für Eintrag zusammengeführt (der weiter geübte gewinnt), Lernwörter, Meldungen, Schatzkarten, Pakete, Sammelbild-Teile und die Tage der Entdeckerrunde werden vereinigt. Bei Einstellungen und Tagesplan gilt die neuere Änderung. Am selben Tag auf zwei Geräten zu üben ist möglich; dann zählt die Lernzeit pro Gerät.
 - **Zurücksetzen** im Elternbereich löscht dann alles online und auf allen Geräten (braucht eine Verbindung).
 - **Access abgelaufen:** Geübt werden kann weiter. Der Elternbereich zeigt «Abgleich pausiert» mit dem Knopf **Neu anmelden**. Im Kinderbereich erscheint dazu nichts.
 - Kosten: Das kostenlose Kontingent von D1 und Pages Functions reicht für eine Familie bei Weitem.
@@ -154,6 +154,9 @@ node tools/pruefe_inhalte.mjs           # feste Deutsch-Inhalte (site/data/inhal
 node tools/selbsttest_inhalte.mjs       # kommt jede feste Inhaltseinheit in einer Aufgabe vor?
 node tools/zeige_deutsch.mjs le 3       # Deutsch-Beispielaufgaben lesbar ausgeben (--klein: kleine Freigabe)
 node tools/sim/lauf.mjs [--md]          # drei simulierte Kinder bis Ende 1. Klasse mit echtem Plan und Ablauf (--profil mittel --bis 2026-12-18 --neu)
+node tools/pruefe_paket.mjs paket.json  # ein Paket mit eigenen Inhalten so prüfen wie beim Import (INHALTE.md)
+node tools/abgleich-browser.mjs         # Abgleich mit drei Geräten im Browser (startet selbst einen Server mit SQLite)
+node tools/bot.mjs [--geraet iphone]    # ganze Lerntage im Kinderbereich und alle Seiten des Elternbereichs (--dunkel --tage … --fotos ordner)
 node tools/aufgaben-browser.mjs         # jede Stufe beider Fächer im Browser lösen (Server auf 8765 nötig, Playwright)
                                         #   --nur D-HB,M-RE  --geraet iphone  --dunkel  --fotos ordner  --laut
 node tools/baue_schrift.mjs             # Nachspur-Vorlagen site/data/schrift/basisschrift.json erzeugen
@@ -161,5 +164,18 @@ node tools/icons.mjs                    # PNG-Symbole aus site/icons/icon.svg (P
 ```
 
 Lokal (nur auf `localhost`) lässt sich ein Datum vortäuschen: `http://localhost:8765/?heute=2026-12-01`.
+
+**Prüfliste im echten Safari** (von Hand auf dem iPad, nach jeder grösseren Änderung; die automatischen Tests laufen ohne Stimme):
+
+1. Startknopf antippen: Die Begrüssung mit dem Namen ist zu hören. Ohne Ton: Abschnitt 5, Prüfliste Sprachausgabe.
+2. Einführung: Die Stimme erklärt Lautsprecher, Hilfe, Haken und Pfeil; die Zeigehand zeigt sie der Reihe nach.
+3. Elternbereich › Einstellungen › Stimme: Probesatz, Hörtest mit «So», «fa», «La» und «mmm» verständlich.
+4. Elternbereich › Aufgaben, je eine Stufe ausprobieren und hinhören: D-HB-01/1 (Reime, Bildnamen werden genannt), D-HB-02/1 (Silben einzeln), D-HB-03/1 (gedehnter Anlaut), D-BU-01/1 (Laut zum Buchstaben), D-WS-07/2 (Hörkarten: erstes Antippen spricht, zweites legt), D-HV-01/1 (Anweisung), M-RE-03/1 (Rechengeschichte), M-GR-04/1 (Uhr).
+5. Nachspuren (D-BU-04/1, M-ME-04/1) mit dem Finger: grüner Startpunkt, Lob nach dem Spuren, nach drei Versuchen «Gut geübt».
+6. Ein ganzer Lerntag im Kinderbereich: Ansage auf dem Weg, Buch und Würfel wählbar, Schlusskarte nennt das neue Teil im Sammelbild.
+7. Lautsprecher-Knopf oben links wiederholt jeden Auftrag; der Hilfe-Knopf gibt einen Hinweis, ohne die Lösung zu verraten.
+8. Offline: Flugmodus ein, Lernwelt über das Home-Bildschirm-Symbol öffnen, eine Aufgabe lösen.
+9. Neue Version: Nach einem Push zeigt der Elternbereich «Eine neue Version ist bereit»; im Kinderbereich passiert nichts.
+10. Geführter Zugriff (Abschnitt 5, Schritt 6) lässt sich starten und beenden.
 
 In Chrome oder Firefox auf dem Computer gibt es je nach System keine deutsche Stimme; die App zeigt dann den Hinweis zur Stimme und läuft ohne Ton weiter.

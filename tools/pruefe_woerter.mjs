@@ -1,6 +1,7 @@
 // Prüft das Wortlexikon site/data/woerter.json und seinen Bezug zum Buchstabenplan.
 // Aufruf: node tools/pruefe_woerter.mjs [--bilanz]
 import { readFileSync } from 'node:fs';
+import { pruefeWort, VERBINDUNGEN, OBER } from '../site/js/core/woerter-pruefen.js';
 
 const lies = (p) => JSON.parse(readFileSync(new URL('../' + p, import.meta.url), 'utf8'));
 const lex = lies('site/data/woerter.json');
@@ -12,30 +13,6 @@ const warnungen = [];
 const F = (m) => fehler.push(m);
 const W = (m) => warnungen.push(m);
 
-const VERBINDUNGEN = new Set(['sch', 'ch', 'ei', 'au', 'eu', 'äu', 'ie', 'st', 'sp', 'pf', 'ck', 'tz', 'qu', 'ng', 'nk']);
-const DOPPEL = new Set(['ll', 'mm', 'nn', 'ss', 'tt', 'ff', 'pp', 'rr', 'bb', 'dd', 'gg', 'kk', 'zz']);
-const DEHNUNG = new Set(['ah', 'eh', 'oh', 'uh', 'äh', 'öh', 'üh']);
-const DOPPELVOKAL = new Set(['aa', 'ee', 'oo']);
-const OBER = new Set(['Tiere', 'Obst', 'Gemüse', 'Essen', 'Kleider', 'Körper', 'Fahrzeuge', 'Pflanzen', 'Natur', 'Spielsachen', 'Musik', 'Werkzeug', 'Haushalt', 'Schule', 'Gebäude', 'Personen', 'Formen', 'Fantasie', 'Dinge']);
-const MAX_EMOJI = 13;
-
-function braucht(laute) {
-  const b = [];
-  for (const l of laute) {
-    const u = l.toLowerCase();
-    let teile;
-    if (VERBINDUNGEN.has(u)) teile = [u];
-    else if (u === 'chs') teile = ['ch', 's'];
-    else if (u === 'ai') teile = ['a', 'i'];
-    else if (DOPPEL.has(u) || DOPPELVOKAL.has(u)) teile = [u[0]];
-    else if (DEHNUNG.has(u)) teile = [u[0], 'h'];
-    else if ([...u].length === 1) teile = [u];
-    else { F(`unbekannte Lauteinheit «${l}»`); teile = []; }
-    for (const t of teile) if (!b.includes(t)) b.push(t);
-  }
-  return b;
-}
-
 const text = readFileSync(new URL('../site/data/woerter.json', import.meta.url), 'utf8');
 if (text.includes('ß')) F('Das Lexikon enthält «ß» (Schweizer Rechtschreibung: ss).');
 
@@ -45,29 +22,10 @@ for (const w of lex.woerter) {
   const wo = `${w.id} (${w.wort})`;
   if (ids.has(w.id)) F(`${wo}: ID doppelt`);
   ids.add(w.id);
-  if (worte.has(w.wort)) F(`${wo}: Wort doppelt`);
+  for (const m of pruefeWort(w, { merkstellen: lex.merkstellen, planIds, worte, bilder })) F(m);
   worte.add(w.wort);
-  if (bilder.has(w.bild)) F(`${wo}: Bild ${w.bild} schon bei ${bilder.get(w.bild)}`);
   bilder.set(w.bild, w.wort);
-  if (!['der', 'die', 'das'].includes(w.artikel)) F(`${wo}: Artikel «${w.artikel}»`);
-  if (w.silben.join('') !== w.wort) F(`${wo}: Silben ergeben nicht das Wort`);
-  if (w.laute.join('') !== w.wort) F(`${wo}: Laute ergeben nicht das Wort`);
-  if (w.silben.some((s) => !s)) F(`${wo}: leere Silbe`);
-  if (!OBER.has(w.ober)) F(`${wo}: Oberbegriff «${w.ober}» unbekannt`);
-  if (w.mehrzahl !== null && typeof w.mehrzahl !== 'string') F(`${wo}: mehrzahl muss Text oder null sein`);
-  for (const m of w.merk) if (!(m in lex.merkstellen)) F(`${wo}: Merkstelle «${m}» unbekannt`);
-  if (w.lautgetreu !== (w.merk.length === 0)) F(`${wo}: lautgetreu passt nicht zu merk`);
-  const b = braucht(w.laute);
-  if (JSON.stringify(b) !== JSON.stringify(w.braucht)) F(`${wo}: braucht ${JSON.stringify(w.braucht)}, berechnet ${JSON.stringify(b)}`);
-  for (const x of w.braucht) if (!planIds.has(x)) F(`${wo}: «${x}» fehlt im Buchstabenplan`);
-  if (w.ev && w.ev > MAX_EMOJI) F(`${wo}: Emoji-Version ${w.ev} zu neu (höchstens ${MAX_EMOJI})`);
-  if (w.anlaut === null || w.anlaut === undefined) F(`${wo}: anlaut fehlt`);
   if (w.art && !lex.woerter.some((x) => x.wort === w.art)) W(`${wo}: Unterbegriff «${w.art}» ist kein Wort im Lexikon`);
-  if (w.lautzaehlbar && (w.laute.length < 2 || w.laute.length > 6)) F(`${wo}: lautzaehlbar mit ${w.laute.length} Lauten`);
-  const sprechbar = !w.silben.some((s, i) => i > 0 && /^[^aeiouäöüy]*e[lnrm]?$/.test(s.toLowerCase()));
-  if (w.silbenSprechbar !== sprechbar) F(`${wo}: silbenSprechbar sollte ${sprechbar} sein`);
-  for (const k of ['nameUnsicher', 'bildMehrere', 'oberUnsicher', 'silbenUnsicher']) if (k in w && w[k] !== true) F(`${wo}: ${k} nur true oder weglassen`);
-  if ('sprich' in w && (typeof w.sprich !== 'string' || !w.sprich)) F(`${wo}: sprich leer`);
   if (w.bildMehrere && w.mehrzahl === null) W(`${wo}: bildMehrere ohne Mehrzahl`);
 }
 
