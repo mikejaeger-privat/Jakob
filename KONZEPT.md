@@ -1,6 +1,6 @@
 # Konzept «Lernwelt»
 
-Stand 19. Oktober 2026, Etappe 1 (Konzept und Spezifikation, zur Durchsicht). Alle Zahlen stehen in `site/data/parameter.json`, `site/data/ziele.json`, `site/data/lehrmittel.json` und `site/data/buchstaben.json` und lassen sich dort ändern. Was eine Annahme ist, steht in Abschnitt 12; was nur die Lehrperson weiss, in Abschnitt 13.
+Stand 19. Oktober 2026, alle sieben Etappen gebaut und geprüft (Abschnitt 15). Das Konzept beschreibt, was die App tut; wo die Umsetzung vom ersten Entwurf abweicht, steht es beim jeweiligen Abschnitt. Alle Zahlen stehen in `site/data/parameter.json`, `site/data/ziele.json`, `site/data/lehrmittel.json` und `site/data/buchstaben.json` und lassen sich dort ändern. Was eine Annahme ist, steht in Abschnitt 12; was nur die Lehrperson weiss, in Abschnitt 13.
 
 ## 0. Entscheide aus den Rückfragen (19.10.2026)
 
@@ -141,7 +141,7 @@ Pro Fertigkeit und Stufe ein Stand (`parameter.json`, Abschnitte `beherrschung`,
 - **Bausteine** (zwei bis vier, Reihenfolge): 1. Aufwärmen (1 bis 2 Minuten, Karteikasten, abwechselnd Buchstaben und Blitzrechnen); 2. und 3. Deutsch und Mathematik (je 2 bis 4 Minuten, das Kind wählt die Reihenfolge); 4. Schlussstein (1 bis 2 Minuten, etwas Sicheres oder Freies: Nachspuren, Muster, Zählen). Bei 5 Minuten fällt ein Hauptteil weg (die Fächer wechseln sich von Tag zu Tag ab).
 - **Gewichtung:** Deutsch 55 %, Mathematik 45 % der Hauptteile (einstellbar).
 - **Was drankommt** (innerhalb eines Fachs): eine allfällige Zeig-Runde zuerst, dann eine fällige Wiederholung als leichter Einstieg, Lernwörter vor einem Wörtertest (3 Tage vorher), danach abwechselnd aktueller Stoff (aktuelles Mathe-Kapitel; im Deutsch die ersten zwei Themen der Reihenfolge, deren erste Stufe noch nicht trägt), Weiterkommen (angefangene Stufen und die nächste Stufe, abwechselnd), Wiederholung, Lücken (was laut Lehrmittel schon dran war, aber noch nie geübt wurde) und zum Schluss Stufen kurz vor ihrer Zeig-Runde. Höchstzahlen je Grund und Aufgaben je Eintrag in `parameter.json` (`plan.quoten`). Der Plan ist eine Warteschlange; wie weit sie reicht, entscheidet die Zeit. Höchstens ein neues Thema pro Tag; neu heisst: noch nie geübt und laut Lehrmittel noch nicht dran. Keine Aufgabe zweimal im selben Baustein. Höhere Stufen kommen erst, wenn die tiefere trägt (fast sicher, sicher oder vermutet). Zwei nicht gelöste Aufgaben in Folge: für den Rest der Sitzung eine Stufe tiefer.
-- **Zeitgrenze:** Die Zeit pro Aufgabe wird gemessen (Start 25 Sekunden, Nachspuren 35, Legen 40, Karte 12) und plant die nächsten Sitzungen. Nach der eingestellten Zeit beginnt keine neue Aufgabe mehr; der Schlussstein ist vorher reserviert (bei 10 Minuten 75 Sekunden), seine erste Aufgabe kommt immer. Jeder Stein hört auf, wenn seine eigene Zeit um ist. Einzige Ausnahme: Ist die letzte Aufgabe nicht gelungen, folgt genau eine sehr leichte (höchstens 30 Sekunden), damit die Sitzung mit einem Erfolg endet. Aufwärmen: abwechselnd ein Tag Deutsch-Karten, ein Tag Rechen-Karten; sind es weniger als drei, füllen fällige Wiederholungen des Fachs auf.
+- **Zeitgrenze:** Die Zeit pro Aufgabe wird gemessen (Start 25 Sekunden, Nachspuren 35, Legen 40, Karte 12) und plant die nächsten Sitzungen. Nach der eingestellten Zeit beginnt keine neue Aufgabe mehr; der Schlussstein ist vorher reserviert (bei 10 Minuten 75 Sekunden), seine erste Aufgabe kommt immer. Jeder Stein hört auf, wenn seine eigene Zeit um ist. Eine Zeig-Runde beginnt nur, wenn alle ihre Aufgaben nach der gemessenen Zeit noch Platz haben; sonst wird die Stufe heute gewöhnlich geübt, und die Zeig-Runde kommt an einem anderen Tag. Eine angefangene Zeig-Runde oder Probe der Entdeckerrunde wird zu Ende gespielt, aber nur, solange die eingestellte Zeit nicht ganz um ist. Einzige Ausnahme: Ist die letzte Aufgabe nicht gelungen, folgt genau eine sehr leichte (höchstens 30 Sekunden; braucht das Kind für alle leichten länger, die kürzeste), damit die Sitzung mit einem Erfolg endet. Gelingt auch sie nicht, folgt keine weitere: Die Schlusskarte kommt trotzdem, und das Teil im Sammelbild wächst. Aufwärmen: abwechselnd ein Tag Deutsch-Karten, ein Tag Rechen-Karten; sind es weniger als drei, füllen fällige Wiederholungen des Fachs auf.
 - **Etappen nur für die Eltern:** Weihnachten (18.12.2026), Frühling (23.4.2027), Ende 1. Klasse (16.7.2027). Der Elternbereich zeigt, was laut Lehrmittel bis dahin dran ist und wie der eigene Übungsstand dazu aussieht, ohne Prozentziele.
 
 ## 7. Belohnung
@@ -181,19 +181,33 @@ Wie die Lernplattform, aus der die Infrastruktur übernommen (kopiert und angepa
 - Katalog und Lexikon: `tools/pruefe_katalog.mjs`, `tools/pruefe_woerter.mjs`.
 - Lernmodell, Karteikasten, Plan: Unit-Tests (`tools/tests/lernmodell.test.mjs`).
 - Browser-Bot über alle Stufen beider Fächer (iPad quer, iPhone, dunkles Design, «Bewegung reduzieren»), ohne Konsolenfehler; ganze Lerntage im Kinderbereich (Weg, Steine, Szenen, Schlusskarte). Sprachausgabe im echten Safari von Hand (Prüfliste in `README.md`, Etappe 7).
-- **Simulation** (`tools/sim/lauf.mjs`): drei Kinder (langsam, mittel, schnell; angenommenes Können zu Beginn, Lernrate, Tempo, Ausfalltage) vom 19.10.2026 bis zum 16.7.2027, mit dem echten Tagesplan, dem echten Ablauf und den echten Generatoren; nur das Antworten ist simuliert. Geprüft: keine Aufgabe nach der Zeit (ausser der reservierten ersten im Schlussstein und der Erfolgsaufgabe), jede Sitzung endet mit einer gelösten Aufgabe, keine nicht eingeführten Buchstaben, kein Zahlenraum über der Freigabe, keine Karte vor ihrer Fälligkeit, Schatzkarten-Abstände, höchstens ein neues Thema und eine Zeig-Runde pro Tag, keine leeren Steine.
+- **Simulation** (`tools/sim/lauf.mjs`): drei Kinder (langsam, mittel, schnell; angenommenes Können zu Beginn, Lernrate, Tempo, Ausfalltage) vom 19.10.2026 bis zum 16.7.2027, mit dem echten Tagesplan, dem echten Ablauf und den echten Generatoren; nur das Antworten ist simuliert. Geprüft: keine Aufgabe nach der Zeit (ausser der reservierten ersten im Schlussstein und der Erfolgsaufgabe), nach einer nicht gelösten letzten Aufgabe folgt immer die Erfolgsaufgabe, keine nicht eingeführten Buchstaben, kein Zahlenraum über der Freigabe, keine Karte vor ihrer Fälligkeit, Schatzkarten-Abstände, höchstens ein neues Thema und eine Zeig-Runde pro Tag, keine leeren Steine.
 
-Ergebnis (Stand Etappe 5, 10 Minuten, Lerntage Montag bis Freitag; Stufen der 1. Klasse: Deutsch 93, Mathematik 96):
+Ergebnis (Stand Etappe 7, 10 Minuten, Lerntage Montag bis Freitag; Stufen der 1. Klasse: Deutsch 93, Mathematik 96). Jedes Profil zehnmal mit anderem Zufall (`--laeufe 10`); Median, in Klammern kleinster und grösster Wert:
 
 | | langsam | mittel | schnell |
 | --- | --- | --- | --- |
-| Lerntage mit Sitzung | 140 | 144 | 157 |
-| Aufgaben pro Tag (Mittel) | 20 | 27 | 33 |
-| Minuten pro Tag (Mittel / längster Tag) | 9.5 / 10.3 | 9.4 / 10.3 | 9.0 / 10.1 |
-| Weihnachten: sicher oder fast sicher (D / M) | 12 / 5 | 23 / 15 | 32 / 32 |
-| Ende 1. Klasse: sicher oder fast sicher (D / M) | 32 / 21 | 51 / 44 | 64 / 75 |
-| Schatzkarten | 30.11., 3.2., 5.4., 7.6. | 30.11., 1.2., 5.4., 7.6. | wie mittel |
+| Lerntage mit Sitzung | 142 (133–147) | 146 (142–155) | 155 (152–157) |
+| Aufgaben pro Tag (Mittel) | 20 | 28 | 34 |
+| Minuten pro Tag (Mittel) | 9.4 | 9.5 | 9.2 |
+| längster Tag (Minuten) | 10.3 (10.1–11.0) | 10.2 (10.1–10.4) | 10.1 (10.0–10.2) |
+| Weihnachten: sicher oder fast sicher (D / M) | 13 / 9 | 24 / 20 | 34 / 34 |
+| Ende 1. Klasse: sicher oder fast sicher (D / M) | 31 (26–33) / 24 (19–29) | 51 (49–57) / 43 (41–44) | 67 (65–70) / 71 (66–76) |
+| Erfolgsaufgaben im Jahr | 2 (0–5) | 1 (0–3) | 1 (0–5) |
 | Verstösse gegen die Regeln oben | 0 | 0 | 0 |
+
+Der längste Tag liegt beim langsamen Kind bis 1 Minute über der Einstellung: Die letzte Aufgabe vor dem Schlussstein dauerte länger als gemessen, die reservierte Schlussaufgabe kam trotzdem. Schatzkarten in allen Läufen viermal, im Abstand von 6 bis 7 Schulwochen (Ende November oder anfangs Dezember, anfangs Februar, April und Juni).
+
+Varianten (je zehn Läufe pro Profil, alle ohne Verstösse; Median, sicher oder fast sicher am Ende der 1. Klasse, D / M):
+
+| Variante | langsam | mittel | schnell | Bemerkung |
+| --- | --- | --- | --- | --- |
+| 5 Minuten | 20 / 13 | 29 / 26 | 44 / 36 | im Mittel 4.7 Minuten, längster Tag 5.8 |
+| 15 Minuten | 40 / 34 | 68 / 65 | 77 / 88 | im Mittel 12.3 bis 14.3 Minuten; ein schnelles Kind ist manchmal früher fertig |
+| Buchstaben im Takt (`--takt`) | 29 / 24 | 51 / 44 | 68 / 72 | zu Beginn 8 Buchstaben, dann jede Schulwoche einer mehr; nie ein nicht eingeführter Buchstabe |
+| Lernwörter (`--lernwoerter`) | 21 / 24 | 41 / 43 | 63 / 72 | jede Woche zwei Lernwörter mit Wörtertest am Freitag; 380 bis 500 Aufgaben mit Lernwörtern im Jahr, die Deutsch-Zeit für anderes fehlt |
+
+Zusätzlich 40 Läufe je Profil mit 10 Minuten und 40 Läufe mit 5 Minuten, Buchstaben im Takt und Lernwörtern zusammen, ohne Verstösse. Die Mehrfachläufe haben zwei Fehler im Ablauf gefunden, die behoben sind und als Tests bleiben (`tools/tests/simulation.test.mjs`): Ein langsames Kind bekam keine Erfolgsaufgabe, wenn es für alle leichten Aufgaben länger als 30 Sekunden brauchte; eine Zeig-Runde mit langen Legeaufgaben kurz vor Schluss lief über die eingestellte Zeit.
 
 Die Zahlen hängen an den angenommenen Profilen und sind kein Massstab für ein echtes Kind. Sie zeigen: Die Zeit hält, jede Sitzung endet mit einem Erfolg, und auch ein langsames Kind kommt voran, ohne dass die App drängt. Ein Teil der Stufen bleibt am Ende «neu»: dritte Stufen, Themen, die erst gegen Sommer drankommen, und Stufen mit Verbindungen, die noch nicht eingeführt sind.
 
@@ -248,21 +262,29 @@ Die Zahlen hängen an den angenommenen Profilen und sind kein Massstab für ein 
 13. Gelten «Esel» und «Ente» als Wörter mit gleichem Anfang (langer und kurzer Selbstlaut)?
 14. Welche Oberbegriffe kennt die Klasse (Obst, Gemüse, Kleider, Fahrzeuge, Möbel, Musikinstrumente)? Gehören Schuhe zu den Kleidern?
 15. Lesen die Kinder schon kurze Texte mit Verneinung («Dort ist der Teddy nicht.») und Fragen nach Wer und Was?
+16. Kennt die Klasse häufige Wörter wie «die», «ist», «ein», «eine», «dem», «den», «sind», «wir», «nicht» schon als Wortbilder? (Die App zeigt sie in Lesesätzen, auch wenn «ie» oder «ch» noch nicht eingeführt sind.)
+17. Zählt die Klasse «im», «am», «ins», «zum» beim Wörterzählen als ein Wort?
+18. Welche Gegenteile kennt die Klasse (zum Beispiel «süss – sauer» oder «süss – salzig»)? Sagen die Kinder «Kessel» oder «Eimer»?
 
 ## 14. Zur Durchsicht: Fragen an euch
 
-1. Stimmen die Annahmen in Abschnitt 12, besonders die Verbindungen?
-2. Welches iPad (und welche iPadOS-Version) nutzt das Kind? Ist eine deutsche Stimme geladen?
+1. Stimmen die Annahmen in Abschnitt 12, besonders die Verbindungen? Am besten nach dem Gespräch mit der Lehrperson den Buchstabenplan und das Mathematik-Kapitel im Elternbereich einstellen.
+2. Welches iPad (und welche iPadOS-Version) nutzt das Kind? Ist eine deutsche Stimme geladen (README, Abschnitt 5)? Die Prüfliste im echten Safari (README, Abschnitt 8) ist der wichtigste Schritt vor dem ersten Lerntag.
 3. Passen 10 Minuten an fünf Tagen und die Gewichtung Deutsch 55 %, Mathematik 45 %?
 4. Passen Fuchs und Wald als Figur und Sammelbild? Soll der Fuchs einen Namen haben?
-5. Einverstanden mit dem neutralen Pages-Projektnamen «lernwelt»?
+5. Die ersten drei Lerntage sind die Entdeckerrunde: Es lohnt sich, dabei zu sein und danach unter «Stand» zu schauen, was die App vermutet.
+6. Gibt es Lernwörter? Dann im Elternbereich eintragen oder als Paket (INHALTE.md) einspielen.
 
 ## 15. Etappen
 
-1. **Konzept und Spezifikation** (diese Etappe): Konzept, Katalog beider Fächer, Spezifikationen, Wortlexikon-Entwurf, Prüfskripte. Hier anhalten zur Durchsicht.
-2. Gerüst: Infrastruktur aus der Vorlage, Start, Heute-Seite, Sprachausgabe, Eltern-PIN, Build; lauffähig und bereitstellbar.
-3. Mathematik: Generatoren, Darstellungen, Aufgabentypen, Tests.
-4. Deutsch: Wortlexikon fertig, Buchstaben mit Nachspur-Vorlagen, Wortgeneratoren, feste Inhalte, Selbsttest, zweiter Durchgang.
-5. Lernmodell, Karteikasten, Tagesplan, Entdeckerrunde, Schatzkarte, Belohnung, Schlusskarte.
-6. Elternbereich vollständig, Sicherung, Abgleich, Pakete.
-7. Qualitätssicherung, Simulation, Bot, Dokumentation, Liste der offenen Fragen.
+Alle Etappen sind gebaut, geprüft und auf `main` (jeder Push stellt bereit):
+
+1. **Konzept und Spezifikation:** Konzept, Katalog beider Fächer, Spezifikationen, Wortlexikon, Prüfskripte.
+2. **Gerüst:** Infrastruktur aus der Vorlage, Start, Einführung, Weg, Sprachausgabe mit Hörtest, Eltern-PIN, Sicherung, Abgleich, Build.
+3. **Mathematik:** Generatoren, Darstellungen, Aufgabentypen, Tests.
+4. **Deutsch:** Wortgeneratoren, feste Inhalte, Nachspur-Vorlagen in Basisschrift, Selbsttest, zweiter Durchgang.
+5. **Lernmodell und Tagesplan:** Karteikasten, Entdeckerrunde, Zeig-Runde, Schatzkarte, Sammelbild, Schlusskarte, Simulation.
+6. **Elternbereich, Abgleich, Pakete:** Heute und Stand, Schatzkarten-Berichte, Rückmeldungen, Pakete mit eigenen Inhalten.
+7. **Schlussprüfung:** alle Prüfskripte und Tests, Simulation mit Varianten, Browser-Bots auf iPad, iPhone, dunkel und mit Animationen, Abgleich mit drei Geräten, Dokumentation, offene Fragen.
+
+Mögliche nächste Schritte (nicht gebaut): eigene Bilder statt Emoji für weitere lautgetreue Wörter; mehr feste Inhalte für Bildergeschichten, Geschichten zum Zuhören und Lesetexte; eigene Tonaufnahmen von Lauten als Paket; NMG und die 2. Klasse.

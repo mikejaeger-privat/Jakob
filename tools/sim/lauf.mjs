@@ -2,7 +2,10 @@
 // dem echten Ablauf der Steine (core/ablauf.js) und den echten Generatoren. Nur das Antworten ist simuliert.
 // Geprüft (KONZEPT Abschnitt 10): Zeit, Erfolg am Schluss, Buchstaben-Freigabe, Zahlenraum, Karteikasten-Abstände,
 // Schatzkarten-Abstände, höchstens ein neues Thema und eine Zeig-Runde pro Tag.
-// Aufruf: node tools/sim/lauf.mjs [--bis 2027-07-16] [--profil mittel] [--minuten 10] [--md]
+// Aufruf: node tools/sim/lauf.mjs [--bis 2027-07-16] [--profil mittel] [--minuten 10] [--takt] [--lernwoerter] [--laeufe 10] [--neu] [--md]
+//   --laeufe N: jedes Profil N-mal mit anderem Zufall, Bericht als Tabelle (Median und Spannweite)
+//   SIM_SPUR=2026-11-18 (Umgebung): jede Aufgabe dieses Tages mit Zeit auf stderr
+//   --takt: Buchstaben im Takt der Schule (zu Beginn 8, dann jede Schulwoche einer mehr); --lernwoerter: jede Woche zwei Lernwörter
 import fs from 'node:fs';
 import path from 'node:path';
 import { kalender } from '../../site/js/core/kalender.js';
@@ -22,6 +25,11 @@ const START = tagNr(opt('--von', '2026-10-19'));
 const ENDE = tagNr(opt('--bis', '2027-07-16'));
 const MINUTEN = Number(opt('--minuten', 10));
 const NUR = opt('--profil', null);
+// --takt: Buchstaben im Takt des Buchstabenplans freigeben (zu Beginn 8, dann jede Schulwoche einer; Verbindungen zuletzt).
+// Ohne --takt gilt die Annahme dieses Schuljahrs: alle Einzelbuchstaben und Sch, Ei, Au sind eingeführt.
+const TAKT = args.includes('--takt');
+const SPUR = process.env.SIM_SPUR || null;
+const LERNWOERTER = args.includes('--lernwoerter');   // jede Woche zwei Lernwörter mit Test am Freitag
 const lies = (p) => JSON.parse(fs.readFileSync(path.join('site/data', p), 'utf8'));
 
 const deutsch = lies('katalog/deutsch.json'), mathe = lies('katalog/mathe.json');
@@ -53,7 +61,7 @@ async function simuliere(name, prof, seed) {
   const freigabe = () => new Set(Object.entries(Z.buchstaben.frei).filter(([, v]) => v).map(([k]) => k));
   const ctxD = () => {
     const fr = freigabe();
-    const key = [...fr].join(',') + '|' + Z.lernwoerter.length;
+    const key = [...fr].join(',') + '|' + Z.lernwoerter.map((x) => x.wort).join(',');
     if (key !== dKey) { dKey = key; dCtx = { lexikon: G.W, buchstaben: G.B, freigabe: fr, inhalte: G.IN, dehnlautText: G.P.sprache.dehnlautText, stimme: true, silben: true, dehnlaute: true, lernwoerter: Z.lernwoerter.map((x) => x.wort), zuletzt: new Set() }; }
     return dCtx;
   };
@@ -80,7 +88,8 @@ async function simuliere(name, prof, seed) {
 
   const pruef = { zeit: [], erfolg: [], buchstaben: [], raum: [], kasten: [], neu: [], zeig: [], leer: [] };
   const tageLog = [];
-  let tagSek = 0, aufgabenTag = 0, nachZeit = 0, letzter = null, steinArt = null;
+  let tagSek = 0, aufgabenTag = 0, nachZeit = 0, letzter = null, letzterArt = null, steinArt = null, lernwortAufgaben = 0;
+  const erfolgsAufgaben = { n: 0, nichtGeloest: 0 };   // Erfolgsaufgabe: das simulierte Kind kann auch sie verfehlen (kein Verstoss der App)
   const io = {
     ctx: (fach) => (fach === 'M' ? ctxM() : ctxD()),
     seed: () => Math.floor(r.next() * 4294967296),
@@ -94,25 +103,37 @@ async function simuliere(name, prof, seed) {
       if (a.fach === 'D') { const fr = freigabe(); for (const b of a.braucht || []) if (!fr.has(b)) pruef.buchstaben.push(`${isoVonNr(heute)} ${a.f}/${a.s}: ${b}`); }
       else { const st = G.k.fertigkeiten.get(a.f).stufen[a.s]; if ((st.raum ?? 10) > Z.einstellungen.zahlenraum) pruef.raum.push(`${isoVonNr(heute)} ${a.f}/${a.s}`); }
       if (a.karte && Z.kasten[a.karte] && Z.kasten[a.karte].faellig > heute) pruef.kasten.push(`${isoVonNr(heute)} ${a.karte} fällig ${isoVonNr(Z.kasten[a.karte].faellig)}`);
+      if (a.f === 'D-SC-06') lernwortAufgaben++;
       const k = kann(a.f, a.s);
       let wert;
       if (a.typ === 'nachspuren') wert = 'geuebt';
       else if (r.next() < k) wert = 1;
       else if (modus !== 'zeig' && r.next() < k * 0.7) wert = 0.5;
       else wert = 0;
-      const sek = (SEK[a.typ] ?? 15) * prof.tempo * (0.7 + r.next() * 0.6) * (wert === 1 ? 1 : 1.5);
+      const sek = (SEK[a.typ] ?? 15) * prof.tempo * (0.7 + r.next() * 0.6) * (wert === 1 || wert === 'geuebt' ? 1 : 1.5);
       lerne(a.f, a.s, prof.lern * (wert === 1 ? 1 : wert === 0.5 ? 0.8 : 0.4));
+      if (SPUR && SPUR === isoVonNr(heute)) console.error(`${Math.round(tagSek)} s  ${steinArt}  ${a.f}/${a.s} [${a.typ}]  ${fortschritt ? `${fortschritt.jetzt}/${fortschritt.von}` : 'erfolg'}  wert ${wert}  ${Math.round(sek)} s`);
       tagSek += sek + 2; aufgabenTag++;
-      letzter = wert;
+      letzter = wert; letzterArt = fortschritt ? `${a.f}/${a.s} [${a.typ}]` : 'erfolg';
+      if (!fortschritt) { erfolgsAufgaben.n++; if (wert === 0) erfolgsAufgaben.nichtGeloest++; }
       return { wert, versuche: wert === 1 ? 0 : 1, hilfe: wert === 0.5, ms: sek * 1000 };
     },
   };
 
+  if (TAKT) { const r0 = Z.buchstaben.reihenfolge; for (const id of r0) Z.buchstaben.frei[id] = false; r0.slice(0, 8).forEach((id) => { Z.buchstaben.frei[id] = true; }); }
+  const naechsterBuchstabe = () => { const id = Z.buchstaben.reihenfolge.find((x) => !Z.buchstaben.frei[x]); if (id) Z.buchstaben.frei[id] = true; };
+  const LW = ['Mama', 'Papa', 'Sofa', 'rot', 'Hase', 'Nase', 'Rose', 'Dose', 'Oma', 'Opa', 'Igel', 'Esel', 'Sonne', 'Wolke', 'Haus', 'Maus'];
+  let lwNr = 0;
   let schatzTage = [];
   const schnapp = {};   // Stand zu den Etappen-Daten
   let woche = null;
   for (heute = START; heute <= ENDE; heute++) {
     // Schule bringt Stoff voran: was laut Lehrmittel dran ist, wird jede Schulwoche etwas besser
+    if (wochentag(heute) === 0 && K.schultag(heute) && TAKT) naechsterBuchstabe();
+    if (wochentag(heute) === 0 && K.schultag(heute) && LERNWOERTER) {
+      for (let i = 0; i < 2; i++) { const w = LW[lwNr++ % LW.length]; Z.lernwoerter.push({ id: `lw${lwNr}`, wort: w, test: heute + 4, angelegt: heute }); }
+      Z.lernwoerter = Z.lernwoerter.slice(-6);
+    }
     if (wochentag(heute) === 0 && K.schultag(heute)) {
       const c = L.kontextPlan(heute, { seed: 2 });
       for (const f of [...schonDran(c, 'D'), ...schonDran(c, 'M')]) for (const s of [1, 2, 3]) lerne(f, s, prof.schule / s);
@@ -142,7 +163,8 @@ async function simuliere(name, prof, seed) {
     L.sitzungFertig();
     const total = Z.einstellungen.minuten * 60;
     if (nachZeit > 0) pruef.zeit.push(`${isoVonNr(heute)}: ${nachZeit} Aufgaben nach ${MINUTEN} Minuten begonnen (Ende ${Math.round(tagSek)} s)`);
-    if (letzter !== null && letzter === 0) pruef.erfolg.push(`${isoVonNr(heute)}: letzte Aufgabe nicht gelöst`);
+    // Verstoss: Die Sitzung endet mit einer nicht gelösten Aufgabe, ohne dass die Erfolgsaufgabe folgte
+    if (letzter === 0 && letzterArt !== 'erfolg') pruef.erfolg.push(`${isoVonNr(heute)}: letzte Aufgabe ${letzterArt} nicht gelöst, keine Erfolgsaufgabe`);
     if (neuTag.size > G.P.sitzung.neueThemenProTag) pruef.neu.push(`${isoVonNr(heute)}: ${[...neuTag].join(', ')}`);
     if ((Z.tage[heute]?.zeig || 0) > G.P.zeigRunde.maxProTag) pruef.zeig.push(isoVonNr(heute));
     tageLog.push({ tag: heute, art: plan.art, sek: tagSek, n: aufgabenTag, total });
@@ -156,7 +178,7 @@ async function simuliere(name, prof, seed) {
     abstaende.push(K.schulwochen(montag, schatzTage[i] - 1));
   }
   for (const e of G.Z.etappen) if (!schnapp[e.name] && tagNr(e.datum) > ENDE) schnapp[e.name] = null;
-  return { name, Z, tageLog, pruef, schatzTage, abstaende, schnapp };
+  return { name, Z, tageLog, pruef, schatzTage, abstaende, schnapp, lernwortAufgaben, erfolgsAufgaben };
 }
 
 // Statusübersicht zu einem Tag
@@ -171,10 +193,59 @@ function stand(Z, t) {
   return z;
 }
 
+const ETAPPEN = G.Z.etappen.map((e) => ({ name: e.name, tag: tagNr(e.datum) }));
 const ergebnisse = [];
+const SAAT = { langsam: 11, mittel: 22, schnell: 33 };
+const LAEUFE = Number(opt('--laeufe', 1));
+const verstoesseVon = (e) => e.pruef.buchstaben.length + e.pruef.raum.length + e.pruef.kasten.length + e.pruef.neu.length + e.pruef.zeig.length + e.pruef.zeit.length + e.pruef.erfolg.length;
+
+// --laeufe N: jedes Profil N-mal mit anderem Zufall; Bericht als Tabelle mit Median und Spannweite
+if (LAEUFE > 1) {
+  const zeilen = new Map();
+  let alle = 0;
+  const kurz = (x) => x.fast + x.sicher;
+  const med = (l) => { const s = [...l].sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; };
+  const fmt = (l, d = 0) => (l.length ? `${med(l).toFixed(d)} (${Math.min(...l).toFixed(d)}–${Math.max(...l).toFixed(d)})` : '–');
+  const spalten = [];
+  for (const [name, prof] of Object.entries(PROFILE)) {
+    if (NUR && NUR !== name) continue;
+    const m = { tage: [], auf: [], min: [], max: [], wD: [], wM: [], eD: [], eM: [], erfolg: [], lw: [], abst: [], schatz: [] };
+    for (let k = 0; k < LAEUFE; k++) {
+      const e = await simuliere(name, prof, SAAT[name] + 1000 * k);
+      const L = e.tageLog, min = L.map((x) => x.sek / 60);
+      m.tage.push(L.length); m.auf.push(L.reduce((a, b) => a + b.n, 0) / Math.max(1, L.length));
+      m.min.push(min.reduce((a, b) => a + b, 0) / Math.max(1, min.length)); m.max.push(Math.max(...min));
+      const w = e.schnapp[ETAPPEN[0]?.name], z = e.schnapp[ETAPPEN.at(-1)?.name];
+      if (w) { m.wD.push(kurz(w.D)); m.wM.push(kurz(w.M)); }
+      if (z) { m.eD.push(kurz(z.D)); m.eM.push(kurz(z.M)); }
+      m.erfolg.push(e.erfolgsAufgaben.n); m.lw.push(e.lernwortAufgaben); m.abst.push(...e.abstaende); m.schatz.push(e.schatzTage.length);
+      const v = verstoesseVon(e);
+      alle += v;
+      if (v) console.error(`${name} Lauf ${k + 1}: ${v} Verstösse`, JSON.stringify(e.pruef).slice(0, 400));
+    }
+    spalten.push(name);
+    zeilen.set(name, m);
+  }
+  const Z = (titel, f) => console.log(`| ${titel} | ${spalten.map((n) => f(zeilen.get(n))).join(' | ')} |`);
+  console.log(`${LAEUFE} Läufe je Profil, ${MINUTEN} Minuten${TAKT ? ', Buchstaben im Takt' : ''}${LERNWOERTER ? ', mit Lernwörtern' : ''}; Median (kleinster–grösster Wert)\n`);
+  console.log(`| | ${spalten.join(' | ')} |`);
+  console.log(`| --- |${spalten.map(() => ' --- |').join('')}`);
+  Z('Lerntage mit Sitzung', (m) => fmt(m.tage));
+  Z('Aufgaben pro Tag (Mittel)', (m) => fmt(m.auf));
+  Z('Minuten pro Tag (Mittel)', (m) => fmt(m.min, 1));
+  Z('längster Tag (Minuten)', (m) => fmt(m.max, 1));
+  if (ETAPPEN.length) Z(`${ETAPPEN[0].name}: sicher oder fast sicher (D / M)`, (m) => (m.wD.length ? `${med(m.wD)} / ${med(m.wM)}` : '–'));
+  if (ETAPPEN.length) Z(`${ETAPPEN.at(-1).name}: sicher oder fast sicher (D / M)`, (m) => `${fmt(m.eD)} / ${fmt(m.eM)}`);
+  Z('Erfolgsaufgaben im Jahr', (m) => fmt(m.erfolg));
+  Z('Schatzkarten; Abstand in Schulwochen', (m) => `${fmt(m.schatz)}; ${m.abst.length ? `${Math.min(...m.abst)} bis ${Math.max(...m.abst)}` : '–'}`);
+  if (LERNWOERTER) Z('Aufgaben mit Lernwörtern', (m) => fmt(m.lw));
+  console.log(`\n${alle ? `${alle} Verstösse` : 'Keine Verstösse.'}`);
+  process.exit(alle ? 1 : 0);
+}
+
 for (const [name, prof] of Object.entries(PROFILE)) {
   if (NUR && NUR !== name) continue;
-  ergebnisse.push(await simuliere(name, prof, { langsam: 11, mittel: 22, schnell: 33 }[name]));
+  ergebnisse.push(await simuliere(name, prof, SAAT[name] + 1000 * (Number(opt('--lauf', 1)) - 1)));   // --lauf k: wie Lauf k von --laeufe
 }
 
 // Bericht
@@ -182,7 +253,6 @@ const W0 = (e, f, s) => (f.id.startsWith('M-') ? raumFrei(f.stufen[s], e.Z.einst
 const MD = args.includes('--md');
 const zeilen = [];
 const P = (t = '') => zeilen.push(t);
-const ETAPPEN = G.Z.etappen.map((e) => ({ name: e.name, tag: tagNr(e.datum) }));
 for (const e of ergebnisse) {
   const L = e.tageLog;
   const min = L.map((x) => x.sek / 60);
@@ -191,7 +261,8 @@ for (const e of ergebnisse) {
   P(`### Profil ${e.name}`);
   P();
   P(`- Lerntage mit Sitzung: ${L.length} (davon Entdeckerrunde ${L.filter((x) => x.art === 'entdecker').length}, Schatzkarte ${L.filter((x) => x.art === 'schatz').length}); Aufgaben pro Tag im Mittel ${(L.reduce((a, b) => a + b.n, 0) / Math.max(1, L.length)).toFixed(1)}.`);
-  P(`- Minuten pro Tag: Mittel ${mittel.toFixed(1)}, 90 % der Tage höchstens ${pq(0.9).toFixed(1)}, längster Tag ${Math.max(...min).toFixed(1)} (eingestellt ${MINUTEN}).`);
+  P(`- Minuten pro Tag: Mittel ${mittel.toFixed(1)}, 90 % der Tage höchstens ${pq(0.9).toFixed(1)}, längster Tag ${Math.max(...min).toFixed(1)} am ${isoVonNr(L[min.indexOf(Math.max(...min))]?.tag)} (eingestellt ${MINUTEN}).`);
+  if (LERNWOERTER) P(`- Aufgaben mit Lernwörtern (D-SC-06): ${e.lernwortAufgaben}; Karteikarten mit Lernwörtern: ${Object.keys(e.Z.kasten).filter((k) => k.startsWith('l:')).length}.`);
   P(`- Schatzkarten: ${e.schatzTage.map((t) => isoVonNr(t)).join(', ') || 'keine'} (Abstände in Schulwochen: ${e.abstaende.join(', ') || '–'}).`);
   const zr = Object.values(e.Z.stand).filter((x) => x.zrN > 0);
   P(`- Zeig-was-du-kannst-Runden: ${zr.reduce((a, b) => a + b.zrN, 0)} Versuche, ${zr.filter((x) => x.zr !== null).length} Stufen bestanden; Karteikarten im Kasten: ${Object.keys(e.Z.kasten).length} (Fach 4 bis 5: ${Object.values(e.Z.kasten).filter((k) => k.fach >= 4).length}); Sammelbild: ${e.Z.sammelbild.album.length} volle Bilder, ${e.Z.sammelbild.teile.length} Teile im aktuellen.`);
@@ -203,11 +274,12 @@ for (const e of ergebnisse) {
   }
   const pr = e.pruef;
   const anz = (l) => (l.length ? `${l.length} (z. B. ${l.slice(0, 2).join('; ')})` : '0');
-  P(`- Prüfungen: Zeit überschritten ${anz(pr.zeit)}; Sitzung ohne Erfolg am Schluss ${anz(pr.erfolg)}; nicht eingeführte Buchstaben ${anz(pr.buchstaben)}; Zahlenraum ${anz(pr.raum)}; Karte vor Fälligkeit ${anz(pr.kasten)}; mehr als ein neues Thema ${anz(pr.neu)}; mehr als eine Zeig-Runde ${anz(pr.zeig)}; leere Steine ${anz(pr.leer)}.`);
+  P(`- Erfolgsaufgaben (die letzte Aufgabe war nicht gelungen): ${e.erfolgsAufgaben.n}, davon vom simulierten Kind nicht gelöst ${e.erfolgsAufgaben.nichtGeloest}.`);
+  P(`- Prüfungen: Zeit überschritten ${anz(pr.zeit)}; Sitzung ohne Erfolgsaufgabe nach nicht gelöster letzter Aufgabe ${anz(pr.erfolg)}; nicht eingeführte Buchstaben ${anz(pr.buchstaben)}; Zahlenraum ${anz(pr.raum)}; Karte vor Fälligkeit ${anz(pr.kasten)}; mehr als ein neues Thema ${anz(pr.neu)}; mehr als eine Zeig-Runde ${anz(pr.zeig)}; leere Steine ${anz(pr.leer)}.`);
   P();
 }
 console.log(zeilen.join('\n'));
 if (args.includes('--neu')) for (const e of ergebnisse) { const t = ENDE; const B = G.P.beherrschung; const l = []; for (const f of [...G.k.D.fertigkeiten, ...G.k.M.fertigkeiten]) if (f.kern === true && f.klasse === 1) for (const s of Object.keys(f.stufen)) if (status(e.Z.stand, f.id, s, t, B) === 'neu') l.push(f.id.slice(2) + '/' + s + (W0(e, f, s) ? '' : '✗')); console.log(e.name, 'neu am Ende:', l.join(' ')); }
-const verstoesse = ergebnisse.reduce((n, e) => n + e.pruef.buchstaben.length + e.pruef.raum.length + e.pruef.kasten.length + e.pruef.neu.length + e.pruef.zeig.length + e.pruef.zeit.length + e.pruef.erfolg.length, 0);
+const verstoesse = ergebnisse.reduce((n, e) => n + verstoesseVon(e), 0);
 if (!MD) console.log(verstoesse ? `${verstoesse} Verstösse` : 'Keine Verstösse.');
 process.exit(verstoesse ? 1 : 0);

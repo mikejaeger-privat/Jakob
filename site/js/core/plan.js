@@ -138,7 +138,9 @@ export function schlange(c, fach, ctxTag) {
   const luecken = kernListe(c, fach).filter((f) => dran.has(f.id) && !hatAntworten(stand, f));
 
   const zaehl = {};
-  const quote = (grund) => (zaehl[grund] || 0) < (Q[grund] ?? 1);
+  // bei mehr als 10 Minuten entsprechend mehr Einträge, damit die Zeit auch für ein schnelles Kind reicht
+  const faktor = Math.max(1, (c.minuten || 10) / 10);
+  const quote = (grund) => (zaehl[grund] || 0) < Math.round((Q[grund] ?? 1) * faktor);
   const plus = (grund) => { zaehl[grund] = (zaehl[grund] || 0) + 1; };
   const nimmGrund = (liste, grund, mitVersuch = true) => {
     while (liste.length && quote(grund)) {
@@ -161,7 +163,7 @@ export function schlange(c, fach, ctxTag) {
   // Abwechselnd: aktueller Stoff, Weiterkommen, Lücken, Wiederholung, Stufen kurz vor der Zeig-Runde
   const aktuell = aktuelleListe(c, fach).map((id) => k.fertigkeiten.get(id)).filter(Boolean);
   const wartend = kernListe(c, fach).map((f) => ({ f, s: stufeZumUeben(c, f) })).filter((x) => x.s !== null && wertJetzt(lies(stand, x.f.id, x.s), heute, B) >= B.schwelleZeigBereit);
-  for (let runde = 0; runde < 4; runde++) {
+  for (let runde = 0; runde < Math.ceil(4 * faktor); runde++) {
     nimmGrund(aktuell, 'aktuell');
     nimmGrund(weiter, 'weiter');
     nimmGrund(wieder, 'wiederholung', false);

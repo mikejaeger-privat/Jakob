@@ -1,7 +1,8 @@
 // Bot: spielt ganze Lerntage im Kinderbereich (Weg, Steine, Szenen, Schlusskarte), wie ein Kind, das meist richtig antwortet,
 // und schaut danach in den Elternbereich. Prüft: keine Konsolenfehler, nichts ragt über den Bildschirmrand, jeder Tag endet
 // mit der Schlusskarte, der Plan wechselt von der Entdeckerrunde zum normalen Tag.
-// Aufruf: node tools/server.mjs 8765 &  node tools/bot.mjs [--geraet ipad|iphone] [--dunkel] [--tage 2026-10-19,2026-10-20,…] [--falsch 0.2] [--fotos ordner]
+// Aufruf: node tools/server.mjs 8765 &  node tools/bot.mjs [--geraet ipad|iphone] [--dunkel] [--bewegung] [--tage 2026-10-19,2026-10-20,…] [--falsch 0.2] [--fotos ordner]
+// Standard ist «Bewegung reduzieren»; --bewegung spielt mit allen Animationen.
 import { chromium } from '/opt/npm-tools/node_modules/playwright/index.mjs';
 import fs from 'node:fs';
 import { loeseAufgabe } from './bot-loesen.mjs';
@@ -16,7 +17,7 @@ const BASIS = 'http://localhost:8765/';
 if (FOTOS) fs.mkdirSync(FOTOS, { recursive: true });
 
 const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: GERAET === 'iphone' ? { width: 390, height: 844 } : { width: 1180, height: 820 }, hasTouch: true, reducedMotion: 'reduce', colorScheme: args.includes('--dunkel') ? 'dark' : 'light' });
+const ctx = await browser.newContext({ viewport: GERAET === 'iphone' ? { width: 390, height: 844 } : { width: 1180, height: 820 }, hasTouch: true, reducedMotion: args.includes('--bewegung') ? 'no-preference' : 'reduce', colorScheme: args.includes('--dunkel') ? 'dark' : 'light' });
 const page = await ctx.newPage();
 page.setDefaultTimeout(10000);
 const fehler = [], probleme = [];
@@ -54,7 +55,7 @@ for (const [ti, tag] of TAGE.entries()) {
   while (schritte++ < 400) {
     const wo = await page.evaluate(() => (document.querySelector('.k-schluss') ? 'schluss' : document.querySelector('.k-szene') ? 'szene' : document.querySelector('.k-aufgabe') ? 'aufgabe' : document.querySelector('.k-weg') ? 'weg' : 'anders'));
     if (wo === 'schluss') { schluss = true; await page.waitForTimeout(900); await foto(`${tag}-schluss`); break; }
-    if (wo === 'szene') { await page.click('.kind-unten .k-start'); continue; }
+    if (wo === 'szene') { await page.click('.kind-unten .k-start', { timeout: 2500 }).catch(() => {}); continue; }   // die Szene geht auch von selbst weiter
     if (wo === 'weg') { const s = await page.$('.stein.jetzt'); if (!s) break; await s.click(); await page.waitForTimeout(150); continue; }
     if (wo === 'aufgabe') {
       const n = await page.evaluate(() => window.__aufgabeNr);

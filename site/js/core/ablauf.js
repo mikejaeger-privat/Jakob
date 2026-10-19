@@ -68,11 +68,15 @@ export async function spieleStein(W, L, io, plan, i) {
     if (!a) { lauf.pos++; lauf.im = 0; continue; }
     if (e.karte) a.karte = e.karte;
     const est = L.geschaetzteSekunden(a);
-    const mitten = (e.zeig || e.probe) && lauf.im > 0;                 // eine Zeig-Runde oder Probe nicht abbrechen
+    const platz = total - (st.art === 'schluss' ? 0 : reserve);
+    // Eine Zeig-Runde beginnt nur, wenn sie ganz Platz hat; sonst wird sie heute gewöhnlich geübt und kommt an einem anderen Tag
+    if (e.zeig && lauf.im === 0 && est * soll > Math.min(st.sek * 1.1 - lauf.sek, platz - L.sitzungSekunden(t))) { e.zeig = false; e.grund = 'weiter'; }
+    const mitten = (e.zeig || e.probe) && lauf.im > 0;                 // eine Zeig-Runde oder Probe nicht abbrechen …
+    const vorbei = L.sitzungSekunden(t) >= total;                      // … ausser die eingestellte Zeit ist ganz um
     const zeitStein = lauf.n > 0 && lauf.sek + est > st.sek * 1.1;
     // nach der eingestellten Zeit keine neue Aufgabe; der Schlussstein ist reserviert (seine erste Aufgabe kommt immer)
-    const zeitGesamt = lauf.n > 0 && L.sitzungSekunden(t) + est > total - (st.art === 'schluss' ? 0 : reserve);
-    if ((zeitStein || zeitGesamt) && !mitten) break;
+    const zeitGesamt = lauf.n > 0 && L.sitzungSekunden(t) + est > platz;
+    if ((zeitStein || zeitGesamt) && (!mitten || vorbei)) break;
     if (e.zeig && lauf.im === 0) await io.szene('zeigStart');
     von = Math.max(von, lauf.n + 1);
     const r = await io.spiele(a, { modus: e.zeig ? 'zeig' : 'normal', fortschritt: { jetzt: lauf.n, von } });
@@ -129,9 +133,17 @@ const SCHNELL = ['wahl-bild', 'wahl-wort', 'zahl', 'zaehlen', 'muster', 'bild-wo
 async function erfolgsAufgabe(W, L, io, vermeiden) {
   const c = L.kontextPlan(W.heute(), { seed: io.seed() });
   const kandidaten = [...leichte(c, null, { typen: SCHNELL, n: 3 }), ...(c.startLeicht.M || [])];
+  // die erste, die in die Zeit passt; braucht das Kind für alle länger, die kürzeste (der Erfolg zählt mehr als die Sekunden)
+  let wahl = null;
   for (const x of kandidaten) {
     const a = await aufgabeFuer(W, L, io, { f: x.f, s: x.s }, x.s, vermeiden);
-    if (!a || L.geschaetzteSekunden(a) > W.G.P.lernzeit.erfolgsaufgabeMaxSek) continue;
+    if (!a) continue;
+    const sek = L.geschaetzteSekunden(a);
+    if (!wahl || sek < wahl.sek) wahl = { x, a, sek };
+    if (sek <= W.G.P.lernzeit.erfolgsaufgabeMaxSek) break;
+  }
+  if (wahl) {
+    const { x, a } = wahl;
     const r = await io.spiele(a, {});
     if (!r.abbruch) {
       L.verbucheAntwort({ f: x.f, s: x.s }, a, r);

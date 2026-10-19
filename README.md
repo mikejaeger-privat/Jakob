@@ -10,7 +10,9 @@ Geschwisterprojekt der «Lernplattform» (`mikejaeger-privat/Lernplattform`): Te
 
 ## Stand
 
-**Etappe 6 von 7: Elternbereich, Abgleich und Pakete.** Lauffähig ist die ganze App: Einrichtung (Name, PIN, Stimme mit Hörtest), beide Fächer vollständig (50 Mathematik- und 42 Deutsch-Fertigkeiten mit je drei Stufen), der tägliche Weg aus dem Lernmodell (Aufwärmen mit Karteikasten, Deutsch und Mathematik, Schlussstein; Entdeckerrunde, «Zeig, was du kannst», Schatzkarte, Sammelbild) und der Elternbereich: Heute geübt, Stand je Fertigkeit, Schatzkarten-Berichte, Etappen zur Orientierung, Buchstabenplan, Mathematik-Kapitel, Lernwörter, Aufgaben ausprobieren, Rückmeldungen, Einstellungen, Sicherung, Abgleich zwischen Geräten und Pakete mit eigenen Inhalten ([INHALTE.md](INHALTE.md)). Es folgt die Schlussprüfung mit Dokumentation (7).
+**Alle sieben Etappen gebaut und geprüft.** Lauffähig ist die ganze App: Einrichtung (Name, PIN, Stimme mit Hörtest), beide Fächer vollständig (50 Mathematik- und 42 Deutsch-Fertigkeiten mit je drei Stufen), der tägliche Weg aus dem Lernmodell (Aufwärmen mit Karteikasten, Deutsch und Mathematik, Schlussstein; Entdeckerrunde, «Zeig, was du kannst», Schatzkarte, Sammelbild) und der Elternbereich: Heute geübt, Stand je Fertigkeit, Schatzkarten-Berichte, Etappen zur Orientierung, Buchstabenplan, Mathematik-Kapitel, Lernwörter, Aufgaben ausprobieren, Rückmeldungen, Einstellungen, Sicherung, Abgleich zwischen Geräten und Pakete mit eigenen Inhalten ([INHALTE.md](INHALTE.md)).
+
+Vor dem ersten Lerntag: Buchstabenplan und Mathematik-Kapitel nach dem Gespräch mit der Lehrperson einstellen (offene Fragen: [KONZEPT.md](KONZEPT.md), Abschnitt 13) und die Prüfliste im echten Safari unten einmal durchgehen. Was die automatische Schlussprüfung abdeckt, steht in KONZEPT.md, Abschnitt 10.
 
 ## Ordner
 
@@ -154,9 +156,11 @@ node tools/pruefe_inhalte.mjs           # feste Deutsch-Inhalte (site/data/inhal
 node tools/selbsttest_inhalte.mjs       # kommt jede feste Inhaltseinheit in einer Aufgabe vor?
 node tools/zeige_deutsch.mjs le 3       # Deutsch-Beispielaufgaben lesbar ausgeben (--klein: kleine Freigabe)
 node tools/sim/lauf.mjs [--md]          # drei simulierte Kinder bis Ende 1. Klasse mit echtem Plan und Ablauf (--profil mittel --bis 2026-12-18 --neu)
+                                        #   --minuten 5  --takt (Buchstaben im Takt)  --lernwoerter  --laeufe 10 (Median über 10 Läufe)  --lauf 3
+                                        #   SIM_SPUR=2026-11-18 node tools/sim/lauf.mjs …   (jede Aufgabe dieses Tages mit Zeit)
 node tools/pruefe_paket.mjs paket.json  # ein Paket mit eigenen Inhalten so prüfen wie beim Import (INHALTE.md)
 node tools/abgleich-browser.mjs         # Abgleich mit drei Geräten im Browser (startet selbst einen Server mit SQLite)
-node tools/bot.mjs [--geraet iphone]    # ganze Lerntage im Kinderbereich und alle Seiten des Elternbereichs (--dunkel --tage … --fotos ordner)
+node tools/bot.mjs [--geraet iphone]    # ganze Lerntage im Kinderbereich und alle Seiten des Elternbereichs (--dunkel --bewegung --tage … --fotos ordner)
 node tools/aufgaben-browser.mjs         # jede Stufe beider Fächer im Browser lösen (Server auf 8765 nötig, Playwright)
                                         #   --nur D-HB,M-RE  --geraet iphone  --dunkel  --fotos ordner  --laut
 node tools/baue_schrift.mjs             # Nachspur-Vorlagen site/data/schrift/basisschrift.json erzeugen
