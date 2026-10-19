@@ -124,6 +124,7 @@
   "silbenbogen": "Silbenbogen"
  },
  "vorlesen": { "aktiv": false, "maxProSitzung": 1 },
+ "kinderbereich": { "zeigehandNachSek": 12, "einfuehrungBeimErstenStart": true, "bilderNennenBeimStart": true },
  "hinweisLehrperson": {
   "gruppen": ["HB", "ZA", "ME", "ZE"],
   "minLernTage": 6,

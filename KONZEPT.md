@@ -46,6 +46,9 @@ Beispiel (Mittwoch im November, 10 Minuten):
 ### 2.2 Bedienung
 
 - **Alles wird gesprochen:** Auftrag, Hinweis, Erklärung, Rückmeldung, Schaltflächen. Sprachausgabe des Geräts (`speechSynthesis`), Stimme `de-CH`, sonst `de-DE`, nur lokale Stimmen, Tempo 0.85 (einstellbar), kein Überlappen, Abbruch beim Seitenwechsel. Auf jeder Aufgabe ein Lautsprecher-Knopf «nochmals hören».
+- **Einführung beim ersten Start:** Der Fuchs zeigt in einer gesprochenen Kennenlern-Runde (etwa 2 Minuten) die vier Knöpfe; das Kind tippt jeden einmal selbst an («Tippe auf den Lautsprecher, dann sage ich es nochmals»). Antippen des Fuchses auf dem Startbildschirm spielt die Einführung erneut.
+- **Vormachen statt erklären:** Beim ersten Mal pro Aufgabenart, auf das Fragezeichen und nach 12 Sekunden ohne Berührung zeigt eine Zeigehand die Bewegung (tippen, ziehen, nachspuren). Das ist eine Hilfe, kein Drängen; es läuft keine Zeit ab.
+- **Bildsymbol pro Aufgabenart** oben in der Mitte: Ohr (hören), Auge (lesen), Finger (antippen), Stift (spuren), Würfel (zählen). So weiss das Kind auch ohne Ton, was zu tun ist.
 - **Kein Lesen nötig**, ausser in der Leseaufgabe selbst. Grosse Bildsymbole immer an derselben Stelle: Lautsprecher, Fragezeichen (Hilfe), Pfeil (weiter), Haken (fertig). Keine Textmenüs. Höchstens eine Entscheidung pro Bildschirm.
 - **Eingabe ohne Tastatur:** antippen, ziehen (immer auch Tipp-Tipp), nachspuren, Zahlenfeld 0 bis 20, Buchstabenkacheln (nur eingeführte Buchstaben), Plättchen legen. Zielflächen mindestens 64 px. Keine Doppeltipps, Wischen nie als einzige Möglichkeit.
 - **Schrift:** Andika (SIL Open Font License, lokal, einstöckiges a, offenes g), mindestens 28 px, Lesewörter 40 px. Nachspuren mit eigenen SVG-Pfaden je Buchstabe (gross und klein, mit Umlauten) und Ziffer, angelehnt an die unverbundene Basisschrift, mit Startpunkt und Strichreihenfolge.
@@ -65,7 +68,7 @@ Die Gerätestimme spricht Wörter gut, einzelne Laute schlecht (sie sagt «Be» 
 | Gleich klingende Laute | nie Lösung und Ablenker zugleich: a und ei, e und ä, i und ü, b und p, d und t, g und k (in der Mundart kaum unterscheidbar), z und s, tz und z, ck und k, ie und i |
 | Höraufgaben zu Anlaut, Endlaut, Reim, Silben | Wörter ohne Artikel (der Artikel verändert den ersten Laut) |
 
-Ohne deutsche Stimme auf dem Gerät zeigt die App den Eltern eine Anleitung (Stimme laden) und spielt nur Aufgaben, die ohne Ton gehen: Nachspuren, Zählen mit Bildern, Muster, Formen, Wort lesen und Bild wählen, Rechnen mit Bild.
+**Stimme einrichten (Eltern, beim ersten Start und im Elternbereich):** Die App sucht eine deutsche Stimme auf dem Gerät, spricht einen Probesatz und führt durch einen Hörtest: Klingen «So … fa» und «mmm» richtig? Je nach Antwort schaltet sie «Silben einzeln vorsprechen» und «Dehnlaute vorsprechen» ein oder aus. Fehlt eine deutsche Stimme oder klingt sie blechern, steht Schritt für Schritt da, wie man auf dem iPad eine bessere lädt (Einstellungen › Bedienungshilfen › Gesprochene Inhalte › Stimmen › Deutsch, eine «erweiterte» Stimme wählen). Ohne deutsche Stimme auf dem Gerät zeigt die App den Eltern diese Anleitung (Stimme laden) und spielt nur Aufgaben, die ohne Ton gehen: Nachspuren, Zählen mit Bildern, Muster, Formen, Wort lesen und Bild wählen, Rechnen mit Bild.
 
 ### 2.4 Fehler auffangen
 

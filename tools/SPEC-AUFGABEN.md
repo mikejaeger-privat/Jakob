@@ -5,6 +5,8 @@ Gilt für alle Aufgaben, egal ob sie aus einem Mathe-Generator, einem Wortgenera
 ## 1. Grundsätze für den Kinderbereich
 
 - Das Kind kann zu Beginn nicht lesen. Jeder Auftrag, jeder Hinweis, jede Erklärung und jede Rückmeldung wird vorgesprochen. Angezeigter Text gibt es nur dort, wo er gelesen werden soll (Lese- und Schreibaufgaben) oder wo er Zahl oder Zeichen ist.
+- Jede Aufgabe zeigt oben in der Mitte ein Bildsymbol ihrer Art: Ohr (hören), Auge (lesen), Finger (antippen), Stift (spuren), Würfel (zählen), Hand (legen). Feld `art` je Typ in `site/js/ui/aufgabe.js`.
+- **Zeigehand:** Beim ersten Mal pro Aufgabentyp, auf das Fragezeichen und nach 12 Sekunden ohne Berührung (Parameter `zeigehandNachSek`) macht eine animierte Hand die Bewegung vor (tippen, ziehen, nachspuren). Kein Zeitlimit, nichts läuft ab.
 - Pro Bildschirm eine Aufgabe und höchstens eine Entscheidung. Immer an derselben Stelle: Lautsprecher (nochmals hören) oben links, Fragezeichen (Hilfe) oben rechts, Pfeil (weiter) unten rechts, Haken (fertig) unten Mitte, wo eine Aufgabe ihn braucht.
 - Zielflächen mindestens 64 × 64 px, Abstand mindestens 16 px. Keine Systemtastatur, keine Doppeltipps, Wischen nie als einzige Möglichkeit. Ziehen geht immer auch mit Tipp-Tipp (zuerst das Teil, dann das Ziel).
 - Schrift im Kinderbereich: Andika (lokal eingebettet), mindestens 28 px, Lesewörter mindestens 40 px.

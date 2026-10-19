@@ -1,0 +1,9 @@
+Schrift der App «Lernwelt»
+
+lernwelt-schrift-regular.woff und lernwelt-schrift-bold.woff sind verkleinerte Fassungen (nur lateinische Zeichen,
+Satzzeichen, Pfeile, Minuszeichen) der Schrift Andika von SIL International, Copyright (c) 2004-2022 SIL International.
+Andika ist für Leseanfänger gemacht (einstöckiges a, eindeutige Formen von I, l und 1).
+
+Lizenz: SIL Open Font License 1.1 (OFL.txt). Weil «Andika» ein reservierter Schriftname ist und die Dateien verändert
+(verkleinert) wurden, heissen sie hier «Lernwelt Schrift». Quelle: github.com/google/fonts, Ordner ofl/andika
+(Stand Februar 2026), verkleinert mit fontTools.
