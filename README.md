@@ -10,7 +10,7 @@ Geschwisterprojekt der «Lernplattform» (`mikejaeger-privat/Lernplattform`): Te
 
 ## Stand
 
-**Etappe 2 von 7: Gerüst.** Lauffähig sind Einrichtung (Name, PIN, Stimme mit Hörtest), Startseite mit Fuchs, gesprochene Einführung beim ersten Start, Lernweg, freier Tag, Elternbereich (Buchstaben, Mathematik, Einstellungen, Daten, Grenzen), Sicherung, Abgleich und Offline-Betrieb. Aufgaben gibt es noch keine: Ein Tipp auf einen Stein sagt «Hier gibt es bald Aufgaben». Es folgen Mathematik (3), Deutsch (4), Lernmodell und Tagesplan (5), Elternbereich und Pakete (6), Prüfung und Simulation (7).
+**Etappe 3 von 7: Mathematik.** Lauffähig sind Einrichtung (Name, PIN, Stimme mit Hörtest), Startseite mit Fuchs, gesprochene Einführung, Lernweg, freier Tag, Elternbereich, Sicherung, Abgleich und Offline-Betrieb, dazu alle 50 Mathematik-Fertigkeiten mit je drei Stufen: Generatoren, Darstellungen wie im Lehrmittel und die Aufgabentypen für den Kinderbereich (Zahlenfeld, Bildwahl, Zählen, Legen, Plättchen, Münzen, Antippen, Zuhören, Zuordnen, Muster, Nachspuren der Ziffern). Bis der Tagesplan kommt, spielen Aufwärmen, Würfel-Stein und Schlussstein eine vorläufige Auswahl aus der Mathematik; der Buch-Stein (Deutsch) folgt in Etappe 4. Im Elternbereich zeigt «Aufgaben» jede Stufe so, wie das Kind sie sieht und hört. Es folgen Deutsch (4), Lernmodell und Tagesplan (5), Elternbereich und Pakete (6), Prüfung und Simulation (7).
 
 ## Ordner
 
@@ -145,7 +145,11 @@ node tools/server.mjs                   # lokal auf http://localhost:8765 (ohne 
 node tools/server.mjs --abgleich        # dasselbe mit /api/* (SQLite statt D1, Anmeldung als test@localhost)
 node tools/pruefe_katalog.mjs --bilanz  # Katalog, Lehrmittel-Reihenfolge, Ziele, Parameter
 node tools/pruefe_woerter.mjs --bilanz  # Wortlexikon und Buchstabenplan
-node --test tools/tests/*.test.mjs      # Unit-Tests (Abgleich-Server, Access-Prüfung, Zusammenführen)
+node --test tools/tests/*.test.mjs      # Unit-Tests (Mathe-Generatoren mit zweitem Rechenweg, Nachspuren, Abgleich, Access)
+node tools/teste_mathe.mjs [za me …]    # alle Mathe-Generatoren: je Stufe 200 Aufgaben in den Zahlenräumen 10, 20, 100
+node tools/zeige_mathe.mjs re 3         # Beispielaufgaben lesbar ausgeben, zum Gegenlesen
+node tools/aufgaben-browser.mjs         # jede Mathe-Stufe im Browser lösen (Server auf 8765 nötig, Playwright)
+node tools/baue_schrift.mjs             # Nachspur-Vorlagen site/data/schrift/basisschrift.json erzeugen
 node tools/icons.mjs                    # PNG-Symbole aus site/icons/icon.svg (Playwright nötig)
 ```
 

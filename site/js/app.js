@@ -6,11 +6,13 @@ import { initSprache, konfiguriere, stopp } from './app/sprache.js';
 import { setzeTon } from './app/klang.js';
 import { dauerhaftSpeichern } from './app/db.js';
 import { gleicheAbHoechstens, starteAutomatik, status as abgleichStatus, neuAnmelden } from './app/abgleich.js';
-import { zeigeStart, zeigeWeg } from './ui/kind.js';
+import { zeigeStart, zeigeWeg, entsperren } from './ui/kind.js';
 import { zeigeEinfuehrung } from './ui/einfuehrung.js';
 import { zeigeEinrichtung, zeigeNamen } from './ui/einrichtung.js';
 import { zeigeEltern, schliesseEltern } from './ui/eltern.js';
 import { versteckeHand } from './ui/zeigehand.js';
+import { zeigeVorschau } from './ui/baustein.js';
+import { elternOffen } from './ui/eltern.js';
 
 const wurzel = document.getElementById('app');
 
@@ -22,11 +24,12 @@ export function route() {
   konfiguriere({ stimme: Z.einstellungen.stimme, tempo: Z.einstellungen.tempo });
   setzeTon(Z.einstellungen.ton);
   const [teil, ...rest] = location.hash.replace(/^#\/?/, '').split('/');
-  if (teil !== 'eltern') schliesseEltern();   // Elternbereich beim Verlassen wieder sperren
+  if (teil !== 'eltern' && teil !== 'vorschau') schliesseEltern();   // Elternbereich beim Verlassen wieder sperren
   try {
     if (teil === 'eltern') zeigeEltern(wurzel, rest);
     else if (teil === 'weg') zeigeWeg(wurzel);
     else if (teil === 'einfuehrung') zeigeEinfuehrung(wurzel);
+    else if (teil === 'vorschau') { if (elternOffen()) { entsperren(); zeigeVorschau(wurzel, rest[0], rest[1]); } else location.hash = '#/eltern'; }
     else zeigeStart(wurzel);
   } catch (e) {
     console.error(e);

@@ -617,7 +617,8 @@
    "stufen": {
     "1": {
      "text": "Welche Zahl ist grösser? Bis 10",
-     "raum": 10
+     "raum": 10,
+     "stimme": "noetig"
     },
     "2": {
      "text": "Zeichen < = > bis 20",
@@ -667,7 +668,8 @@
     },
     "3": {
      "text": "Wie viele Einer hat 16?",
-     "raum": 20
+     "raum": 20,
+     "stimme": "noetig"
     }
    },
    "stichwoerter": [
@@ -739,7 +741,8 @@
    "stufen": {
     "1": {
      "text": "Zerlegung mit Plättchen in zwei Farben",
-     "raum": 10
+     "raum": 10,
+     "stimme": "noetig"
     },
     "2": {
      "text": "Schüttelbox: Wie viele sind verdeckt?",
@@ -813,7 +816,7 @@
     "MA.1.C.2"
    ],
    "quelle": "generator",
-   "stimme": "ohne",
+   "stimme": "noetig",
    "typen": [
     "zahl"
    ],
@@ -1961,7 +1964,8 @@
     },
     "3": {
      "text": "Halbe Stunden ablesen",
-     "raum": 20
+     "raum": 20,
+     "stimme": "noetig"
     }
    },
    "stichwoerter": [

@@ -113,6 +113,10 @@ Woher die Aufgaben kommen:
 
 **Gegenlesen in Etappe 1:** Eine zweite Instanz hat Lexikon, Katalog und Buchstabenplan als Lehrperson der Unterstufe geprüft. Eingearbeitet: Reime mit zwei richtigen Lösungen (Pokal, Lineal, Vulkan), Komposita in Reimgruppen (Fledermaus, Spiegelei), nicht hörbare Mehrzahl (die Ananas), Bilder mit mehreren Dingen (🍒, 🧦), fehlende Unterbegriffe und verwechselbare Paare, gleich klingende Ablenker (eigene Liste `nieZusammen` im Buchstabenplan), Silben, die die Stimme nicht gut spricht, Klassenzuordnung der Lautanalyse (jetzt 1. Halbjahr), mehrdeutige Stufen in Mathematik (Quadrat und Rechteck, Zahlendreher über 20, Münzwerte über 20), neue Fertigkeiten «Ordnungszahlen» und «Nomen und Begleiter», Blitzrechnen bis 20 im 2. Halbjahr. Anlautwörter: «Bär» für ä, «Jacke» für j; «Mandarine» statt «Orange», «Jacke» statt «Mantel», «Kessel» statt «Eimer».
 
+**Mathematik (Stand Etappe 3):** Alle 50 Fertigkeiten mit je drei Stufen haben Generatoren (`site/js/math/za.js`, `me.js`, `ze.js`, `re.js`, `fo.js`, `gr.js`). Jede Stufe erzeugt mindestens 15 verschiedene Aufgaben, wo der Zahlenraum das zulässt (zehn Stufen schöpfen mit 7 bis 11 Aufgaben alle Möglichkeiten aus, etwa «Plus bis 5 mit Plättchen»). Die Darstellungen sind eigene SVG-Zeichnungen (`site/js/ui/darstellung.js`): Zehner- und Zwanzigerfeld mit Fünferstruktur (rot zuerst, dann blau, in Lesereihenfolge; Durchgestrichenes von hinten), Würfel- und Fingerbilder (gezählt wird mit dem Daumen zuerst), Plättchen, Dinge in Gruppen, Zehnerstreifen, Zahlenhaus, Schüttelbox, Zahlenstrahl, Rechenstrich, Zahlenmauer, Zahlensteine in einer Reihe, Münzen und Geldscheine (vereinfacht, mit Wert), Uhr, Waage, Strichliste, Bilddiagramm, Formen, Körper, Gitter mit Fuchs und Steinen, Spiegel, Stäbe mit Kästchen oder Massstab. Antwortfelder sind leere Kästchen mit einem blassen Fragezeichen; das Zahlenfeld zeigt die Zahlen in Fünferreihen (1 bis 5, 6 bis 10 …) und die 0 darunter. Nachspuren der Ziffern 0 bis 9 mit eigenen Vorlagen (`site/data/schrift/basisschrift.json`, erzeugt mit `tools/baue_schrift.mjs`), tolerant geprüft (`site/js/core/nachspur.js`, Toleranz 10 % der Zeilenhöhe).
+
+Bis der Tagesplan in Etappe 5 kommt, spielt der Würfel-Stein fünf Aufgaben aus der Mathematik der 1. Klasse (Stufe 1 oder 2), Aufwärmen und Schlussstein je zwei bis drei leichte Aufgaben. Im Elternbereich lässt sich unter «Aufgaben» jede Stufe so ausprobieren, wie das Kind sie sieht und hört.
+
 ## 5. Lernmodell
 
 Pro Fertigkeit und Stufe ein Stand (`parameter.json`, Abschnitt `beherrschung`).
@@ -193,6 +197,12 @@ Wie die Lernplattform, aus der die Infrastruktur übernommen (kopiert und angepa
 8. **Ferien:** Schlieren 2026/27 und 2027/28 nach localcities.ch und feriolo.ch; Sportferien 2028 und Auffahrtsbrücke 2028 angenommen.
 9. **Gerät:** iPad mit iPadOS 14.2 oder neuer (Emoji 13); eine deutsche Stimme lässt sich laden.
 10. **Start** der Nutzung am 19.10.2026 (Simulation und erste Schatzkarte).
+11. **Fingerbilder:** gezählt wird mit dem Daumen zuerst; die linke Hand zeigt 1 bis 5, die rechte 6 bis 10.
+12. **Ziffern zum Nachspuren:** die 1 mit kurzem Aufstrich, die 7 ohne Querstrich, die 4 offen in zwei Strichen, die 5 mit dem Dach als zweitem Strich.
+13. **Zerlegungen:** «alle Zerlegungen» (M-ZE-02 Stufe 3) ohne «0 und 7»; Würfelpunkte heissen «Augen».
+14. **Zwanzigerfeld:** Plättchen in Lesereihenfolge (obere Reihe zuerst voll), beim Legen mit zwei Farben je die erste Fünfergruppe einer Reihe rot, die zweite blau.
+15. **Wörter in Rechengeschichten:** Znüni, Pausenplatz, Weiher; Tagesablauf mit «Frühstück» und «Mittagessen» (Standarddeutsch, die Gerätestimme spricht es besser als «Zmorge»).
+16. **Begriffe:** «Tauschaufgabe», «Rechenfamilie», «Probe», «Nachbarzahl» wie in den Zürcher Lehrmitteln angenommen.
 
 ## 13. Offene Fragen an die Lehrperson
 
@@ -205,6 +215,9 @@ Wie die Lernplattform, aus der die Infrastruktur übernommen (kopiert und angepa
 7. Welche Strategie für den Zehnerübergang wird geübt (zuerst bis 10, Verdoppeln, beides)?
 8. Uhr und Längen: nur volle oder auch halbe Stunden? Schon Zentimeter, oder nur mit Kästchen und Klammern messen?
 9. Werden in der 1. Klasse schon Nomen und Begleiter (der, die, das) und die Grossschreibung der Nomen behandelt?
+10. Wie zählt die Klasse mit den Fingern (Daumen zuerst)? Wie werden die 1, die 4 und die 7 geschrieben (Aufstrich, offen oder geschlossen, Querstrich)?
+11. Gehört «0 und 7» zu den Zerlegungen der 7? Heissen die Wörter «Tauschaufgabe», «Umkehraufgabe», «Rechenfamilie» und «Probe» so wie in der App?
+12. Werden Rappen-Münzen schon erkannt, und wird mit Franken schon gerechnet?
 
 ## 14. Zur Durchsicht: Fragen an euch
 

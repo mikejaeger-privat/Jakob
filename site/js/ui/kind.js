@@ -7,6 +7,8 @@ import { Z } from '../app/zustand.js';
 import { G, planHeute, freiGrund, heute } from '../app/steuerung.js';
 import { sprich, stopp, freischalten, stimmeDa } from '../app/sprache.js';
 import { klang, freischaltenTon } from '../app/klang.js';
+import { speichere } from '../app/zustand.js';
+import { spieleFolge, probeAuswahl } from './baustein.js';
 
 // iOS lässt Sprache erst nach einer Berührung zu: Der Startbildschirm schaltet frei.
 let entsperrt = false;
@@ -104,8 +106,22 @@ export function zeigeWeg(wurzel, { trotzdem = false } = {}) {
     if (zustand === 'erledigt') { sprich('Diesen Stein hast du schon geschafft.'); return; }
     if (zustand !== 'jetzt') { sprich('Dieser Stein kommt später. Tipp auf einen Stein, der leuchtet.'); zeigeTippen(steine[jetzt[0]], 1); return; }
     klang('hopp');
-    // Ab Etappe 3 beginnt hier der Baustein. Bis dahin ein Hinweis.
-    sprich('Hier gibt es bald Aufgaben. Der Fuchs baut noch.');
+    const art = plan.steine[i].art;
+    // Deutsch folgt in Etappe 4; bis dahin ein Hinweis
+    if (art === 'deutsch') { sprich('Die Aufgaben mit dem Buch baut der Fuchs noch. Tipp auf den Würfel.'); return; }
+    starteStein(i, art);
+  }
+
+  async function starteStein(i, art) {
+    const auswahl = probeAuswahl(art);
+    if (!auswahl.length) { sprich('Hier gibt es gerade nichts zu tun.'); return; }
+    const ergebnisse = await spieleFolge(wurzel, auswahl);
+    if (!ergebnisse.abbruch && ergebnisse.length) {
+      const p = planHeute();
+      if (!p.erledigt.includes(i)) p.erledigt.push(i);
+      speichere('tagesplan');
+    }
+    zeigeWeg(wurzel, { trotzdem: true });
   }
 }
 

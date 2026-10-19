@@ -13,7 +13,7 @@ export function h(tag, props, ...kinder) {
     if (k.startsWith('on') && typeof v === 'function') el.addEventListener(k.slice(2).toLowerCase(), v);
     else if (k === 'class') el.className += ' ' + v;
     else if (k === 'value') el.value = v; // Textfelder: als Eigenschaft, sonst bleibt eine textarea leer
-    else if (k === 'style') { if (typeof v === 'object') Object.assign(el.style, v); else el.style.cssText = v; } // CSSOM: erlaubt mit style-src 'self'
+    else if (k === 'style') { if (typeof v === 'object') { for (const [p, w] of Object.entries(v)) { if (p.startsWith('--')) el.style.setProperty(p, w); else el.style[p] = w; } } else el.style.cssText = v; } // CSSOM: erlaubt mit style-src 'self'
     else if (k in el && typeof v !== 'string' && k !== 'list') el[k] = v;
     else el.setAttribute(k, v === true ? '' : v);
   }

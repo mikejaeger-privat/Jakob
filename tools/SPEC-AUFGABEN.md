@@ -99,12 +99,13 @@ Für jeden Typ: Felder, Darstellung, Eingabe, Prüfung, Erleichterung nach dem e
 ### `nachspuren`
 - Felder: `zeichen` (ein Buchstabe oder eine Ziffer) oder `wort`, `hilfe` (`pfeile`, `start`, `keine`).
 - Vorlage: eigene SVG-Pfade je Zeichen in `site/data/schrift/basisschrift.json`, angelehnt an die unverbundene Deutschschweizer Basisschrift: Striche in Reihenfolge, Startpunkt, Richtung, Hilfslinien (Grund-, Mittel-, Oberlinie).
-- Prüfung (tolerant, in `site/js/core/nachspur.js`): Anteil der Vorlage, der vom Finger überdeckt wurde (Toleranz 12 % der Zeilenhöhe), mindestens 70 %; jeder Strich in grober Richtung (Beginn näher am Startpunkt als am Ende). Strichreihenfolge wird nur als Hinweis verwendet.
+- Prüfung (tolerant, in `site/js/core/nachspur.js`): Anteil der Vorlage, der vom Finger überdeckt wurde (Toleranz 10 % der Zeilenhöhe), mindestens 75 % und je Strich mindestens 60 %; mindestens 75 % der Fingerpunkte nahe der Vorlage und der Fingerweg höchstens 2,5-mal so lang wie die Vorlage (kein Kritzeln); jeder offene Strich in grober Richtung (Beginn näher am Startpunkt als am Ende). Strichreihenfolge wird nur als Hinweis verwendet. Unit-Test: `tools/tests/nachspur.test.mjs`.
 - Drei Versuche, nie «falsch»: Nach dem dritten sagt die App «Gut geübt!» und geht weiter. Ergebnis «geübt» (zählt nicht in den Wert, nur als Übung).
 - Ohne Stimme spielbar.
 
 ### `zahl`
-- Felder: `loesung` (Zahl), `zahlenfeld` (`10` oder `20`: Tasten 0 bis 10 bzw. 0 bis 20), `visual` (Darstellung nach `SPEC-MATHE.md`), optional `einheit` («Fr.», «cm»).
+- Felder: `loesung` (Zahl oder Liste, eine Zahl je Antwortfeld), `zahlenfeld` (`10`, `20` oder `ziffern`), `visual` (Darstellung nach `SPEC-MATHE.md`), optional `einheit` («Fr.», «cm»). Antwortfelder: `_` in `zeige`, sonst `'?'` in der Darstellung, sonst ein Feld unter der Darstellung.
+- Zahlenfeld: Tasten in Fünferreihen (1 bis 5, 6 bis 10, 11 bis 15, 16 bis 20) und die 0 darunter; für grössere Zahlen Ziffern 0 bis 9 mit Löschtaste. Ein leeres Antwortfeld zeigt ein blasses Fragezeichen, das aktive Feld leuchtet. Bei mehreren Feldern springt die Eingabe ins nächste leere Feld; ein Feld antippen wählt es aus.
 - Eingabe: Taste antippen, die Zahl erscheint gross im Antwortfeld und wird gesprochen; Haken bestätigt.
 - Erleichterung: Das Zahlenfeld zeigt nur noch die Zahlen in der Nähe der Lösung (mindestens fünf), oder eine Darstellung wird eingeblendet (`visualNachFehler`).
 

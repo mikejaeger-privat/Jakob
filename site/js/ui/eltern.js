@@ -10,11 +10,12 @@ import { setzeTon } from '../app/klang.js';
 import { stopp } from '../app/sprache.js';
 import { symbol } from './figuren.js';
 
-const TEILE = [['ueberblick', 'Überblick'], ['buchstaben', 'Buchstaben'], ['mathematik', 'Mathematik'], ['lernwoerter', 'Lernwörter'], ['einstellungen', 'Einstellungen'], ['daten', 'Daten'], ['grenzen', 'Grenzen']];
+const TEILE = [['ueberblick', 'Überblick'], ['buchstaben', 'Buchstaben'], ['mathematik', 'Mathematik'], ['lernwoerter', 'Lernwörter'], ['aufgaben', 'Aufgaben'], ['einstellungen', 'Einstellungen'], ['daten', 'Daten'], ['grenzen', 'Grenzen']];
 const OFFEN_MS = 15 * 60 * 1000;
 const TAGE = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
 
 function offen() { try { return Number(sessionStorage.getItem('eltern-offen') || 0) > Date.now(); } catch { return false; } }
+export const elternOffen = () => !Z.profil?.pin || offen();
 function oeffne() { try { sessionStorage.setItem('eltern-offen', String(Date.now() + OFFEN_MS)); } catch { /* egal */ } }
 export function schliesseEltern() { try { sessionStorage.removeItem('eltern-offen'); } catch { /* egal */ } }
 
@@ -37,7 +38,7 @@ export function zeigeEltern(wurzel, rest = []) {
   leere(main, h('div.eltern-kopf', h('h1', 'Elternbereich'),
     h('button.btn.leise', { type: 'button', onclick: () => { schliesseEltern(); location.hash = '#/'; } }, symbol('haus', { klasse: 'btn-sym' }), 'Zum Kinderbereich')), nav, inhalt);
   const neu = () => zeigeEltern(wurzel, [teil]);
-  const f = { ueberblick: teilUeberblick, buchstaben: teilBuchstaben, mathematik: teilMathematik, lernwoerter: teilLernwoerter, einstellungen: teilEinstellungen, daten: teilDaten, grenzen: teilGrenzen }[teil];
+  const f = { ueberblick: teilUeberblick, buchstaben: teilBuchstaben, mathematik: teilMathematik, lernwoerter: teilLernwoerter, aufgaben: teilAufgaben, einstellungen: teilEinstellungen, daten: teilDaten, grenzen: teilGrenzen }[teil];
   Promise.resolve(f(inhalt, neu)).catch((e) => { console.error(e); leere(inhalt, h('p.fehlertext', String(e.message || e))); });
   main.focus({ preventScroll: true });
   window.scrollTo(0, 0);
@@ -55,6 +56,30 @@ function pinTor(main, wurzel, rest) {
     h('div.knopfreihe', h('a.btn.leise', { href: '#/' }, 'Zurück'), h('button.btn.haupt', { type: 'button', onclick: pruefen }, 'Öffnen')),
     h('details.leise.klein', h('summary', 'PIN vergessen?'), h('p', 'Die PIN lässt sich nicht auslesen. Ausweg: auf einem anderen Gerät mit demselben Stand (Abgleich) die PIN ändern, oder eine Sicherung einspielen, nachdem die Website-Daten dieser Seite im Browser gelöscht wurden. Ohne Sicherung geht der Stand dabei verloren.'))));
   setTimeout(() => pin.focus(), 50);
+}
+
+// --- Aufgaben ansehen: jede Stufe im Kinderbereich ausprobieren, ohne dass etwas gespeichert wird ---
+function teilAufgaben(el) {
+  const grenze = Z.einstellungen.zahlenraum || 20;
+  const gruppen = G.k.M.gruppen || [];
+  const nachGruppe = new Map();
+  for (const f of G.k.M.fertigkeiten) { if (!nachGruppe.has(f.gruppe)) nachGruppe.set(f.gruppe, []); nachGruppe.get(f.gruppe).push(f); }
+  const gruppenName = (id) => (gruppen.find((g) => g.id === id) || {}).name || id;
+  const stufenKnopf = (f, s, st) => {
+    const frei = (st.raum ?? 10) <= grenze;
+    return frei
+      ? h('a.btn.klein', { href: `#/vorschau/${f.id}/${s}`, title: st.text }, `Stufe ${s}`)
+      : h('span.btn.klein.aus', { 'aria-disabled': 'true', title: `Braucht Zahlenraum bis ${st.raum}` }, `Stufe ${s}`);
+  };
+  const eintrag = (f) => h('li',
+    h('div.al-name', h('strong', f.name), f.kern === true ? null : h('span.chip', 'Erweiterung')),
+    h('div.al-stufen', Object.entries(f.stufen).map(([s, st]) => stufenKnopf(f, s, st))),
+    h('ol.al-texte.leise.klein', Object.values(f.stufen).map((st) => h('li', st.text))));
+  leere(el,
+    h('section.blatt', h('h2', 'Aufgaben ansehen'),
+      h('p', 'Hier lässt sich jede Stufe so ausprobieren, wie das Kind sie sieht und hört: drei Aufgaben, danach zurück hierher. Die Antworten zählen nicht für den Stand.'),
+      h('p.leise.klein', `Freigegebener Zahlenraum: bis ${grenze} (unter «Mathematik» änderbar). Stufen mit grösserem Zahlenraum sind ausgegraut. Deutsch folgt mit Etappe 4.`)),
+    [...nachGruppe].map(([g, liste]) => h('section.blatt', h('h2', `Mathematik: ${gruppenName(g)}`), h('ul.aufgabenliste', liste.map(eintrag)))));
 }
 
 // --- Überblick ---

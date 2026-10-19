@@ -62,6 +62,9 @@ const PFADE = {
   hand: [['path', { d: 'M12 28 V16 a3 3 0 0 1 6 0 V24 V11 a3 3 0 0 1 6 0 V24 V13 a3 3 0 0 1 6 0 V25 V18 a3 3 0 0 1 6 0 V31 C36 39 31 43 25 43 C18 43 14 39 12 34 Z' }]],
   zaehlen: [['circle', { cx: 14, cy: 16, r: 5, class: 'voll' }], ['circle', { cx: 34, cy: 16, r: 5, class: 'voll' }], ['circle', { cx: 14, cy: 33, r: 5, class: 'voll' }], ['circle', { cx: 34, cy: 33, r: 5 }]],
   mond: [['path', { d: 'M31 8 A16 16 0 1 0 40 32 A13 13 0 0 1 31 8 Z', class: 'voll' }]],
+  nochmal: [['path', { d: 'M38 22 A14 14 0 1 1 33 12' }], ['path', { d: 'M33 4 L34 13 L25 14' }]],
+  loeschen: [['path', { d: 'M17 12 H40 V36 H17 L6 24 Z' }], ['path', { d: 'M22 18 L33 30 M33 18 L22 30', class: 'duenn' }]],
+  treppe: [['path', { d: 'M6 40 H14 V30 H22 V20 H30 V10 H40', class: 'duenn' }], ['path', { d: 'M6 40 H42', class: 'duenn' }]],
 };
 export function symbol(name, { klasse = '', titel = null } = {}) {
   const teile = (PFADE[name] || PFADE.stern).map(([tag, a]) => s(tag, a));
