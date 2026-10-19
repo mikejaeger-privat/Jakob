@@ -1,0 +1,68 @@
+{
+ "stand": "2026-10-19",
+ "hinweis": "Reihenfolge der Themen im Schuljahr 2026/27. Mathematik nach der Jahresplanung von «Mathematik 1 Primarstufe» (LMVZ); die Zuordnung der Kapitel zu den Fertigkeiten ist eine Annahme der App. Deutsch: Lehrmittel der Klasse unbekannt, Reihenfolge ist ein Vorschlag (Annahme). Eine ID weiter nach vorn schieben heisst: Der Plan nimmt das Thema früher dran.",
+ "faecher": {
+  "M": {
+   "lehrmittel": "Mathematik 1 Primarstufe (Lehrmittelverlag Zürich)",
+   "annahme": false,
+   "zuordnungAnnahme": true,
+   "quelle": {
+    "titel": "Jahresplanung «Mathematik 1 Primarstufe» (LMVZ)",
+    "url": "https://003.lmvz.ch/lehrmittelsites/mathe_primar/lp/download/m1/mathematik_1_primarstufe_jahresplanung.pdf",
+    "abgerufen": "2026-10-19"
+   },
+   "kapitel": [
+    { "name": "Zählen", "monat": "08", "fertigkeiten": ["M-ZA-01", "M-ZA-02", "M-ZA-03"] },
+    { "name": "Zahlen", "monat": "08", "fertigkeiten": ["M-ME-02", "M-ME-04"] },
+    { "name": "Orte und Wege", "monat": "08-09", "fertigkeiten": ["M-FO-04", "M-FO-06"] },
+    { "name": "Zahlvorstellungen", "monat": "09", "fertigkeiten": ["M-ME-01", "M-ME-03", "M-ME-05"] },
+    { "name": "Ziffern schreiben", "monat": "09", "fertigkeiten": ["M-ME-04"] },
+    { "name": "Bündeln", "monat": "09-10", "fertigkeiten": ["M-ME-07"] },
+    { "name": "Nachbarzahlen", "monat": "09-10", "fertigkeiten": ["M-ZA-04", "M-ZA-05"] },
+    { "name": "Punktefeld", "monat": "10", "fertigkeiten": ["M-ME-02", "M-ZE-03"] },
+    { "name": "Rechengeschichten", "monat": "10-11", "fertigkeiten": ["M-RE-12", "M-RE-01", "M-RE-02"] },
+    { "name": "Ordnen", "monat": "11", "fertigkeiten": ["M-ZA-06", "M-ZA-07", "M-ZA-09", "M-ME-06", "M-ME-08"] },
+    { "name": "Zerlegen", "monat": "11", "fertigkeiten": ["M-ZE-01", "M-ZE-02", "M-ZE-04"] },
+    { "name": "Verdoppeln", "monat": "11-12", "fertigkeiten": ["M-ZE-05"] },
+    { "name": "Grundformen", "monat": "11-12", "fertigkeiten": ["M-FO-01"] },
+    { "name": "Plusrechnen", "monat": "12", "fertigkeiten": ["M-RE-03"] },
+    { "name": "Minusrechnen", "monat": "12", "fertigkeiten": ["M-RE-04"] },
+    { "name": "Zahlenmauern", "monat": "12-01", "fertigkeiten": ["M-RE-13"] },
+    { "name": "Schlüsselrechnungen", "monat": "01", "fertigkeiten": ["M-RE-14", "M-ZE-04", "M-ZE-05"], "annahme": "Inhalt des Kapitels nicht bekannt; angenommen werden Kernaufgaben wie Verdoppeln und Ergänzen auf 10." },
+    { "name": "Formen", "monat": "01", "fertigkeiten": ["M-FO-01", "M-FO-03"] },
+    { "name": "Längen", "monat": "01-02", "fertigkeiten": ["M-GR-01"] },
+    { "name": "Geldbeträge", "monat": "01-02", "fertigkeiten": ["M-GR-02", "M-GR-03"] },
+    { "name": "Nachbarrechnungen", "monat": "02", "fertigkeiten": ["M-RE-10"] },
+    { "name": "Gleichungen umformen", "monat": "02-03", "fertigkeiten": ["M-RE-11", "M-RE-08"] },
+    { "name": "Einsminuseins", "monat": "02-03", "fertigkeiten": ["M-RE-04", "M-RE-14"] },
+    { "name": "Körper", "monat": "03", "fertigkeiten": ["M-FO-02"] },
+    { "name": "Rechnungen vergleichen", "monat": "03-04", "fertigkeiten": ["M-RE-15"] },
+    { "name": "Zahlenfolgen", "monat": "04", "fertigkeiten": ["M-FO-03", "M-ZA-08"] },
+    { "name": "Verwandte Rechnungen", "monat": "04", "fertigkeiten": ["M-RE-09"] },
+    { "name": "Rechnungsfolgen", "monat": "04-05", "fertigkeiten": ["M-RE-05"], "annahme": "Zuordnung angenommen." },
+    { "name": "Strategien Plusrechnen", "monat": "04-05", "fertigkeiten": ["M-RE-06"] },
+    { "name": "Strategien Minusrechnen", "monat": "05", "fertigkeiten": ["M-RE-07"] },
+    { "name": "Pläne", "monat": "05-06", "fertigkeiten": ["M-FO-06"] },
+    { "name": "Zeit", "monat": "05-06", "fertigkeiten": ["M-GR-04"] },
+    { "name": "Daten und Messungen", "monat": "06", "fertigkeiten": ["M-GR-06", "M-GR-05"] },
+    { "name": "Geld", "monat": "06", "fertigkeiten": ["M-GR-03"] },
+    { "name": "Symmetrie", "monat": "06-07", "fertigkeiten": ["M-FO-05"] },
+    { "name": "Regeln und Strategien", "monat": "07", "fertigkeiten": ["M-RE-08", "M-RE-09", "M-ZE-06"], "annahme": "Zuordnung angenommen." }
+   ]
+  },
+  "D": {
+   "lehrmittel": "unbekannt (Annahme: Deutsch Eins, LMVZ, silbenanalytische Methode)",
+   "annahme": true,
+   "quelle": {
+    "titel": "Bildungsrat Kanton Zürich: Freigabe Lehrmittel «Deutsch» 1. Zyklus (BRB 22/2021)",
+    "url": "https://www.zh.ch/de/bildungsdirektion/generalsekretariat-der-bildungsdirektion/bildungsrat/suche-bildungsratsbeschluesse/2021-brb-22.html",
+    "abgerufen": "2026-10-19"
+   },
+   "reihenfolge": {
+    "1": ["D-HB-01", "D-HB-02", "D-HB-03", "D-BU-01", "D-BU-02", "D-BU-03", "D-BU-04", "D-WS-01", "D-WS-06", "D-HV-01", "D-HB-07", "D-LE-01", "D-LE-06", "D-LE-07", "D-SC-01", "D-HB-04", "D-LE-02", "D-LE-03", "D-SC-03", "D-SC-02", "D-BU-05", "D-HB-05", "D-WS-03", "D-WS-04", "D-HB-08", "D-WS-02", "D-LE-05", "D-WS-05", "D-HV-02", "D-HB-06", "D-BU-07", "D-SC-06"],
+    "1.5": ["D-LE-09", "D-LE-08", "D-SC-04", "D-LE-04", "D-SC-05", "D-WS-07", "D-WS-08", "D-WS-09"],
+    "2": ["D-LE-10", "D-BU-06"]
+   }
+  }
+ }
+}

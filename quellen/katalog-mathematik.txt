@@ -1,0 +1,57 @@
+Quellen zum Kompetenzkatalog Mathematik (site/data/katalog/mathe.json)
+Stand: 19.10.2026
+
+Lehrplan 21, Kanton Zürich, Fach Mathematik, Zyklus 1 (Schwerpunkt 1. Klasse).
+Die Texte unten geben die Kompetenzen sinngemäss in eigenen Worten wieder. Die Zuordnung der Fertigkeiten
+zu den Kompetenznummern hat die App vorgenommen; sie ist nicht amtlich.
+
+MA.1.A.1  Zahl und Variable, Operieren und Benennen: Zahlen lesen und schreiben, Begriffe und Zeichen der
+          Arithmetik verstehen und verwenden (Ziffern, plus, minus, gleich, grösser, kleiner).
+          → M-ME-02, M-ME-03, M-ME-04, M-ZA-09 (Ordnungszahlen), D-WS-08
+MA.1.A.2  Flexibel zählen, Zahlen nach der Zehnerstruktur deuten, Zahlen ordnen und vergleichen.
+          → M-ZA-01 bis M-ZA-08, M-ME-01, M-ME-02, M-ME-05 bis M-ME-07, M-ZE-03
+MA.1.A.3  Addieren und subtrahieren (Zerlegen, Ergänzen, Verdoppeln, Plus und Minus bis 20, Zehnerübergang,
+          Blitzrechnen).
+          → M-ZE-01, M-ZE-02, M-ZE-04, M-ZE-05, M-RE-01 bis M-RE-07, M-RE-14
+MA.1.A.4  Rechnungen vergleichen und umformen, Platzhalter bestimmen, Tausch- und Umkehraufgaben nutzen.
+          → M-RE-08, M-RE-09, M-RE-11, M-RE-15
+MA.1.B.1  Zahl- und Operationsbeziehungen sowie Muster erforschen (Zerlegungen, Nachbaraufgaben,
+          Zahlenmauern, Zahlenfolgen, gerade und ungerade).
+          → M-ZE-01, M-ZE-02, M-ZE-05, M-ZE-06, M-RE-08 bis M-RE-10, M-RE-13, M-FO-03, M-ZA-08
+MA.1.C.1  Rechenwege darstellen und nachvollziehen; Rechengeschichten in Rechnungen übersetzen.
+          → M-RE-01, M-RE-02, M-RE-06, M-RE-07, M-RE-12
+MA.1.C.2  Anzahlen und Zahlen veranschaulichen (Würfelbild, Fingerbild, Zehner- und Zwanzigerfeld,
+          Zahlenstrahl, Zehner und Einer).
+          → M-ME-01, M-ME-03, M-ME-07, M-ME-08, M-ZE-03
+MA.2.A.1  Form und Raum, Begriffe: Formen und Körper erkennen und benennen.
+          → M-FO-01, M-FO-02
+MA.2.B.1  Geometrische Beziehungen und Muster erforschen.
+          → M-FO-03
+MA.2.C.1  Kopfgeometrie: sich Figuren in anderer Lage vorstellen (Spiegelbild).
+          → M-FO-05
+MA.2.C.2  Figuren abbilden, spiegeln, zerlegen und zusammensetzen.
+          → M-FO-05
+MA.2.C.3  Sich im Raum orientieren, Lagebeziehungen und Wege beschreiben.
+          → M-FO-04, M-FO-06
+MA.3.A.1  Grössen, Begriffe: Geld (Franken, Rappen), Zeit (Uhr, Tagesablauf, Wochentage), Länge.
+          → M-GR-01, M-GR-02, M-GR-04, D-WS-07
+MA.3.A.2  Grössen vergleichen, messen und mit ihnen rechnen (Längen, Gewichte, Geldbeträge bis 20 Franken).
+          → M-GR-01, M-GR-03, M-GR-05
+MA.3.C.1  Daten erheben, darstellen und lesen (Strichliste, Bilddiagramm, einfache Tabelle).
+          → M-GR-06
+
+Quellen
+- Lehrplan 21 Kanton Zürich, Fachbereich Mathematik: https://zh.lehrplan.ch
+- Kompetenztexte MA.1.A.1, MA.1.A.2, MA.1.B.1, MA.1.C.1, MA.3.A.1 abgeglichen mit PHSG «Zahlreich»,
+  Lehrplankompetenzen: https://blogs.phsg.ch/zahlreich/files/2023/02/Lehrplankompetenzen.pdf (abgerufen 19.10.2026).
+  Die übrigen Nummern nach dem Aufbau des Lehrplans 21; vor einer Verwendung gegenüber der Schule auf
+  zh.lehrplan.ch prüfen.
+
+Lehrmittel
+- Jahresplanung «Mathematik 1 Primarstufe» (Lehrmittelverlag Zürich), Reihenfolge der 36 Kapitel von
+  «Zählen» (August) bis «Regeln und Strategien» (Juli):
+  https://003.lmvz.ch/lehrmittelsites/mathe_primar/lp/download/m1/mathematik_1_primarstufe_jahresplanung.pdf
+  (abgerufen 19.10.2026). Die Kapitelnamen und ihre Monate stehen in site/data/lehrmittel.json; die
+  Zuordnung der Kapitel zu den Fertigkeiten ist eine Annahme der App.
+- Die Aufgaben der App sind eigene Generatoren. Aus dem Lehrmittel übernommen sind nur Kapitelnamen,
+  Reihenfolge und Begriffe.

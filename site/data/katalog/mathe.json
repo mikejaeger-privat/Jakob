@@ -1,0 +1,2053 @@
+{
+ "fach": "M",
+ "name": "Mathematik",
+ "stand": "2026-10-19",
+ "gruppen": [
+  {
+   "id": "ZA",
+   "name": "Zählen",
+   "bereich": "Zahl und Variable (MA.1)",
+   "symbol": "🔢"
+  },
+  {
+   "id": "ME",
+   "name": "Mengen und Zahlen",
+   "bereich": "Zahl und Variable (MA.1)",
+   "symbol": "🟡"
+  },
+  {
+   "id": "ZE",
+   "name": "Zerlegen",
+   "bereich": "Zahl und Variable (MA.1)",
+   "symbol": "🏠"
+  },
+  {
+   "id": "RE",
+   "name": "Rechnen",
+   "bereich": "Zahl und Variable (MA.1)",
+   "symbol": "➕"
+  },
+  {
+   "id": "FO",
+   "name": "Form und Raum",
+   "bereich": "Form und Raum (MA.2)",
+   "symbol": "🔺"
+  },
+  {
+   "id": "GR",
+   "name": "Grössen und Daten",
+   "bereich": "Grössen, Funktionen, Daten und Zufall (MA.3)",
+   "symbol": "📏"
+  }
+ ],
+ "fertigkeiten": [
+  {
+   "id": "M-ZA-01",
+   "gruppe": "ZA",
+   "name": "Zählen bis 10",
+   "kurz": "Zählen bis 10",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "hilfreich",
+   "typen": [
+    "zaehlen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Bis 5 Dinge antippen und zählen, dann die Anzahl wählen",
+     "raum": 10
+    },
+    "2": {
+     "text": "Bis 10 Dinge in einer Reihe",
+     "raum": 10
+    },
+    "3": {
+     "text": "Bis 10 Dinge durcheinander",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "zählen",
+    "zählen bis 10",
+    "abzählen",
+    "wie viele"
+   ]
+  },
+  {
+   "id": "M-ZA-02",
+   "gruppe": "ZA",
+   "name": "Zählen bis 20",
+   "kurz": "Zählen bis 20",
+   "klasse": 1,
+   "vor": [
+    "M-ZA-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "hilfreich",
+   "typen": [
+    "zaehlen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "11 bis 15 Dinge in Reihen",
+     "raum": 20
+    },
+    "2": {
+     "text": "Bis 20 Dinge in Reihen",
+     "raum": 20
+    },
+    "3": {
+     "text": "Bis 20 Dinge durcheinander, Zehner einkreisen hilft",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "zählen",
+    "zählen bis 20",
+    "abzählen",
+    "zehner bündeln"
+   ]
+  },
+  {
+   "id": "M-ZA-03",
+   "gruppe": "ZA",
+   "name": "Rückwärts zählen",
+   "kurz": "Rückwärts zählen",
+   "klasse": 1,
+   "vor": [
+    "M-ZA-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "hilfreich",
+   "typen": [
+    "zahl",
+    "reihenfolge"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Von 10 rückwärts: Welche Zahl kommt als Nächstes?",
+     "raum": 10
+    },
+    "2": {
+     "text": "Von 20 rückwärts",
+     "raum": 20
+    },
+    "3": {
+     "text": "Ab einer beliebigen Zahl bis 20 rückwärts: die nächsten zwei Zahlen legen",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "rückwärts zählen",
+    "countdown",
+    "zählen"
+   ]
+  },
+  {
+   "id": "M-ZA-04",
+   "gruppe": "ZA",
+   "name": "Weiterzählen",
+   "kurz": "Weiterzählen",
+   "klasse": 1,
+   "vor": [
+    "M-ZA-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "hilfreich",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Ab einer Zahl weiterzählen bis 10",
+     "raum": 10
+    },
+    "2": {
+     "text": "Weiterzählen bis 20",
+     "raum": 20
+    },
+    "3": {
+     "text": "Die nächsten zwei Zahlen legen (ab 13: 14, 15)",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "weiterzählen",
+    "zählen",
+    "zahlenreihe"
+   ]
+  },
+  {
+   "id": "M-ZA-05",
+   "gruppe": "ZA",
+   "name": "Nachbarzahlen",
+   "kurz": "Nachbarzahlen",
+   "klasse": 1,
+   "vor": [
+    "M-ZA-04"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl",
+    "legen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Nachfolger bis 10",
+     "raum": 10
+    },
+    "2": {
+     "text": "Vorgänger und Nachfolger bis 20",
+     "raum": 20
+    },
+    "3": {
+     "text": "Beide Nachbarn legen",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "nachbarzahlen",
+    "vorgänger",
+    "nachfolger",
+    "nachbarn"
+   ]
+  },
+  {
+   "id": "M-ZA-06",
+   "gruppe": "ZA",
+   "name": "Zahlenreihe ergänzen",
+   "kurz": "Zahlenreihe",
+   "klasse": 1,
+   "vor": [
+    "M-ZA-04"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Eine Lücke in einer Reihe bis 10",
+     "raum": 10
+    },
+    "2": {
+     "text": "Zwei Lücken bis 20",
+     "raum": 20
+    },
+    "3": {
+     "text": "Rückwärtsreihe mit Lücken",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "zahlenreihe",
+    "zahlenfolge",
+    "lücke",
+    "zahlen ergänzen"
+   ]
+  },
+  {
+   "id": "M-ZA-07",
+   "gruppe": "ZA",
+   "name": "Zahlen ordnen",
+   "kurz": "Zahlen ordnen",
+   "klasse": 1,
+   "vor": [
+    "M-ZA-05"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "reihenfolge"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Drei Zahlen bis 10 ordnen",
+     "raum": 10
+    },
+    "2": {
+     "text": "Vier Zahlen bis 20",
+     "raum": 20
+    },
+    "3": {
+     "text": "Fünf Zahlen, nicht nebeneinander, auch von gross nach klein",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "ordnen",
+    "zahlen ordnen",
+    "der grösse nach",
+    "reihenfolge"
+   ]
+  },
+  {
+   "id": "M-ZA-08",
+   "gruppe": "ZA",
+   "name": "In Schritten zählen",
+   "kurz": "In Schritten zählen",
+   "klasse": 1.5,
+   "vor": [
+    "M-ZA-02"
+   ],
+   "kern": false,
+   "lp21": [
+    "MA.1.A.2",
+    "MA.1.B.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl",
+    "muster"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zweierschritte bis 20",
+     "raum": 20
+    },
+    "2": {
+     "text": "Fünferschritte bis 50",
+     "raum": 100
+    },
+    "3": {
+     "text": "Zehnerschritte bis 100",
+     "raum": 100
+    }
+   },
+   "stichwoerter": [
+    "zweierschritte",
+    "fünferschritte",
+    "zehnerschritte",
+    "zählen in schritten"
+   ]
+  },
+  {
+   "id": "M-ZA-09",
+   "gruppe": "ZA",
+   "name": "Ordnungszahlen",
+   "kurz": "Der Erste, der Dritte",
+   "klasse": 1,
+   "vor": [
+    "M-ZA-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.1"
+   ],
+   "quelle": "generator",
+   "stimme": "noetig",
+   "typen": [
+    "hoeren-tippen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Wer ist der Erste, wer der Letzte? (Tiere in einer Reihe)",
+     "raum": 10
+    },
+    "2": {
+     "text": "Tippe auf den Zweiten, Dritten … bis zum Fünften",
+     "raum": 10
+    },
+    "3": {
+     "text": "Bis zum Zehnten",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "ordnungszahlen",
+    "der erste",
+    "der dritte",
+    "reihenfolge",
+    "platz"
+   ]
+  },
+  {
+   "id": "M-ME-01",
+   "gruppe": "ME",
+   "name": "Mengen auf einen Blick",
+   "kurz": "Auf einen Blick",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2",
+    "MA.1.C.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "wahl-bild",
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Würfelbilder 1 bis 6",
+     "raum": 10
+    },
+    "2": {
+     "text": "Fingerbilder bis 10",
+     "raum": 10
+    },
+    "3": {
+     "text": "Zehnerfeld mit Fünferstruktur bis 10",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "würfelbild",
+    "fingerbild",
+    "simultan",
+    "auf einen blick",
+    "mengen"
+   ]
+  },
+  {
+   "id": "M-ME-02",
+   "gruppe": "ME",
+   "name": "Wie viele? (Zahl zur Menge)",
+   "kurz": "Wie viele?",
+   "klasse": 1,
+   "vor": [
+    "M-ZA-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.1",
+    "MA.1.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Plättchen bis 10",
+     "raum": 10
+    },
+    "2": {
+     "text": "Zwanzigerfeld bis 20",
+     "raum": 20
+    },
+    "3": {
+     "text": "Ungeordnete Plättchen bis 20 geschickt zählen (in Fünfer- oder Zehnergruppen)",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "menge",
+    "anzahl",
+    "zwanzigerfeld",
+    "punktefeld",
+    "wie viele"
+   ]
+  },
+  {
+   "id": "M-ME-03",
+   "gruppe": "ME",
+   "name": "Menge legen",
+   "kurz": "Menge legen",
+   "klasse": 1,
+   "vor": [
+    "M-ME-02"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.1",
+    "MA.1.C.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "menge-legen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zahl bis 10 ins Zehnerfeld legen",
+     "raum": 10
+    },
+    "2": {
+     "text": "Bis 20 ins Zwanzigerfeld legen",
+     "raum": 20
+    },
+    "3": {
+     "text": "Zahl mit zwei Farben legen, zuerst fünf",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "menge legen",
+    "zwanzigerfeld",
+    "punktefeld",
+    "plättchen"
+   ]
+  },
+  {
+   "id": "M-ME-04",
+   "gruppe": "ME",
+   "name": "Ziffern lesen und schreiben",
+   "kurz": "Ziffern",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.1"
+   ],
+   "quelle": "generator",
+   "stimme": "hilfreich",
+   "typen": [
+    "wahl-wort",
+    "nachspuren"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Gehörte Zahl bis 10 als Ziffer wählen",
+     "raum": 10,
+     "stimme": "noetig"
+    },
+    "2": {
+     "text": "Ziffern 0 bis 9 nachspuren",
+     "raum": 10,
+     "stimme": "ohne"
+    },
+    "3": {
+     "text": "Gehörte Zahl von 11 bis 20 unter Ziffern finden (16 oder 19?); Zahlendreher wie 17 und 71 erst mit Zahlenraum 100",
+     "raum": 20,
+     "stimme": "noetig"
+    }
+   },
+   "stichwoerter": [
+    "ziffern",
+    "ziffern schreiben",
+    "zahlen lesen",
+    "zahlen schreiben"
+   ]
+  },
+  {
+   "id": "M-ME-05",
+   "gruppe": "ME",
+   "name": "Mengen vergleichen",
+   "kurz": "Mehr oder weniger",
+   "klasse": 1,
+   "vor": [
+    "M-ME-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "hilfreich",
+   "typen": [
+    "wahl-bild",
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Wo sind mehr? Zwei Mengen bis 10",
+     "raum": 10
+    },
+    "2": {
+     "text": "Mehr, weniger oder gleich viel bis 20",
+     "raum": 20
+    },
+    "3": {
+     "text": "Wie viele mehr? Unterschied bis 5",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "vergleichen",
+    "mehr",
+    "weniger",
+    "gleich viel"
+   ]
+  },
+  {
+   "id": "M-ME-06",
+   "gruppe": "ME",
+   "name": "Zahlen vergleichen",
+   "kurz": "Grösser oder kleiner",
+   "klasse": 1,
+   "vor": [
+    "M-ME-05",
+    "M-ME-04"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "wahl-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Welche Zahl ist grösser? Bis 10",
+     "raum": 10
+    },
+    "2": {
+     "text": "Zeichen < = > bis 20",
+     "raum": 20
+    },
+    "3": {
+     "text": "Eine Zahl, die zwischen zwei Zahlen liegt (genau eine passende Zahl zur Wahl)",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "grösser",
+    "kleiner",
+    "vergleichen",
+    "zeichen",
+    "kleiner als"
+   ]
+  },
+  {
+   "id": "M-ME-07",
+   "gruppe": "ME",
+   "name": "Zehner und Einer",
+   "kurz": "Zehner und Einer",
+   "klasse": 1,
+   "vor": [
+    "M-ZA-02"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2",
+    "MA.1.C.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl",
+    "menge-legen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zehnerstreifen und Einer: Welche Zahl ist das?",
+     "raum": 20
+    },
+    "2": {
+     "text": "Eine Zahl als Zehner und Einer legen",
+     "raum": 20
+    },
+    "3": {
+     "text": "Wie viele Einer hat 16?",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "zehner",
+    "einer",
+    "bündeln",
+    "stellenwert"
+   ]
+  },
+  {
+   "id": "M-ME-08",
+   "gruppe": "ME",
+   "name": "Zahlenstrahl",
+   "kurz": "Zahlenstrahl",
+   "klasse": 1,
+   "vor": [
+    "M-ZA-06"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.C.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl",
+    "antippen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Markierte Zahl bis 10 ablesen",
+     "raum": 10
+    },
+    "2": {
+     "text": "Bis 20, nur 0, 5, 10, 15, 20 sind angeschrieben",
+     "raum": 20
+    },
+    "3": {
+     "text": "Zahl am Zahlenstrahl antippen",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "zahlenstrahl",
+    "zahlenreihe",
+    "zahlen ordnen"
+   ]
+  },
+  {
+   "id": "M-ZE-01",
+   "gruppe": "ZE",
+   "name": "Zerlegen bis 5",
+   "kurz": "Zerlegen bis 5",
+   "klasse": 1,
+   "vor": [
+    "M-ME-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3",
+    "MA.1.B.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl",
+    "wahl-bild"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zerlegung mit Plättchen in zwei Farben",
+     "raum": 10
+    },
+    "2": {
+     "text": "Schüttelbox: Wie viele sind verdeckt?",
+     "raum": 10
+    },
+    "3": {
+     "text": "Zerlegungshaus bis 5 füllen",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "zerlegen",
+    "zerlegungen",
+    "schüttelbox",
+    "zahlenhaus",
+    "zerlegungshaus"
+   ]
+  },
+  {
+   "id": "M-ZE-02",
+   "gruppe": "ZE",
+   "name": "Zerlegen bis 10",
+   "kurz": "Zerlegen bis 10",
+   "klasse": 1,
+   "vor": [
+    "M-ZE-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3",
+    "MA.1.B.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zerlegung mit Bild",
+     "raum": 10
+    },
+    "2": {
+     "text": "Zerlegungshaus mit einer Lücke",
+     "raum": 10
+    },
+    "3": {
+     "text": "Alle Zerlegungen einer Dachzahl",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "zerlegen",
+    "zerlegungshaus",
+    "zahlenhaus",
+    "zerlegungen bis 10"
+   ]
+  },
+  {
+   "id": "M-ZE-03",
+   "gruppe": "ZE",
+   "name": "Kraft der Fünf",
+   "kurz": "Kraft der Fünf",
+   "klasse": 1,
+   "vor": [
+    "M-ME-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.2",
+    "MA.1.C.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "6 bis 10 als «5 und …» erkennen (Zehnerfeld)",
+     "raum": 10
+    },
+    "2": {
+     "text": "15 und … im Zwanzigerfeld",
+     "raum": 20
+    },
+    "3": {
+     "text": "Ohne Bild: 8 ist 5 und …",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "kraft der fünf",
+    "fünferstruktur",
+    "fünf und",
+    "zehnerfeld"
+   ]
+  },
+  {
+   "id": "M-ZE-04",
+   "gruppe": "ZE",
+   "name": "Ergänzen bis 10",
+   "kurz": "Bis 10 ergänzen",
+   "klasse": 1,
+   "vor": [
+    "M-ZE-02"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zehnerfeld: Wie viele fehlen bis 10?",
+     "raum": 10
+    },
+    "2": {
+     "text": "Ohne Bild: 7 + _ = 10",
+     "raum": 10
+    },
+    "3": {
+     "text": "Bis 20 ergänzen (14 + _ = 20)",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "ergänzen",
+    "bis 10",
+    "zehnerfreunde",
+    "verliebte zahlen"
+   ]
+  },
+  {
+   "id": "M-ZE-05",
+   "gruppe": "ZE",
+   "name": "Verdoppeln und Halbieren",
+   "kurz": "Verdoppeln",
+   "klasse": 1,
+   "vor": [
+    "M-ZE-02"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3",
+    "MA.1.B.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Verdoppeln bis 10 mit Bild (Spiegel)",
+     "raum": 10
+    },
+    "2": {
+     "text": "Verdoppeln bis 20",
+     "raum": 20
+    },
+    "3": {
+     "text": "Halbieren bis 20",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "verdoppeln",
+    "halbieren",
+    "doppelt",
+    "hälfte"
+   ]
+  },
+  {
+   "id": "M-ZE-06",
+   "gruppe": "ZE",
+   "name": "Gerade und ungerade Zahlen",
+   "kurz": "Gerade, ungerade",
+   "klasse": 2,
+   "vor": [
+    "M-ZE-05"
+   ],
+   "kern": false,
+   "lp21": [
+    "MA.1.B.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "wahl-bild",
+    "muster"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Plättchen paarweise: Bleibt eines übrig?",
+     "raum": 10
+    },
+    "2": {
+     "text": "Gerade oder ungerade bis 20, ohne Bild",
+     "raum": 20
+    },
+    "3": {
+     "text": "Folge gerader oder ungerader Zahlen fortsetzen",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "gerade",
+    "ungerade",
+    "paare"
+   ]
+  },
+  {
+   "id": "M-RE-01",
+   "gruppe": "RE",
+   "name": "Plus bis 10 mit Bild",
+   "kurz": "Plus mit Bild",
+   "klasse": 1,
+   "vor": [
+    "M-ZE-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3",
+    "MA.1.C.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Plättchen in zwei Farben, Ergebnis bis 5",
+     "raum": 10
+    },
+    "2": {
+     "text": "Ergebnis bis 10, Zwanzigerfeld",
+     "raum": 10
+    },
+    "3": {
+     "text": "Bildrechnung mit Dingen (3 Äpfel und 4 Äpfel)",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "plus",
+    "addieren",
+    "plusrechnen",
+    "dazu"
+   ]
+  },
+  {
+   "id": "M-RE-02",
+   "gruppe": "RE",
+   "name": "Minus bis 10 mit Bild",
+   "kurz": "Minus mit Bild",
+   "klasse": 1,
+   "vor": [
+    "M-ZE-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3",
+    "MA.1.C.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Durchgestrichene Plättchen, bis 5",
+     "raum": 10
+    },
+    "2": {
+     "text": "Bis 10",
+     "raum": 10
+    },
+    "3": {
+     "text": "Bildrechnung (Vögel fliegen weg)",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "minus",
+    "subtrahieren",
+    "minusrechnen",
+    "weg"
+   ]
+  },
+  {
+   "id": "M-RE-03",
+   "gruppe": "RE",
+   "name": "Plus bis 10",
+   "kurz": "Plus bis 10",
+   "klasse": 1,
+   "vor": [
+    "M-RE-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Plus 1 und plus 2",
+     "raum": 10
+    },
+    "2": {
+     "text": "Alle Plusaufgaben bis 10",
+     "raum": 10
+    },
+    "3": {
+     "text": "Drei Zahlen zusammenzählen (2 + 3 + 4)",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "plus",
+    "plus bis 10",
+    "einspluseins",
+    "addieren"
+   ]
+  },
+  {
+   "id": "M-RE-04",
+   "gruppe": "RE",
+   "name": "Minus bis 10",
+   "kurz": "Minus bis 10",
+   "klasse": 1,
+   "vor": [
+    "M-RE-02"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Minus 1 und minus 2",
+     "raum": 10
+    },
+    "2": {
+     "text": "Alle Minusaufgaben bis 10",
+     "raum": 10
+    },
+    "3": {
+     "text": "Von 10 aus und mit Ergebnis 0",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "minus",
+    "minus bis 10",
+    "einsminuseins",
+    "subtrahieren"
+   ]
+  },
+  {
+   "id": "M-RE-05",
+   "gruppe": "RE",
+   "name": "Plus und Minus bis 20 ohne Zehnerübergang",
+   "kurz": "Bis 20 rechnen",
+   "klasse": 1.5,
+   "vor": [
+    "M-RE-03",
+    "M-RE-04",
+    "M-ME-07"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Plus mit Zwanzigerfeld (12 + 3)",
+     "raum": 20
+    },
+    "2": {
+     "text": "Plus und Minus ohne Bild (17 − 4)",
+     "raum": 20
+    },
+    "3": {
+     "text": "Verwandte Aufgabe nutzen: 3 + 4, also 13 + 4",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "plus bis 20",
+    "minus bis 20",
+    "rechnen bis 20"
+   ]
+  },
+  {
+   "id": "M-RE-06",
+   "gruppe": "RE",
+   "name": "Plus mit Zehnerübergang",
+   "kurz": "Plus über 10",
+   "klasse": 1.5,
+   "vor": [
+    "M-RE-05",
+    "M-ZE-04"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3",
+    "MA.1.C.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zwanzigerfeld: Plättchen legen und zuerst bis 10 auffüllen (8 + 5 = 8 + 2 + 3)",
+     "raum": 20
+    },
+    "2": {
+     "text": "Ohne Bild, Zwischenschritt als Lücken (8 + 2 + 3)",
+     "raum": 20
+    },
+    "3": {
+     "text": "Ohne Hilfe",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "zehnerübergang",
+    "zehnerstopp",
+    "plus über 10",
+    "strategien plusrechnen"
+   ]
+  },
+  {
+   "id": "M-RE-07",
+   "gruppe": "RE",
+   "name": "Minus mit Zehnerübergang",
+   "kurz": "Minus über 10",
+   "klasse": 1.5,
+   "vor": [
+    "M-RE-06"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3",
+    "MA.1.C.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zwanzigerfeld: Plättchen wegnehmen, zuerst bis 10 zurück (13 − 5 = 13 − 3 − 2)",
+     "raum": 20
+    },
+    "2": {
+     "text": "Ohne Bild, Zwischenschritt als Lücken (13 − 3 − 2)",
+     "raum": 20
+    },
+    "3": {
+     "text": "Ohne Hilfe",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "zehnerübergang",
+    "minus über 10",
+    "strategien minusrechnen"
+   ]
+  },
+  {
+   "id": "M-RE-08",
+   "gruppe": "RE",
+   "name": "Tauschaufgaben",
+   "kurz": "Tauschaufgaben",
+   "klasse": 1.5,
+   "vor": [
+    "M-RE-03"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.4",
+    "MA.1.B.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zuordnen",
+    "wahl-wort",
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Bild drehen: 3 + 5 und 5 + 3 gehören zusammen",
+     "raum": 10
+    },
+    "2": {
+     "text": "Tauschaufgabe wählen",
+     "raum": 10
+    },
+    "3": {
+     "text": "Tauschen hilft: 2 + 9 wie 9 + 2 rechnen",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "tauschaufgabe",
+    "tauschen",
+    "vertauschen"
+   ]
+  },
+  {
+   "id": "M-RE-09",
+   "gruppe": "RE",
+   "name": "Umkehraufgaben und Rechenfamilien",
+   "kurz": "Rechenfamilien",
+   "klasse": 1.5,
+   "vor": [
+    "M-RE-03",
+    "M-RE-04"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.4",
+    "MA.1.B.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "wahl-wort",
+    "legen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zu 3 + 4 = 7 die passende Minusaufgabe wählen",
+     "raum": 10
+    },
+    "2": {
+     "text": "Rechenfamilie mit drei Zahlen ergänzen",
+     "raum": 10
+    },
+    "3": {
+     "text": "Probe mit der Umkehraufgabe",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "umkehraufgabe",
+    "rechenfamilie",
+    "verwandte rechnungen",
+    "probe"
+   ]
+  },
+  {
+   "id": "M-RE-10",
+   "gruppe": "RE",
+   "name": "Nachbaraufgaben",
+   "kurz": "Nachbaraufgaben",
+   "klasse": 1.5,
+   "vor": [
+    "M-RE-03",
+    "M-ZE-05"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.B.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "5 + 5 = 10, also 5 + 6 = ? (mit Bild)",
+     "raum": 20
+    },
+    "2": {
+     "text": "Ohne Bild",
+     "raum": 20
+    },
+    "3": {
+     "text": "Verdoppeln und eins dazu (6 + 7)",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "nachbaraufgaben",
+    "nachbarrechnungen",
+    "verdoppeln plus 1"
+   ]
+  },
+  {
+   "id": "M-RE-11",
+   "gruppe": "RE",
+   "name": "Platzhalteraufgaben",
+   "kurz": "Was fehlt?",
+   "klasse": 1.5,
+   "vor": [
+    "M-RE-03",
+    "M-RE-04"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.4"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "3 + _ = 7 mit Bild",
+     "raum": 10
+    },
+    "2": {
+     "text": "Plus und Minus bis 10 ohne Bild",
+     "raum": 10
+    },
+    "3": {
+     "text": "Bis 20",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "platzhalter",
+    "lücke",
+    "gleichungen",
+    "was fehlt"
+   ]
+  },
+  {
+   "id": "M-RE-12",
+   "gruppe": "RE",
+   "name": "Rechengeschichten",
+   "kurz": "Rechengeschichten",
+   "klasse": 1,
+   "vor": [
+    "M-RE-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.C.1"
+   ],
+   "quelle": "generator",
+   "stimme": "noetig",
+   "typen": [
+    "zahl",
+    "legen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Geschichte hören, Bild sehen, Ergebnis wählen (dazukommen)",
+     "raum": 10
+    },
+    "2": {
+     "text": "Rechnung zur Geschichte legen",
+     "raum": 10
+    },
+    "3": {
+     "text": "Wegnehmen und ergänzen",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "rechengeschichten",
+    "sachaufgaben",
+    "textaufgaben",
+    "geschichten"
+   ]
+  },
+  {
+   "id": "M-RE-13",
+   "gruppe": "RE",
+   "name": "Zahlenmauern",
+   "kurz": "Zahlenmauern",
+   "klasse": 1,
+   "vor": [
+    "M-RE-03"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.B.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zwei Steine unten, den Deckstein ausrechnen (bis 10)",
+     "raum": 10
+    },
+    "2": {
+     "text": "Deckstein und ein Stein bekannt",
+     "raum": 10,
+     "vor": [
+      "M-RE-04"
+     ]
+    },
+    "3": {
+     "text": "Drei Stockwerke bis 20",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "zahlenmauer",
+    "zahlenmauern",
+    "rechenmauer"
+   ]
+  },
+  {
+   "id": "M-RE-14",
+   "gruppe": "RE",
+   "name": "Blitzrechnen",
+   "kurz": "Blitzrechnen",
+   "klasse": 1,
+   "vor": [
+    "M-ZE-02"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.3"
+   ],
+   "quelle": "karteikasten",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "karteikasten": "rechnen",
+   "stufen": {
+    "1": {
+     "text": "Zerlegungen bis 10 (Karteikarten)",
+     "raum": 10,
+     "karten": "zerlegungen"
+    },
+    "2": {
+     "text": "Plus und Minus bis 10",
+     "raum": 10,
+     "karten": "plus10,minus10",
+     "vor": [
+      "M-RE-04"
+     ]
+    },
+    "3": {
+     "text": "Plus und Minus bis 20 mit Zehnerübergang",
+     "raum": 20,
+     "karten": "plus20,minus20",
+     "vor": [
+      "M-RE-07"
+     ]
+    }
+   },
+   "stichwoerter": [
+    "blitzrechnen",
+    "kopfrechnen",
+    "einspluseins",
+    "automatisieren"
+   ]
+  },
+  {
+   "id": "M-RE-15",
+   "gruppe": "RE",
+   "name": "Rechnungen vergleichen",
+   "kurz": "Rechnungen vergleichen",
+   "klasse": 1.5,
+   "vor": [
+    "M-RE-03",
+    "M-ME-06"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.1.A.4"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "wahl-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Rechnung mit Zahl vergleichen (3 + 4 ○ 6)",
+     "raum": 10
+    },
+    "2": {
+     "text": "Zwei Rechnungen bis 10",
+     "raum": 10
+    },
+    "3": {
+     "text": "Zwei Rechnungen bis 20",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "vergleichen",
+    "grösser kleiner",
+    "rechnungen vergleichen"
+   ]
+  },
+  {
+   "id": "M-FO-01",
+   "gruppe": "FO",
+   "name": "Formen erkennen",
+   "kurz": "Formen",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "MA.2.A.1"
+   ],
+   "quelle": "generator",
+   "stimme": "hilfreich",
+   "typen": [
+    "wahl-bild",
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Kreis, Dreieck, Viereck",
+     "raum": 10
+    },
+    "2": {
+     "text": "Das Quadrat finden; Rechtecke sind nur Ablenker (nie nach «Rechteck» fragen, wenn ein Quadrat dabei ist)",
+     "raum": 10
+    },
+    "3": {
+     "text": "Formen in einem Bild zählen, auch gedreht",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "formen",
+    "grundformen",
+    "kreis",
+    "dreieck",
+    "viereck",
+    "quadrat",
+    "rechteck"
+   ]
+  },
+  {
+   "id": "M-FO-02",
+   "gruppe": "FO",
+   "name": "Körper erkennen",
+   "kurz": "Körper",
+   "klasse": 1.5,
+   "vor": [
+    "M-FO-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.2.A.1"
+   ],
+   "quelle": "generator",
+   "stimme": "hilfreich",
+   "typen": [
+    "wahl-bild",
+    "zuordnen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Kugel und Würfel",
+     "raum": 10
+    },
+    "2": {
+     "text": "Quader und Zylinder dazu",
+     "raum": 10
+    },
+    "3": {
+     "text": "Dinge aus dem Alltag einem Körper zuordnen",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "körper",
+    "würfel",
+    "kugel",
+    "quader",
+    "zylinder"
+   ]
+  },
+  {
+   "id": "M-FO-03",
+   "gruppe": "FO",
+   "name": "Muster fortsetzen",
+   "kurz": "Muster",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "MA.1.B.1",
+    "MA.2.B.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "muster"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Farbmuster fortsetzen (rot, blau, rot …)",
+     "raum": 10
+    },
+    "2": {
+     "text": "Formenmuster mit drei Teilen",
+     "raum": 10
+    },
+    "3": {
+     "text": "Zahlenfolgen bis 20 fortsetzen (Einer- und Zweierschritte)",
+     "raum": 20,
+     "vor": [
+      "M-ZA-04"
+     ]
+    }
+   },
+   "stichwoerter": [
+    "muster",
+    "folgen",
+    "zahlenfolgen",
+    "fortsetzen"
+   ]
+  },
+  {
+   "id": "M-FO-04",
+   "gruppe": "FO",
+   "name": "Lage im Raum",
+   "kurz": "Oben, unten, links",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "MA.2.C.3"
+   ],
+   "quelle": "generator",
+   "stimme": "noetig",
+   "typen": [
+    "hoeren-tippen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Oben, unten, neben",
+     "raum": 10
+    },
+    "2": {
+     "text": "Links und rechts",
+     "raum": 10
+    },
+    "3": {
+     "text": "Vor, hinter, zwischen",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "lage",
+    "links rechts",
+    "oben unten",
+    "orte und wege",
+    "raum"
+   ]
+  },
+  {
+   "id": "M-FO-05",
+   "gruppe": "FO",
+   "name": "Spiegeln und Symmetrie",
+   "kurz": "Spiegeln",
+   "klasse": 1.5,
+   "vor": [
+    "M-FO-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.2.C.1",
+    "MA.2.C.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "wahl-bild",
+    "antippen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Gespiegeltes Bild erkennen",
+     "raum": 10
+    },
+    "2": {
+     "text": "Figur im Gitter spiegeln (Kästchen antippen)",
+     "raum": 10
+    },
+    "3": {
+     "text": "Ist die Figur symmetrisch?",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "spiegeln",
+    "symmetrie",
+    "spiegelbild",
+    "achsensymmetrie"
+   ]
+  },
+  {
+   "id": "M-FO-06",
+   "gruppe": "FO",
+   "name": "Wege mit Pfeilen",
+   "kurz": "Wege",
+   "klasse": 1,
+   "vor": [
+    "M-FO-04"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.2.C.3"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "wahl-bild",
+    "legen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Pfeilen folgen: Wo kommt der Fuchs an?",
+     "raum": 10
+    },
+    "2": {
+     "text": "Weg mit Pfeilkarten legen",
+     "raum": 10
+    },
+    "3": {
+     "text": "Weg um Hindernisse planen",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "wege",
+    "pfeile",
+    "pläne",
+    "orte und wege"
+   ]
+  },
+  {
+   "id": "M-GR-01",
+   "gruppe": "GR",
+   "name": "Längen vergleichen und messen",
+   "kurz": "Längen",
+   "klasse": 1.5,
+   "vor": [
+    "M-ME-05"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.3.A.1",
+    "MA.3.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "wahl-bild",
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Länger, kürzer, gleich lang",
+     "raum": 10
+    },
+    "2": {
+     "text": "Mit Kästchen oder Klammern messen",
+     "raum": 20
+    },
+    "3": {
+     "text": "Zentimeter am Massstab ablesen (bis 20 cm)",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "längen",
+    "messen",
+    "zentimeter",
+    "länger kürzer"
+   ]
+  },
+  {
+   "id": "M-GR-02",
+   "gruppe": "GR",
+   "name": "Münzen kennen",
+   "kurz": "Münzen",
+   "klasse": 1.5,
+   "vor": [
+    "M-ME-04"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.3.A.1"
+   ],
+   "quelle": "generator",
+   "stimme": "hilfreich",
+   "typen": [
+    "wahl-bild",
+    "reihenfolge"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Franken-Münzen erkennen (1, 2, 5 Franken)",
+     "raum": 10
+    },
+    "2": {
+     "text": "Rappen-Münzen erkennen (5, 10, 20, 50 Rappen; nur erkennen, nicht rechnen)",
+     "raum": 10,
+     "ausnahme": "muenzwerte"
+    },
+    "3": {
+     "text": "Münzen nach Wert ordnen",
+     "raum": 10,
+     "ausnahme": "muenzwerte"
+    }
+   },
+   "stichwoerter": [
+    "geld",
+    "münzen",
+    "franken",
+    "rappen"
+   ]
+  },
+  {
+   "id": "M-GR-03",
+   "gruppe": "GR",
+   "name": "Geldbeträge zählen und legen",
+   "kurz": "Geldbeträge",
+   "klasse": 1.5,
+   "vor": [
+    "M-GR-02",
+    "M-RE-03"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.3.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl",
+    "menge-legen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Franken zählen bis 10 Franken (Münzen)",
+     "raum": 10
+    },
+    "2": {
+     "text": "Bis 20 Franken mit Münzen und Noten (10 und 20 Franken)",
+     "raum": 20
+    },
+    "3": {
+     "text": "Einen Franken-Betrag bis 20 Franken legen",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "geld",
+    "geldbeträge",
+    "franken",
+    "bezahlen"
+   ]
+  },
+  {
+   "id": "M-GR-04",
+   "gruppe": "GR",
+   "name": "Uhr und Tagesablauf",
+   "kurz": "Uhr",
+   "klasse": 1.5,
+   "vor": [
+    "M-ME-04"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.3.A.1"
+   ],
+   "quelle": "generator",
+   "stimme": "hilfreich",
+   "typen": [
+    "reihenfolge",
+    "wahl-bild"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Tagesablauf ordnen (Morgen, Mittag, Abend)",
+     "raum": 10
+    },
+    "2": {
+     "text": "Volle Stunden ablesen",
+     "raum": 20
+    },
+    "3": {
+     "text": "Halbe Stunden ablesen",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "uhr",
+    "uhrzeit",
+    "zeit",
+    "tagesablauf",
+    "volle stunde"
+   ]
+  },
+  {
+   "id": "M-GR-05",
+   "gruppe": "GR",
+   "name": "Gewichte vergleichen",
+   "kurz": "Schwer und leicht",
+   "klasse": 1.5,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "MA.3.A.2"
+   ],
+   "quelle": "generator",
+   "stimme": "hilfreich",
+   "typen": [
+    "wahl-bild",
+    "reihenfolge"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Was ist schwerer?",
+     "raum": 10
+    },
+    "2": {
+     "text": "Balkenwaage ablesen",
+     "raum": 10
+    },
+    "3": {
+     "text": "Drei Dinge nach zwei Wägungen ordnen",
+     "raum": 10
+    }
+   },
+   "stichwoerter": [
+    "gewicht",
+    "schwer",
+    "leicht",
+    "waage"
+   ]
+  },
+  {
+   "id": "M-GR-06",
+   "gruppe": "GR",
+   "name": "Daten lesen",
+   "kurz": "Strichliste",
+   "klasse": 1.5,
+   "vor": [
+    "M-ZA-02"
+   ],
+   "kern": true,
+   "lp21": [
+    "MA.3.C.1"
+   ],
+   "quelle": "generator",
+   "stimme": "ohne",
+   "typen": [
+    "zahl"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Strichliste zählen (Fünferbündel)",
+     "raum": 20
+    },
+    "2": {
+     "text": "Bilddiagramm ablesen",
+     "raum": 20
+    },
+    "3": {
+     "text": "Wie viele mehr?",
+     "raum": 20
+    }
+   },
+   "stichwoerter": [
+    "strichliste",
+    "daten",
+    "diagramm",
+    "tabelle"
+   ]
+  }
+ ]
+}

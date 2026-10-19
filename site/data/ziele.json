@@ -1,0 +1,44 @@
+{
+ "stand": "2026-10-19",
+ "hinweis": "Termine können ändern. Bitte jährlich mit dem Ferienplan der Schule Schlieren abgleichen.",
+ "schuljahr": {
+  "aktuell": "2026/27",
+  "klasse": 1,
+  "start": "2026-08-17",
+  "ende": "2027-07-16",
+  "klassenwechsel": ["2027-08-23"]
+ },
+ "etappen": [
+  { "id": "weihnachten-2026", "name": "Weihnachten 2026", "datum": "2026-12-18", "datumAnnahme": false, "bemerkung": "Letzter Schultag vor den Weihnachtsferien (Ferien ab 21. Dezember 2026)." },
+  { "id": "fruehling-2027", "name": "Frühling 2027", "datum": "2027-04-23", "datumAnnahme": false, "bemerkung": "Letzter Schultag vor den Frühlingsferien (Ferien ab 26. April 2027)." },
+  { "id": "ende-1-klasse", "name": "Ende 1. Klasse", "datum": "2027-07-16", "datumAnnahme": false, "bemerkung": "Letzter Schultag vor den Sommerferien (Ferien ab 19. Juli 2027)." }
+ ],
+ "etappenHinweis": "Nur zur Orientierung für die Eltern: Was steht laut Lehrmittel bis dahin an, und wie ist der eigene Übungsstand? Keine Ziele in Prozent.",
+ "ferien": {
+  "quelle": "Ferienplan Schule Schlieren (über localcities.ch und feriolo.ch, ohne Gewähr; bitte mit der Website der Schule Schlieren abgleichen). Sportferien 2028 angenommen nach dem Plan der Stadt Zürich.",
+  "liste": [
+   ["2026-10-05", "2026-10-16", "Herbstferien"],
+   ["2026-12-21", "2027-01-01", "Weihnachtsferien"],
+   ["2027-02-22", "2027-03-05", "Sportferien"],
+   ["2027-04-26", "2027-05-07", "Frühlingsferien"],
+   ["2027-07-19", "2027-08-20", "Sommerferien"],
+   ["2027-10-11", "2027-10-22", "Herbstferien"],
+   ["2027-12-20", "2027-12-31", "Weihnachtsferien"],
+   ["2028-02-14", "2028-02-25", "Sportferien", "Annahme"],
+   ["2028-04-17", "2028-04-28", "Frühlingsferien"],
+   ["2028-07-17", "2028-08-18", "Sommerferien"]
+  ]
+ },
+ "feiertage": {
+  "quelle": "Gesetzliche Feiertage Kanton Zürich; Auffahrtsbrücke angenommen.",
+  "liste": [
+   ["2027-03-26", "Karfreitag"],
+   ["2027-03-29", "Ostermontag"],
+   ["2027-05-17", "Pfingstmontag"],
+   ["2028-04-14", "Karfreitag"],
+   ["2028-05-25", "Auffahrt"],
+   ["2028-05-26", "Auffahrtsbrücke", "Annahme"],
+   ["2028-06-05", "Pfingstmontag"]
+  ]
+ }
+}

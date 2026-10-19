@@ -1,0 +1,136 @@
+{
+ "stand": "2026-10-19",
+ "hinweis": "Alle Zahlen und Regeln des Lernmodells und des Tagesplans. Erklärungen in KONZEPT.md.",
+ "gewichtung": { "D": 0.55, "M": 0.45 },
+ "lernzeit": {
+  "minuten": 10,
+  "minMinuten": 5,
+  "maxMinuten": 15,
+  "lernTage": [1, 2, 3, 4, 5],
+  "sekundenProAufgabe": { "D": 25, "M": 25, "karte": 12, "nachspuren": 35, "vorlesen": 30, "legen": 40 },
+  "messungGewichtNeu": 0.2,
+  "keineNeueAufgabeNachMinuten": true,
+  "schlussReserveSek": 75,
+  "erfolgsaufgabeMaxSek": 30
+ },
+ "sitzung": {
+  "bausteine": {
+   "aufwaermen": { "minSek": 60, "maxSek": 120 },
+   "deutsch": { "minSek": 120, "maxSek": 240 },
+   "mathe": { "minSek": 120, "maxSek": 240 },
+   "schluss": { "minSek": 60, "maxSek": 120 }
+  },
+  "minBausteine": 2,
+  "maxBausteine": 4,
+  "neueThemenProTag": 1,
+  "kindWaehltStart": true,
+  "zusatzrunde": false,
+  "schlussMinWert": 0.8
+ },
+ "beherrschung": {
+  "punkte": { "richtig": 1, "nachHinweis": 0.5, "falsch": 0 },
+  "nachspurenZaehltAls": "geuebt",
+  "halbierungAntworten": 8,
+  "vorsichtFalsche": 2,
+  "minAntwortenNeu": 3,
+  "schwelleFastSicher": 0.7,
+  "schwelleZeigBereit": 0.8,
+  "merkdauerStart": 4,
+  "merkdauerMin": 2,
+  "merkdauerMax": 64,
+  "guterTag": 0.75,
+  "schwacherTag": 0.4,
+  "vergessenFaktor": 3,
+  "rueckstufungFehlerInFolge": 2
+ },
+ "zeigRunde": {
+  "aufgaben": 4,
+  "bestehenGanz": 4,
+  "bestehenMitZusatz": 3,
+  "zusatzAufgaben": 1,
+  "minAntworten": 6,
+  "minTage": 2,
+  "sperreTageNachVersuch": 1,
+  "maxProTag": 1
+ },
+ "karteikasten": {
+  "faecher": [1, 3, 7, 14, 30],
+  "neueProTag": 4,
+  "kartenImAufwaermen": 5,
+  "fehlerZurueck": "fach1",
+  "startFachWennSicher": 3,
+  "arten": {
+   "buchstaben": "Laut und Buchstabe (alle eingeführten Buchstaben und Verbindungen)",
+   "sichtwoerter": "Häufige Wörter",
+   "lernwoerter": "Lernwörter der Woche (von den Eltern eingetragen)",
+   "zerlegungen": "Zerlegungen bis 10",
+   "plus10": "Plusaufgaben bis 10",
+   "minus10": "Minusaufgaben bis 10 (ab Stufe 2 von M-RE-14)",
+   "plus20": "Plusaufgaben bis 20 mit Zehnerübergang (ab Stufe 3 von M-RE-14)",
+   "minus20": "Minusaufgaben bis 20 mit Zehnerübergang (ab Stufe 3 von M-RE-14)"
+  },
+  "aufwaermenWechsel": ["deutsch", "mathe"]
+ },
+ "entdeckerrunde": {
+  "lernTage": 3,
+  "aufstiegNachRichtigen": 2,
+  "startStufe": 1,
+  "startWertNachAufstieg": 0.6,
+  "markierung": "vermutet"
+ },
+ "schatzkarte": {
+  "abstandSchulwochenMin": 6,
+  "abstandSchulwochenMax": 8,
+  "ersteNachSchulwochen": 6,
+  "aufgabenMin": 10,
+  "aufgabenMax": 12,
+  "zaehltErsterVersuch": true
+ },
+ "plan": {
+  "prioritaet": ["lernwoerter", "aktuell", "wiederholung", "weiterkommen", "zeigWartend"],
+  "aktuellAnteil": 0.5,
+  "zahlenraumFreigabe": 20,
+  "wiederholenInSitzung": true,
+  "fehlerWiederholungLeichter": true,
+  "lernwoerterVorTestTage": 3,
+  "keineAufgabeZweimalProBaustein": true
+ },
+ "belohnung": {
+  "aktiv": true,
+  "szenen": ["herbstwald", "winterwald", "fruehlingswiese", "sommersee"],
+  "teileProSzene": 45,
+  "besonderesBeiZeigRunde": true
+ },
+ "sprache": {
+  "stimmen": ["de-CH", "de-DE", "de-AT", "de"],
+  "nurLokaleStimmen": true,
+  "tempo": 0.85,
+  "tempoMin": 0.6,
+  "tempoMax": 1.0,
+  "pauseZwischenTeilenMs": 450,
+  "dehnlaute": true,
+  "silbenEinzeln": true,
+  "dehnlautText": { "m": "mmm", "n": "nnn", "l": "lll", "s": "sss", "f": "fff", "sch": "schschsch", "a": "aaa", "e": "eee", "i": "iii", "o": "ooo", "u": "uuu" }
+ },
+ "begriffe": {
+  "hinweis": "Gesprochene Fachbegriffe; an die Wörter der Klasse anpassen.",
+  "zwanzigerfeld": "Zwanzigerfeld",
+  "zehnerfeld": "Zehnerfeld",
+  "zerlegungshaus": "Zahlenhaus",
+  "zahlenstrahl": "Zahlenstrahl",
+  "zahlenmauer": "Zahlenmauer",
+  "schuettelbox": "Schüttelbox",
+  "plaettchen": "Plättchen",
+  "silbenbogen": "Silbenbogen"
+ },
+ "vorlesen": { "aktiv": false, "maxProSitzung": 1 },
+ "hinweisLehrperson": {
+  "gruppen": ["HB", "ZA", "ME", "ZE"],
+  "minLernTage": 6,
+  "minAntworten": 30,
+  "maxWert": 0.5,
+  "text": "Diese Fertigkeit wird schon länger geübt, ohne dass es leichter wird. Das kann viele Gründe haben. Bleibt es so, ist ein Gespräch mit der Lehrperson der richtige Weg."
+ },
+ "elternbereich": { "sperreNachMinuten": 15 },
+ "backup": { "erinnerungNachTagen": 14 }
+}

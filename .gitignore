@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+
+# Screenshots und Fotos des Browser-Bots (tools/bot.mjs --fotos)
+shots/
+screenshots/
+fotos/
+bot-fotos/
+Screenshot*.png
+Bildschirmfoto*.png
+
+# Sicherungsdateien aus dem Elternbereich (enthalten Lernstände)
+sicherung.json
+*sicherung*.json

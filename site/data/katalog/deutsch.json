@@ -1,0 +1,1736 @@
+{
+ "fach": "D",
+ "name": "Deutsch",
+ "stand": "2026-10-19",
+ "gruppen": [
+  {
+   "id": "HB",
+   "name": "Hören und Laute",
+   "bereich": "Hören (D.1)",
+   "symbol": "👂"
+  },
+  {
+   "id": "BU",
+   "name": "Buchstaben",
+   "bereich": "Lesen und Schreiben (D.2, D.4)",
+   "symbol": "🔤"
+  },
+  {
+   "id": "LE",
+   "name": "Lesen",
+   "bereich": "Lesen (D.2)",
+   "symbol": "📖"
+  },
+  {
+   "id": "SC",
+   "name": "Schreiben",
+   "bereich": "Schreiben (D.4) und Rechtschreibung (D.5)",
+   "symbol": "✏️"
+  },
+  {
+   "id": "WS",
+   "name": "Wortschatz und Sprache",
+   "bereich": "Sprache(n) im Fokus (D.5)",
+   "symbol": "💬"
+  },
+  {
+   "id": "HV",
+   "name": "Hören und Verstehen",
+   "bereich": "Hören (D.1)",
+   "symbol": "🎧"
+  }
+ ],
+ "fertigkeiten": [
+  {
+   "id": "D-HB-01",
+   "gruppe": "HB",
+   "name": "Reime erkennen",
+   "kurz": "Reime",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.1.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-bild"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Reimwort aus zwei Bildern wählen («Was reimt sich auf Maus?»)"
+    },
+    "2": {
+     "text": "Reimwort aus drei Bildern wählen; ein Ablenker beginnt gleich wie das gesprochene Wort"
+    },
+    "3": {
+     "text": "Unter vier Bildern das eine finden, das sich nicht reimt"
+    }
+   },
+   "stichwoerter": [
+    "reime",
+    "reimen",
+    "reimwörter",
+    "was reimt sich",
+    "reimpaare",
+    "hören"
+   ]
+  },
+  {
+   "id": "D-HB-02",
+   "gruppe": "HB",
+   "name": "Silben klatschen und zählen",
+   "kurz": "Silben klatschen",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.1.A.1",
+    "D.2.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "silben"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Silben eines gehörten Worts zählen: ein oder zwei Silben"
+    },
+    "2": {
+     "text": "Ein bis drei Silben"
+    },
+    "3": {
+     "text": "Ein bis vier Silben; das Bild mit gleich vielen Silben wählen"
+    }
+   },
+   "stichwoerter": [
+    "silben",
+    "silben klatschen",
+    "silbenbogen",
+    "silben zählen",
+    "klatschen"
+   ]
+  },
+  {
+   "id": "D-HB-03",
+   "gruppe": "HB",
+   "name": "Anfangslaut hören",
+   "kurz": "Anfangslaut",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.1.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-bild",
+    "zuordnen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Bild mit gleichem Anfangslaut wählen; nur gut hörbare Laute (Selbstlaute, m, n, l, s, f, sch)"
+    },
+    "2": {
+     "text": "Alle Anfangslaute, drei Bilder"
+    },
+    "3": {
+     "text": "Zwei Bilder mit gleichem Anfangslaut zusammenführen (zwei bis drei Paare)"
+    }
+   },
+   "stichwoerter": [
+    "anlaut",
+    "anfangslaut",
+    "erster laut",
+    "womit fängt es an",
+    "laute hören"
+   ]
+  },
+  {
+   "id": "D-HB-04",
+   "gruppe": "HB",
+   "name": "Endlaut hören",
+   "kurz": "Endlaut",
+   "klasse": 1,
+   "vor": [
+    "D-HB-03"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.1.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-bild"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Bild mit gleichem Endlaut wählen; Wörter, die auf a, o, i oder u enden"
+    },
+    "2": {
+     "text": "Endlaute m, n, l, s, f, sch, z"
+    },
+    "3": {
+     "text": "Alle eindeutig hörbaren Endlaute, vier Bilder"
+    }
+   },
+   "stichwoerter": [
+    "endlaut",
+    "letzter laut",
+    "womit hört es auf",
+    "laute hören"
+   ]
+  },
+  {
+   "id": "D-HB-05",
+   "gruppe": "HB",
+   "name": "Laut im Wort finden",
+   "kurz": "Wo ist der Laut?",
+   "klasse": 1,
+   "vor": [
+    "D-HB-03",
+    "D-HB-04"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.1.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "lautplatz"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Ein Buchstabe wird gezeigt, ein Wort gesprochen: Ist der Laut vorne oder hinten?",
+     "schrift": true
+    },
+    "2": {
+     "text": "Vorne, in der Mitte oder hinten",
+     "schrift": true
+    },
+    "3": {
+     "text": "Kommt der Laut vor, und wo? (auch «gar nicht»)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "laut im wort",
+    "lautposition",
+    "wo hörst du",
+    "vorne mitte hinten",
+    "lautanalyse"
+   ]
+  },
+  {
+   "id": "D-HB-06",
+   "gruppe": "HB",
+   "name": "Laute zählen",
+   "kurz": "Laute zählen",
+   "klasse": 1,
+   "vor": [
+    "D-HB-05"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.1.A.1",
+    "D.5.E.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "menge-legen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Für jeden gehörten Laut ein Plättchen legen: Wörter mit zwei bis drei Lauten"
+    },
+    "2": {
+     "text": "Vier Laute"
+    },
+    "3": {
+     "text": "Fünf bis sechs Laute"
+    }
+   },
+   "stichwoerter": [
+    "laute zählen",
+    "lautkästchen",
+    "wort in laute zerlegen",
+    "lautieren",
+    "laute legen"
+   ]
+  },
+  {
+   "id": "D-HB-07",
+   "gruppe": "HB",
+   "name": "Silben und Laute zusammenziehen",
+   "kurz": "Zusammenziehen",
+   "klasse": 1,
+   "vor": [
+    "D-HB-02"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.1.A.1",
+    "D.2.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-bild"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Silben werden einzeln gesprochen («So … fa»), Bild wählen; nur Wörter, deren Silben die Stimme gut spricht",
+     "bedingung": "silben"
+    },
+    "2": {
+     "text": "Anfangslaut und Rest («Mmm … aus»), nur dehnbare Anfangslaute",
+     "vor": [
+      "D-HB-03"
+     ],
+     "bedingung": "dehnlaute"
+    },
+    "3": {
+     "text": "Laut für Laut, nur Wörter aus dehnbaren Lauten (Oma, Sofa)",
+     "bedingung": "dehnlaute"
+    }
+   },
+   "stichwoerter": [
+    "zusammenschleifen",
+    "laute verbinden",
+    "synthese",
+    "silben verbinden",
+    "zusammenziehen"
+   ]
+  },
+  {
+   "id": "D-HB-08",
+   "gruppe": "HB",
+   "name": "Wörter im Satz zählen",
+   "kurz": "Wörter zählen",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.1.A.1"
+   ],
+   "quelle": "inhalte",
+   "stimme": "noetig",
+   "typen": [
+    "menge-legen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Für jedes Wort eines gehörten Satzes eine Karte legen: zwei bis drei Wörter"
+    },
+    "2": {
+     "text": "Vier bis fünf Wörter"
+    },
+    "3": {
+     "text": "Sechs Wörter"
+    }
+   },
+   "stichwoerter": [
+    "wörter zählen",
+    "satz",
+    "wie viele wörter",
+    "wortgrenzen"
+   ]
+  },
+  {
+   "id": "D-BU-01",
+   "gruppe": "BU",
+   "name": "Buchstabe zum Laut",
+   "kurz": "Welcher Buchstabe?",
+   "klasse": 1,
+   "vor": [
+    "D-HB-03"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1",
+    "D.4.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-wort"
+   ],
+   "karteikasten": "buchstaben",
+   "stufen": {
+    "1": {
+     "text": "Anfangslaut eines Bildworts hören, Grossbuchstaben aus drei wählen (Formen deutlich verschieden)",
+     "schrift": true
+    },
+    "2": {
+     "text": "Kleinbuchstaben aus vier wählen",
+     "schrift": true
+    },
+    "3": {
+     "text": "Ähnliche Formen als Ablenker (b d p q, m n, u n); ähnliche Laute nur m und n, o und u",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "buchstaben",
+    "laut buchstabe",
+    "anlauttabelle",
+    "buchstaben kennen",
+    "abc"
+   ]
+  },
+  {
+   "id": "D-BU-02",
+   "gruppe": "BU",
+   "name": "Laut zum Buchstaben",
+   "kurz": "Buchstabe und Bild",
+   "klasse": 1,
+   "vor": [
+    "D-HB-03"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "hilfreich",
+   "typen": [
+    "wahl-bild"
+   ],
+   "karteikasten": "buchstaben",
+   "stufen": {
+    "1": {
+     "text": "Grossbuchstabe wird gezeigt, Bild mit passendem Anfang wählen (drei Bilder)",
+     "schrift": true
+    },
+    "2": {
+     "text": "Kleinbuchstabe, vier Bilder",
+     "schrift": true
+    },
+    "3": {
+     "text": "Umlaut oder Verbindung: Bild wählen, in dessen Wort der Laut vorkommt, auch in der Mitte (ä: Bär, ö: Löwe, ü: Tür)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "buchstaben",
+    "buchstabe bild",
+    "anlaut",
+    "buchstaben lesen"
+   ]
+  },
+  {
+   "id": "D-BU-03",
+   "gruppe": "BU",
+   "name": "Gross- und Kleinbuchstaben zuordnen",
+   "kurz": "Gross und klein",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1",
+    "D.4.A.1"
+   ],
+   "quelle": "buchstaben",
+   "stimme": "ohne",
+   "typen": [
+    "zuordnen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Ähnliche Paare (O o, S s, W w, U u, Z z, V v, X x, P p, C c)",
+     "schrift": true
+    },
+    "2": {
+     "text": "Verschieden aussehende Paare (A a, E e, G g, R r, H h, B b, D d)",
+     "schrift": true
+    },
+    "3": {
+     "text": "Alle Paare, auch leicht verwechselbare (b d p q, n m)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "grossbuchstaben",
+    "kleinbuchstaben",
+    "gross klein",
+    "buchstabenpaare"
+   ]
+  },
+  {
+   "id": "D-BU-04",
+   "gruppe": "BU",
+   "name": "Buchstaben nachspuren",
+   "kurz": "Buchstaben spuren",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.4.A.1"
+   ],
+   "quelle": "schrift",
+   "stimme": "ohne",
+   "typen": [
+    "nachspuren"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Grossbuchstaben in Basisschrift, mit Startpunkt und Pfeilen",
+     "schrift": true
+    },
+    "2": {
+     "text": "Kleinbuchstaben",
+     "schrift": true
+    },
+    "3": {
+     "text": "Ähnliche Formen (b d p q), Umlaute; nur noch Startpunkt",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "schreiben",
+    "nachspuren",
+    "basisschrift",
+    "buchstaben schreiben",
+    "schönschreiben",
+    "schreibrichtung"
+   ]
+  },
+  {
+   "id": "D-BU-05",
+   "gruppe": "BU",
+   "name": "Buchstabe im Wort finden",
+   "kurz": "Buchstaben finden",
+   "klasse": 1,
+   "vor": [
+    "D-BU-02"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "hilfreich",
+   "typen": [
+    "antippen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Den gesuchten Buchstaben in einem kurzen Wort antippen (kommt einmal vor)",
+     "schrift": true
+    },
+    "2": {
+     "text": "Kommt zwei- oder dreimal vor (a in Banane)",
+     "schrift": true
+    },
+    "3": {
+     "text": "Gross- und Kleinbuchstabe im selben Wort (A und a in Ananas)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "buchstaben finden",
+    "buchstabe im wort",
+    "genau lesen"
+   ]
+  },
+  {
+   "id": "D-BU-06",
+   "gruppe": "BU",
+   "name": "Alphabet",
+   "kurz": "ABC",
+   "klasse": 2,
+   "vor": [
+    "D-BU-03"
+   ],
+   "kern": false,
+   "lp21": [
+    "D.2.A.1"
+   ],
+   "quelle": "buchstaben",
+   "stimme": "hilfreich",
+   "typen": [
+    "reihenfolge",
+    "wahl-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Fehlenden Buchstaben in einer ABC-Reihe ergänzen (A B _ D)",
+     "schrift": true
+    },
+    "2": {
+     "text": "Drei Buchstaben in ABC-Reihenfolge bringen",
+     "schrift": true
+    },
+    "3": {
+     "text": "Fünf Buchstaben ordnen",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "alphabet",
+    "abc",
+    "abc reihenfolge",
+    "abc lied"
+   ]
+  },
+  {
+   "id": "D-BU-07",
+   "gruppe": "BU",
+   "name": "Buchstabenverbindungen",
+   "kurz": "Sch, Ei, Au …",
+   "klasse": 1,
+   "vor": [
+    "D-BU-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1",
+    "D.4.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-wort",
+    "wahl-bild"
+   ],
+   "karteikasten": "buchstaben",
+   "stufen": {
+    "1": {
+     "text": "Sch, Ei, Au: Bildwort hören, Verbindung wählen",
+     "schrift": true,
+     "auswahl": [
+      "sch",
+      "ei",
+      "au"
+     ]
+    },
+    "2": {
+     "text": "Ch, Eu, Ie",
+     "schrift": true,
+     "auswahl": [
+      "ch",
+      "eu",
+      "ie"
+     ]
+    },
+    "3": {
+     "text": "St, Sp, Pf, Ck, Tz, Ng, Nk, Qu, Äu",
+     "schrift": true,
+     "auswahl": [
+      "st",
+      "sp",
+      "pf",
+      "ck",
+      "tz",
+      "ng",
+      "nk",
+      "qu",
+      "äu"
+     ]
+    }
+   },
+   "stichwoerter": [
+    "sch",
+    "ei",
+    "au",
+    "ch",
+    "eu",
+    "ie",
+    "buchstabenverbindungen",
+    "zwielaute",
+    "doppellaute"
+   ]
+  },
+  {
+   "id": "D-LE-01",
+   "gruppe": "LE",
+   "name": "Silben lesen",
+   "kurz": "Silben lesen",
+   "klasse": 1,
+   "vor": [
+    "D-BU-02",
+    "D-HB-02",
+    "D-HB-07"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "hilfreich",
+   "typen": [
+    "wahl-wort",
+    "bild-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Offene Silben (Ma, Lo, Ro): gehörte Silbe unter drei geschriebenen finden",
+     "schrift": true,
+     "stimme": "noetig",
+     "bedingung": "silben"
+    },
+    "2": {
+     "text": "Silbe lesen und das Bild wählen, dessen Wort mit dieser Silbe beginnt (Ro: Rose)",
+     "schrift": true,
+     "stimme": "ohne"
+    },
+    "3": {
+     "text": "Geschlossene Silben und Silben mit Verbindung (Tul, Kan, Schaf)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "silben lesen",
+    "silben",
+    "lesen lernen",
+    "silbenbogen",
+    "ma mo mi"
+   ]
+  },
+  {
+   "id": "D-LE-02",
+   "gruppe": "LE",
+   "name": "Silben zum Wort verbinden",
+   "kurz": "Silben verbinden",
+   "klasse": 1,
+   "vor": [
+    "D-LE-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "ohne",
+   "typen": [
+    "silben",
+    "reihenfolge"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zwei Silbenkarten mit Bogen und Pfeil von links nach rechts antippen; Bild ist gegeben",
+     "schrift": true
+    },
+    "2": {
+     "text": "Drei Silben in die richtige Reihenfolge legen; Bild ist gegeben",
+     "schrift": true
+    },
+    "3": {
+     "text": "Silben ordnen ohne Bild; das Wort wird gesprochen",
+     "schrift": true,
+     "stimme": "noetig"
+    }
+   },
+   "stichwoerter": [
+    "silben verbinden",
+    "zusammenlesen",
+    "leserichtung",
+    "bogen und pfeil"
+   ]
+  },
+  {
+   "id": "D-LE-03",
+   "gruppe": "LE",
+   "name": "Wörter mit zwei Silben lesen",
+   "kurz": "Wörter lesen",
+   "klasse": 1,
+   "vor": [
+    "D-LE-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "ohne",
+   "typen": [
+    "bild-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Lautgetreue Wörter mit Silbenbögen; drei deutlich verschiedene Bilder",
+     "schrift": true
+    },
+    "2": {
+     "text": "Ohne Silbenbögen, vier Bilder",
+     "schrift": true
+    },
+    "3": {
+     "text": "Ähnliche Wörter genau lesen (Rose, Hose, Dose)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "lesen",
+    "wörter lesen",
+    "lesen lernen",
+    "erstlesen"
+   ]
+  },
+  {
+   "id": "D-LE-04",
+   "gruppe": "LE",
+   "name": "Lange Wörter lesen",
+   "kurz": "Lange Wörter",
+   "klasse": 1.5,
+   "vor": [
+    "D-LE-03"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "ohne",
+   "typen": [
+    "bild-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Drei Silben mit Silbenbögen (Banane, Tomate)",
+     "schrift": true
+    },
+    "2": {
+     "text": "Drei Silben ohne Bögen",
+     "schrift": true
+    },
+    "3": {
+     "text": "Vier Silben und zusammengesetzte Wörter (Sonnenblume, Schneemann)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "lange wörter",
+    "lesen",
+    "drei silben"
+   ]
+  },
+  {
+   "id": "D-LE-05",
+   "gruppe": "LE",
+   "name": "Kurze Wörter lesen",
+   "kurz": "Kurze Wörter",
+   "klasse": 1,
+   "vor": [
+    "D-LE-03"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "ohne",
+   "typen": [
+    "bild-wort",
+    "wahl-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Einsilbige Wörter ohne Konsonantenhäufung (Bus, Hut, Wal)",
+     "schrift": true
+    },
+    "2": {
+     "text": "Zwei Konsonanten am Anfang oder Ende (Brot, Pilz, Zelt)",
+     "schrift": true
+    },
+    "3": {
+     "text": "Doppelkonsonant oder stummes h (Ball, Kuh, Zahn)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "kurze wörter",
+    "lesen",
+    "einsilbig"
+   ]
+  },
+  {
+   "id": "D-LE-06",
+   "gruppe": "LE",
+   "name": "Gehörtes Wort finden",
+   "kurz": "Wort finden",
+   "klasse": 1,
+   "vor": [
+    "D-BU-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Drei geschriebene Wörter mit verschiedenem Anfang",
+     "schrift": true
+    },
+    "2": {
+     "text": "Drei Wörter mit gleichem Anfang",
+     "schrift": true
+    },
+    "3": {
+     "text": "Vier Wörter, der Unterschied liegt in der Mitte (Hase, Hose)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "wort finden",
+    "lesen",
+    "hören und lesen",
+    "wörter erkennen"
+   ]
+  },
+  {
+   "id": "D-LE-07",
+   "gruppe": "LE",
+   "name": "Häufige Wörter (Sichtwörter)",
+   "kurz": "Häufige Wörter",
+   "klasse": 1,
+   "vor": [
+    "D-BU-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1"
+   ],
+   "quelle": "sichtwoerter",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-wort",
+    "antippen"
+   ],
+   "karteikasten": "sichtwoerter",
+   "stufen": {
+    "1": {
+     "text": "Erste Gruppe (ich, du, und, ist, der, die, das, ein, eine, ja, nein)",
+     "schrift": true,
+     "gruppe": 1
+    },
+    "2": {
+     "text": "Zweite Gruppe (er, sie, es, wir, hat, mit, auf, in, im, zu, an, am, so, da)",
+     "schrift": true,
+     "gruppe": 2
+    },
+    "3": {
+     "text": "Dritte Gruppe (nicht, mein, dein, sind, dem, den, was, wo, auch, bin, wie, wer)",
+     "schrift": true,
+     "gruppe": 3
+    }
+   },
+   "stichwoerter": [
+    "sichtwörter",
+    "häufige wörter",
+    "blitzwörter",
+    "signalwörter",
+    "merkwörter"
+   ]
+  },
+  {
+   "id": "D-LE-08",
+   "gruppe": "LE",
+   "name": "Sätze lesen",
+   "kurz": "Sätze lesen",
+   "klasse": 1.5,
+   "vor": [
+    "D-LE-03",
+    "D-LE-07"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1",
+    "D.2.C.1"
+   ],
+   "quelle": "inhalte",
+   "stimme": "ohne",
+   "typen": [
+    "bild-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Kurzer Satz, das passende Bild wählen; Unterschied im Nomen (Die Maus schläft.)",
+     "schrift": true
+    },
+    "2": {
+     "text": "Unterschied im Verb oder in der Farbe",
+     "schrift": true
+    },
+    "3": {
+     "text": "Unterschied in der Lage (auf, unter, neben, in)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "sätze lesen",
+    "satz",
+    "lesen verstehen",
+    "leseverständnis"
+   ]
+  },
+  {
+   "id": "D-LE-09",
+   "gruppe": "LE",
+   "name": "Wörter mit Verbindungen lesen",
+   "kurz": "Wörter mit Sch, Ei …",
+   "klasse": 1.5,
+   "vor": [
+    "D-BU-07",
+    "D-LE-03"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "ohne",
+   "typen": [
+    "bild-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Wörter mit Sch, Ei, Au",
+     "schrift": true,
+     "auswahl": [
+      "sch",
+      "ei",
+      "au"
+     ]
+    },
+    "2": {
+     "text": "Wörter mit Ch, Eu, Ie",
+     "schrift": true,
+     "auswahl": [
+      "ch",
+      "eu",
+      "ie"
+     ]
+    },
+    "3": {
+     "text": "Wörter mit St, Sp, Pf, Ck, Tz, Ng, Nk, Qu, Äu",
+     "schrift": true,
+     "auswahl": [
+      "st",
+      "sp",
+      "pf",
+      "ck",
+      "tz",
+      "ng",
+      "nk",
+      "qu",
+      "äu"
+     ]
+    }
+   },
+   "stichwoerter": [
+    "sch",
+    "ei",
+    "au",
+    "ch",
+    "ie",
+    "lesen",
+    "buchstabenverbindungen"
+   ]
+  },
+  {
+   "id": "D-LE-10",
+   "gruppe": "LE",
+   "name": "Kurze Texte verstehen",
+   "kurz": "Kleine Texte",
+   "klasse": 2,
+   "vor": [
+    "D-LE-08"
+   ],
+   "kern": false,
+   "lp21": [
+    "D.2.B.1",
+    "D.2.C.1"
+   ],
+   "quelle": "inhalte",
+   "stimme": "hilfreich",
+   "typen": [
+    "wahl-bild"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zwei bis drei Sätze lesen, Wer-Frage, Bildantwort",
+     "schrift": true
+    },
+    "2": {
+     "text": "Drei bis vier Sätze, Was- und Wo-Frage",
+     "schrift": true
+    },
+    "3": {
+     "text": "Vier Sätze, Frage nach Reihenfolge oder Grund",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "texte lesen",
+    "leseverständnis",
+    "geschichte lesen",
+    "lesetext"
+   ]
+  },
+  {
+   "id": "D-SC-01",
+   "gruppe": "SC",
+   "name": "Wörter nachspuren",
+   "kurz": "Wörter spuren",
+   "klasse": 1,
+   "vor": [
+    "D-BU-04"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.4.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "ohne",
+   "typen": [
+    "nachspuren"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Kurze Wörter (Oma, Ufo, Bus) mit Startpunkten und Pfeilen",
+     "schrift": true
+    },
+    "2": {
+     "text": "Nomen mit grossem Anfangsbuchstaben, zwei Silben",
+     "schrift": true
+    },
+    "3": {
+     "text": "Längere Wörter, nur Startpunkte",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "schreiben",
+    "wörter schreiben",
+    "nachspuren",
+    "basisschrift"
+   ]
+  },
+  {
+   "id": "D-SC-02",
+   "gruppe": "SC",
+   "name": "Wort hören und legen",
+   "kurz": "Wörter legen",
+   "klasse": 1,
+   "vor": [
+    "D-BU-01",
+    "D-HB-03"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.4.A.1",
+    "D.5.E.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "legen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Drei bis vier Laute; genau die nötigen Buchstaben werden angeboten, Lautkästchen zeigen die Anzahl",
+     "schrift": true
+    },
+    "2": {
+     "text": "Vier bis fünf Laute, zwei zusätzliche Buchstaben",
+     "schrift": true,
+     "vor": [
+      "D-HB-04"
+     ]
+    },
+    "3": {
+     "text": "Zwei Silben, fünf bis sechs Laute; Buchstabenfeld mit Anlauttabelle als Hilfe",
+     "schrift": true,
+     "vor": [
+      "D-HB-05"
+     ]
+    }
+   },
+   "stichwoerter": [
+    "schreiben",
+    "lautgetreu schreiben",
+    "anlauttabelle",
+    "wörter legen",
+    "schreiben nach gehör"
+   ]
+  },
+  {
+   "id": "D-SC-03",
+   "gruppe": "SC",
+   "name": "Wort abschreiben",
+   "kurz": "Abschreiben",
+   "klasse": 1,
+   "vor": [
+    "D-BU-02"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.4.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "ohne",
+   "typen": [
+    "legen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Drei bis vier Kacheln (eine Verbindung wie Sch ist eine Kachel), die Vorlage bleibt sichtbar",
+     "schrift": true
+    },
+    "2": {
+     "text": "Fünf bis sechs Kacheln",
+     "schrift": true
+    },
+    "3": {
+     "text": "Blitzwort: Vorlage anschauen, selbst verdecken, dann legen (ohne Zeitlimit)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "abschreiben",
+    "schreiben",
+    "blitzwort",
+    "merkwort"
+   ]
+  },
+  {
+   "id": "D-SC-04",
+   "gruppe": "SC",
+   "name": "Fehlenden Buchstaben ergänzen",
+   "kurz": "Lücke füllen",
+   "klasse": 1.5,
+   "vor": [
+    "D-SC-02"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.4.A.1",
+    "D.5.E.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "hilfreich",
+   "typen": [
+    "wahl-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Lautgetreues Wort mit Bild, der Anfangsbuchstabe fehlt, drei Buchstaben zur Wahl (kein Ablenker ergibt ein anderes Wort)",
+     "schrift": true
+    },
+    "2": {
+     "text": "Der letzte Buchstabe fehlt",
+     "schrift": true
+    },
+    "3": {
+     "text": "Ein Buchstabe in der Mitte fehlt",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "lückenwörter",
+    "fehlender buchstabe",
+    "schreiben",
+    "rechtschreibung"
+   ]
+  },
+  {
+   "id": "D-SC-05",
+   "gruppe": "SC",
+   "name": "Satz aus Wörtern legen",
+   "kurz": "Sätze legen",
+   "klasse": 1.5,
+   "vor": [
+    "D-LE-07"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.4.A.1",
+    "D.5.E.1"
+   ],
+   "quelle": "inhalte",
+   "stimme": "noetig",
+   "typen": [
+    "reihenfolge"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Drei Wortkarten in die gehörte Reihenfolge; der Punkt liegt schon",
+     "schrift": true
+    },
+    "2": {
+     "text": "Vier bis fünf Wortkarten und Punkt",
+     "schrift": true
+    },
+    "3": {
+     "text": "Mit einer überzähligen Karte; der Satzanfang ist gross",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "satz legen",
+    "sätze bilden",
+    "satzanfang gross",
+    "punkt"
+   ]
+  },
+  {
+   "id": "D-SC-06",
+   "gruppe": "SC",
+   "name": "Lernwörter der Woche",
+   "kurz": "Lernwörter",
+   "klasse": 1,
+   "vor": [
+    "D-SC-03"
+   ],
+   "kern": "eltern",
+   "lp21": [
+    "D.4.A.1",
+    "D.5.E.1"
+   ],
+   "quelle": "eltern",
+   "stimme": "noetig",
+   "typen": [
+    "legen"
+   ],
+   "karteikasten": "lernwoerter",
+   "stufen": {
+    "1": {
+     "text": "Lernwort abschreiben (Vorlage sichtbar)",
+     "schrift": true
+    },
+    "2": {
+     "text": "Lernwort hören und aus seinen Buchstaben legen",
+     "schrift": true
+    },
+    "3": {
+     "text": "Lernwort hören und legen, mit zusätzlichen Buchstaben",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "lernwörter",
+    "wörter der woche",
+    "wörtertest",
+    "diktat",
+    "hausaufgaben"
+   ]
+  },
+  {
+   "id": "D-WS-01",
+   "gruppe": "WS",
+   "name": "Oberbegriffe",
+   "kurz": "Was gehört dazu?",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.5"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-bild",
+    "zuordnen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Welches Bild gehört zu den Tieren (Kleidern, Fahrzeugen …)? Drei Bilder"
+    },
+    "2": {
+     "text": "Was passt nicht dazu? Vier Bilder"
+    },
+    "3": {
+     "text": "Bilder in zwei Kisten sortieren"
+    }
+   },
+   "stichwoerter": [
+    "oberbegriffe",
+    "sortieren",
+    "was passt nicht",
+    "gruppen",
+    "wortschatz"
+   ]
+  },
+  {
+   "id": "D-WS-02",
+   "gruppe": "WS",
+   "name": "Gegenteile",
+   "kurz": "Gegenteile",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.5"
+   ],
+   "quelle": "inhalte",
+   "stimme": "noetig",
+   "typen": [
+    "zuordnen",
+    "wahl-bild"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Bildpaare der Gegenteile verbinden (gross und klein)"
+    },
+    "2": {
+     "text": "Zu einem gehörten Wort das Bild mit dem Gegenteil wählen"
+    },
+    "3": {
+     "text": "Gegenteil in einem gehörten Satz"
+    }
+   },
+   "stichwoerter": [
+    "gegenteile",
+    "gross klein",
+    "wortschatz",
+    "adjektive"
+   ]
+  },
+  {
+   "id": "D-WS-03",
+   "gruppe": "WS",
+   "name": "Einzahl und Mehrzahl",
+   "kurz": "Eins und viele",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.5"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-bild",
+    "bild-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Gehört «der Hase» oder «die Hasen»: Bild mit einem oder mehreren wählen"
+    },
+    "2": {
+     "text": "Vier Bilder: eins oder viele von zwei verschiedenen Dingen"
+    },
+    "3": {
+     "text": "Einzahl oder Mehrzahl lesen und dem Bild zuordnen",
+     "schrift": true,
+     "stimme": "ohne"
+    }
+   },
+   "stichwoerter": [
+    "einzahl",
+    "mehrzahl",
+    "plural",
+    "eins viele"
+   ]
+  },
+  {
+   "id": "D-WS-04",
+   "gruppe": "WS",
+   "name": "Reimpaare",
+   "kurz": "Reimpaare",
+   "klasse": 1,
+   "vor": [
+    "D-HB-01"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.1.A.1"
+   ],
+   "quelle": "woerter",
+   "stimme": "noetig",
+   "typen": [
+    "zuordnen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zwei Reimpaare verbinden (Bildnamen werden beim Antippen gesprochen)"
+    },
+    "2": {
+     "text": "Drei Reimpaare"
+    },
+    "3": {
+     "text": "Vier Reimpaare"
+    }
+   },
+   "stichwoerter": [
+    "reime",
+    "reimpaare",
+    "reimwörter",
+    "reimen"
+   ]
+  },
+  {
+   "id": "D-WS-05",
+   "gruppe": "WS",
+   "name": "Bildergeschichte ordnen",
+   "kurz": "Bildergeschichte",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.1.B.1"
+   ],
+   "quelle": "inhalte",
+   "stimme": "hilfreich",
+   "typen": [
+    "reihenfolge"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Drei Bilder in die richtige Reihenfolge (Ei, Küken, Huhn)"
+    },
+    "2": {
+     "text": "Vier Bilder"
+    },
+    "3": {
+     "text": "Kurze Geschichte hören, dann vier Bilder ordnen",
+     "stimme": "noetig"
+    }
+   },
+   "stichwoerter": [
+    "bildergeschichte",
+    "reihenfolge",
+    "erzählen",
+    "was kommt zuerst"
+   ]
+  },
+  {
+   "id": "D-WS-06",
+   "gruppe": "WS",
+   "name": "Farben",
+   "kurz": "Farben",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.5"
+   ],
+   "quelle": "inhalte",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-bild",
+    "bild-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Gehörte Farbe antippen"
+    },
+    "2": {
+     "text": "Farbe eines Dings («Welche Farbe hat eine Banane?»)"
+    },
+    "3": {
+     "text": "Farbwort lesen und Farbe wählen",
+     "schrift": true,
+     "stimme": "ohne",
+     "vor": [
+      "D-LE-03"
+     ]
+    }
+   },
+   "stichwoerter": [
+    "farben",
+    "farbwörter",
+    "rot blau gelb"
+   ]
+  },
+  {
+   "id": "D-WS-07",
+   "gruppe": "WS",
+   "name": "Wochentage",
+   "kurz": "Wochentage",
+   "klasse": 1.5,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.5",
+    "MA.3.A.1"
+   ],
+   "quelle": "inhalte",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-hoeren",
+    "reihenfolge"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Welcher Tag kommt nach …? (Hörkarten)"
+    },
+    "2": {
+     "text": "Gestern, heute, morgen"
+    },
+    "3": {
+     "text": "Wochentage in die richtige Reihenfolge bringen (Hörkarten)"
+    }
+   },
+   "stichwoerter": [
+    "wochentage",
+    "montag",
+    "gestern heute morgen",
+    "woche"
+   ]
+  },
+  {
+   "id": "D-WS-08",
+   "gruppe": "WS",
+   "name": "Zahlwörter lesen",
+   "kurz": "Zahlwörter",
+   "klasse": 1.5,
+   "vor": [
+    "D-LE-03"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.2.A.1",
+    "MA.1.A.1"
+   ],
+   "quelle": "inhalte",
+   "stimme": "ohne",
+   "typen": [
+    "bild-wort",
+    "zuordnen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zahlwörter eins bis fünf lesen und Menge wählen",
+     "schrift": true
+    },
+    "2": {
+     "text": "Bis zehn",
+     "schrift": true
+    },
+    "3": {
+     "text": "Bis zwölf; Zahlwort und Ziffer verbinden",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "zahlwörter",
+    "zahlen lesen",
+    "eins zwei drei"
+   ]
+  },
+  {
+   "id": "D-WS-09",
+   "gruppe": "WS",
+   "name": "Nomen und Begleiter",
+   "kurz": "Der, die, das",
+   "klasse": 1.5,
+   "vor": [
+    "D-LE-07"
+   ],
+   "kern": true,
+   "lp21": [
+    "D.5"
+   ],
+   "quelle": "woerter",
+   "stimme": "hilfreich",
+   "typen": [
+    "wahl-hoeren",
+    "bild-wort",
+    "wahl-wort"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zum Bild den passenden Begleiter hören und wählen (der, die oder das? Hörkarten)",
+     "stimme": "noetig"
+    },
+    "2": {
+     "text": "Nomen mit Begleiter lesen und dem Bild zuordnen (die Rose)",
+     "schrift": true
+    },
+    "3": {
+     "text": "Nomen schreibt man gross: richtige Schreibweise wählen (Rose oder rose)",
+     "schrift": true
+    }
+   },
+   "stichwoerter": [
+    "nomen",
+    "namenwörter",
+    "begleiter",
+    "artikel",
+    "der die das",
+    "grossschreibung"
+   ]
+  },
+  {
+   "id": "D-HV-01",
+   "gruppe": "HV",
+   "name": "Anweisungen ausführen",
+   "kurz": "Zuhören und tun",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.1.B.1"
+   ],
+   "quelle": "inhalte",
+   "stimme": "noetig",
+   "typen": [
+    "hoeren-tippen"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Ein Auftrag («Tippe auf den Ball.»)"
+    },
+    "2": {
+     "text": "Zwei Aufträge nacheinander"
+    },
+    "3": {
+     "text": "Auftrag mit Lagewort («Lege den Ball unter den Tisch.»)"
+    }
+   },
+   "stichwoerter": [
+    "zuhören",
+    "aufträge",
+    "anweisungen",
+    "hörverstehen"
+   ]
+  },
+  {
+   "id": "D-HV-02",
+   "gruppe": "HV",
+   "name": "Geschichten hören und verstehen",
+   "kurz": "Geschichten hören",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.1.B.1"
+   ],
+   "quelle": "inhalte",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-bild"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Zwei Sätze hören, Frage nach wer"
+    },
+    "2": {
+     "text": "Drei bis vier Sätze, Frage nach was oder wo"
+    },
+    "3": {
+     "text": "Vier bis fünf Sätze, Frage nach Grund oder Reihenfolge"
+    }
+   },
+   "stichwoerter": [
+    "zuhören",
+    "geschichte",
+    "hörverstehen",
+    "verstehen"
+   ]
+  }
+ ]
+}

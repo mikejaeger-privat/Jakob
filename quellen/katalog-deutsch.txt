@@ -1,0 +1,49 @@
+Quellen zum Kompetenzkatalog Deutsch (site/data/katalog/deutsch.json)
+Stand: 19.10.2026
+
+Lehrplan 21, Kanton Zürich, Fach Deutsch, Zyklus 1 (Schwerpunkt 1. Klasse).
+Die Texte unten geben die Kompetenzen sinngemäss in eigenen Worten wieder. Die Zuordnung der Fertigkeiten
+zu den Kompetenznummern hat die App vorgenommen; sie ist nicht amtlich. Steht nur ein Bereich (z. B. «D.5»),
+war keine einzelne Kompetenz eindeutig zuzuordnen.
+
+D.1.A.1  Hören, Grundfertigkeiten: Laute, Silben, Stimmen, Geräusche und Töne wahrnehmen, unterscheiden
+         und vergleichen. Dazu gehört die phonologische Bewusstheit (Reime, Silben, Anlaut, Endlaut, Laute im
+         Wort, Laute zusammenziehen und zerlegen, Wörter im Satz).
+         → D-HB-01 bis D-HB-08, D-WS-04
+D.1.B.1  Hören, Verstehen: wichtige Informationen aus gehörten Texten entnehmen (Anweisungen, kleine
+         Geschichten, Reihenfolge eines Geschehens).
+         → D-HV-01, D-HV-02, D-WS-05
+D.2.A.1  Lesen, Grundfertigkeiten: Buchstaben und Laute verbinden, Silben und Wörter erlesen, häufige Wörter
+         auf einen Blick erkennen, Gelesenes sofort verstehen.
+         → D-BU-01 bis D-BU-07, D-LE-01 bis D-LE-09, D-WS-08
+D.2.B.1  Lesen, Sachtexte verstehen: Informationen aus kurzen Texten entnehmen.
+         → D-LE-10 (Erweiterung)
+D.2.C.1  Lesen, literarische Texte: kurze erzählende Texte lesen und verstehen.
+         → D-LE-08, D-LE-10
+D.4.A.1  Schreiben, Grundfertigkeiten: Buchstaben und Wörter in einer leserlichen Handschrift schreiben
+         (Deutschschweizer Basisschrift), Laute in Buchstaben umsetzen.
+         → D-BU-01, D-BU-03, D-BU-04, D-BU-07, D-SC-01 bis D-SC-06
+D.5.E.1  Rechtschreibung: Wörter lautorientiert schreiben, erste Regeln anwenden (Satzanfang gross, Punkt),
+         Lernwörter richtig schreiben.
+         → D-HB-06, D-SC-02, D-SC-04, D-SC-05, D-SC-06
+D.5      Sprache(n) im Fokus (Wortschatz, Wortbedeutungen, Einzahl und Mehrzahl, Gegenteile, Oberbegriffe).
+         → D-WS-01, D-WS-02, D-WS-03, D-WS-06, D-WS-07, D-WS-09 (Nomen und Begleiter)
+
+Quellen
+- Lehrplan 21 Kanton Zürich, Fachbereich Deutsch: https://zh.lehrplan.ch
+- Kompetenztexte D.1.A.1, D.1.B.1, D.2.A.1, D.2.B.1, D.2.C.1, D.4.A.1, D.4.B.1, D.5.E.1 abgeglichen mit dem
+  Kompetenzraster «Leseschlau» (KDLV Solothurn): https://so.ch/fileadmin/internet/staatskanzlei/stk-kdlv/KDLV_2018/lp21_kompetenzraster_leseschlau.pdf
+  (abgerufen 19.10.2026)
+
+Lehrmittel
+- Lehrmittelverzeichnis Kanton Zürich 2025/26: für die 1. Klasse «Deutsch Eins» und «Mathematik 1 Primarstufe»
+  (LMVZ): https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/bildung/informationen-fuer-schulen/informationen-fuer-die-volksschule/unterricht/lehrmittel/lehrmittelverzeichnis_2025_26_ua.pdf
+- Bildungsrat Kanton Zürich, BRB 22/2021, Freigabe «Deutsch» 1. Zyklus: «Deutsch Eins» stellt mit der
+  silbenanalytischen Methode die Silbe ins Zentrum; Schreibheft für die unverbundene Deutschschweizer
+  Basisschrift; kein Obligatorium.
+  https://www.zh.ch/de/bildungsdirektion/generalsekretariat-der-bildungsdirektion/bildungsrat/suche-bildungsratsbeschluesse/2021-brb-22.html
+- Welches Erstlesewerk die Klasse verwendet, ist offen (Frage an die Lehrperson).
+
+Inhalte
+- Die Inhalte der App sind eigene Formulierungen. Aus Lehrmitteln übernommen sind höchstens Begriffe und die
+  Reihenfolge von Themen.
