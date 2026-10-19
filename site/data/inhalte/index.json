@@ -1,3 +1,11 @@
 {
- "D": []
+ "D": [
+  "deutsch/anweisungen.json",
+  "deutsch/bildergeschichten.json",
+  "deutsch/gegenteile.json",
+  "deutsch/geschichten.json",
+  "deutsch/hoersaetze.json",
+  "deutsch/lesetexte.json",
+  "deutsch/saetze.json"
+ ]
 }

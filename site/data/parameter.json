@@ -51,6 +51,7 @@
   "minAntworten": 6,
   "minTage": 2,
   "sperreTageNachVersuch": 1,
+  "uebenNachVersuch": 3,
   "maxProTag": 1
  },
  "karteikasten": {
@@ -69,7 +70,9 @@
    "plus20": "Plusaufgaben bis 20 mit Zehnerübergang (ab Stufe 3 von M-RE-14)",
    "minus20": "Minusaufgaben bis 20 mit Zehnerübergang (ab Stufe 3 von M-RE-14)"
   },
-  "aufwaermenWechsel": ["deutsch", "mathe"]
+  "aufwaermenWechsel": ["deutsch", "mathe"],
+  "buchstabenOhneKarte": ["c", "q", "v", "x", "y", "ä", "ö", "ü"],
+  "buchstabenOhneKarteGrund": "Klang und Buchstabe passen nicht eindeutig zusammen (c, q, v, x, y) oder es gibt kaum Anlautwörter (ä, ö, ü); diese Buchstaben übt D-BU-02 Stufe 3 und das Nachspuren."
  },
  "entdeckerrunde": {
   "lernTage": 3,
@@ -93,7 +96,10 @@
   "wiederholenInSitzung": true,
   "fehlerWiederholungLeichter": true,
   "lernwoerterVorTestTage": 3,
-  "keineAufgabeZweimalProBaustein": true
+  "keineAufgabeZweimalProBaustein": true,
+  "quoten": { "aktuell": 2, "weiter": 3, "luecke": 1, "wiederholung": 3, "zeigWartend": 1 },
+  "aufgabenJeEintrag": { "aktuell": 3, "weiter": 2, "luecke": 2, "wiederholung": 2, "zeigWartend": 2, "lernwoerter": 3 },
+  "quotenHinweis": "Höchstzahl Einträge je Grund in einem Stein und Aufgaben je Eintrag. Die Einträge werden abwechselnd eingereiht; die Zeit des Steins entscheidet, wie viele drankommen."
  },
  "belohnung": {
   "aktiv": true,

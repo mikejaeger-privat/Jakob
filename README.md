@@ -10,15 +10,15 @@ Geschwisterprojekt der «Lernplattform» (`mikejaeger-privat/Lernplattform`): Te
 
 ## Stand
 
-**Etappe 3 von 7: Mathematik.** Lauffähig sind Einrichtung (Name, PIN, Stimme mit Hörtest), Startseite mit Fuchs, gesprochene Einführung, Lernweg, freier Tag, Elternbereich, Sicherung, Abgleich und Offline-Betrieb, dazu alle 50 Mathematik-Fertigkeiten mit je drei Stufen: Generatoren, Darstellungen wie im Lehrmittel und die Aufgabentypen für den Kinderbereich (Zahlenfeld, Bildwahl, Zählen, Legen, Plättchen, Münzen, Antippen, Zuhören, Zuordnen, Muster, Nachspuren der Ziffern). Bis der Tagesplan kommt, spielen Aufwärmen, Würfel-Stein und Schlussstein eine vorläufige Auswahl aus der Mathematik; der Buch-Stein (Deutsch) folgt in Etappe 4. Im Elternbereich zeigt «Aufgaben» jede Stufe so, wie das Kind sie sieht und hört. Es folgen Deutsch (4), Lernmodell und Tagesplan (5), Elternbereich und Pakete (6), Prüfung und Simulation (7).
+**Etappe 4 von 7: Deutsch.** Lauffähig sind Einrichtung (Name, PIN, Stimme mit Hörtest), Startseite mit Fuchs, gesprochene Einführung, Lernweg, freier Tag, Elternbereich, Sicherung, Abgleich und Offline-Betrieb, dazu beide Fächer vollständig: alle 50 Mathematik- und alle 42 Deutsch-Fertigkeiten mit je drei Stufen, mit Generatoren, Darstellungen wie im Lehrmittel, festen Deutsch-Inhalten (Sätze, Lesetexte, Geschichten, Anweisungen, Gegenteile, Bildergeschichten) und Nachspur-Vorlagen in Basisschrift. Im Elternbereich lassen sich die Lernwörter der Woche eintragen, und «Aufgaben» zeigt jede Stufe so, wie das Kind sie sieht und hört. Bis der Tagesplan kommt, spielen die Steine eine vorläufige Auswahl. Es folgen Lernmodell und Tagesplan (5), Elternbereich und Pakete (6), Prüfung und Simulation (7).
 
 ## Ordner
 
 | Ordner | Inhalt |
 | --- | --- |
 | `site/` | Die Website (Ausgabeordner für Cloudflare Pages) |
-| `site/data/` | Katalog, Wortlexikon, Buchstabenplan, Lehrmittel-Reihenfolge, Ferien, Parameter (JSON) |
-| `site/js/` | `app/` Zustand, Speicher, Sprache, Klang · `core/` reine Logik (Kalender, Abgleichregeln) · `ui/` Kinder- und Elternbereich, Figuren |
+| `site/data/` | Katalog, Wortlexikon, Buchstabenplan, Lehrmittel-Reihenfolge, Ferien, Parameter, feste Deutsch-Inhalte, Nachspur-Vorlagen (JSON) |
+| `site/js/` | `app/` Zustand, Speicher, Sprache, Klang · `core/` reine Logik (Kalender, Prüfen der Antworten, Nachspuren, Abgleichregeln) · `math/` und `deutsch/` Generatoren · `ui/` Kinder- und Elternbereich, Aufgabentypen, Darstellungen, Figuren |
 | `site/fonts/` | «Lernwelt Schrift» (Teilmenge von Andika, SIL Open Font License, siehe `LIESMICH.txt`) |
 | `functions/`, `server/` | Abgleich zwischen Geräten: Pages Function unter `/api/*` und ihre Logik (D1, Prüfung der Access-Anmeldung) |
 | `tools/` | Bau, Prüfungen, Tests, Spezifikationen (nur für die Entwicklung) |
@@ -131,9 +131,10 @@ Alle Dateien in `site/data/` sind JSON und mit einem Texteditor bearbeitbar. Dan
 | `ziele.json` | Etappen des Schuljahrs, Ferien und Feiertage der Schule Schlieren |
 | `parameter.json` | Lernzeit (10 Minuten, 5 bis 15), Lerntage, Gewichtung Deutsch/Mathematik, Schwellen des Lernmodells, Karteikasten-Abstände, Sprechtempo, Begriffe, Sammelbild |
 | `woerter.json` | Bildwörter mit Silben, Lauten, Reim und Merkstellen (Regeln in `tools/SPEC-AUFGABEN.md`) |
+| `inhalte/deutsch/*.json` | Feste Deutsch-Inhalte: Sätze, Lesetexte, Geschichten, Anweisungen, Gegenteile, Bildergeschichten, Hörsätze (Regeln in `tools/AUFTRAG-INHALTE.md`; danach `node tools/pruefe_inhalte.mjs` und `node tools/baue.mjs`) |
 | `katalog/*.json` | Fertigkeiten und Stufen (Regeln in `tools/SPEC-KATALOG.md`) |
 
-Vieles lässt sich direkt im Elternbereich einstellen: Buchstabenplan, aktuelles Mathematik-Kapitel, Zahlenraum, Minuten, Lerntage, Verteilung, Stimme und Tempo, Töne, Sammelbild, Vorlesen, Begriffe der Lehrperson.
+Vieles lässt sich direkt im Elternbereich einstellen: Buchstabenplan, Lernwörter der Woche, aktuelles Mathematik-Kapitel, Zahlenraum, Minuten, Lerntage, Verteilung, Stimme und Tempo, Töne, Sammelbild, Vorlesen, Begriffe der Lehrperson.
 
 ## 8. Für Entwicklung und Prüfung
 
@@ -145,10 +146,15 @@ node tools/server.mjs                   # lokal auf http://localhost:8765 (ohne 
 node tools/server.mjs --abgleich        # dasselbe mit /api/* (SQLite statt D1, Anmeldung als test@localhost)
 node tools/pruefe_katalog.mjs --bilanz  # Katalog, Lehrmittel-Reihenfolge, Ziele, Parameter
 node tools/pruefe_woerter.mjs --bilanz  # Wortlexikon und Buchstabenplan
-node --test tools/tests/*.test.mjs      # Unit-Tests (Mathe-Generatoren mit zweitem Rechenweg, Nachspuren, Abgleich, Access)
+node --test tools/tests/*.test.mjs      # Unit-Tests (Generatoren beider Fächer mit Nachprüfung auf zweitem Weg, Nachspuren, Abgleich, Access)
 node tools/teste_mathe.mjs [za me …]    # alle Mathe-Generatoren: je Stufe 200 Aufgaben in den Zahlenräumen 10, 20, 100
 node tools/zeige_mathe.mjs re 3         # Beispielaufgaben lesbar ausgeben, zum Gegenlesen
-node tools/aufgaben-browser.mjs         # jede Mathe-Stufe im Browser lösen (Server auf 8765 nötig, Playwright)
+node tools/teste_deutsch.mjs [hb bu …]  # alle Wortgeneratoren: je Stufe 200 Aufgaben, Standard- und kleine Buchstaben-Freigabe
+node tools/pruefe_inhalte.mjs           # feste Deutsch-Inhalte (site/data/inhalte/deutsch/): Schema, «braucht», Bilder, Satzlänge
+node tools/selbsttest_inhalte.mjs       # kommt jede feste Inhaltseinheit in einer Aufgabe vor?
+node tools/zeige_deutsch.mjs le 3       # Deutsch-Beispielaufgaben lesbar ausgeben (--klein: kleine Freigabe)
+node tools/aufgaben-browser.mjs         # jede Stufe beider Fächer im Browser lösen (Server auf 8765 nötig, Playwright)
+                                        #   --nur D-HB,M-RE  --geraet iphone  --dunkel  --fotos ordner  --laut
 node tools/baue_schrift.mjs             # Nachspur-Vorlagen site/data/schrift/basisschrift.json erzeugen
 node tools/icons.mjs                    # PNG-Symbole aus site/icons/icon.svg (Playwright nötig)
 ```

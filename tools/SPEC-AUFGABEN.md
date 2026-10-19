@@ -99,7 +99,7 @@ Für jeden Typ: Felder, Darstellung, Eingabe, Prüfung, Erleichterung nach dem e
 ### `nachspuren`
 - Felder: `zeichen` (ein Buchstabe oder eine Ziffer) oder `wort`, `hilfe` (`pfeile`, `start`, `keine`).
 - Vorlage: eigene SVG-Pfade je Zeichen in `site/data/schrift/basisschrift.json`, angelehnt an die unverbundene Deutschschweizer Basisschrift: Striche in Reihenfolge, Startpunkt, Richtung, Hilfslinien (Grund-, Mittel-, Oberlinie).
-- Prüfung (tolerant, in `site/js/core/nachspur.js`): Anteil der Vorlage, der vom Finger überdeckt wurde (Toleranz 10 % der Zeilenhöhe), mindestens 75 % und je Strich mindestens 60 %; mindestens 75 % der Fingerpunkte nahe der Vorlage und der Fingerweg höchstens 2,5-mal so lang wie die Vorlage (kein Kritzeln); jeder offene Strich in grober Richtung (Beginn näher am Startpunkt als am Ende). Strichreihenfolge wird nur als Hinweis verwendet. Unit-Test: `tools/tests/nachspur.test.mjs`.
+- Prüfung (tolerant, in `site/js/core/nachspur.js`): Anteil der Vorlage, der vom Finger überdeckt wurde (Toleranz 10 % der Zeilenhöhe), mindestens 75 % und je Strich mindestens 60 %; mindestens 75 % der Fingerpunkte nahe der Vorlage und der Fingerweg höchstens 2,5-mal so lang wie die Vorlage (kein Kritzeln) und fast alle Fingerpunkte höchstens 20 % der Zeilenhöhe neben der Vorlage; jeder offene Strich in grober Richtung (Beginn näher am Startpunkt als am Ende). Strichreihenfolge wird nur als Hinweis verwendet. Unit-Test: `tools/tests/nachspur.test.mjs`.
 - Drei Versuche, nie «falsch»: Nach dem dritten sagt die App «Gut geübt!» und geht weiter. Ergebnis «geübt» (zählt nicht in den Wert, nur als Übung).
 - Ohne Stimme spielbar.
 
@@ -185,6 +185,30 @@ export const generatoren = {
 ```
 
 `r` ist der Zufallsgenerator (nie `Math.random`). `ctx` enthält `lexikon`, `buchstaben` (Buchstabenplan), `freigabe` (Menge der eingeführten Buchstaben und Verbindungen), `dehnlaute` und `silben` (Einstellungen «Dehnlaute vorsprechen», «Silben einzeln vorsprechen»), `stimme` (boolean) und `zuletzt` (Signaturen der letzten 14 Tage). Ein Generator gibt `null` zurück, wenn mit der aktuellen Freigabe keine gültige Aufgabe möglich ist.
+
+### Vertrag der Wortgeneratoren
+
+- Bausteine in `site/js/deutsch/lib.js`: `A`, `sig`, `auswahl` (wie Mathematik), `werkzeug(ctx)` mit `woerter`, `wort(t)`, `vonBild(b)`, `lesbar(braucht)`, `lesbaresWort(w)`, `sichtwoerter(gruppe)`, `istSichtwort(t)`, `klangKonflikt(a, b)` (Regel 1), `nieZusammen(a, b)`, `verwechselbar(a, b)`, `zusammenOk(liste)`, `bildOk(w, { gesprochen, zaehlen })` (Regel 4), `silbenSprich(w)`, `dehnlaut(laut)`, `mitArtikel(w)`, `waehle(r, kandidaten, n, passt)`; dazu `zerlege(wort)` (Einheiten wie im Buchstabenplan), `brauchtText(text)`, `reimteil(wort)`, `reimen(a, b)` (Regel 2), `grundlaut(einheit)`, `lautZahl(w, laut)` und `lautStelle(w, laut)` (Regel 3), Listen `NAMEN`, `FARBEN`, `FARBE_ID`, `WOCHENTAGE`, `ZAHLWOERTER`, `HOERFARBEN`, `bildOption(w)`.
+- `ctx`: `lexikon` (woerter.json), `buchstaben` (buchstaben.json), `freigabe` (Set der eingeführten Buchstaben und Verbindungen), `stimme`, `silben`, `dehnlaute` (Ergebnis des Hörtests), `dehnlautText`, `inhalte` (feste Inhalte, zusammengeführt), `zuletzt` (Signaturen der letzten 14 Tage), `stufe` (Katalogeintrag der Stufe, z. B. `stufe.auswahl`, `stufe.gruppe`).
+- Das Register (`site/js/deutsch/index.js`) spielt eine Stufe nur, wenn Stimme, Hörtest (`bedingung`) und Freigabe (`braucht`, `auswahl`) passen, und verwirft jede Aufgabe, deren `braucht` nicht eingeführt ist. Trotzdem prüft jeder Generator die Freigabe selbst und gibt `null` zurück, wenn nichts möglich ist.
+- **`braucht`** listet alle Buchstaben und Verbindungen, die das Kind sieht (Lesetext, Wortkarten, Buchstabenkacheln, Silbenkarten, gezeigter Buchstabe), kleingeschrieben, nach `zerlege`. Sichtwörter brauchen nur ihre Einzelbuchstaben. Reine Höraufgaben mit Bildern haben `braucht: []`.
+
+### Felder je Typ (verbindlich für Generatoren und Oberfläche)
+
+- **`wahl-bild`**: `optionen: [{ bild, wort } | { szene }]`, `richtig`. Mit `wort` nennt die App die Bilder vor der Antwort (`namenSprechen`, Standard `true`, wenn `wort` gesetzt). Muss das Kind den Namen selbst wissen (D-BU-02, D-LE-01 Stufe 2, D-SC-04, ohne Stimme), dann `namenSprechen: false` und keine Bilder mit `nameUnsicher`.
+- **`wahl-wort`**: `optionen: [text]`, `richtig`, `vorlesen` (wird nach dem Auftrag gesprochen: Wort, Silbe; bei Buchstaben nie der Buchstabe allein), optional `anlautBild` (Emoji, erscheint als Erleichterung), optional `zeige`.
+- **`wahl-hoeren`**: `optionen: [{ sprich, farbe }]` (farbe aus `HOERFARBEN`), `richtig`. Antippen spielt die Karte und wählt sie; der Haken bestätigt.
+- **`bild-wort`**: `zeige` (Wort oder Satz), optional `silben` (Liste) und `silbenboegen: true`, `optionen: [{ bild } | { szene }]`, `richtig`. Der Text wird erst nach der Antwort vorgesprochen (`sprichNachher`, Standard `zeige`).
+- **`zuordnen`**: `paare: [[a, b], …]`, Elemente `{ bild, wort }` (der Name wird beim Antippen gesprochen), `{ buchstabe }`, `{ text }`, `{ szene }`, `{ zahl }`.
+- **`legen`**: `kacheln` (Buchstaben und Verbindungen als je eine Kachel, Gross- und Kleinschreibung wie im Wort), `loesung` (Liste, eine Kachel je Feld), optional `alternativen`, `felder` (Anzahl Lautkästchen), `vorlesen` (gesprochenes Wort), `abschreiben` (sichtbare Vorlage beim Abschreiben), `verdecken: true` (Blitzwort: das Kind verdeckt die Vorlage selbst), `anlauttabelle: true` (Hilfe zeigt die Anlauttabelle der eingeführten Buchstaben), optional `bild`.
+- **`nachspuren`**: `zeichen` (ein Buchstabe oder eine Ziffer) oder `wort`, `hilfe` (`pfeile`, `start`, `keine`).
+- **`menge-legen`**: `feld: 'lautreihe' | 'wortreihe'`, `ziel` (Anzahl Laute bzw. Wörter), `vorlesen` (Wort bzw. Satz), optional `bild`.
+- **`reihenfolge`**: `teile` in der richtigen Folge; `art: 'text'` (Wortkarten, Buchstaben), `'bild'` (`{ bild, wort }`, der Name wird beim Antippen gesprochen) oder `'hoeren'` (`{ sprich, farbe }`); optional `ablenker` (zusätzliche Textkarten, die nicht gebraucht werden), `ende` (fester Schluss, z. B. `'.'`), `richtung`, `vorlesen` (gesprochener Satz).
+- **`hoeren-tippen`**: `auftrag`, `szene: { art: 'frei', elemente: [{ id, bild, name, x, y, w, z?, deko? }], orte: [{ id, name, x, y, w, h }] }`, `loesung` (IDs in Reihenfolge) oder `ziehen: [{ element, ort }]` (Teil antippen, dann Ort antippen; Ziehen geht auch).
+- **`silben`**: `modus: 'zaehlen'` mit `wort`, `bild`, `silben` (das Kind tippt für jede Silbe einmal auf die Trommel, dann Haken) oder `modus: 'verbinden'` mit `silben` (richtige Folge), optional `bild`, `vorlesen`.
+- **`antippen`**: `zeige` (Wort oder Satz), `einheit: 'buchstabe' | 'wort'`, `loesung` (Indizes der richtigen Buchstaben bzw. Wörter als Text, ab 0).
+- **`lautplatz`**: `wort` (gesprochen), `bild`, `laut` (gezeigter Buchstabe, z. B. `'M'`), `plaetze` (2 oder 3), `nicht` (`true`: Karte «gar nicht»), `loesung` (`'vorne'`, `'mitte'`, `'hinten'`, `'nicht'`).
+- **`vorlesen`**: `zeige`.
 
 ### Allgemeine Regeln
 

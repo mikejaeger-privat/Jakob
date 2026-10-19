@@ -1,0 +1,1474 @@
+{
+ "fach": "D",
+ "teil": "lesetexte",
+ "stand": "2026-10-19",
+ "hinweis": "Kurze Lesetexte für D-LE-10. Das Kind liest die Sätze und die Frage und wählt ein Bild. «richtig» zeigt auf die erste Option; der Generator mischt.",
+ "geschichten": [
+  {
+   "id": "LT-101",
+   "saetze": [
+    "Der Bär malt.",
+    "Die Ente schläft."
+   ],
+   "frage": "Wer malt?",
+   "optionen": [
+    {
+     "bild": "🐻"
+    },
+    {
+     "bild": "🦆"
+    },
+    {
+     "bild": "🐸"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Der Bär malt.",
+   "stufen": {
+    "D-LE-10": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "ä",
+    "m",
+    "a",
+    "l",
+    "t",
+    "ie",
+    "n",
+    "sch",
+    "f",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-102",
+   "saetze": [
+    "Die Maus baut ein Haus.",
+    "Der Igel schaut."
+   ],
+   "frage": "Wer baut ein Haus?",
+   "optionen": [
+    {
+     "bild": "🐭"
+    },
+    {
+     "bild": "🦔"
+    },
+    {
+     "bild": "🐟"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Die Maus baut ein Haus.",
+   "stufen": {
+    "D-LE-10": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "m",
+    "au",
+    "s",
+    "b",
+    "t",
+    "ei",
+    "n",
+    "h",
+    "e",
+    "r",
+    "i",
+    "g",
+    "l",
+    "sch",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-103",
+   "saetze": [
+    "Das Schaf tanzt.",
+    "Der Frosch tanzt nicht."
+   ],
+   "frage": "Wer tanzt?",
+   "optionen": [
+    {
+     "bild": "🐑"
+    },
+    {
+     "bild": "🐸"
+    },
+    {
+     "bild": "🐻"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Das Schaf tanzt. Der Frosch tanzt nicht.",
+   "stufen": {
+    "D-LE-10": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "sch",
+    "f",
+    "t",
+    "n",
+    "z",
+    "e",
+    "r",
+    "o",
+    "i",
+    "ch",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-104",
+   "saetze": [
+    "Der Wolf ist müde.",
+    "Er schläft.",
+    "Der Löwe malt."
+   ],
+   "frage": "Wer schläft?",
+   "optionen": [
+    {
+     "bild": "🐺"
+    },
+    {
+     "bild": "🦁"
+    },
+    {
+     "bild": "🐼"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Der Wolf ist müde. Er schläft.",
+   "stufen": {
+    "D-LE-10": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "w",
+    "o",
+    "l",
+    "f",
+    "i",
+    "s",
+    "t",
+    "m",
+    "ü",
+    "sch",
+    "ä",
+    "ö",
+    "a"
+   ]
+  },
+  {
+   "id": "LT-105",
+   "saetze": [
+    "Die Raupe ist müde.",
+    "Der Elefant tanzt."
+   ],
+   "frage": "Wer tanzt?",
+   "optionen": [
+    {
+     "bild": "🐘"
+    },
+    {
+     "bild": "🐛"
+    },
+    {
+     "bild": "🐼"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Der Elefant tanzt.",
+   "stufen": {
+    "D-LE-10": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "r",
+    "au",
+    "p",
+    "e",
+    "i",
+    "s",
+    "t",
+    "m",
+    "ü",
+    "l",
+    "f",
+    "a",
+    "n",
+    "z",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-106",
+   "saetze": [
+    "Oma kauft Brot.",
+    "Der Bär kauft Salat."
+   ],
+   "frage": "Wer kauft Brot?",
+   "optionen": [
+    {
+     "bild": "👵"
+    },
+    {
+     "bild": "🐻"
+    },
+    {
+     "bild": "🐸"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Oma kauft Brot.",
+   "stufen": {
+    "D-LE-10": 1
+   },
+   "braucht": [
+    "o",
+    "m",
+    "a",
+    "k",
+    "au",
+    "f",
+    "t",
+    "b",
+    "r",
+    "d",
+    "e",
+    "ä",
+    "s",
+    "l",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-107",
+   "saetze": [
+    "Der Panda badet.",
+    "Die Maus schaut."
+   ],
+   "frage": "Wer badet?",
+   "optionen": [
+    {
+     "bild": "🐼"
+    },
+    {
+     "bild": "🐭"
+    },
+    {
+     "bild": "🐑"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Der Panda badet.",
+   "stufen": {
+    "D-LE-10": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "p",
+    "a",
+    "n",
+    "b",
+    "t",
+    "ie",
+    "m",
+    "au",
+    "s",
+    "sch",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-108",
+   "saetze": [
+    "Das Lama turnt.",
+    "Der Fisch schläft."
+   ],
+   "frage": "Wer turnt?",
+   "optionen": [
+    {
+     "bild": "🦙"
+    },
+    {
+     "bild": "🐟"
+    },
+    {
+     "bild": "🦔"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Das Lama turnt.",
+   "stufen": {
+    "D-LE-10": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "l",
+    "m",
+    "t",
+    "u",
+    "r",
+    "n",
+    "e",
+    "f",
+    "i",
+    "sch",
+    "ä",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-109",
+   "saetze": [
+    "Der Igel holt Brot.",
+    "Die Ente holt Salat."
+   ],
+   "frage": "Wer holt Salat?",
+   "optionen": [
+    {
+     "bild": "🦆"
+    },
+    {
+     "bild": "🦔"
+    },
+    {
+     "bild": "🐻"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Die Ente holt Salat.",
+   "stufen": {
+    "D-LE-10": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "i",
+    "g",
+    "l",
+    "h",
+    "o",
+    "t",
+    "b",
+    "ie",
+    "n",
+    "s",
+    "a",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-110",
+   "saetze": [
+    "Der Frosch malt eine Rose.",
+    "Die Maus malt ein Herz."
+   ],
+   "frage": "Wer malt ein Herz?",
+   "optionen": [
+    {
+     "bild": "🐭"
+    },
+    {
+     "bild": "🐸"
+    },
+    {
+     "bild": "🐼"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Die Maus malt ein Herz.",
+   "stufen": {
+    "D-LE-10": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "f",
+    "o",
+    "sch",
+    "m",
+    "a",
+    "l",
+    "t",
+    "ei",
+    "n",
+    "s",
+    "ie",
+    "au",
+    "h",
+    "z",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-111",
+   "saetze": [
+    "Das Zebra schläft.",
+    "Das Schaf tanzt.",
+    "Der Löwe malt."
+   ],
+   "frage": "Wer tanzt?",
+   "optionen": [
+    {
+     "bild": "🐑"
+    },
+    {
+     "bild": "🦓"
+    },
+    {
+     "bild": "🦁"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Das Schaf tanzt.",
+   "stufen": {
+    "D-LE-10": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "z",
+    "e",
+    "b",
+    "r",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t",
+    "n",
+    "ö",
+    "w",
+    "m"
+   ]
+  },
+  {
+   "id": "LT-212",
+   "saetze": [
+    "Mia hat einen Korb.",
+    "Im Korb sind Brot und Käse.",
+    "Mia isst den Käse."
+   ],
+   "frage": "Was isst Mia?",
+   "optionen": [
+    {
+     "bild": "🧀"
+    },
+    {
+     "bild": "🍞"
+    },
+    {
+     "bild": "🍌"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Mia isst den Käse.",
+   "stufen": {
+    "D-LE-10": 2
+   },
+   "braucht": [
+    "m",
+    "i",
+    "a",
+    "h",
+    "t",
+    "ei",
+    "n",
+    "e",
+    "k",
+    "o",
+    "r",
+    "b",
+    "s",
+    "d",
+    "u",
+    "ä",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-213",
+   "saetze": [
+    "Leon hat einen Ball.",
+    "Er wirft den Ball.",
+    "Der Ball fällt unter das Bett."
+   ],
+   "frage": "Wo ist der Ball?",
+   "optionen": [
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "⚽",
+      "bezug": "🛏️",
+      "lage": "unter"
+     }
+    },
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "⚽",
+      "bezug": "🛏️",
+      "lage": "auf"
+     }
+    },
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "⚽",
+      "bezug": "🛏️",
+      "lage": "neben"
+     }
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Der Ball fällt unter das Bett. Jetzt ist er unter dem Bett.",
+   "stufen": {
+    "D-LE-10": 2
+   },
+   "braucht": [
+    "l",
+    "e",
+    "o",
+    "n",
+    "h",
+    "a",
+    "t",
+    "ei",
+    "b",
+    "r",
+    "w",
+    "i",
+    "f",
+    "d",
+    "ä",
+    "u",
+    "s"
+   ]
+  },
+  {
+   "id": "LT-214",
+   "saetze": [
+    "Die Maus ist müde.",
+    "Sie geht in die Tasche.",
+    "Dort schläft sie."
+   ],
+   "frage": "Wo schläft die Maus?",
+   "optionen": [
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐭",
+      "bezug": "👜",
+      "lage": "in"
+     }
+    },
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐭",
+      "bezug": "🧺",
+      "lage": "in"
+     }
+    },
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐭",
+      "bezug": "🛋️",
+      "lage": "auf"
+     }
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Die Maus geht in die Tasche. Dort schläft sie.",
+   "stufen": {
+    "D-LE-10": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "m",
+    "au",
+    "s",
+    "i",
+    "t",
+    "ü",
+    "e",
+    "g",
+    "h",
+    "n",
+    "a",
+    "sch",
+    "o",
+    "r",
+    "l",
+    "ä",
+    "f",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-215",
+   "saetze": [
+    "Elena malt.",
+    "Sie malt eine Sonne.",
+    "Die Sonne ist gelb."
+   ],
+   "frage": "Was malt Elena?",
+   "optionen": [
+    {
+     "bild": "☀️"
+    },
+    {
+     "bild": "🌙"
+    },
+    {
+     "bild": "☁️"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Sie malt eine Sonne.",
+   "stufen": {
+    "D-LE-10": 2
+   },
+   "braucht": [
+    "e",
+    "l",
+    "n",
+    "a",
+    "m",
+    "t",
+    "s",
+    "ie",
+    "ei",
+    "o",
+    "d",
+    "i",
+    "g",
+    "b",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-216",
+   "saetze": [
+    "Jonas und Sara essen Obst.",
+    "Jonas isst eine Banane.",
+    "Sara isst eine Birne."
+   ],
+   "frage": "Was isst Sara?",
+   "optionen": [
+    {
+     "bild": "🍐"
+    },
+    {
+     "bild": "🍌"
+    },
+    {
+     "bild": "🥝"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Sara isst eine Birne.",
+   "stufen": {
+    "D-LE-10": 2
+   },
+   "braucht": [
+    "j",
+    "o",
+    "n",
+    "a",
+    "s",
+    "u",
+    "d",
+    "r",
+    "e",
+    "b",
+    "t",
+    "i",
+    "ei",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-217",
+   "saetze": [
+    "Der Vogel ist auf dem Baum.",
+    "Der Hund ist unter dem Baum.",
+    "Der Hund bellt."
+   ],
+   "frage": "Wo ist der Hund?",
+   "optionen": [
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐶",
+      "bezug": "🌳",
+      "lage": "unter"
+     }
+    },
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐶",
+      "bezug": "🌳",
+      "lage": "auf"
+     }
+    },
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐶",
+      "bezug": "🌳",
+      "lage": "neben"
+     }
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Der Hund ist unter dem Baum.",
+   "stufen": {
+    "D-LE-10": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "v",
+    "o",
+    "g",
+    "l",
+    "i",
+    "s",
+    "t",
+    "au",
+    "f",
+    "m",
+    "b",
+    "h",
+    "u",
+    "n",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-218",
+   "saetze": [
+    "Nina hat ein Velo.",
+    "Das Velo ist rot.",
+    "Nina fährt schnell."
+   ],
+   "frage": "Was hat Nina?",
+   "optionen": [
+    {
+     "bild": "🚲"
+    },
+    {
+     "bild": "🚗"
+    },
+    {
+     "bild": "🛶"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Nina hat ein Velo.",
+   "stufen": {
+    "D-LE-10": 2
+   },
+   "braucht": [
+    "n",
+    "i",
+    "a",
+    "h",
+    "t",
+    "ei",
+    "v",
+    "e",
+    "l",
+    "o",
+    "d",
+    "s",
+    "r",
+    "f",
+    "ä",
+    "sch",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-219",
+   "saetze": [
+    "Leon baut ein Zelt.",
+    "Am Abend ist er müde.",
+    "Er schläft im Zelt."
+   ],
+   "frage": "Wo schläft Leon?",
+   "optionen": [
+    {
+     "bild": "⛺"
+    },
+    {
+     "bild": "🛏️"
+    },
+    {
+     "bild": "🏠"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Er schläft im Zelt.",
+   "stufen": {
+    "D-LE-10": 2
+   },
+   "braucht": [
+    "l",
+    "e",
+    "o",
+    "n",
+    "b",
+    "au",
+    "t",
+    "ei",
+    "z",
+    "a",
+    "m",
+    "d",
+    "i",
+    "s",
+    "r",
+    "ü",
+    "sch",
+    "ä",
+    "f",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-220",
+   "saetze": [
+    "Es regnet.",
+    "Opa geht raus.",
+    "Er nimmt den Schirm."
+   ],
+   "frage": "Was nimmt Opa?",
+   "optionen": [
+    {
+     "bild": "☂️"
+    },
+    {
+     "bild": "👜"
+    },
+    {
+     "bild": "🧺"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Er nimmt den Schirm.",
+   "stufen": {
+    "D-LE-10": 2
+   },
+   "braucht": [
+    "e",
+    "s",
+    "r",
+    "g",
+    "n",
+    "t",
+    "o",
+    "p",
+    "a",
+    "h",
+    "au",
+    "i",
+    "m",
+    "d",
+    "sch",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-221",
+   "saetze": [
+    "Die Raupe ist auf dem Blatt.",
+    "Sie frisst und frisst.",
+    "Dann schläft sie."
+   ],
+   "frage": "Wo ist die Raupe?",
+   "optionen": [
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐛",
+      "bezug": "🍁",
+      "lage": "auf"
+     }
+    },
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐛",
+      "bezug": "🍁",
+      "lage": "unter"
+     }
+    },
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐛",
+      "bezug": "🍁",
+      "lage": "neben"
+     }
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: Die Raupe ist auf dem Blatt.",
+   "stufen": {
+    "D-LE-10": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "r",
+    "au",
+    "p",
+    "e",
+    "i",
+    "s",
+    "t",
+    "f",
+    "m",
+    "b",
+    "l",
+    "a",
+    "u",
+    "n",
+    "sch",
+    "ä",
+    "w",
+    "o"
+   ]
+  },
+  {
+   "id": "LT-222",
+   "saetze": [
+    "Sara geht zu Oma.",
+    "Sie hat eine Tasche.",
+    "In der Tasche ist eine Kiwi."
+   ],
+   "frage": "Was ist in der Tasche?",
+   "optionen": [
+    {
+     "bild": "🥝"
+    },
+    {
+     "bild": "🍌"
+    },
+    {
+     "bild": "🧀"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Im Text steht: In der Tasche ist eine Kiwi.",
+   "stufen": {
+    "D-LE-10": 2
+   },
+   "braucht": [
+    "s",
+    "a",
+    "r",
+    "g",
+    "e",
+    "h",
+    "t",
+    "z",
+    "u",
+    "o",
+    "m",
+    "ie",
+    "ei",
+    "n",
+    "sch",
+    "i",
+    "d",
+    "k",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-323",
+   "saetze": [
+    "Elias isst gern.",
+    "Zuerst isst er Salat.",
+    "Dann isst er Brot.",
+    "Am Schluss isst er Käse."
+   ],
+   "frage": "Was isst Elias zuerst?",
+   "optionen": [
+    {
+     "bild": "🥗"
+    },
+    {
+     "bild": "🍞"
+    },
+    {
+     "bild": "🧀"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Zuerst isst Elias Salat.",
+   "stufen": {
+    "D-LE-10": 3
+   },
+   "braucht": [
+    "e",
+    "l",
+    "i",
+    "a",
+    "s",
+    "t",
+    "g",
+    "r",
+    "n",
+    "z",
+    "u",
+    "d",
+    "b",
+    "o",
+    "m",
+    "sch",
+    "k",
+    "ä",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-324",
+   "saetze": [
+    "Lea geht raus.",
+    "Es regnet.",
+    "Lea nimmt den Schirm.",
+    "Sie wird nicht nass."
+   ],
+   "frage": "Warum nimmt Lea den Schirm?",
+   "optionen": [
+    {
+     "bild": "🌧️"
+    },
+    {
+     "bild": "☀️"
+    },
+    {
+     "bild": "❄️"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Es regnet. Darum nimmt Lea den Schirm.",
+   "stufen": {
+    "D-LE-10": 3
+   },
+   "braucht": [
+    "l",
+    "e",
+    "a",
+    "g",
+    "h",
+    "t",
+    "r",
+    "au",
+    "s",
+    "n",
+    "i",
+    "m",
+    "d",
+    "sch",
+    "ie",
+    "w",
+    "ch",
+    "u"
+   ]
+  },
+  {
+   "id": "LT-325",
+   "saetze": [
+    "Der Bär rennt.",
+    "Dann frisst er Honig.",
+    "Dann ist er müde.",
+    "Am Schluss schläft er."
+   ],
+   "frage": "Was tut der Bär am Schluss?",
+   "optionen": [
+    {
+     "szene": {
+      "art": "aktion",
+      "bild": "🐻",
+      "zeichen": "schlafen"
+     }
+    },
+    {
+     "szene": {
+      "art": "aktion",
+      "bild": "🐻",
+      "zeichen": "essen"
+     }
+    },
+    {
+     "szene": {
+      "art": "aktion",
+      "bild": "🐻",
+      "zeichen": "rennen"
+     }
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Am Schluss schläft der Bär.",
+   "stufen": {
+    "D-LE-10": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "ä",
+    "n",
+    "t",
+    "a",
+    "f",
+    "i",
+    "s",
+    "h",
+    "o",
+    "g",
+    "m",
+    "ü",
+    "sch",
+    "l",
+    "u",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-326",
+   "saetze": [
+    "Mia malt.",
+    "Zuerst malt sie ein Haus.",
+    "Dann malt sie einen Baum.",
+    "Am Schluss malt sie eine Sonne."
+   ],
+   "frage": "Was malt Mia am Schluss?",
+   "optionen": [
+    {
+     "bild": "☀️"
+    },
+    {
+     "bild": "🏠"
+    },
+    {
+     "bild": "🌳"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Am Schluss malt Mia eine Sonne.",
+   "stufen": {
+    "D-LE-10": 3
+   },
+   "braucht": [
+    "m",
+    "i",
+    "a",
+    "l",
+    "t",
+    "z",
+    "u",
+    "e",
+    "r",
+    "s",
+    "ie",
+    "ei",
+    "n",
+    "h",
+    "au",
+    "d",
+    "b",
+    "sch",
+    "o",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-327",
+   "saetze": [
+    "Die Sonne scheint.",
+    "Es ist heiss.",
+    "Elena nimmt den Hut.",
+    "Sie geht raus."
+   ],
+   "frage": "Warum nimmt Elena den Hut?",
+   "optionen": [
+    {
+     "bild": "☀️"
+    },
+    {
+     "bild": "🌧️"
+    },
+    {
+     "bild": "❄️"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Die Sonne scheint und es ist heiss. Darum nimmt Elena den Hut.",
+   "stufen": {
+    "D-LE-10": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "s",
+    "o",
+    "n",
+    "e",
+    "sch",
+    "ei",
+    "t",
+    "i",
+    "h",
+    "l",
+    "a",
+    "m",
+    "u",
+    "g",
+    "r",
+    "au",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-328",
+   "saetze": [
+    "Es schneit.",
+    "Es ist kalt.",
+    "Jonas nimmt den Schal.",
+    "Dann geht er raus."
+   ],
+   "frage": "Warum nimmt Jonas den Schal?",
+   "optionen": [
+    {
+     "bild": "❄️"
+    },
+    {
+     "bild": "☀️"
+    },
+    {
+     "bild": "🌧️"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Es schneit und es ist kalt. Darum nimmt Jonas den Schal.",
+   "stufen": {
+    "D-LE-10": 3
+   },
+   "braucht": [
+    "e",
+    "s",
+    "sch",
+    "n",
+    "ei",
+    "t",
+    "i",
+    "k",
+    "a",
+    "l",
+    "j",
+    "o",
+    "m",
+    "d",
+    "g",
+    "h",
+    "r",
+    "au",
+    "w",
+    "u"
+   ]
+  },
+  {
+   "id": "LT-329",
+   "saetze": [
+    "Noah kauft für Oma ein.",
+    "Zuerst kauft er Brot.",
+    "Dann kauft er Käse.",
+    "Am Schluss kauft er Bananen."
+   ],
+   "frage": "Was kauft Noah zuerst?",
+   "optionen": [
+    {
+     "bild": "🍞"
+    },
+    {
+     "bild": "🧀"
+    },
+    {
+     "bild": "🍌"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Zuerst kauft Noah Brot.",
+   "stufen": {
+    "D-LE-10": 3
+   },
+   "braucht": [
+    "n",
+    "o",
+    "a",
+    "h",
+    "k",
+    "au",
+    "f",
+    "t",
+    "ü",
+    "r",
+    "m",
+    "ei",
+    "z",
+    "u",
+    "e",
+    "s",
+    "b",
+    "d",
+    "ä",
+    "sch",
+    "l",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-330",
+   "saetze": [
+    "Leon ist mit Opa im Zoo.",
+    "Zuerst schaut er den Elefanten an.",
+    "Dann schaut er das Zebra an.",
+    "Dann schaut er den Löwen an."
+   ],
+   "frage": "Wen schaut Leon zuerst an?",
+   "optionen": [
+    {
+     "bild": "🐘"
+    },
+    {
+     "bild": "🦓"
+    },
+    {
+     "bild": "🦁"
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Zuerst schaut Leon den Elefanten an.",
+   "stufen": {
+    "D-LE-10": 3
+   },
+   "braucht": [
+    "l",
+    "e",
+    "o",
+    "n",
+    "i",
+    "s",
+    "t",
+    "m",
+    "p",
+    "a",
+    "z",
+    "u",
+    "r",
+    "sch",
+    "au",
+    "d",
+    "f",
+    "b",
+    "ö",
+    "w"
+   ]
+  },
+  {
+   "id": "LT-331",
+   "saetze": [
+    "Die Maus rennt herum.",
+    "Zuerst ist sie in der Tasche.",
+    "Dann ist sie im Haus.",
+    "Am Schluss ist sie im Korb."
+   ],
+   "frage": "Wo ist die Maus am Schluss?",
+   "optionen": [
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐭",
+      "bezug": "🧺",
+      "lage": "in"
+     }
+    },
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐭",
+      "bezug": "👜",
+      "lage": "in"
+     }
+    },
+    {
+     "szene": {
+      "art": "lage",
+      "bild": "🐭",
+      "bezug": "🏠",
+      "lage": "in"
+     }
+    }
+   ],
+   "richtig": 0,
+   "erklaerung": "Am Schluss ist die Maus im Korb.",
+   "stufen": {
+    "D-LE-10": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "m",
+    "au",
+    "s",
+    "r",
+    "e",
+    "n",
+    "t",
+    "h",
+    "u",
+    "z",
+    "i",
+    "a",
+    "sch",
+    "l",
+    "k",
+    "o",
+    "b",
+    "w"
+   ]
+  }
+ ]
+}

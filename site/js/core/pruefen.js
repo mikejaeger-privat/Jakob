@@ -63,6 +63,7 @@ export function pruefe(a, eingabe) {
     }
     case 'menge-legen': {
       if (a.feld === 'muenzen') return { ok: eingabe.summe === a.ziel };
+      if (a.feld === 'lautreihe' || a.feld === 'wortreihe') return { ok: eingabe.anzahl === a.ziel, zuViel: eingabe.anzahl > a.ziel, zuWenig: eingabe.anzahl < a.ziel };
       if (a.feld === 'zehnereiner') return { ok: eingabe.zehner * 10 + eingabe.einer === a.ziel && eingabe.einer <= 9 };
       const zellen = eingabe.zellen || [];
       const ok = zellen.length === a.ziel && (!a.struktur || hatFuenferstruktur(zellen, a.feld));
@@ -74,6 +75,10 @@ export function pruefe(a, eingabe) {
       return { ok, teile: eingabe.map((x) => l.has(k(x))) };
     }
     case 'hoeren-tippen': {
+      if (a.ziehen) {   // eingabe: { element: ort }
+        const ok = a.ziehen.every((z) => eingabe?.[z.element] === z.ort) && Object.keys(eingabe || {}).length === a.ziehen.length;
+        return { ok, teile: a.ziehen.map((z) => eingabe?.[z.element] === z.ort) };
+      }
       const ok = a.reihenfolge === false
         ? eingabe.length === a.loesung.length && a.loesung.every((x) => eingabe.includes(x))
         : gleich(eingabe, a.loesung);
@@ -101,11 +106,12 @@ export function richtigeEingabe(a) {
     case 'legen': return a.loesung.slice();
     case 'menge-legen': {
       if (a.feld === 'muenzen') return { summe: a.ziel };
+      if (a.feld === 'lautreihe' || a.feld === 'wortreihe') return { anzahl: a.ziel };
       if (a.feld === 'zehnereiner') return { zehner: Math.floor(a.ziel / 10), einer: a.ziel % 10 };
       return { zellen: Array.from({ length: a.ziel }, (_, i) => i) };   // Zellen in Lesereihenfolge, Fünfergruppen zuerst
     }
     case 'antippen': return a.loesung.slice();
-    case 'hoeren-tippen': return a.loesung.slice();
+    case 'hoeren-tippen': return a.ziehen ? Object.fromEntries(a.ziehen.map((z) => [z.element, z.ort])) : a.loesung.slice();
     case 'silben': return a.modus === 'zaehlen' ? a.silben.length : a.silben.map((_, i) => i);
     case 'lautplatz': return a.loesung;
     case 'zuordnen': return a.paare.map((_, i) => i);
@@ -124,9 +130,12 @@ export function loesungText(a) {
     case 'legen': return a.loesung.join(' ');
     case 'menge-legen': return a.feld === 'muenzen' ? `${a.ziel / 100} Fr.` : String(a.ziel);
     case 'antippen': return a.loesung.join(', ');
-    case 'hoeren-tippen': return a.loesung.join(', ');
+    case 'hoeren-tippen': return a.ziehen ? a.ziehen.map((z) => `${z.element} → ${z.ort}`).join(', ') : a.loesung.join(', ');
     case 'zuordnen': return a.paare.map(([x, y]) => `${opt(x)} – ${opt(y)}`).join('; ');
-    case 'nachspuren': return a.zeichen;
+    case 'nachspuren': return a.zeichen || a.wort;
+    case 'silben': return a.modus === 'zaehlen' ? String(a.silben.length) : a.silben.join(' – ');
+    case 'lautplatz': return a.loesung;
+    case 'vorlesen': return a.zeige;
     default: return '';
   }
 }

@@ -40,10 +40,15 @@ export async function loeseAufgabe(page, a, falschZuerst = false) {
     }
     case 'reihenfolge': case 'legen': {
       const ziel = a.typ === 'reihenfolge' ? a.teile.map((_, i) => String(i)) : a.loesung.map(String);
-      for (const w of ziel) await page.locator(`.lpool .lkarte[data-wert="${w.replace(/"/g, '\\"')}"]`).first().click();
+      for (const w of ziel) {
+        const karte = await page.locator(`.lpool .lkarte[data-wert="${w.replace(/"/g, '\\"')}"]`).first().elementHandle();
+        await karte.click();
+        if (await karte.evaluate((el) => el.classList.contains('gehoert'))) await karte.click();   // Hörkarte: anhören, dann legen
+      }
       await haken(); return 1;
     }
     case 'menge-legen': {
+      if (a.feld === 'lautreihe' || a.feld === 'wortreihe') { for (let i = 0; i < a.ziel; i++) await k(`.rplatz[data-i="${i}"]`).click(); await haken(); return 1; }
       if (a.feld === 'muenzen') { let rest = a.ziel; for (const w of [...a.muenzen].sort((x, y) => y - x)) while (rest >= w) { await k(`.vorrat-knopf[data-wert="${w}"]`).click(); rest -= w; } }
       else if (a.feld === 'zehnereiner') { for (let i = 0; i < Math.floor(a.ziel / 10); i++) await k('.ze-quelle:not(.einer)').click(); for (let i = 0; i < a.ziel % 10; i++) await k('.ze-quelle.einer').click(); }
       else {
@@ -57,20 +62,43 @@ export async function loeseAufgabe(page, a, falschZuerst = false) {
       for (const w of a.loesung) await k(`[data-wert="${w}"]`).first().click({ force: true });
       await haken(); return 1;
     }
-    case 'hoeren-tippen': { for (const id of a.loesung) await k(`.hding[data-id="${id}"]`).click(); return 1; }
+    case 'hoeren-tippen': {
+      if (a.ziehen) { for (const z of a.ziehen) { await k(`.hding[data-id="${z.element}"]`).click(); await k(`.hort[data-ort="${z.ort}"]`).click({ force: true }); } await haken(); return 1; }
+      for (const id of a.loesung) await k(`.hding[data-id="${id}"]`).click(); return 1;
+    }
     case 'zuordnen': {
       for (let i = 0; i < a.paare.length; i++) { await k(`.zkarte.links[data-i="${i}"]`).click(); await k(`.zkarte.rechts[data-j="${i}"]`).click(); }
       return 1;
     }
     case 'nachspuren': {
-      const striche = await page.evaluate(async (z) => {
+      const striche = await page.evaluate(async (zeichen) => {
         const S = await (await fetch('/data/schrift/basisschrift.json')).json();
         const svg = document.querySelector('.ns-flaeche'); const m = svg.getScreenCTM();
-        return S.zeichen[z].striche.map((st) => st.punkte.filter((_, i) => i % 2 === 0).map(([x, y]) => { const p = new DOMPoint(x, y).matrixTransform(m); return [p.x, p.y]; }));
-      }, a.zeichen);
+        let dx = 0; const aus = [];
+        for (const c of zeichen) {   // wie in der Oberfläche: Zeichen mit Abstand 10 nebeneinander
+          const z = S.zeichen[c];
+          for (const st of z.striche) aus.push(st.punkte.filter((_, i) => i % 2 === 0).map(([x, y]) => { const p = new DOMPoint(x + dx, y).matrixTransform(m); return [p.x, p.y]; }));
+          dx += z.breite + 10;
+        }
+        return aus;
+      }, [...(a.wort || a.zeichen)]);
       for (const st of striche) { await page.mouse.move(st[0][0], st[0][1]); await page.mouse.down(); for (const [x, y] of st.slice(1)) await page.mouse.move(x, y); await page.mouse.up(); }
       await haken(); return 'geuebt';
     }
+    case 'wahl-hoeren': {
+      if (falschZuerst) { const f = a.richtig === 0 ? 1 : 0; await k('.hkarte').nth(f).click(); await haken(); await page.waitForFunction((i) => document.querySelectorAll('.buehne .hkarte')[i].classList.contains('weg'), f, { timeout: 4000 }); }
+      await k('.hkarte').nth(a.richtig).click(); await haken(); return falschZuerst ? 0.5 : 1;
+    }
+    case 'silben': {
+      if (a.modus === 'zaehlen') { for (let i = 0; i < a.silben.length; i++) await k('.trommel').click(); }
+      else for (let i = 0; i < a.silben.length; i++) await page.locator(`.lpool .lkarte[data-wert="${i}"]`).first().click();
+      await haken(); return 1;
+    }
+    case 'lautplatz': {
+      if (falschZuerst) { const f = ['vorne', 'hinten', 'mitte', 'nicht'].find((x) => x !== a.loesung); await k(`.wagen[data-wert="${f}"]`).click(); await page.waitForFunction(() => document.querySelector('.buehne .wagen.weg-leise'), null, { timeout: 4000 }); }
+      await k(`.wagen[data-wert="${a.loesung}"]`).click(); return falschZuerst ? 0.5 : 1;
+    }
+    case 'vorlesen': { await page.click('text=Geklappt'); return 1; }
     default: throw new Error('Bot kennt den Typ nicht: ' + a.typ);
   }
 }

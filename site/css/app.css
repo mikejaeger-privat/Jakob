@@ -106,6 +106,21 @@ body.kindmodus { overflow: hidden; touch-action: manipulation; user-select: none
 .k-start.klein { width: 104px; height: 104px; }
 .k-start.klein .sym { width: 54px; height: 54px; }
 .k-frei .kind-inhalt { grid-template-rows: 1fr auto; gap: 18px; padding-bottom: 6vh; }
+/* Kurze Szenen (Zeig-Runde, Schatzkarte, Stern) und Schlusskarte */
+.k-szene .kind-unten, .k-schluss .kind-unten { justify-content: center; }
+.szene { display: flex; align-items: flex-end; justify-content: center; gap: clamp(12px, 4vw, 48px); }
+.szene .k-fuchs { width: min(38vh, 44vw); cursor: default; }
+.szene-stern, .szene-schatz { width: min(22vh, 26vw); aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--moos-hell); color: var(--fuchs); box-shadow: var(--schatten); }
+.szene-stern .sym, .szene-schatz .sym { width: 62%; height: 62%; }
+.szene-stern.gross { width: min(28vh, 32vw); animation: sternAuf .8s cubic-bezier(.3, 1.5, .5, 1) both; }
+.szene-schatz.offen { animation: sternAuf .8s cubic-bezier(.3, 1.5, .5, 1) both; }
+@keyframes sternAuf { from { transform: scale(.2) rotate(-25deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.schluss { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 12px; width: min(100%, 1100px); }
+.schluss-bild { min-width: 0; }
+.schluss .k-fuchs { width: min(26vh, 22vw); cursor: default; }
+.schluss .k-fuchs .fuchs:not(.gross) { width: 100%; }
+@media (max-width: 700px) { .schluss { grid-template-columns: 1fr; justify-items: center; } .schluss .k-fuchs { width: 34vw; } }
+@media (prefers-reduced-motion: reduce) { .szene-stern.gross, .szene-schatz.offen { animation: none; } }
 
 /* Tagesweg */
 .weg { position: relative; width: min(100%, 1100px, 200vh); aspect-ratio: 1000 / 440; }
@@ -207,6 +222,7 @@ body.kindmodus { overflow: hidden; touch-action: manipulation; user-select: none
 .wkarte.wort { min-width: 130px; font-size: 52px; font-weight: 700; padding: 14px 26px; }
 .wkarte.wort.lang { padding: 12px 20px; } .wkarte.wort.lang .k-text { font-size: 38px; white-space: nowrap; }
 .wkarte .emoji, .hding .emoji, .zding .emoji, .lkarte .emoji, .zkarte .emoji { font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; line-height: 1; }
+.lkarte.gehoert { box-shadow: 0 0 0 5px var(--fuchs), var(--schatten); transform: translateY(-4px); }
 .wkarte .emoji { font-size: clamp(64px, 10vw, 104px); }
 .k-text { font: 700 52px/1 var(--schrift); }
 .wkarte.weg { visibility: hidden; }
@@ -439,9 +455,11 @@ button.ze-einer { padding: 0; min-width: 44px; min-height: 44px; background-clip
 .al-stufen { display: flex; gap: 8px; margin: 8px 0 4px; flex-wrap: wrap; }
 .btn.aus { opacity: .4; pointer-events: none; }
 .al-texte { margin: 4px 0 0; padding-left: 1.4em; }
+.lw-eingabe { display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items: end; } .lw-liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; } .lw-liste li { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border-top: 1px solid var(--linie); padding-top: 8px; } .lw-liste li .btn { margin-left: auto; }
+@media (max-width: 640px) { .lw-eingabe { grid-template-columns: 1fr; } }
 
 @media (max-width: 900px) {
-  .typ-zahl, .typ-zaehlen, .typ-zuordnen { flex-direction: column; }
+  .typ-zahl, .typ-zaehlen { flex-direction: column; }
   .hreihe.lang { flex-direction: column; gap: 4px; padding: 8px; } .hreihe.lang .hstart { margin: 0; font-size: 40px; } .hreihe.lang .hding { width: 60px; min-width: 60px; min-height: 60px; } .hreihe.lang .hding .emoji { font-size: 40px; }
 }
 @media (max-width: 640px) {
@@ -460,12 +478,120 @@ button.ze-einer { padding: 0; min-width: 44px; min-height: 44px; background-clip
   .rechnung { font-size: 40px; gap: 8px; }
   .af { min-width: 64px; height: 64px; font-size: 34px; }
   .lplatz { min-width: 70px; height: 70px; } .lkarte { min-width: 64px; height: 64px; } .lkarte .k-text { font-size: 32px; }
+  .typ-zuordnen { gap: 28px; } .zspalte { gap: 10px; } .zkarte { min-width: 112px; min-height: 72px; padding: 6px 10px; } .zkarte .emoji { font-size: 44px; } .zkarte .k-text { font-size: 32px; }
+  .lp-oben { flex-wrap: wrap; gap: 14px; } .lp-laut { min-width: 88px; height: 88px; font-size: 60px; } .lp-zug { gap: 4px; } .wagen { width: 78px; height: 60px; } .lp-trenner { width: 10px; }
   .zaehlfeld { aspect-ratio: 4 / 5; }
 }
 @media (max-height: 700px) and (orientation: landscape) {
   .zf-reihe { grid-template-columns: repeat(5, 58px); gap: 8px; } .taste { height: 54px; font-size: 26px; } .zf-reihe.null { grid-template-columns: 58px; }
   .zahlenfeld { gap: 8px; }
 }
+
+/* ---------- Deutsch: Lesen, Hören, Schreiben ---------- */
+.grossbild { display: grid; place-items: center; min-width: 120px; min-height: 110px; padding: 6px 18px; border-radius: 22px; background: var(--creme); box-shadow: var(--schatten); }
+.grossbild > .emoji { font-size: clamp(72px, 11vw, 128px); line-height: 1.05; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
+.lesetext { color: var(--rinde); letter-spacing: .02em; }
+.lesetext.silbig { display: inline-flex; gap: 3px; }
+.lesetext .silbe { position: relative; display: inline-block; }
+.lesetext.boegen .silbe { padding-bottom: 16px; }
+.lesetext.boegen .silbe::after { content: ""; position: absolute; left: 8%; right: 8%; bottom: 2px; height: 16px; border: 4px solid var(--beere); border-top: 0; border-radius: 0 0 50% 50% / 0 0 100% 100%; }
+.lesetext.mit-luecke { display: inline-flex; align-items: flex-end; gap: 2px; }
+.luecke { display: inline-grid; place-items: center; min-width: .75em; height: 1.1em; margin: 0 2px; border-bottom: 5px dashed var(--moos); color: var(--moos); }
+.luecke.voll { border-bottom-style: solid; border-color: var(--gut); }
+.anlautbild { display: grid; place-items: center; width: 92px; height: 92px; border-radius: 50%; background: var(--creme); box-shadow: var(--schatten); }
+.anlautbild .emoji { font-size: 56px; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
+.anlautbild.versteckt { display: none; }
+.k-buchstabe { font-size: 64px; }
+
+/* Hörkarten */
+.hkarte { width: clamp(110px, 15vw, 150px); height: clamp(110px, 15vw, 150px); border-radius: 28px; border: 0; display: grid; place-items: center; box-shadow: var(--schatten); cursor: pointer; color: #fff; transition: transform .12s ease, opacity .2s ease, box-shadow .2s ease; }
+.hkarte .sym { width: 56%; height: 56%; }
+.f-blau { background: #2f6fbf; } .f-gelb { background: #e2a913; } .f-gruen { background: #3f9a52; }
+.hkarte.gewaehlt { box-shadow: 0 0 0 7px var(--sonne), var(--schatten); transform: scale(1.04); }
+.hkarte.richtig { box-shadow: 0 0 0 7px var(--gut), var(--schatten); } .hkarte.blass { opacity: .35; } .hkarte.weg { visibility: hidden; }
+.hoerinhalt { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 16px; color: #fff; } .hoerinhalt .sym { width: 40px; height: 40px; }
+.typ-wahl-hoeren .wahl { gap: clamp(18px, 4vw, 44px); }
+
+/* Silben: Trommel und Bögen */
+.typ-silben { gap: 22px; }
+.silben-boegen { display: flex; gap: 14px; min-height: 56px; align-items: flex-start; justify-content: center; }
+.sbogen { width: 86px; height: 44px; border: 6px solid var(--beere); border-top: 0; border-radius: 0 0 50% 50% / 0 0 100% 100%; animation: erscheint .25s ease both; }
+.silben-boegen.ok .sbogen { border-color: var(--gut); } .silben-boegen.loesung .sbogen { border-color: var(--sonne); }
+.trommel-reihe { display: flex; align-items: center; gap: 24px; }
+.trommel { width: 150px; height: 130px; border: 0; background: transparent; cursor: pointer; padding: 0; }
+.trommel:active { transform: scale(.94); }
+.trommel-svg { width: 100%; height: 100%; }
+.tr-fell { fill: #f4e6c8; stroke: #8a5a3c; stroke-width: 4; } .tr-koerper { fill: #d8453b; stroke: #8a2a22; stroke-width: 4; } .tr-schnur { fill: none; stroke: #f4e6c8; stroke-width: 4; stroke-linejoin: round; }
+.k-nochmal.statisch { position: static; }
+
+/* Laut im Wort: Zug mit Wagen */
+.lp-oben { display: flex; gap: 26px; align-items: center; justify-content: center; }
+.lp-laut { display: grid; place-items: center; min-width: 120px; height: 120px; padding: 0 16px; border-radius: 24px; background: var(--creme); box-shadow: var(--schatten); font: 700 84px/1 var(--schrift); color: var(--beere); }
+.lp-zug { display: flex; align-items: flex-end; gap: 8px; }
+.wagen { width: clamp(110px, 14vw, 150px); height: clamp(84px, 10.5vw, 112px); border: 0; border-radius: 16px; background: transparent; cursor: pointer; padding: 4px; }
+.wagen:active { transform: scale(.95); }
+.wagen-svg { width: 100%; height: 100%; }
+.wg-lok { fill: var(--beere); } .wg-wagen { fill: #c46fc4; } .wg-fenster { fill: #fff6fb; } .wg-rad { fill: #3b2a1f; } .wg-leer { fill: none; stroke: var(--rinde-2); stroke-width: 5; stroke-dasharray: 10 7; } .wg-strich { stroke: var(--rinde-2); stroke-width: 6; stroke-linecap: round; }
+.wagen.ok { box-shadow: 0 0 0 6px var(--gut); } .wagen.loesung { box-shadow: 0 0 0 6px var(--sonne); background: rgba(244, 197, 66, .2); } .wagen.weg-leise { opacity: .35; }
+.lp-trenner { width: 28px; }
+
+/* Vorlesen (mit einer erwachsenen Person) */
+.vorlese-text { font-size: clamp(48px, 8vw, 84px); text-align: center; max-width: 90vw; }
+.vorlese-knoepfe { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; }
+.btn.gross { min-height: 64px; padding: 14px 26px; font-size: 1.2rem; }
+.vorlese-hinweis { font-size: 16px; color: var(--rinde-2); max-width: 520px; text-align: center; }
+
+/* Laute und Wörter zählen: Plättchen bzw. Karten in einer Reihe */
+.rreihe { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; padding: 14px 18px; border-radius: 22px; background: var(--creme); }
+.rplatz { width: 72px; height: 72px; border-radius: 50%; border: 3px dashed var(--stein-rand); background: transparent; cursor: pointer; }
+.rplatz.voll { border: 0; background: #d8453b; box-shadow: inset 0 -5px 0 rgba(0, 0, 0, .18); }
+.rplatz.karte { border-radius: 12px; width: 64px; height: 88px; }
+.rplatz.karte.voll { background: var(--see); }
+.rplatz.ok { box-shadow: 0 0 0 5px var(--gut); } .rplatz.loesung { box-shadow: 0 0 0 5px var(--sonne); }
+
+/* Buchstaben oder Wörter antippen */
+.lesetext.tippbar { font-size: clamp(48px, 8vw, 80px); display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; }
+.zielzeichen { font: 700 clamp(48px, 9vh, 84px)/1 var(--schrift-schule, var(--schrift)); color: var(--rinde-2); background: var(--moos-hell); border-radius: 18px; padding: 8px 26px 14px; margin-bottom: 10px; letter-spacing: .12em; }
+.lesetext.tippbar.woerter { font-size: clamp(36px, 5.5vw, 56px); gap: 14px; }
+.tteil { display: inline-grid; place-items: center; min-width: 56px; padding: 2px 6px; border-radius: 14px; cursor: pointer; border: 3px solid transparent; }
+.tteil.markiert { background: rgba(244, 197, 66, .55); border-color: var(--sonne); }
+.tteil.fest, .tteil.ok { background: rgba(47, 125, 74, .25); border-color: var(--gut); } .tteil.loesung { background: rgba(244, 197, 66, .75); }
+.tleer { width: 16px; }
+
+/* Anlauttabelle (Hilfe beim Schreiben) */
+.anlauttabelle { position: fixed; inset: 6vh 4vw; z-index: 45; display: grid; grid-template-rows: 1fr auto; gap: 12px; padding: 18px; border-radius: 24px; background: var(--creme); box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
+.at-gitter { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; overflow-y: auto; align-content: start; }
+.at-feld { display: grid; grid-template-columns: auto auto; align-items: center; justify-content: center; gap: 6px; min-height: 72px; border-radius: 14px; border: 0; background: var(--moos-hell); color: var(--rinde); cursor: pointer; }
+.at-zeichen { font: 700 30px var(--schrift); } .at-feld .emoji { font-size: 34px; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
+.at-zu { justify-self: center; }
+
+/* Szenen mit Orten (Ding an einen Ort bringen) */
+.hfrei.mit-orten .hort { position: absolute; z-index: 1; border-radius: 18px; border: 3px dashed var(--stein-rand); background: transparent; cursor: pointer; }
+.hfrei.mit-orten .hding { z-index: 5; } .hfrei .hding.deko { pointer-events: none; }
+
+/* Wort legen: Lautkästchen, Abschreiben */
+.lziel.laute .lplatz { min-width: 84px; height: 92px; border-radius: 12px; }
+.lfest.ende { font-size: 60px; color: var(--rinde); padding: 0 2px; }
+.abschreiben { display: flex; align-items: center; gap: 18px; padding: 6px 18px; border-radius: 20px; background: var(--creme); box-shadow: var(--schatten); }
+.vorlage-text { font-size: clamp(44px, 7vw, 70px); }
+.vorlage-text.zugedeckt { color: transparent; background: repeating-linear-gradient(45deg, var(--stein) 0 12px, var(--stein-rand) 12px 24px); border-radius: 12px; }
+.richtung.lese .sym { width: 44px; height: 44px; color: var(--beere); }
+
+/* Nachspuren eines Worts */
+.typ-nachspuren.wort .ns-rahmen { aspect-ratio: auto; height: auto; width: min(96vw, 1100px); }
+.typ-nachspuren.wort .ns-flaeche { height: auto; max-height: 58vh; }
+
+/* Lage-Szenen: Ding auf, unter, neben, in, vor, hinter einem Bezug */
+.szene.lage { position: relative; display: inline-block; width: 150px; height: 140px; }
+.szene.lage .emoji { position: absolute; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; line-height: 1; transform: translate(-50%, -50%); }
+.szene.lage .bezug { font-size: 76px; left: 50%; top: 58%; z-index: 2; }
+.szene.lage .ding { font-size: 44px; left: 50%; top: 50%; z-index: 3; }
+.szene.lage.auf .ding { top: 16%; } .szene.lage.unter .bezug { top: 38%; } .szene.lage.unter .ding { top: 88%; }
+.szene.lage.neben .bezug { left: 34%; } .szene.lage.neben .ding { left: 84%; top: 66%; }
+.szene.lage.in .ding { font-size: 34px; top: 58%; }
+.szene.lage.vor .ding { top: 74%; left: 56%; font-size: 50px; z-index: 4; }
+.szene.lage.hinter .ding { top: 38%; left: 62%; z-index: 1; }
+.wkarte .szene.lage { transform: scale(.9); }
 
 /* ---------- Elternbereich und Einrichtung ---------- */
 body.elternmodus { background: var(--wiese); }
@@ -538,3 +664,14 @@ details summary { cursor: pointer; color: var(--moos); margin: 6px 0; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 @media (prefers-reduced-transparency: reduce) { .dlg::backdrop { background: rgba(20, 30, 24, .8); } }
+
+/* --- Sammelbild (Belohnung): eine Szene füllt sich Teil für Teil. Das neue Teil wächst aus dem Boden. --- */
+.sammelbild { display: block; width: 100%; height: auto; border-radius: 24px; background: var(--creme); box-shadow: var(--schatten); }
+.sammelbild.klein { border-radius: 14px; box-shadow: none; }
+.sammelbild .teil > g { transform-box: fill-box; transform-origin: 50% 100%; }
+.sammelbild .teil.neu > g { animation: sbild-auftauchen .7s cubic-bezier(.34, 1.56, .64, 1) both; }
+@keyframes sbild-auftauchen { from { transform: scale(.2); opacity: 0; } 45% { opacity: 1; } to { transform: scale(1); opacity: 1; } }
+@keyframes sbild-einblenden { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .sammelbild .teil.neu > g { animation: sbild-einblenden .6s ease both !important; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sammelbild { filter: brightness(.9); } }
+:root[data-theme="dark"] .sammelbild { filter: brightness(.9); }

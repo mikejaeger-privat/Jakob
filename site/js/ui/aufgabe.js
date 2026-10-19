@@ -49,6 +49,9 @@ export async function spieleAufgabe(wurzel, a, { modus = 'normal', fortschritt =
       spur: (punkte) => zeigeSpur(punkte),
       fehlversuch: () => fehlversuch(),
       fertigRichtig: () => richtig(),
+      vorlesen: (ok) => { if (zustand === 'warte') { klang(ok ? 'richtig' : 'tipp'); abschluss(ok ? 1 : 'geuebt'); } },
+      anlaute: () => (G.B?.liste || []).filter((b) => Z.buchstaben?.frei?.[b.id])
+        .map((b) => ({ zeichen: b.anzeige.split(' ')[0], wort: b.wort, bild: (G.W?.woerter || []).find((w) => w.wort === b.wort)?.bild || '' })).filter((x) => x.bild),
     };
     const bauer = TYPEN[a.typ];
     if (!bauer) throw new Error('Aufgabentyp fehlt in der Oberfläche: ' + a.typ);
@@ -90,7 +93,8 @@ export async function spieleAufgabe(wurzel, a, { modus = 'normal', fortschritt =
       const text = a.sprich || a.frage;
       if (!stimmeDa()) return;
       let ok = await sprich(text);
-      if (ok && a.vorlesen && a.typ === 'wahl-wort' && !(a.sprich || '').includes(String(a.vorlesen))) ok = await sprich(String(a.vorlesen));
+      // Was gehört werden soll (Wort, Silbe, Satz), kommt nach dem Auftrag, wenn es nicht schon darin steht
+      if (ok && a.vorlesen && !(a.sprich || a.frage || '').includes(String(a.vorlesen))) ok = await sprich(String(a.vorlesen));
       if (ok && T.namen && zustand === 'warte') {
         for (let i = 0; i < T.karten.length && ok; i++) {
           if (!T.namen[i] || T.karten[i].classList.contains('weg')) continue;
@@ -118,6 +122,7 @@ export async function spieleAufgabe(wurzel, a, { modus = 'normal', fortschritt =
     async function onHilfe() {
       if (zustand !== 'warte') return;
       if (!hilfe && versuche === 0) { hilfe = true; T.erleichtere(null, null); }
+      if (T.hilfe) T.hilfe();
       await sage(a.hinweis, 1200);
       if (zustand === 'warte') await T.demo();
     }
@@ -147,6 +152,8 @@ export async function spieleAufgabe(wurzel, a, { modus = 'normal', fortschritt =
       T.richtig();
       klang('richtig');
       rahmen.classList.add('freut');
+      // Beim Lesen wird der Text erst nach der Antwort vorgesprochen
+      if (a.typ === 'bild-wort' && stimmeDa()) await sprich(String(a.sprichNachher ?? a.zeige));
       await sage(versuche ? wahl(LOB_SPAETER) : wahl(LOB), 700);
       await warte(300);
       abschluss(wert);

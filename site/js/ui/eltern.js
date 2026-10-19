@@ -9,6 +9,8 @@ import { stimmAbschnitt } from './stimmtest.js';
 import { setzeTon } from '../app/klang.js';
 import { stopp } from '../app/sprache.js';
 import { symbol } from './figuren.js';
+import { spielbar } from './baustein.js';
+import { zerlege } from '../deutsch/lib.js';
 
 const TEILE = [['ueberblick', 'Überblick'], ['buchstaben', 'Buchstaben'], ['mathematik', 'Mathematik'], ['lernwoerter', 'Lernwörter'], ['aufgaben', 'Aufgaben'], ['einstellungen', 'Einstellungen'], ['daten', 'Daten'], ['grenzen', 'Grenzen']];
 const OFFEN_MS = 15 * 60 * 1000;
@@ -61,25 +63,36 @@ function pinTor(main, wurzel, rest) {
 // --- Aufgaben ansehen: jede Stufe im Kinderbereich ausprobieren, ohne dass etwas gespeichert wird ---
 function teilAufgaben(el) {
   const grenze = Z.einstellungen.zahlenraum || 20;
-  const gruppen = G.k.M.gruppen || [];
-  const nachGruppe = new Map();
-  for (const f of G.k.M.fertigkeiten) { if (!nachGruppe.has(f.gruppe)) nachGruppe.set(f.gruppe, []); nachGruppe.get(f.gruppe).push(f); }
-  const gruppenName = (id) => (gruppen.find((g) => g.id === id) || {}).name || id;
+  const frei = Object.entries(Z.buchstaben?.frei || {}).filter(([, v]) => v).map(([k]) => k);
   const stufenKnopf = (f, s, st) => {
-    const frei = (st.raum ?? 10) <= grenze;
-    return frei
+    const ok = spielbar(f, s, { vorschau: true });
+    let grund = '';
+    if (!ok) {
+      if (f.id.startsWith('M-')) grund = `Braucht Zahlenraum bis ${st.raum}`;
+      else if (f.quelle === 'eltern') grund = 'Erst mit eingetragenen Lernwörtern (unter «Lernwörter»)';
+      else if (st.auswahl) grund = `Braucht eine der Verbindungen ${st.auswahl.join(', ')} (Buchstabenplan)`;
+      else grund = 'Mit dem jetzigen Buchstabenplan nicht möglich';
+    }
+    return ok
       ? h('a.btn.klein', { href: `#/vorschau/${f.id}/${s}`, title: st.text }, `Stufe ${s}`)
-      : h('span.btn.klein.aus', { 'aria-disabled': 'true', title: `Braucht Zahlenraum bis ${st.raum}` }, `Stufe ${s}`);
+      : h('span.btn.klein.aus', { 'aria-disabled': 'true', title: grund }, `Stufe ${s}`);
   };
   const eintrag = (f) => h('li',
-    h('div.al-name', h('strong', f.name), f.kern === true ? null : h('span.chip', 'Erweiterung')),
+    h('div.al-name', h('strong', f.name), f.kern === true ? null : h('span.chip', f.kern === 'eltern' ? 'mit Lernwörtern' : 'Erweiterung')),
     h('div.al-stufen', Object.entries(f.stufen).map(([s, st]) => stufenKnopf(f, s, st))),
     h('ol.al-texte.leise.klein', Object.values(f.stufen).map((st) => h('li', st.text))));
+  const abschnitte = [];
+  for (const [fach, katalog] of [['Deutsch', G.k.D], ['Mathematik', G.k.M]]) {
+    const nachGruppe = new Map();
+    for (const f of katalog.fertigkeiten) { if (!nachGruppe.has(f.gruppe)) nachGruppe.set(f.gruppe, []); nachGruppe.get(f.gruppe).push(f); }
+    const name = (id) => (katalog.gruppen.find((g) => g.id === id) || {}).name || id;
+    for (const [g, liste] of nachGruppe) abschnitte.push(h('section.blatt', h('h2', `${fach}: ${name(g)}`), h('ul.aufgabenliste', liste.map(eintrag))));
+  }
   leere(el,
     h('section.blatt', h('h2', 'Aufgaben ansehen'),
       h('p', 'Hier lässt sich jede Stufe so ausprobieren, wie das Kind sie sieht und hört: drei Aufgaben, danach zurück hierher. Die Antworten zählen nicht für den Stand.'),
-      h('p.leise.klein', `Freigegebener Zahlenraum: bis ${grenze} (unter «Mathematik» änderbar). Stufen mit grösserem Zahlenraum sind ausgegraut. Deutsch folgt mit Etappe 4.`)),
-    [...nachGruppe].map(([g, liste]) => h('section.blatt', h('h2', `Mathematik: ${gruppenName(g)}`), h('ul.aufgabenliste', liste.map(eintrag)))));
+      h('p.leise.klein', `Deutsch zeigt nur Buchstaben aus dem Buchstabenplan (eingeführt: ${frei.length}). Mathematik bis ${grenze} (unter «Mathematik» änderbar). Ausgegraute Stufen sind mit dem jetzigen Stand nicht möglich; der Grund steht im Hinweis des Knopfs.`)),
+    abschnitte);
 }
 
 // --- Überblick ---
@@ -151,9 +164,35 @@ const MONATE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'A
 const monatText = (m) => m.split('-').map((x) => MONATE[Number(x) - 1]).join(' bis ');
 
 // --- Lernwörter (ab Etappe 6) ---
-function teilLernwoerter(el) {
-  leere(el, h('section.blatt', h('h2', 'Lernwörter der Woche'),
-    h('p', 'Hier lassen sich bald die Lernwörter der Schule eintragen, mit dem Datum des Wörtertests. Die App übt sie dann im Karteikasten.')));
+function teilLernwoerter(el, neu) {
+  const frei = new Set(Object.entries(Z.buchstaben?.frei || {}).filter(([, v]) => v).map(([k]) => k));
+  const aktiv = (Z.lernwoerter || []).filter((x) => !x.geloescht);
+  const wort = h('input.feld', { type: 'text', maxlength: 16, autocomplete: 'off', autocapitalize: 'off', spellcheck: false, 'aria-label': 'Lernwort', placeholder: 'z. B. Sonne' });
+  const datum = h('input.feld', { type: 'date', 'aria-label': 'Datum des Wörtertests' });
+  const fehler = h('p.fehlertext', { role: 'alert' });
+  const hinzufuegen = () => {
+    const w = wort.value.trim().replace(/ß/g, 'ss');
+    if (!/^[A-Za-zÄÖÜäöü]{2,16}$/.test(w)) { fehler.textContent = 'Bitte ein einzelnes Wort aus Buchstaben (2 bis 16).'; return; }
+    if (aktiv.some((x) => x.wort === w)) { fehler.textContent = 'Dieses Wort steht schon in der Liste.'; return; }
+    Z.lernwoerter = [...(Z.lernwoerter || []), { id: `lw-${Date.now().toString(36)}`, wort: w, test: datum.value ? tagNr(datum.value) : null, angelegt: heute() }];
+    speichere('lernwoerter'); meldung(`«${w}» hinzugefügt.`); neu();
+  };
+  wort.addEventListener('keydown', (e) => { if (e.key === 'Enter') hinzufuegen(); });
+  const entfernen = (x) => { x.geloescht = true; speichere('lernwoerter'); meldung(`«${x.wort}» entfernt.`); neu(); };
+  const nichtFrei = (w) => zerlege(w).filter((e) => !frei.has(e));
+  leere(el,
+    h('section.blatt', h('h2', 'Lernwörter der Woche'),
+      h('p', 'Hier die Lernwörter der Schule eintragen, wenn es welche gibt. Die App übt sie durch Abschreiben und Legen aus Buchstaben; die Stimme spricht sie vor. Die Schreibweise prüft die App nicht, bitte genau abtippen.'),
+      h('div.lw-eingabe', h('label.formular', 'Wort', wort), h('label.formular', 'Wörtertest am (freiwillig)', datum),
+        h('div.knopfreihe', h('button.btn.haupt', { type: 'button', onclick: hinzufuegen }, 'Hinzufügen'))), fehler),
+    h('section.blatt', h('h2', aktiv.length ? `Liste (${aktiv.length})` : 'Liste'),
+      aktiv.length ? h('ul.lw-liste', aktiv.map((x) => {
+        const fehlt = nichtFrei(x.wort);
+        return h('li', h('strong', x.wort), x.test ? h('span.leise.klein', ` Test am ${datumText(x.test)}`) : null,
+          fehlt.length ? h('span.chip', `wird geübt, sobald eingeführt: ${fehlt.join(', ')}`) : null,
+          h('button.btn.leise.klein', { type: 'button', onclick: () => entfernen(x) }, 'Entfernen'));
+      })) : h('p.leise', 'Noch keine Lernwörter eingetragen.'),
+      h('p.leise.klein', 'Die App übt nur Wörter, deren Buchstaben und Verbindungen im Buchstabenplan als eingeführt markiert sind. Enthält ein Lernwort zum Beispiel «st», bitte «St st» im Buchstabenplan abhaken, wenn die Klasse es schon kennt.')));
 }
 
 // --- Einstellungen ---

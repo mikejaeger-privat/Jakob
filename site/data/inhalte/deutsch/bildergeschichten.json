@@ -1,0 +1,34 @@
+{
+ "fach": "D",
+ "teil": "bildergeschichten",
+ "stand": "2026-10-19",
+ "hinweis": "Bildergeschichten für D-WS-05. «bilder» in der richtigen Reihenfolge, «sprich» je Bild ein Satz. Stufe 1 und 2: die Reihenfolge ist ohne Geschichte eindeutig, die Sätze beschreiben nur das Bild. Stufe 3: Die Geschichte wird zuerst vorgelesen.",
+ "bildergeschichten": [
+  { "id": "BG-101", "bilder": ["🥚", "🐣", "🐥"], "sprich": ["Das ist ein Ei.", "Ein Küken schlüpft aus dem Ei.", "Das Küken läuft herum."], "stufen": { "D-WS-05": 1 } },
+  { "id": "BG-102", "bilder": ["☁️", "🌧️", "🌈"], "sprich": ["Am Himmel sind Wolken.", "Es regnet.", "Ein Regenbogen leuchtet am Himmel."], "stufen": { "D-WS-05": 1 } },
+  { "id": "BG-104", "bilder": ["🐑", "🧶", "🧣"], "sprich": ["Das Schaf hat ein dickes Fell.", "Das ist ein Knäuel Wolle.", "Das ist ein warmer Schal."], "stufen": { "D-WS-05": 1 } },
+  { "id": "BG-105", "bilder": ["🌳", "🪵", "🪑"], "sprich": ["Das ist ein Baum.", "Das ist Holz.", "Das ist ein Stuhl aus Holz."], "stufen": { "D-WS-05": 1 } },
+  { "id": "BG-106", "bilder": ["🐮", "🥛", "🧀"], "sprich": ["Das ist eine Kuh.", "Das ist ein Glas Milch.", "Das ist ein Stück Käse."], "stufen": { "D-WS-05": 1 } },
+  { "id": "BG-107", "bilder": [{ "art": "groesse", "bild": "🌱", "gross": false }, { "art": "groesse", "bild": "🌱", "gross": true }, "🌻"], "sprich": ["Eine kleine Pflanze wächst aus der Erde.", "Die Pflanze ist schon gross.", "Die Sonnenblume blüht."], "stufen": { "D-WS-05": 1 } },
+  { "id": "BG-108", "bilder": [{ "art": "groesse", "bild": "🎈", "gross": false }, { "art": "groesse", "bild": "🎈", "gross": true }, "💥"], "sprich": ["Der Ballon ist noch klein.", "Der Ballon ist gross.", "Peng! Der Ballon platzt."], "stufen": { "D-WS-05": 1 } },
+  { "id": "BG-109", "bilder": ["🌸", "🍏", "🍎"], "sprich": ["Am Baum blüht eine Blüte.", "Ein grüner Apfel wächst.", "Der Apfel ist rot und reif."], "stufen": { "D-WS-05": 1 } },
+  { "id": "BG-110", "bilder": ["🐣", "🐥", "🐔"], "sprich": ["Ein Küken schlüpft.", "Das Küken wächst.", "Jetzt ist es ein Huhn."], "stufen": { "D-WS-05": 1 } },
+
+  { "id": "BG-201", "bilder": ["👶", "👧", "👩", "👵"], "sprich": ["Das ist ein Baby.", "Das ist ein Mädchen.", "Das ist eine Frau.", "Das ist eine Oma."], "stufen": { "D-WS-05": 2 } },
+  { "id": "BG-202", "bilder": ["🥚", "🐣", "🐥", "🐔"], "sprich": ["Das ist ein Ei.", "Ein Küken schlüpft aus dem Ei.", "Das Küken läuft herum.", "Jetzt ist es ein Huhn."], "stufen": { "D-WS-05": 2 } },
+  { "id": "BG-203", "bilder": ["🐑", "✂️", "🧶", "🧣"], "sprich": ["Das Schaf hat ein dickes Fell.", "Mit der Schere wird das Schaf geschoren.", "Das ist ein Knäuel Wolle.", "Das ist ein warmer Schal."], "stufen": { "D-WS-05": 2 } },
+  { "id": "BG-204", "bilder": ["🌳", "🪓", "🪵", "🪑"], "sprich": ["Das ist ein grosser Baum.", "Mit der Axt wird der Baum gefällt.", "Das ist Holz.", "Das ist ein Stuhl aus Holz."], "stufen": { "D-WS-05": 2 } },
+  { "id": "BG-205", "bilder": ["❄️", "⛄", "☀️", "💧"], "sprich": ["Es schneit.", "Ein Schneemann steht im Garten.", "Die Sonne scheint warm.", "Vom Schneemann bleibt nur Wasser."], "stufen": { "D-WS-05": 2 } },
+  { "id": "BG-206", "bilder": [{ "art": "groesse", "bild": "🌱", "gross": false }, { "art": "groesse", "bild": "🌱", "gross": true }, "🌷", "💐"], "sprich": ["Eine kleine Pflanze wächst.", "Die Pflanze ist schon gross.", "Die Tulpe blüht.", "Ein Strauss Blumen steht in der Vase."], "stufen": { "D-WS-05": 2 } },
+  { "id": "BG-207", "bilder": ["🌸", "🍏", "🍎", "🥧"], "sprich": ["Am Baum blüht eine Blüte.", "Ein grüner Apfel wächst.", "Der Apfel ist rot und reif.", "Das ist ein Apfelkuchen."], "stufen": { "D-WS-05": 2 } },
+
+  { "id": "BG-301", "bilder": ["🛏️", "🥣", "🎒", "🌙"], "sprich": ["Am Morgen wacht Lea in ihrem Bett auf.", "Dann isst sie ein Müesli.", "Danach geht sie in die Schule.", "Am Abend schläft sie ein."], "stufen": { "D-WS-05": 3 } },
+  { "id": "BG-302", "bilder": ["🥚", "🥣", "🎂", "🍰"], "sprich": ["Noah schlägt Eier in eine Schüssel.", "Dann rührt er den Teig.", "Nach dem Backen ist der Kuchen fertig.", "Zum Schluss essen alle ein Stück."], "stufen": { "D-WS-05": 3 } },
+  { "id": "BG-303", "bilder": ["🧺", "🌳", "🌧️", "☂️"], "sprich": ["Mia packt einen Korb für ein Picknick.", "Dann setzt sie sich unter einen Baum.", "Plötzlich beginnt es zu regnen.", "Schnell öffnet Mia ihren Schirm."], "stufen": { "D-WS-05": 3 } },
+  { "id": "BG-304", "bilder": ["❄️", "🧥", "🛷", "☕"], "sprich": ["Draussen schneit es.", "Luca zieht seine warme Jacke an.", "Dann fährt er mit dem Schlitten den Hügel hinunter.", "Zu Hause trinkt er einen warmen Tee."], "stufen": { "D-WS-05": 3 } },
+  { "id": "BG-305", "bilder": ["🍫", "🪥", "🛏️", "⏰"], "sprich": ["Elena isst ein Stück Schokolade.", "Danach putzt sie ihre Zähne.", "Dann geht sie ins Bett.", "Am Morgen klingelt der Wecker."], "stufen": { "D-WS-05": 3 } },
+  { "id": "BG-306", "bilder": ["💧", { "art": "groesse", "bild": "🌱", "gross": false }, { "art": "groesse", "bild": "🌱", "gross": true }, "🌻"], "sprich": ["Leon giesst die Erde im Garten.", "Bald wächst eine kleine Pflanze.", "Die Pflanze wird jeden Tag grösser.", "Jetzt blüht eine Sonnenblume."], "stufen": { "D-WS-05": 3 } },
+  { "id": "BG-307", "bilder": ["🍞", "🔪", "🧈", "🍯"], "sprich": ["Nina kauft beim Bäcker ein Brot.", "Zu Hause schneidet Opa das Brot.", "Dann streicht Nina Butter darauf.", "Zum Schluss kommt Honig auf das Brot."], "stufen": { "D-WS-05": 3 } },
+  { "id": "BG-309", "bilder": [{ "art": "groesse", "bild": "🎈", "gross": false }, { "art": "groesse", "bild": "🎈", "gross": true }, "🌳", "💥"], "sprich": ["Jonas bläst einen Ballon auf.", "Der Ballon wird gross und rund.", "Der Wind trägt den Ballon in einen Baum.", "Peng! Ein Ast sticht in den Ballon."], "stufen": { "D-WS-05": 3 } }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "fach": "D",
+ "teil": "gegenteile",
+ "stand": "2026-10-19",
+ "hinweis": "Gegenteile für D-WS-02. Jedes Paar: a und b mit Wort und Bild (Emoji oder Szene). «begriff» fasst gleiche Gegenteile zusammen, die nie zusammen in einer Aufgabe vorkommen. «satz» und «satzB» sind gehörte Sätze mit dem Wort aus a bzw. b (Stufe 3).",
+ "gegenteile": [
+  { "id": "GT-01", "begriff": "gross-klein", "a": { "wort": "gross", "szene": { "art": "groesse", "bild": "🐘", "gross": true } }, "b": { "wort": "klein", "szene": { "art": "groesse", "bild": "🐘", "gross": false } }, "satz": "Der Elefant ist gross.", "satzB": "Der Elefant ist klein." },
+  { "id": "GT-02", "begriff": "heiss-kalt", "a": { "wort": "heiss", "bild": "🔥" }, "b": { "wort": "kalt", "bild": "⛄" }, "satz": "Das Feuer ist heiss.", "satzB": "Der Schneemann ist kalt." },
+  { "id": "GT-03", "begriff": "alt-jung", "a": { "wort": "alt", "bild": "👴" }, "b": { "wort": "jung", "bild": "👶" }, "satz": "Der Opa ist alt.", "satzB": "Das Baby ist jung." },
+  { "id": "GT-04", "begriff": "viel-wenig", "a": { "wort": "viel", "szene": { "art": "menge", "bild": "🍎", "anzahl": 6 } }, "b": { "wort": "wenig", "szene": { "art": "menge", "bild": "🍎", "anzahl": 2 } }, "satz": "Hier liegen viele Äpfel.", "satzB": "Hier liegen wenige Äpfel." },
+  { "id": "GT-05", "begriff": "suess-sauer", "a": { "wort": "süss", "bild": "🍭" }, "b": { "wort": "sauer", "bild": "🍋" }, "satz": "Der Lolli ist süss.", "satzB": "Die Zitrone ist sauer." },
+  { "id": "GT-06", "begriff": "schnell-langsam", "a": { "wort": "schnell", "szene": { "art": "aktion", "bild": "🐇", "zeichen": "rennen" } }, "b": { "wort": "langsam", "bild": "🐌" }, "satz": "Der Hase rennt schnell.", "satzB": "Die Schnecke kriecht langsam." },
+  { "id": "GT-07", "begriff": "hell-dunkel", "a": { "wort": "hell", "bild": "☀️" }, "b": { "wort": "dunkel", "bild": "🌙" }, "satz": "Am Tag ist es hell.", "satzB": "In der Nacht ist es dunkel." },
+  { "id": "GT-08", "begriff": "oben-unten", "a": { "wort": "oben", "szene": { "art": "lage", "bild": "🐱", "bezug": "🌳", "lage": "auf" } }, "b": { "wort": "unten", "szene": { "art": "lage", "bild": "🐱", "bezug": "🌳", "lage": "unter" } }, "satz": "Die Katze sitzt oben auf dem Baum.", "satzB": "Die Katze sitzt unten am Baum." },
+  { "id": "GT-09", "begriff": "vor-hinter", "a": { "wort": "vor", "szene": { "art": "lage", "bild": "🐶", "bezug": "🏠", "lage": "vor" } }, "b": { "wort": "hinter", "szene": { "art": "lage", "bild": "🐶", "bezug": "🏠", "lage": "hinter" } }, "satz": "Der Hund steht vor dem Haus.", "satzB": "Der Hund steht hinter dem Haus." },
+  { "id": "GT-10", "begriff": "gross-klein", "a": { "wort": "gross", "szene": { "art": "groesse", "bild": "🏠", "gross": true } }, "b": { "wort": "klein", "szene": { "art": "groesse", "bild": "🏠", "gross": false } }, "satz": "Das Haus ist gross.", "satzB": "Das Haus ist klein." },
+  { "id": "GT-11", "begriff": "gross-klein", "a": { "wort": "gross", "szene": { "art": "groesse", "bild": "🐶", "gross": true } }, "b": { "wort": "klein", "szene": { "art": "groesse", "bild": "🐶", "gross": false } }, "satz": "Der Hund ist gross.", "satzB": "Der Hund ist klein." },
+  { "id": "GT-12", "begriff": "viel-wenig", "a": { "wort": "viel", "szene": { "art": "menge", "bild": "⭐", "anzahl": 6 } }, "b": { "wort": "wenig", "szene": { "art": "menge", "bild": "⭐", "anzahl": 2 } }, "satz": "Am Himmel sind viele Sterne.", "satzB": "Am Himmel sind wenige Sterne." },
+  { "id": "GT-13", "begriff": "alt-jung", "a": { "wort": "alt", "bild": "👵" }, "b": { "wort": "jung", "bild": "👶" }, "satz": "Die Oma ist alt.", "satzB": "Das Baby ist jung." },
+  { "id": "GT-14", "begriff": "schnell-langsam", "a": { "wort": "schnell", "bild": "🚀" }, "b": { "wort": "langsam", "bild": "🐢" }, "satz": "Die Rakete fliegt schnell.", "satzB": "Die Schildkröte geht langsam." },
+  { "id": "GT-16", "begriff": "suess-sauer", "a": { "wort": "süss", "bild": "🍫" }, "b": { "wort": "sauer", "bild": "🍋" }, "satz": "Die Schokolade ist süss.", "satzB": "Die Zitrone ist sauer." },
+  { "id": "GT-17", "begriff": "gross-klein", "a": { "wort": "gross", "szene": { "art": "groesse", "bild": "🌳", "gross": true } }, "b": { "wort": "klein", "szene": { "art": "groesse", "bild": "🌳", "gross": false } }, "satz": "Der Baum ist gross.", "satzB": "Der Baum ist klein." }
+ ]
+}

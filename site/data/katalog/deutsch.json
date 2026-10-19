@@ -102,7 +102,7 @@
      "text": "Ein bis drei Silben"
     },
     "3": {
-     "text": "Ein bis vier Silben; das Bild mit gleich vielen Silben wählen"
+     "text": "Ein bis vier Silben, auch lange Wörter"
     }
    },
    "stichwoerter": [
@@ -1056,7 +1056,7 @@
    "quelle": "inhalte",
    "stimme": "hilfreich",
    "typen": [
-    "wahl-bild"
+    "bild-wort"
    ],
    "stufen": {
     "1": {

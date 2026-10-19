@@ -1,0 +1,3739 @@
+{
+ "fach": "D",
+ "teil": "saetze",
+ "stand": "2026-10-19",
+ "hinweis": "Lese- und Legesätze. D-LE-08: Satz und Ablenker-Sätze sind gleichwertig (jeder kann der gezeigte sein), «unterschied» nennt, worin sie sich unterscheiden. D-SC-05: gehörter Satz, das Kind legt die Wortkarten. «braucht» nach zerlege, ohne Ausnahme für Sichtwörter; die Generatoren rechnen mit Regel 6 nach.",
+ "saetze": [
+  {
+   "id": "SL-101",
+   "satz": "Das ist ein Wal.",
+   "woerter": [
+    "Das",
+    "ist",
+    "ein",
+    "Wal",
+    "."
+   ],
+   "bild": "🐋",
+   "ablenker": [
+    {
+     "satz": "Das ist ein Bär.",
+     "bild": "🐻"
+    },
+    {
+     "satz": "Das ist ein Igel.",
+     "bild": "🦔"
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "ei",
+    "n",
+    "w",
+    "l",
+    "b",
+    "ä",
+    "r",
+    "g",
+    "e"
+   ]
+  },
+  {
+   "id": "SL-102",
+   "satz": "Das ist eine Ente.",
+   "woerter": [
+    "Das",
+    "ist",
+    "eine",
+    "Ente",
+    "."
+   ],
+   "bild": "🦆",
+   "ablenker": [
+    {
+     "satz": "Das ist eine Maus.",
+     "bild": "🐭"
+    },
+    {
+     "satz": "Das ist eine Raupe.",
+     "bild": "🐛"
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "ei",
+    "n",
+    "e",
+    "m",
+    "au",
+    "r",
+    "p"
+   ]
+  },
+  {
+   "id": "SL-103",
+   "satz": "Das ist ein Schaf.",
+   "woerter": [
+    "Das",
+    "ist",
+    "ein",
+    "Schaf",
+    "."
+   ],
+   "bild": "🐑",
+   "ablenker": [
+    {
+     "satz": "Das ist ein Zebra.",
+     "bild": "🦓"
+    },
+    {
+     "satz": "Das ist ein Lama.",
+     "bild": "🦙"
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "ei",
+    "n",
+    "sch",
+    "f",
+    "z",
+    "e",
+    "b",
+    "r",
+    "l",
+    "m"
+   ]
+  },
+  {
+   "id": "SL-104",
+   "satz": "Das ist ein Fisch.",
+   "woerter": [
+    "Das",
+    "ist",
+    "ein",
+    "Fisch",
+    "."
+   ],
+   "bild": "🐟",
+   "ablenker": [
+    {
+     "satz": "Das ist ein Frosch.",
+     "bild": "🐸"
+    },
+    {
+     "satz": "Das ist ein Wolf.",
+     "bild": "🐺"
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "ei",
+    "n",
+    "f",
+    "sch",
+    "r",
+    "o",
+    "w",
+    "l"
+   ]
+  },
+  {
+   "id": "SL-105",
+   "satz": "Das ist eine Rose.",
+   "woerter": [
+    "Das",
+    "ist",
+    "eine",
+    "Rose",
+    "."
+   ],
+   "bild": "🌹",
+   "ablenker": [
+    {
+     "satz": "Das ist eine Krone.",
+     "bild": "👑"
+    },
+    {
+     "satz": "Das ist eine Nase.",
+     "bild": "👃"
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "ei",
+    "n",
+    "e",
+    "r",
+    "o",
+    "k"
+   ]
+  },
+  {
+   "id": "SL-106",
+   "satz": "Das ist eine Banane.",
+   "woerter": [
+    "Das",
+    "ist",
+    "eine",
+    "Banane",
+    "."
+   ],
+   "bild": "🍌",
+   "ablenker": [
+    {
+     "satz": "Das ist eine Birne.",
+     "bild": "🍐"
+    },
+    {
+     "satz": "Das ist eine Kiwi.",
+     "bild": "🥝"
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "ei",
+    "n",
+    "e",
+    "b",
+    "r",
+    "k",
+    "w"
+   ]
+  },
+  {
+   "id": "SL-107",
+   "satz": "Das ist ein Auto.",
+   "woerter": [
+    "Das",
+    "ist",
+    "ein",
+    "Auto",
+    "."
+   ],
+   "bild": "🚗",
+   "ablenker": [
+    {
+     "satz": "Das ist ein Sofa.",
+     "bild": "🛋️"
+    },
+    {
+     "satz": "Das ist ein Kanu.",
+     "bild": "🛶"
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "ei",
+    "n",
+    "au",
+    "o",
+    "f",
+    "k",
+    "u"
+   ]
+  },
+  {
+   "id": "SL-108",
+   "satz": "Das ist ein Panda.",
+   "woerter": [
+    "Das",
+    "ist",
+    "ein",
+    "Panda",
+    "."
+   ],
+   "bild": "🐼",
+   "ablenker": [
+    {
+     "satz": "Das ist ein Krokodil.",
+     "bild": "🐊"
+    },
+    {
+     "satz": "Das ist ein Elefant.",
+     "bild": "🐘"
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "ei",
+    "n",
+    "p",
+    "k",
+    "r",
+    "o",
+    "l",
+    "e",
+    "f"
+   ]
+  },
+  {
+   "id": "SL-109",
+   "satz": "Das ist ein Hut.",
+   "woerter": [
+    "Das",
+    "ist",
+    "ein",
+    "Hut",
+    "."
+   ],
+   "bild": "👒",
+   "ablenker": [
+    {
+     "satz": "Das ist ein Schirm.",
+     "bild": "☂️"
+    },
+    {
+     "satz": "Das ist ein Schal.",
+     "bild": "🧣"
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "ei",
+    "n",
+    "h",
+    "u",
+    "sch",
+    "r",
+    "m",
+    "l"
+   ]
+  },
+  {
+   "id": "SL-110",
+   "satz": "Das ist eine Wolke.",
+   "woerter": [
+    "Das",
+    "ist",
+    "eine",
+    "Wolke",
+    "."
+   ],
+   "bild": "☁️",
+   "ablenker": [
+    {
+     "satz": "Das ist eine Kerze.",
+     "bild": "🕯️"
+    },
+    {
+     "satz": "Das ist eine Tomate.",
+     "bild": "🍅"
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "ei",
+    "n",
+    "e",
+    "w",
+    "o",
+    "l",
+    "k",
+    "r",
+    "z",
+    "m"
+   ]
+  },
+  {
+   "id": "SL-111",
+   "satz": "Der Bär schläft.",
+   "woerter": [
+    "Der",
+    "Bär",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🐻",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Löwe schläft.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🦁",
+      "zeichen": "schlafen"
+     }
+    },
+    {
+     "satz": "Der Wolf schläft.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐺",
+      "zeichen": "schlafen"
+     }
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "ä",
+    "sch",
+    "l",
+    "f",
+    "t",
+    "ö",
+    "w",
+    "o"
+   ]
+  },
+  {
+   "id": "SL-112",
+   "satz": "Das Schaf schläft.",
+   "woerter": [
+    "Das",
+    "Schaf",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🐑",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Das Zebra schläft.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🦓",
+      "zeichen": "schlafen"
+     }
+    },
+    {
+     "satz": "Das Kamel schläft.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐫",
+      "zeichen": "schlafen"
+     }
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "sch",
+    "f",
+    "l",
+    "ä",
+    "t",
+    "z",
+    "e",
+    "b",
+    "r",
+    "k",
+    "m"
+   ]
+  },
+  {
+   "id": "SL-113",
+   "satz": "Die Ente schläft.",
+   "woerter": [
+    "Die",
+    "Ente",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🦆",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Die Ameise schläft.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐜",
+      "zeichen": "schlafen"
+     }
+    },
+    {
+     "satz": "Die Raupe schläft.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐛",
+      "zeichen": "schlafen"
+     }
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "e",
+    "n",
+    "t",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "a",
+    "m",
+    "ei",
+    "s",
+    "r",
+    "au",
+    "p"
+   ]
+  },
+  {
+   "id": "SL-114",
+   "satz": "Da sind zwei Enten.",
+   "woerter": [
+    "Da",
+    "sind",
+    "zwei",
+    "Enten",
+    "."
+   ],
+   "bild": {
+    "art": "menge",
+    "bild": "🦆",
+    "anzahl": 2
+   },
+   "ablenker": [
+    {
+     "satz": "Da sind zwei Fische.",
+     "bild": {
+      "art": "menge",
+      "bild": "🐟",
+      "anzahl": 2
+     }
+    },
+    {
+     "satz": "Da sind zwei Igel.",
+     "bild": {
+      "art": "menge",
+      "bild": "🦔",
+      "anzahl": 2
+     }
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "n",
+    "z",
+    "w",
+    "ei",
+    "e",
+    "t",
+    "f",
+    "sch",
+    "g",
+    "l"
+   ]
+  },
+  {
+   "id": "SL-115",
+   "satz": "Da sind zwei Bären.",
+   "woerter": [
+    "Da",
+    "sind",
+    "zwei",
+    "Bären",
+    "."
+   ],
+   "bild": {
+    "art": "menge",
+    "bild": "🐻",
+    "anzahl": 2
+   },
+   "ablenker": [
+    {
+     "satz": "Da sind zwei Wale.",
+     "bild": {
+      "art": "menge",
+      "bild": "🐋",
+      "anzahl": 2
+     }
+    },
+    {
+     "satz": "Da sind zwei Löwen.",
+     "bild": {
+      "art": "menge",
+      "bild": "🦁",
+      "anzahl": 2
+     }
+    }
+   ],
+   "unterschied": "nomen",
+   "stufen": {
+    "D-LE-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "n",
+    "z",
+    "w",
+    "ei",
+    "b",
+    "ä",
+    "r",
+    "e",
+    "l",
+    "ö"
+   ]
+  },
+  {
+   "id": "SL-216",
+   "satz": "Der Hund schläft.",
+   "woerter": [
+    "Der",
+    "Hund",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🐶",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Hund rennt.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐶",
+      "zeichen": "rennen"
+     }
+    },
+    {
+     "satz": "Der Hund frisst.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐶",
+      "zeichen": "essen"
+     }
+    }
+   ],
+   "unterschied": "verb",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "h",
+    "u",
+    "n",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t",
+    "i",
+    "s"
+   ]
+  },
+  {
+   "id": "SL-217",
+   "satz": "Der Bär schläft.",
+   "woerter": [
+    "Der",
+    "Bär",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🐻",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Bär rennt.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐻",
+      "zeichen": "rennen"
+     }
+    },
+    {
+     "satz": "Der Bär frisst.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐻",
+      "zeichen": "essen"
+     }
+    }
+   ],
+   "unterschied": "verb",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "ä",
+    "sch",
+    "l",
+    "f",
+    "t",
+    "n",
+    "i",
+    "s"
+   ]
+  },
+  {
+   "id": "SL-218",
+   "satz": "Die Maus schläft.",
+   "woerter": [
+    "Die",
+    "Maus",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🐭",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Die Maus rennt.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐭",
+      "zeichen": "rennen"
+     }
+    },
+    {
+     "satz": "Die Maus frisst.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐭",
+      "zeichen": "essen"
+     }
+    }
+   ],
+   "unterschied": "verb",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "m",
+    "au",
+    "s",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t",
+    "r",
+    "e",
+    "n",
+    "i"
+   ]
+  },
+  {
+   "id": "SL-219",
+   "satz": "Das Zebra schläft.",
+   "woerter": [
+    "Das",
+    "Zebra",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🦓",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Das Zebra rennt.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🦓",
+      "zeichen": "rennen"
+     }
+    },
+    {
+     "satz": "Das Zebra frisst.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🦓",
+      "zeichen": "essen"
+     }
+    }
+   ],
+   "unterschied": "verb",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "z",
+    "e",
+    "b",
+    "r",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t",
+    "n",
+    "i"
+   ]
+  },
+  {
+   "id": "SL-220",
+   "satz": "Der Löwe schläft.",
+   "woerter": [
+    "Der",
+    "Löwe",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🦁",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Löwe rennt.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🦁",
+      "zeichen": "rennen"
+     }
+    },
+    {
+     "satz": "Der Löwe frisst.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🦁",
+      "zeichen": "essen"
+     }
+    }
+   ],
+   "unterschied": "verb",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "l",
+    "ö",
+    "w",
+    "sch",
+    "ä",
+    "f",
+    "t",
+    "n",
+    "i",
+    "s"
+   ]
+  },
+  {
+   "id": "SL-221",
+   "satz": "Der Hase schläft.",
+   "woerter": [
+    "Der",
+    "Hase",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🐇",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Hase rennt.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐇",
+      "zeichen": "rennen"
+     }
+    },
+    {
+     "satz": "Der Hase frisst.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐇",
+      "zeichen": "essen"
+     }
+    }
+   ],
+   "unterschied": "verb",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "h",
+    "a",
+    "s",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t",
+    "n",
+    "i"
+   ]
+  },
+  {
+   "id": "SL-222",
+   "satz": "Das Schwein schläft.",
+   "woerter": [
+    "Das",
+    "Schwein",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🐷",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Das Schwein rennt.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐷",
+      "zeichen": "rennen"
+     }
+    },
+    {
+     "satz": "Das Schwein frisst.",
+     "bild": {
+      "art": "aktion",
+      "bild": "🐷",
+      "zeichen": "essen"
+     }
+    }
+   ],
+   "unterschied": "verb",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "sch",
+    "w",
+    "ei",
+    "n",
+    "l",
+    "ä",
+    "f",
+    "t",
+    "r",
+    "e",
+    "i"
+   ]
+  },
+  {
+   "id": "SL-223",
+   "satz": "Oma schläft.",
+   "woerter": [
+    "Oma",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "👵",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Oma rennt.",
+     "bild": {
+      "art": "aktion",
+      "bild": "👵",
+      "zeichen": "rennen"
+     }
+    },
+    {
+     "satz": "Oma isst.",
+     "bild": {
+      "art": "aktion",
+      "bild": "👵",
+      "zeichen": "essen"
+     }
+    }
+   ],
+   "unterschied": "verb",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "o",
+    "m",
+    "a",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t",
+    "r",
+    "e",
+    "n",
+    "i",
+    "s"
+   ]
+  },
+  {
+   "id": "SL-224",
+   "satz": "Opa schläft.",
+   "woerter": [
+    "Opa",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "👴",
+    "zeichen": "schlafen"
+   },
+   "ablenker": [
+    {
+     "satz": "Opa rennt.",
+     "bild": {
+      "art": "aktion",
+      "bild": "👴",
+      "zeichen": "rennen"
+     }
+    },
+    {
+     "satz": "Opa isst.",
+     "bild": {
+      "art": "aktion",
+      "bild": "👴",
+      "zeichen": "essen"
+     }
+    }
+   ],
+   "unterschied": "verb",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "o",
+    "p",
+    "a",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t",
+    "r",
+    "e",
+    "n",
+    "i",
+    "s"
+   ]
+  },
+  {
+   "id": "SL-225",
+   "satz": "Die Farbe ist rot.",
+   "woerter": [
+    "Die",
+    "Farbe",
+    "ist",
+    "rot",
+    "."
+   ],
+   "bild": {
+    "art": "farbe",
+    "farbe": "rot"
+   },
+   "ablenker": [
+    {
+     "satz": "Die Farbe ist grün.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "gruen"
+     }
+    },
+    {
+     "satz": "Die Farbe ist blau.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "blau"
+     }
+    }
+   ],
+   "unterschied": "farbe",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "f",
+    "a",
+    "r",
+    "b",
+    "e",
+    "i",
+    "s",
+    "t",
+    "o",
+    "g",
+    "ü",
+    "n",
+    "l",
+    "au"
+   ]
+  },
+  {
+   "id": "SL-226",
+   "satz": "Die Farbe ist blau.",
+   "woerter": [
+    "Die",
+    "Farbe",
+    "ist",
+    "blau",
+    "."
+   ],
+   "bild": {
+    "art": "farbe",
+    "farbe": "blau"
+   },
+   "ablenker": [
+    {
+     "satz": "Die Farbe ist braun.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "braun"
+     }
+    },
+    {
+     "satz": "Die Farbe ist gelb.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "gelb"
+     }
+    }
+   ],
+   "unterschied": "farbe",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "f",
+    "a",
+    "r",
+    "b",
+    "e",
+    "i",
+    "s",
+    "t",
+    "l",
+    "au",
+    "n",
+    "g"
+   ]
+  },
+  {
+   "id": "SL-227",
+   "satz": "Die Farbe ist grün.",
+   "woerter": [
+    "Die",
+    "Farbe",
+    "ist",
+    "grün",
+    "."
+   ],
+   "bild": {
+    "art": "farbe",
+    "farbe": "gruen"
+   },
+   "ablenker": [
+    {
+     "satz": "Die Farbe ist gelb.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "gelb"
+     }
+    },
+    {
+     "satz": "Die Farbe ist schwarz.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "schwarz"
+     }
+    }
+   ],
+   "unterschied": "farbe",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "f",
+    "a",
+    "r",
+    "b",
+    "e",
+    "i",
+    "s",
+    "t",
+    "g",
+    "ü",
+    "n",
+    "l",
+    "sch",
+    "w",
+    "z"
+   ]
+  },
+  {
+   "id": "SL-228",
+   "satz": "Das ist rosa.",
+   "woerter": [
+    "Das",
+    "ist",
+    "rosa",
+    "."
+   ],
+   "bild": {
+    "art": "farbe",
+    "farbe": "rosa"
+   },
+   "ablenker": [
+    {
+     "satz": "Das ist blau.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "blau"
+     }
+    },
+    {
+     "satz": "Das ist grün.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "gruen"
+     }
+    }
+   ],
+   "unterschied": "farbe",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "r",
+    "o",
+    "b",
+    "l",
+    "au",
+    "g",
+    "ü",
+    "n"
+   ]
+  },
+  {
+   "id": "SL-229",
+   "satz": "Das ist braun.",
+   "woerter": [
+    "Das",
+    "ist",
+    "braun",
+    "."
+   ],
+   "bild": {
+    "art": "farbe",
+    "farbe": "braun"
+   },
+   "ablenker": [
+    {
+     "satz": "Das ist blau.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "blau"
+     }
+    },
+    {
+     "satz": "Das ist rot.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "rot"
+     }
+    }
+   ],
+   "unterschied": "farbe",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "b",
+    "r",
+    "au",
+    "n",
+    "l",
+    "o"
+   ]
+  },
+  {
+   "id": "SL-230",
+   "satz": "Das ist gelb.",
+   "woerter": [
+    "Das",
+    "ist",
+    "gelb",
+    "."
+   ],
+   "bild": {
+    "art": "farbe",
+    "farbe": "gelb"
+   },
+   "ablenker": [
+    {
+     "satz": "Das ist grün.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "gruen"
+     }
+    },
+    {
+     "satz": "Das ist rosa.",
+     "bild": {
+      "art": "farbe",
+      "farbe": "rosa"
+     }
+    }
+   ],
+   "unterschied": "farbe",
+   "stufen": {
+    "D-LE-08": 2
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "i",
+    "t",
+    "g",
+    "e",
+    "l",
+    "b",
+    "r",
+    "ü",
+    "n",
+    "o"
+   ]
+  },
+  {
+   "id": "SL-331",
+   "satz": "Die Maus ist im Korb.",
+   "woerter": [
+    "Die",
+    "Maus",
+    "ist",
+    "im",
+    "Korb",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🐭",
+    "bezug": "🧺",
+    "lage": "in"
+   },
+   "ablenker": [
+    {
+     "satz": "Die Maus ist auf dem Korb.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐭",
+      "bezug": "🧺",
+      "lage": "auf"
+     }
+    },
+    {
+     "satz": "Die Maus ist unter dem Korb.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐭",
+      "bezug": "🧺",
+      "lage": "unter"
+     }
+    },
+    {
+     "satz": "Die Maus ist neben dem Korb.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐭",
+      "bezug": "🧺",
+      "lage": "neben"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "m",
+    "au",
+    "s",
+    "i",
+    "t",
+    "k",
+    "o",
+    "r",
+    "b",
+    "f",
+    "e",
+    "u",
+    "n"
+   ]
+  },
+  {
+   "id": "SL-332",
+   "satz": "Der Vogel ist auf dem Baum.",
+   "woerter": [
+    "Der",
+    "Vogel",
+    "ist",
+    "auf",
+    "dem",
+    "Baum",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🐦",
+    "bezug": "🌳",
+    "lage": "auf"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Vogel ist unter dem Baum.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐦",
+      "bezug": "🌳",
+      "lage": "unter"
+     }
+    },
+    {
+     "satz": "Der Vogel ist neben dem Baum.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐦",
+      "bezug": "🌳",
+      "lage": "neben"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "v",
+    "o",
+    "g",
+    "l",
+    "i",
+    "s",
+    "t",
+    "au",
+    "f",
+    "m",
+    "b",
+    "u",
+    "n"
+   ]
+  },
+  {
+   "id": "SL-333",
+   "satz": "Der Ball ist unter dem Bett.",
+   "woerter": [
+    "Der",
+    "Ball",
+    "ist",
+    "unter",
+    "dem",
+    "Bett",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "⚽",
+    "bezug": "🛏️",
+    "lage": "unter"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Ball ist auf dem Bett.",
+     "bild": {
+      "art": "lage",
+      "bild": "⚽",
+      "bezug": "🛏️",
+      "lage": "auf"
+     }
+    },
+    {
+     "satz": "Der Ball ist neben dem Bett.",
+     "bild": {
+      "art": "lage",
+      "bild": "⚽",
+      "bezug": "🛏️",
+      "lage": "neben"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "a",
+    "l",
+    "i",
+    "s",
+    "t",
+    "u",
+    "n",
+    "m",
+    "au",
+    "f"
+   ]
+  },
+  {
+   "id": "SL-334",
+   "satz": "Der Hund ist im Haus.",
+   "woerter": [
+    "Der",
+    "Hund",
+    "ist",
+    "im",
+    "Haus",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🐶",
+    "bezug": "🏠",
+    "lage": "in"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Hund ist auf dem Haus.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐶",
+      "bezug": "🏠",
+      "lage": "auf"
+     }
+    },
+    {
+     "satz": "Der Hund ist neben dem Haus.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐶",
+      "bezug": "🏠",
+      "lage": "neben"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "h",
+    "u",
+    "n",
+    "i",
+    "s",
+    "t",
+    "m",
+    "au",
+    "f",
+    "b"
+   ]
+  },
+  {
+   "id": "SL-335",
+   "satz": "Die Raupe ist auf dem Blatt.",
+   "woerter": [
+    "Die",
+    "Raupe",
+    "ist",
+    "auf",
+    "dem",
+    "Blatt",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🐛",
+    "bezug": "🍁",
+    "lage": "auf"
+   },
+   "ablenker": [
+    {
+     "satz": "Die Raupe ist unter dem Blatt.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐛",
+      "bezug": "🍁",
+      "lage": "unter"
+     }
+    },
+    {
+     "satz": "Die Raupe ist neben dem Blatt.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐛",
+      "bezug": "🍁",
+      "lage": "neben"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "r",
+    "au",
+    "p",
+    "e",
+    "i",
+    "s",
+    "t",
+    "f",
+    "m",
+    "b",
+    "l",
+    "a",
+    "u",
+    "n"
+   ]
+  },
+  {
+   "id": "SL-336",
+   "satz": "Der Hut ist auf dem Sofa.",
+   "woerter": [
+    "Der",
+    "Hut",
+    "ist",
+    "auf",
+    "dem",
+    "Sofa",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "👒",
+    "bezug": "🛋️",
+    "lage": "auf"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Hut ist unter dem Sofa.",
+     "bild": {
+      "art": "lage",
+      "bild": "👒",
+      "bezug": "🛋️",
+      "lage": "unter"
+     }
+    },
+    {
+     "satz": "Der Hut ist neben dem Sofa.",
+     "bild": {
+      "art": "lage",
+      "bild": "👒",
+      "bezug": "🛋️",
+      "lage": "neben"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "h",
+    "u",
+    "t",
+    "i",
+    "s",
+    "au",
+    "f",
+    "m",
+    "o",
+    "a",
+    "n",
+    "b"
+   ]
+  },
+  {
+   "id": "SL-337",
+   "satz": "Die Banane ist in der Tasche.",
+   "woerter": [
+    "Die",
+    "Banane",
+    "ist",
+    "in",
+    "der",
+    "Tasche",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🍌",
+    "bezug": "👜",
+    "lage": "in"
+   },
+   "ablenker": [
+    {
+     "satz": "Die Banane ist auf der Tasche.",
+     "bild": {
+      "art": "lage",
+      "bild": "🍌",
+      "bezug": "👜",
+      "lage": "auf"
+     }
+    },
+    {
+     "satz": "Die Banane ist neben der Tasche.",
+     "bild": {
+      "art": "lage",
+      "bild": "🍌",
+      "bezug": "👜",
+      "lage": "neben"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "b",
+    "a",
+    "n",
+    "e",
+    "i",
+    "s",
+    "t",
+    "r",
+    "sch",
+    "au",
+    "f"
+   ]
+  },
+  {
+   "id": "SL-338",
+   "satz": "Der Vogel ist auf dem Auto.",
+   "woerter": [
+    "Der",
+    "Vogel",
+    "ist",
+    "auf",
+    "dem",
+    "Auto",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🐦",
+    "bezug": "🚗",
+    "lage": "auf"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Vogel ist unter dem Auto.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐦",
+      "bezug": "🚗",
+      "lage": "unter"
+     }
+    },
+    {
+     "satz": "Der Vogel ist neben dem Auto.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐦",
+      "bezug": "🚗",
+      "lage": "neben"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "v",
+    "o",
+    "g",
+    "l",
+    "i",
+    "s",
+    "t",
+    "au",
+    "f",
+    "m",
+    "u",
+    "n",
+    "b"
+   ]
+  },
+  {
+   "id": "SL-339",
+   "satz": "Der Pilz ist unter dem Baum.",
+   "woerter": [
+    "Der",
+    "Pilz",
+    "ist",
+    "unter",
+    "dem",
+    "Baum",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🍄",
+    "bezug": "🌳",
+    "lage": "unter"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Pilz ist neben dem Baum.",
+     "bild": {
+      "art": "lage",
+      "bild": "🍄",
+      "bezug": "🌳",
+      "lage": "neben"
+     }
+    },
+    {
+     "satz": "Der Pilz ist auf dem Baum.",
+     "bild": {
+      "art": "lage",
+      "bild": "🍄",
+      "bezug": "🌳",
+      "lage": "auf"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "p",
+    "i",
+    "l",
+    "z",
+    "s",
+    "t",
+    "u",
+    "n",
+    "m",
+    "b",
+    "au",
+    "f"
+   ]
+  },
+  {
+   "id": "SL-340",
+   "satz": "Der Wal ist unter dem Boot.",
+   "woerter": [
+    "Der",
+    "Wal",
+    "ist",
+    "unter",
+    "dem",
+    "Boot",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🐋",
+    "bezug": "⛵",
+    "lage": "unter"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Wal ist neben dem Boot.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐋",
+      "bezug": "⛵",
+      "lage": "neben"
+     }
+    },
+    {
+     "satz": "Der Wal ist auf dem Boot.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐋",
+      "bezug": "⛵",
+      "lage": "auf"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "w",
+    "a",
+    "l",
+    "i",
+    "s",
+    "t",
+    "u",
+    "n",
+    "m",
+    "b",
+    "o",
+    "au",
+    "f"
+   ]
+  },
+  {
+   "id": "SL-341",
+   "satz": "Die Ameise ist auf dem Brot.",
+   "woerter": [
+    "Die",
+    "Ameise",
+    "ist",
+    "auf",
+    "dem",
+    "Brot",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🐜",
+    "bezug": "🍞",
+    "lage": "auf"
+   },
+   "ablenker": [
+    {
+     "satz": "Die Ameise ist unter dem Brot.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐜",
+      "bezug": "🍞",
+      "lage": "unter"
+     }
+    },
+    {
+     "satz": "Die Ameise ist neben dem Brot.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐜",
+      "bezug": "🍞",
+      "lage": "neben"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "a",
+    "m",
+    "ei",
+    "s",
+    "e",
+    "i",
+    "t",
+    "au",
+    "f",
+    "b",
+    "r",
+    "o",
+    "u",
+    "n"
+   ]
+  },
+  {
+   "id": "SL-342",
+   "satz": "Der Frosch ist unter dem Schirm.",
+   "woerter": [
+    "Der",
+    "Frosch",
+    "ist",
+    "unter",
+    "dem",
+    "Schirm",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🐸",
+    "bezug": "☂️",
+    "lage": "unter"
+   },
+   "ablenker": [
+    {
+     "satz": "Der Frosch ist auf dem Schirm.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐸",
+      "bezug": "☂️",
+      "lage": "auf"
+     }
+    },
+    {
+     "satz": "Der Frosch ist neben dem Schirm.",
+     "bild": {
+      "art": "lage",
+      "bild": "🐸",
+      "bezug": "☂️",
+      "lage": "neben"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "f",
+    "o",
+    "sch",
+    "i",
+    "s",
+    "t",
+    "u",
+    "n",
+    "m",
+    "au",
+    "b"
+   ]
+  },
+  {
+   "id": "SL-343",
+   "satz": "Das Brot ist im Korb.",
+   "woerter": [
+    "Das",
+    "Brot",
+    "ist",
+    "im",
+    "Korb",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🍞",
+    "bezug": "🧺",
+    "lage": "in"
+   },
+   "ablenker": [
+    {
+     "satz": "Das Brot ist neben dem Korb.",
+     "bild": {
+      "art": "lage",
+      "bild": "🍞",
+      "bezug": "🧺",
+      "lage": "neben"
+     }
+    },
+    {
+     "satz": "Das Brot ist unter dem Korb.",
+     "bild": {
+      "art": "lage",
+      "bild": "🍞",
+      "bezug": "🧺",
+      "lage": "unter"
+     }
+    }
+   ],
+   "unterschied": "lage",
+   "stufen": {
+    "D-LE-08": 3
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "b",
+    "r",
+    "o",
+    "t",
+    "i",
+    "m",
+    "k",
+    "n",
+    "e",
+    "u"
+   ]
+  },
+  {
+   "id": "SS-101",
+   "satz": "Die Maus schläft.",
+   "woerter": [
+    "Die",
+    "Maus",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🐭",
+    "zeichen": "schlafen"
+   },
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "m",
+    "au",
+    "s",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t"
+   ]
+  },
+  {
+   "id": "SS-102",
+   "satz": "Der Bär malt.",
+   "woerter": [
+    "Der",
+    "Bär",
+    "malt",
+    "."
+   ],
+   "bild": "🐻",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "ä",
+    "m",
+    "a",
+    "l",
+    "t"
+   ]
+  },
+  {
+   "id": "SS-103",
+   "satz": "Oma kauft Brot.",
+   "woerter": [
+    "Oma",
+    "kauft",
+    "Brot",
+    "."
+   ],
+   "bild": "🍞",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "o",
+    "m",
+    "a",
+    "k",
+    "au",
+    "f",
+    "t",
+    "b",
+    "r"
+   ]
+  },
+  {
+   "id": "SS-104",
+   "satz": "Lea malt Rosen.",
+   "woerter": [
+    "Lea",
+    "malt",
+    "Rosen",
+    "."
+   ],
+   "bild": "🌹",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "l",
+    "e",
+    "a",
+    "m",
+    "t",
+    "r",
+    "o",
+    "s",
+    "n"
+   ]
+  },
+  {
+   "id": "SS-105",
+   "satz": "Das Zebra schläft.",
+   "woerter": [
+    "Das",
+    "Zebra",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🦓",
+    "zeichen": "schlafen"
+   },
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "z",
+    "e",
+    "b",
+    "r",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t"
+   ]
+  },
+  {
+   "id": "SS-106",
+   "satz": "Der Igel schaut.",
+   "woerter": [
+    "Der",
+    "Igel",
+    "schaut",
+    "."
+   ],
+   "bild": "🦔",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "i",
+    "g",
+    "l",
+    "sch",
+    "au",
+    "t"
+   ]
+  },
+  {
+   "id": "SS-107",
+   "satz": "Wir malen Wolken.",
+   "woerter": [
+    "Wir",
+    "malen",
+    "Wolken",
+    "."
+   ],
+   "bild": "☁️",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "w",
+    "i",
+    "r",
+    "m",
+    "a",
+    "l",
+    "e",
+    "n",
+    "o",
+    "k"
+   ]
+  },
+  {
+   "id": "SS-108",
+   "satz": "Die Ente badet.",
+   "woerter": [
+    "Die",
+    "Ente",
+    "badet",
+    "."
+   ],
+   "bild": "🦆",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "e",
+    "n",
+    "t",
+    "b",
+    "a"
+   ]
+  },
+  {
+   "id": "SS-109",
+   "satz": "Das Lama tanzt.",
+   "woerter": [
+    "Das",
+    "Lama",
+    "tanzt",
+    "."
+   ],
+   "bild": "🦙",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "l",
+    "m",
+    "t",
+    "n",
+    "z"
+   ]
+  },
+  {
+   "id": "SS-110",
+   "satz": "Oma holt Tomaten.",
+   "woerter": [
+    "Oma",
+    "holt",
+    "Tomaten",
+    "."
+   ],
+   "bild": "🍅",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "o",
+    "m",
+    "a",
+    "h",
+    "l",
+    "t",
+    "e",
+    "n"
+   ]
+  },
+  {
+   "id": "SS-111",
+   "satz": "Der Löwe schläft.",
+   "woerter": [
+    "Der",
+    "Löwe",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🦁",
+    "zeichen": "schlafen"
+   },
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "l",
+    "ö",
+    "w",
+    "sch",
+    "ä",
+    "f",
+    "t"
+   ]
+  },
+  {
+   "id": "SS-112",
+   "satz": "Das Auto hupt.",
+   "woerter": [
+    "Das",
+    "Auto",
+    "hupt",
+    "."
+   ],
+   "bild": "🚗",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "au",
+    "t",
+    "o",
+    "h",
+    "u",
+    "p"
+   ]
+  },
+  {
+   "id": "SS-113",
+   "satz": "Der Bus hupt.",
+   "woerter": [
+    "Der",
+    "Bus",
+    "hupt",
+    "."
+   ],
+   "bild": "🚌",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "u",
+    "s",
+    "h",
+    "p",
+    "t"
+   ]
+  },
+  {
+   "id": "SS-114",
+   "satz": "Wir bauen Zelte.",
+   "woerter": [
+    "Wir",
+    "bauen",
+    "Zelte",
+    "."
+   ],
+   "bild": "⛺",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "w",
+    "i",
+    "r",
+    "b",
+    "au",
+    "e",
+    "n",
+    "z",
+    "l",
+    "t"
+   ]
+  },
+  {
+   "id": "SS-115",
+   "satz": "Wir malen Herzen.",
+   "woerter": [
+    "Wir",
+    "malen",
+    "Herzen",
+    "."
+   ],
+   "bild": "❤️",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "w",
+    "i",
+    "r",
+    "m",
+    "a",
+    "l",
+    "e",
+    "n",
+    "h",
+    "z"
+   ]
+  },
+  {
+   "id": "SS-116",
+   "satz": "Der Wal schläft.",
+   "woerter": [
+    "Der",
+    "Wal",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🐋",
+    "zeichen": "schlafen"
+   },
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "w",
+    "a",
+    "l",
+    "sch",
+    "ä",
+    "f",
+    "t"
+   ]
+  },
+  {
+   "id": "SS-117",
+   "satz": "Elias holt Salat.",
+   "woerter": [
+    "Elias",
+    "holt",
+    "Salat",
+    "."
+   ],
+   "bild": "🥗",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "e",
+    "l",
+    "i",
+    "a",
+    "s",
+    "h",
+    "o",
+    "t"
+   ]
+  },
+  {
+   "id": "SS-118",
+   "satz": "Oma tanzt gern.",
+   "woerter": [
+    "Oma",
+    "tanzt",
+    "gern",
+    "."
+   ],
+   "bild": "👵",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "o",
+    "m",
+    "a",
+    "t",
+    "n",
+    "z",
+    "g",
+    "e",
+    "r"
+   ]
+  },
+  {
+   "id": "SS-119",
+   "satz": "Wir bauen Raketen.",
+   "woerter": [
+    "Wir",
+    "bauen",
+    "Raketen",
+    "."
+   ],
+   "bild": "🚀",
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "w",
+    "i",
+    "r",
+    "b",
+    "au",
+    "e",
+    "n",
+    "a",
+    "k",
+    "t"
+   ]
+  },
+  {
+   "id": "SS-120",
+   "satz": "Das Schaf schläft.",
+   "woerter": [
+    "Das",
+    "Schaf",
+    "schläft",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🐑",
+    "zeichen": "schlafen"
+   },
+   "stufen": {
+    "D-SC-05": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "sch",
+    "f",
+    "l",
+    "ä",
+    "t"
+   ]
+  },
+  {
+   "id": "SS-221",
+   "satz": "Die Maus ist im Haus.",
+   "woerter": [
+    "Die",
+    "Maus",
+    "ist",
+    "im",
+    "Haus",
+    "."
+   ],
+   "bild": {
+    "art": "lage",
+    "bild": "🐭",
+    "bezug": "🏠",
+    "lage": "in"
+   },
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "m",
+    "au",
+    "s",
+    "i",
+    "t",
+    "h"
+   ]
+  },
+  {
+   "id": "SS-222",
+   "satz": "Opa baut ein Haus.",
+   "woerter": [
+    "Opa",
+    "baut",
+    "ein",
+    "Haus",
+    "."
+   ],
+   "bild": "🏠",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "o",
+    "p",
+    "a",
+    "b",
+    "au",
+    "t",
+    "ei",
+    "n",
+    "h",
+    "s"
+   ]
+  },
+  {
+   "id": "SS-223",
+   "satz": "Lea malt eine Rose.",
+   "woerter": [
+    "Lea",
+    "malt",
+    "eine",
+    "Rose",
+    "."
+   ],
+   "bild": "🌹",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "l",
+    "e",
+    "a",
+    "m",
+    "t",
+    "ei",
+    "n",
+    "r",
+    "o",
+    "s"
+   ]
+  },
+  {
+   "id": "SS-224",
+   "satz": "Der Bär ist müde.",
+   "woerter": [
+    "Der",
+    "Bär",
+    "ist",
+    "müde",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🐻",
+    "zeichen": "schlafen"
+   },
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "ä",
+    "i",
+    "s",
+    "t",
+    "m",
+    "ü"
+   ]
+  },
+  {
+   "id": "SS-225",
+   "satz": "Oma kauft eine Banane.",
+   "woerter": [
+    "Oma",
+    "kauft",
+    "eine",
+    "Banane",
+    "."
+   ],
+   "bild": "🍌",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "o",
+    "m",
+    "a",
+    "k",
+    "au",
+    "f",
+    "t",
+    "ei",
+    "n",
+    "e",
+    "b"
+   ]
+  },
+  {
+   "id": "SS-226",
+   "satz": "Wir malen einen Baum.",
+   "woerter": [
+    "Wir",
+    "malen",
+    "einen",
+    "Baum",
+    "."
+   ],
+   "bild": "🌳",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "w",
+    "i",
+    "r",
+    "m",
+    "a",
+    "l",
+    "e",
+    "n",
+    "ei",
+    "b",
+    "au"
+   ]
+  },
+  {
+   "id": "SS-227",
+   "satz": "Das Lama ist braun.",
+   "woerter": [
+    "Das",
+    "Lama",
+    "ist",
+    "braun",
+    "."
+   ],
+   "bild": "🦙",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "l",
+    "m",
+    "i",
+    "t",
+    "b",
+    "r",
+    "au",
+    "n"
+   ]
+  },
+  {
+   "id": "SS-228",
+   "satz": "Mia hat einen Hut.",
+   "woerter": [
+    "Mia",
+    "hat",
+    "einen",
+    "Hut",
+    "."
+   ],
+   "bild": "👒",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "m",
+    "i",
+    "a",
+    "h",
+    "t",
+    "ei",
+    "n",
+    "e",
+    "u"
+   ]
+  },
+  {
+   "id": "SS-229",
+   "satz": "Der Igel ist klein.",
+   "woerter": [
+    "Der",
+    "Igel",
+    "ist",
+    "klein",
+    "."
+   ],
+   "bild": {
+    "art": "groesse",
+    "bild": "🦔",
+    "gross": false
+   },
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "i",
+    "g",
+    "l",
+    "s",
+    "t",
+    "k",
+    "ei",
+    "n"
+   ]
+  },
+  {
+   "id": "SS-230",
+   "satz": "Das Herz ist rot.",
+   "woerter": [
+    "Das",
+    "Herz",
+    "ist",
+    "rot",
+    "."
+   ],
+   "bild": "❤️",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "h",
+    "e",
+    "r",
+    "z",
+    "i",
+    "t",
+    "o"
+   ]
+  },
+  {
+   "id": "SS-231",
+   "satz": "Jonas hat ein Kanu.",
+   "woerter": [
+    "Jonas",
+    "hat",
+    "ein",
+    "Kanu",
+    "."
+   ],
+   "bild": "🛶",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "j",
+    "o",
+    "n",
+    "a",
+    "s",
+    "h",
+    "t",
+    "ei",
+    "k",
+    "u"
+   ]
+  },
+  {
+   "id": "SS-232",
+   "satz": "Die Raupe ist grün.",
+   "woerter": [
+    "Die",
+    "Raupe",
+    "ist",
+    "grün",
+    "."
+   ],
+   "bild": "🐛",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "r",
+    "au",
+    "p",
+    "e",
+    "i",
+    "s",
+    "t",
+    "g",
+    "ü",
+    "n"
+   ]
+  },
+  {
+   "id": "SS-233",
+   "satz": "Elias malt einen Wal.",
+   "woerter": [
+    "Elias",
+    "malt",
+    "einen",
+    "Wal",
+    "."
+   ],
+   "bild": "🐋",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "e",
+    "l",
+    "i",
+    "a",
+    "s",
+    "m",
+    "t",
+    "ei",
+    "n",
+    "w"
+   ]
+  },
+  {
+   "id": "SS-234",
+   "satz": "Sara baut ein Zelt.",
+   "woerter": [
+    "Sara",
+    "baut",
+    "ein",
+    "Zelt",
+    "."
+   ],
+   "bild": "⛺",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "s",
+    "a",
+    "r",
+    "b",
+    "au",
+    "t",
+    "ei",
+    "n",
+    "z",
+    "e",
+    "l"
+   ]
+  },
+  {
+   "id": "SS-235",
+   "satz": "Nina hat einen blauen Schirm.",
+   "woerter": [
+    "Nina",
+    "hat",
+    "einen",
+    "blauen",
+    "Schirm",
+    "."
+   ],
+   "bild": "☂️",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "n",
+    "i",
+    "a",
+    "h",
+    "t",
+    "ei",
+    "e",
+    "b",
+    "l",
+    "au",
+    "sch",
+    "r",
+    "m"
+   ]
+  },
+  {
+   "id": "SS-236",
+   "satz": "Lea hat eine Krone.",
+   "woerter": [
+    "Lea",
+    "hat",
+    "eine",
+    "Krone",
+    "."
+   ],
+   "bild": "👑",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "l",
+    "e",
+    "a",
+    "h",
+    "t",
+    "ei",
+    "n",
+    "k",
+    "r",
+    "o"
+   ]
+  },
+  {
+   "id": "SS-237",
+   "satz": "Der Frosch ist grün.",
+   "woerter": [
+    "Der",
+    "Frosch",
+    "ist",
+    "grün",
+    "."
+   ],
+   "bild": "🐸",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "f",
+    "o",
+    "sch",
+    "i",
+    "s",
+    "t",
+    "g",
+    "ü",
+    "n"
+   ]
+  },
+  {
+   "id": "SS-238",
+   "satz": "Leon malt einen Igel.",
+   "woerter": [
+    "Leon",
+    "malt",
+    "einen",
+    "Igel",
+    "."
+   ],
+   "bild": "🦔",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "l",
+    "e",
+    "o",
+    "n",
+    "m",
+    "a",
+    "t",
+    "ei",
+    "i",
+    "g"
+   ]
+  },
+  {
+   "id": "SS-239",
+   "satz": "Opa kauft eine Tomate.",
+   "woerter": [
+    "Opa",
+    "kauft",
+    "eine",
+    "Tomate",
+    "."
+   ],
+   "bild": "🍅",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "o",
+    "p",
+    "a",
+    "k",
+    "au",
+    "f",
+    "t",
+    "ei",
+    "n",
+    "e",
+    "m"
+   ]
+  },
+  {
+   "id": "SS-240",
+   "satz": "Die Tulpe ist rosa.",
+   "woerter": [
+    "Die",
+    "Tulpe",
+    "ist",
+    "rosa",
+    "."
+   ],
+   "bild": "🌷",
+   "stufen": {
+    "D-SC-05": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "t",
+    "u",
+    "l",
+    "p",
+    "e",
+    "i",
+    "s",
+    "r",
+    "o",
+    "a"
+   ]
+  },
+  {
+   "id": "SS-341",
+   "satz": "Lea malt eine rote Rose.",
+   "woerter": [
+    "Lea",
+    "malt",
+    "eine",
+    "rote",
+    "Rose",
+    "."
+   ],
+   "bild": "🌹",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "l",
+    "e",
+    "a",
+    "m",
+    "t",
+    "ei",
+    "n",
+    "r",
+    "o",
+    "s"
+   ]
+  },
+  {
+   "id": "SS-342",
+   "satz": "Nina hat einen blauen Schirm.",
+   "woerter": [
+    "Nina",
+    "hat",
+    "einen",
+    "blauen",
+    "Schirm",
+    "."
+   ],
+   "bild": "☂️",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "n",
+    "i",
+    "a",
+    "h",
+    "t",
+    "ei",
+    "e",
+    "b",
+    "l",
+    "au",
+    "sch",
+    "r",
+    "m"
+   ]
+  },
+  {
+   "id": "SS-343",
+   "satz": "Jonas malt einen Elefanten.",
+   "woerter": [
+    "Jonas",
+    "malt",
+    "einen",
+    "Elefanten",
+    "."
+   ],
+   "bild": "🐘",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "j",
+    "o",
+    "n",
+    "a",
+    "s",
+    "m",
+    "l",
+    "t",
+    "ei",
+    "e",
+    "f"
+   ]
+  },
+  {
+   "id": "SS-344",
+   "satz": "Die Ameise ist klein.",
+   "woerter": [
+    "Die",
+    "Ameise",
+    "ist",
+    "klein",
+    "."
+   ],
+   "bild": {
+    "art": "groesse",
+    "bild": "🐜",
+    "gross": false
+   },
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "a",
+    "m",
+    "ei",
+    "s",
+    "e",
+    "i",
+    "t",
+    "k",
+    "l",
+    "n"
+   ]
+  },
+  {
+   "id": "SS-345",
+   "satz": "Wir malen eine Wolke.",
+   "woerter": [
+    "Wir",
+    "malen",
+    "eine",
+    "Wolke",
+    "."
+   ],
+   "bild": "☁️",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "w",
+    "i",
+    "r",
+    "m",
+    "a",
+    "l",
+    "e",
+    "n",
+    "ei",
+    "o",
+    "k"
+   ]
+  },
+  {
+   "id": "SS-346",
+   "satz": "Mia hat ein Herz gemalt.",
+   "woerter": [
+    "Mia",
+    "hat",
+    "ein",
+    "Herz",
+    "gemalt",
+    "."
+   ],
+   "bild": "❤️",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "m",
+    "i",
+    "a",
+    "h",
+    "t",
+    "ei",
+    "n",
+    "e",
+    "r",
+    "z",
+    "g",
+    "l"
+   ]
+  },
+  {
+   "id": "SS-347",
+   "satz": "Elias kauft eine Melone.",
+   "woerter": [
+    "Elias",
+    "kauft",
+    "eine",
+    "Melone",
+    "."
+   ],
+   "bild": "🍉",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "e",
+    "l",
+    "i",
+    "a",
+    "s",
+    "k",
+    "au",
+    "f",
+    "t",
+    "ei",
+    "n",
+    "m",
+    "o"
+   ]
+  },
+  {
+   "id": "SS-348",
+   "satz": "Oma hat eine Kerze.",
+   "woerter": [
+    "Oma",
+    "hat",
+    "eine",
+    "Kerze",
+    "."
+   ],
+   "bild": "🕯️",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "o",
+    "m",
+    "a",
+    "h",
+    "t",
+    "ei",
+    "n",
+    "e",
+    "k",
+    "r",
+    "z"
+   ]
+  },
+  {
+   "id": "SS-349",
+   "satz": "Der Löwe ist müde.",
+   "woerter": [
+    "Der",
+    "Löwe",
+    "ist",
+    "müde",
+    "."
+   ],
+   "bild": {
+    "art": "aktion",
+    "bild": "🦁",
+    "zeichen": "schlafen"
+   },
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "l",
+    "ö",
+    "w",
+    "i",
+    "s",
+    "t",
+    "m",
+    "ü"
+   ]
+  },
+  {
+   "id": "SS-350",
+   "satz": "Sara malt ein Krokodil.",
+   "woerter": [
+    "Sara",
+    "malt",
+    "ein",
+    "Krokodil",
+    "."
+   ],
+   "bild": "🐊",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "s",
+    "a",
+    "r",
+    "m",
+    "l",
+    "t",
+    "ei",
+    "n",
+    "k",
+    "o",
+    "d",
+    "i"
+   ]
+  },
+  {
+   "id": "SS-351",
+   "satz": "Leon baut eine Rakete.",
+   "woerter": [
+    "Leon",
+    "baut",
+    "eine",
+    "Rakete",
+    "."
+   ],
+   "bild": "🚀",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "l",
+    "e",
+    "o",
+    "n",
+    "b",
+    "au",
+    "t",
+    "ei",
+    "r",
+    "a",
+    "k"
+   ]
+  },
+  {
+   "id": "SS-352",
+   "satz": "Das Kamel ist braun.",
+   "woerter": [
+    "Das",
+    "Kamel",
+    "ist",
+    "braun",
+    "."
+   ],
+   "bild": "🐫",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "k",
+    "m",
+    "e",
+    "l",
+    "i",
+    "t",
+    "b",
+    "r",
+    "au",
+    "n"
+   ]
+  },
+  {
+   "id": "SS-353",
+   "satz": "Lea hat eine Tasche.",
+   "woerter": [
+    "Lea",
+    "hat",
+    "eine",
+    "Tasche",
+    "."
+   ],
+   "bild": "👜",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "l",
+    "e",
+    "a",
+    "h",
+    "t",
+    "ei",
+    "n",
+    "sch"
+   ]
+  },
+  {
+   "id": "SS-354",
+   "satz": "Der Wal ist blau.",
+   "woerter": [
+    "Der",
+    "Wal",
+    "ist",
+    "blau",
+    "."
+   ],
+   "bild": "🐋",
+   "stufen": {
+    "D-SC-05": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "w",
+    "a",
+    "l",
+    "i",
+    "s",
+    "t",
+    "b",
+    "au"
+   ]
+  }
+ ]
+}

@@ -14,6 +14,8 @@ const zwanzigerfeld = (rot, blau = 0, weg = 0, anordnung) => (anordnung ? { art:
 const feldFuer = (rot, blau, weg, bis) => (Math.max(rot + blau, rot) <= 10 && bis <= 10 ? zehnerfeld(rot, blau, weg) : zwanzigerfeld(rot, blau, weg));
 
 // --- Zahlenpaare ---
+// Karteikarte aus dem Kontext lesen (nur wenn sie zum Muster passt)
+function karte(ctx, muster) { const m = typeof ctx.karte === 'string' ? ctx.karte.match(muster) : null; return m ? m.slice(1).map(Number) : null; }
 function plusBis(r, smin, smax) { const s = r.int(smin, smax); const a = r.int(1, s - 1); return [a, s - a, s]; }
 function minusBis(r, amin, amax) { const a = r.int(amin, amax); const b = r.int(1, a - 1); return [a, b, a - b]; }
 function plusUeber(r) { const a = r.int(2, 9); const b = r.int(11 - a, 9); return [a, b, a + b]; }          // mit Zehnerübergang
@@ -480,8 +482,10 @@ export const generatoren = {
 
   // Blitzrechnen (später im Karteikasten)
   'M-RE-14': {
+    // ctx.karte (Karteikasten): «7=3+4», «3+4», «7−3» legt die Zahlen fest
     1: (r, ctx) => {
-      const n = r.int(2, 10), a = r.int(1, n - 1), b = n - a, rechts = r.bool();
+      const k = karte(ctx, /^(\d+)=(\d+)\+(\d+)$/);
+      const n = k ? k[0] : r.int(2, 10), a = k ? k[1] : r.int(1, n - 1), b = n - a, rechts = r.bool();
       const ZH = begriff(ctx, 'zerlegungshaus', 'Zahlenhaus');
       const bekannt = rechts ? a : b, fehlt = rechts ? b : a;
       return A.zahl({
@@ -494,19 +498,22 @@ export const generatoren = {
       });
     },
     2: (r, ctx) => {
-      if (r.bool()) {
-        const [a, b] = plusBis(r, 2, 10);
+      const kp = karte(ctx, /^(\d+)\+(\d+)$/), km = karte(ctx, /^(\d+)−(\d+)$/);
+      if (kp || (!km && r.bool())) {
+        const [a, b] = kp || plusBis(r, 2, 10);
         const x = plusAufgabe(r, ctx, { a, b, nachFehler: zehnerfeld(a, b) });
         x.daten.karte = `${a}+${b}`;
         return x;
       }
-      const [a, b] = minusBis(r, 2, 10);
+      const [a, b] = km || minusBis(r, 2, 10);
       const x = minusAufgabe(r, ctx, { a, b, nachFehler: zehnerfeld(a, 0, b) });
       x.daten.karte = `${a}${MINUS}${b}`;
       return x;
     },
     3: (r, ctx) => {
-      const x = r.bool() ? zehnerPlus(r, ctx, 'ohne') : zehnerMinus(r, ctx, 'ohne');
+      const kp = karte(ctx, /^(\d+)\+(\d+)$/), km = karte(ctx, /^(\d+)−(\d+)$/);
+      const x = kp ? zehnerPlus(r, ctx, 'ohne', [kp[0], kp[1], kp[0] + kp[1]]) : km ? zehnerMinus(r, ctx, 'ohne', [km[0], km[1], km[0] - km[1]])
+        : r.bool() ? zehnerPlus(r, ctx, 'ohne') : zehnerMinus(r, ctx, 'ohne');
       x.daten.karte = `${x.daten.a}${x.daten.op === '+' ? '+' : MINUS}${x.daten.b}`;
       return x;
     },
@@ -521,8 +528,8 @@ export const generatoren = {
 };
 
 // --- Zehnerübergang ---
-function zehnerPlus(r, ctx, art) {
-  const [a, b, s] = plusUeber(r);
+function zehnerPlus(r, ctx, art, fest = null) {
+  const [a, b, s] = fest || plusUeber(r);
   const auf = 10 - a, rest = b - auf;
   const Z = begriff(ctx, 'zwanzigerfeld', 'Zwanzigerfeld');
   const fb = fehlerbilder(s, ctx.bis,
@@ -557,8 +564,8 @@ function zehnerPlus(r, ctx, art) {
     hinweis: `Rechne zuerst bis 10. Wie viele fehlen von ${a} bis 10?`, fehlerbilder: fb,
   });
 }
-function zehnerMinus(r, ctx, art) {
-  const [a, b, c] = minusUeber(r);
+function zehnerMinus(r, ctx, art, fest = null) {
+  const [a, b, c] = fest || minusUeber(r);
   const e = a % 10, rest = b - e;
   const Z = begriff(ctx, 'zwanzigerfeld', 'Zwanzigerfeld');
   const fb = fehlerbilder(c, ctx.bis,

@@ -1,4 +1,4 @@
-// Spielt jede Mathematik-Stufe im Browser durch (Elternbereich › Aufgaben ansehen): je drei Aufgaben, richtig gelöst
+// Spielt jede Stufe (Deutsch und Mathematik) im Browser durch (Elternbereich › Aufgaben ansehen): je drei Aufgaben, richtig gelöst
 // über echte Klicks, bei jeder fünften Stufe zuerst eine falsche Antwort. Prüft das Ergebnis jeder Aufgabe und meldet
 // Konsolenfehler. Optional ein Foto der ersten Aufgabe jeder Stufe.
 // Aufruf: node tools/server.mjs 8765 &  node tools/aufgaben-browser.mjs [--fotos ordner] [--nur M-RE] [--geraet ipad|iphone] [--dunkel] [--laut]
@@ -12,7 +12,7 @@ const FOTOS = opt('--fotos');
 const NUR = opt('--nur');
 const GERAET = opt('--geraet') || 'ipad';
 const BASIS = 'http://localhost:8765/';
-const katalog = JSON.parse(fs.readFileSync('site/data/katalog/mathe.json', 'utf8'));
+const katalog = { fertigkeiten: [...JSON.parse(fs.readFileSync('site/data/katalog/deutsch.json', 'utf8')).fertigkeiten, ...JSON.parse(fs.readFileSync('site/data/katalog/mathe.json', 'utf8')).fertigkeiten] };
 if (FOTOS) fs.mkdirSync(FOTOS, { recursive: true });
 
 const browser = await chromium.launch();
@@ -24,7 +24,7 @@ const fehler = [];
 page.on('console', (m) => { if (m.type() === 'error') fehler.push('Konsole: ' + m.text()); });
 page.on('pageerror', (e) => fehler.push('Seitenfehler: ' + e.message));
 
-// Einrichtung ohne PIN, Zahlenraum 100
+// Einrichtung mit PIN 1234, Zahlenraum 100, drei Lernwörter
 await page.goto(BASIS + '?heute=2026-10-20');
 await page.waitForSelector('.einrichtung');
 await page.click('text=Einrichten');
@@ -36,7 +36,7 @@ await page.waitForSelector('.stimmtest');
 await page.click('.knopfreihe >> text=Weiter');
 await page.click('text=Zum Kinderbereich');
 await page.waitForSelector('.k-start');
-await page.evaluate(async () => { const z = await import('/js/app/zustand.js'); z.Z.einstellungen.zahlenraum = 100; z.Z.einfuehrung.gesehen = true; await z.speichere('einstellungen', 'einfuehrung'); });
+await page.evaluate(async () => { const z = await import('/js/app/zustand.js'); z.Z.einstellungen.zahlenraum = 100; z.Z.einfuehrung.gesehen = true; z.Z.lernwoerter = ['Mama', 'Sonne', 'Hose'].map((wort, i) => ({ id: 'lw' + i, wort, test: null, angelegt: 0 })); await z.speichere('einstellungen', 'einfuehrung', 'lernwoerter'); });
 await page.evaluate(() => { location.hash = '#/eltern'; });
 await page.fill('input[aria-label="PIN"]', '1234'); await page.click('text=Öffnen');
 await page.waitForSelector('.eltern-nav');
@@ -45,13 +45,17 @@ const warte = (ms) => new Promise((ok) => setTimeout(ok, ms));
 const loese = (a, falsch) => loeseAufgabe(page, a, falsch);
 
 let stufen = 0, aufgaben = 0;
+const uebersprungen = [];
 const probleme = [];
 const meldeProblem = probleme.push.bind(probleme);
 probleme.push = (...x) => { if (args.includes('--laut')) x.forEach((p) => console.log('PROBLEM:', p)); return meldeProblem(...x); };
 const t0 = Date.now();
 for (const f of katalog.fertigkeiten) {
-  if (NUR && !f.id.startsWith(NUR)) continue;
+  if (NUR && !NUR.split(',').some((n) => f.id.startsWith(n))) continue;
   for (const s of Object.keys(f.stufen)) {
+    // Stufen, die mit Buchstabenplan oder Lernwörtern nicht möglich sind, überspringen (die Eltern sehen sie ausgegraut)
+    const moeglich = await page.evaluate(async ([id, st]) => { const b = await import('/js/ui/baustein.js'); const st2 = await import('/js/app/steuerung.js'); return b.spielbar(st2.G.k.fertigkeiten.get(id), st, { vorschau: true }); }, [f.id, s]);
+    if (!moeglich) { uebersprungen.push(`${f.id}/${s}`); continue; }
     stufen++;
     const nr0 = await page.evaluate(() => { window.__ergebnisse = []; return window.__aufgabeNr || 0; });
     await page.evaluate(([id, st]) => { location.hash = `#/vorschau/${id}/${st}`; }, [f.id, s]);
@@ -79,5 +83,6 @@ for (const f of katalog.fertigkeiten) {
 await browser.close();
 for (const p of probleme) console.log('PROBLEM:', p);
 for (const e of [...new Set(fehler)]) console.log('FEHLER:', e);
+if (uebersprungen.length) console.log('Übersprungen (mit der Freigabe nicht möglich):', uebersprungen.join(' '));
 console.log(`${stufen} Stufen, ${aufgaben} Aufgaben gelöst, ${probleme.length} Probleme, ${fehler.length} Konsolenfehler, ${Math.round((Date.now() - t0) / 1000)} s.`);
 process.exit(probleme.length || fehler.length ? 1 : 0);

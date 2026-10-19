@@ -42,6 +42,7 @@ export function zeigeZeile(zeige, felder) {
 function karteInhalt(o) {
   if (o === null || o === undefined) return '';
   if (typeof o !== 'object') return h('span.k-text', String(o));
+  if (o.sprich !== undefined) return h('span.hoerinhalt.f-' + (o.farbe || 'blau'), symbol('lautsprecher'));
   if (o.visual) return darstellung(o.visual, { klein: true }).el;
   if (o.szene) return szeneBild(o.szene);
   if (o.bild) return h('span.emoji', o.bild);
@@ -204,26 +205,36 @@ export const TYPEN = {
 
   // --- Karten der Reihe nach legen ---
   reihenfolge(a, api) {
+    const karten = [...a.teile.map((t, i) => ({ inhalt: t, wert: i })), ...(a.ablenker || []).map((t, j) => ({ inhalt: t, wert: 'a' + j }))];
     return legeKarten(a, api, {
-      karten: a.teile.map((t, i) => ({ inhalt: t, wert: i })),
-      plaetze: a.teile.length, vorlage: null,
-      kopf: h('div.richtung', symbol('treppe', { klasse: a.richtung === 'ab' ? 'ab' : 'auf' })),
-      loesung: a.teile.map((_, i) => i),
+      karten, plaetze: a.teile.length, vorlage: null,
+      kopf: a.richtung ? h('div.richtung', symbol('treppe', { klasse: a.richtung === 'ab' ? 'ab' : 'auf' })) : h('div.richtung.lese', symbol('pfeil')),
+      loesung: a.teile.map((_, i) => i), ende: a.ende,
       eingabe: (belegt) => belegt.map((k) => k.wert),
+      visual: a.visual, bild: a.szene || a.bild,
     });
   },
 
   // --- Kacheln in Felder legen (Rechnung, Wort, Weg) ---
   legen(a, api) {
     const vorlage = a.vorlage || Array.from({ length: a.felder ?? a.loesung.length }, () => null);
+    let oben = a.zeige ? zeigeZeile(a.zeige, []) : null;
+    if (a.abschreiben) {
+      const text = h('div.lesetext.vorlage-text', a.abschreiben);
+      if (a.verdecken) {
+        // Blitzwort: das Kind verdeckt die Vorlage selbst mit dem Augen-Knopf (kein Zeitlimit)
+        const knopf = h('button.kk.klein.k-auge', { type: 'button', 'aria-label': 'Wort zudecken', onclick: () => { klang('tipp'); text.classList.toggle('zugedeckt'); } }, symbol('auge'));
+        oben = h('div.abschreiben', text, knopf);
+      } else oben = h('div.abschreiben', text);
+    }
     return legeKarten(a, api, {
       karten: a.kacheln.map((t, i) => ({ inhalt: t, wert: t, i })),
       plaetze: vorlage.filter((x) => x === null).length, vorlage,
-      kopf: a.vorlesen ? null : null,
-      loesung: a.loesung,
+      kopf: null, loesung: a.loesung,
       eingabe: (belegt) => belegt.map((k) => k.wert),
-      zeigeOben: a.zeige ? zeigeZeile(a.zeige, []) : null,
-      visual: a.visual,
+      zeigeOben: oben, visual: a.visual, bild: a.bild,
+      hilfe: a.anlauttabelle ? () => anlauttabelle(api) : null,
+      lautkaesten: a.fach === 'D',
     });
   },
 
@@ -231,6 +242,7 @@ export const TYPEN = {
   'menge-legen'(a, api) {
     if (a.feld === 'muenzen') return muenzenLegen(a, api);
     if (a.feld === 'zehnereiner') return zehnerEinerLegen(a, api);
+    if (a.feld === 'lautreihe' || a.feld === 'wortreihe') return reiheLegen(a, api);
     const zehner = a.feld === 'zehner';
     const R = 2, C = zehner ? 5 : 10;
     // Farbe nach Fünfergruppe: Zehnerfeld oben rot, unten blau; Zwanzigerfeld je erste Gruppe rot, zweite blau
@@ -258,7 +270,7 @@ export const TYPEN = {
 
   // --- Stellen antippen (Zahlenstrahl, Gitter, Spiegel, Formen) ---
   antippen(a, api) {
-    const vis = darstellung(a.visual, { tippbar: true });
+    const vis = a.visual ? darstellung(a.visual, { tippbar: true }) : textTippbar(a.zeige, a.einheit);
     const markiert = new Set();
     vis.tippbare.forEach(({ el: t, wert }) => t.addEventListener('click', () => {
       if (t.classList.contains('fest')) return;
@@ -269,7 +281,9 @@ export const TYPEN = {
       }
       klang('tipp'); api.aenderung();
     }));
-    const el = h('div.buehne.typ-antippen', vis.el, a.zeige ? zeigeZeile(a.zeige, []) : null);
+    const el = h('div.buehne.typ-antippen', a.bild ? h('div.grossbild', h('span.emoji', a.bild)) : null,
+      a.ziel !== undefined && !a.visual ? h('div.zielzeichen', { 'aria-label': 'Gesuchter Buchstabe' }, String(a.ziel)) : null,
+      vis.el, a.visual && a.zeige ? zeigeZeile(a.zeige, []) : null);
     return {
       el, symbol: 'finger', haken: true,
       bereit: () => markiert.size > 0, eingabe: () => [...markiert],
@@ -286,6 +300,7 @@ export const TYPEN = {
 
   // --- Gesprochene Anweisung: Bilder antippen ---
   'hoeren-tippen'(a, api) {
+    if (a.ziehen) return ziehenBuehne(a, api);
     const sz = a.szene;
     const folge = [];
     const knoepfe = new Map();
@@ -339,6 +354,8 @@ export const TYPEN = {
     async function waehle(seite, i) {
       if (fertig.has(seite + i)) return;
       klang('tipp');
+      const element = seite === 'l' ? a.paare[i][0] : a.paare[i][1];
+      if (element?.wort) api.sprich(element.wort);
       if (!gewaehlt || gewaehlt.seite === seite) { gewaehlt = { seite, i }; markiereWahl(); return; }
       const [l, r] = seite === 'l' ? [i, gewaehlt.i] : [gewaehlt.i, i];
       gewaehlt = null; markiereWahl();
@@ -373,6 +390,84 @@ export const TYPEN = {
     };
   },
 
+  // --- Hörkarten: antippen spielt die Karte und wählt sie, der Haken bestätigt ---
+  'wahl-hoeren'(a, api) {
+    let gewaehlt = null;
+    const karten = a.optionen.map((o, i) => h('button.hkarte.f-' + (o.farbe || 'blau'), { type: 'button', 'aria-label': 'Hörkarte ' + (i + 1), 'data-i': String(i), onclick: () => {
+      gewaehlt = i; karten.forEach((k, j) => k.classList.toggle('gewaehlt', j === i)); api.sprich(o.sprich); api.aenderung();
+    } }, symbol('lautsprecher')));
+    const bild = a.szene ? h('div.grossbild', szeneBild(a.szene)) : a.bild ? h('div.grossbild', h('span.emoji', a.bild)) : null;
+    const el = h('div.buehne.typ-wahl-hoeren', bild, h('div.wahl', karten));
+    return {
+      el, symbol: 'ohr', haken: true, karten,
+      bereit: () => gewaehlt !== null, eingabe: () => gewaehlt,
+      erleichtere() { if (gewaehlt !== null && gewaehlt !== a.richtig) karten[gewaehlt].classList.add('weg'); karten.forEach((k) => k.classList.remove('gewaehlt')); gewaehlt = null; api.aenderung(); },
+      zeigeLoesung() { karten.forEach((k, i) => { k.classList.toggle('richtig', i === a.richtig); k.classList.toggle('blass', i !== a.richtig); }); },
+      richtig() { karten[a.richtig].classList.add('richtig'); },
+      demo() { return api.tippen(karten[0], 1); },
+    };
+  },
+
+  // --- Silben klatschen (Trommel) oder Silben zum Wort verbinden ---
+  silben(a, api) {
+    if (a.modus === 'verbinden') {
+      return legeKarten(a, api, {
+        karten: a.silben.map((sb, i) => ({ inhalt: sb, wert: i })), plaetze: a.silben.length, vorlage: null,
+        kopf: h('div.richtung.lese', symbol('pfeil')), loesung: a.silben.map((_, i) => i),
+        eingabe: (belegt) => belegt.map((k) => k.wert), bild: a.bild, silbenplaetze: true,
+      });
+    }
+    let n = 0;
+    const boegen = h('div.silben-boegen');
+    const zeichne = () => boegen.replaceChildren(...Array.from({ length: n }, () => h('span.sbogen')));
+    const trommel = h('button.trommel', { type: 'button', 'aria-label': 'Trommel', onclick: () => { if (n < 6) { n++; klang('tipp'); zeichne(); api.aenderung(); } } }, trommelSvg());
+    const nochmal = h('button.kk.klein.k-nochmal.statisch', { type: 'button', 'aria-label': 'Nochmals', onclick: () => { klang('tipp'); n = 0; zeichne(); api.aenderung(); } }, symbol('nochmal'));
+    const bild = a.bild ? h('div.grossbild', h('span.emoji', a.bild)) : null;
+    const el = h('div.buehne.typ-silben', bild, boegen, h('div.trommel-reihe', trommel, nochmal));
+    return {
+      el, symbol: 'ohr', haken: true,
+      bereit: () => n > 0, eingabe: () => n,
+      erleichtere() { n = 0; zeichne(); api.aenderung(); },
+      zeigeLoesung() { n = a.silben.length; zeichne(); boegen.classList.add('loesung'); },
+      richtig() { boegen.classList.add('ok'); },
+      demo() { return api.tippen(trommel, 2); },
+    };
+  },
+
+  // --- Laut im Wort: vorne, in der Mitte, hinten (ein Zug mit Wagen) ---
+  lautplatz(a, api) {
+    const plaetze = a.plaetze === 3 ? ['vorne', 'mitte', 'hinten'] : ['vorne', 'hinten'];
+    const namen = { vorne: 'vorne', mitte: 'in der Mitte', hinten: 'hinten', nicht: 'gar nicht' };
+    const knoepfe = new Map();
+    const wagen = plaetze.map((p, i) => { const b = h('button.wagen.' + p, { type: 'button', 'aria-label': namen[p], 'data-wert': p, onclick: () => api.pruefen(p) }, wagenSvg(i === 0)); knoepfe.set(p, b); return b; });
+    let nicht = null;
+    if (a.nicht) { nicht = h('button.wagen.nicht', { type: 'button', 'aria-label': namen.nicht, 'data-wert': 'nicht', onclick: () => api.pruefen('nicht') }, nichtSvg()); knoepfe.set('nicht', nicht); }
+    const el = h('div.buehne.typ-lautplatz',
+      h('div.lp-oben', a.bild ? h('div.grossbild', h('span.emoji', a.bild)) : null, h('div.lp-laut', a.laut)),
+      h('div.lp-zug', wagen, nicht ? h('span.lp-trenner') : null, nicht));
+    let gewaehlt = null;
+    knoepfe.forEach((b, p) => b.addEventListener('click', () => { gewaehlt = p; }, { capture: true }));
+    return {
+      el, symbol: 'ohr', haken: false,
+      bereit: () => false, eingabe: () => gewaehlt,
+      erleichtere() { if (gewaehlt && gewaehlt !== a.loesung) knoepfe.get(gewaehlt)?.classList.add('weg-leise'); gewaehlt = null; },
+      zeigeLoesung() { knoepfe.forEach((b, p) => b.classList.toggle('loesung', p === a.loesung)); },
+      richtig() { knoepfe.get(a.loesung)?.classList.add('ok'); },
+      demo() { return api.tippen(wagen[0], 1); },
+    };
+  },
+
+  // --- Vorlesen: das Kind liest einer erwachsenen Person vor, diese tippt ---
+  vorlesen(a, api) {
+    const el = h('div.buehne.typ-vorlesen',
+      h('div.lesetext.vorlese-text', a.zeige),
+      h('div.vorlese-knoepfe',
+        h('button.btn.haupt.gross', { type: 'button', onclick: () => api.vorlesen(true) }, 'Geklappt'),
+        h('button.btn.gross', { type: 'button', onclick: () => api.vorlesen(false) }, 'Üben wir noch')),
+      h('p.vorlese-hinweis', 'Für die erwachsene Person: Das Kind liest vor. Tippen Sie danach auf einen Knopf.'));
+    return { el, symbol: 'auge', haken: false, bereit: () => false, eingabe: () => null, erleichtere() {}, zeigeLoesung() {}, richtig() {}, demo: () => Promise.resolve() };
+  },
+
   // --- Nachspuren mit dem Finger ---
   nachspuren(a, api) { return nachspurBuehne(a, api); },
 };
@@ -390,12 +485,24 @@ function waehlen(a, api, typ) {
     oben.push(h('div.muster-folge', a.folge.map((e, i) => (e === '?' || i === luecke ? h('span.mu-el.luecke', '?') : musterElement(e)))));
   }
   if (a.visual) oben.push(darstellung(a.visual).el);
+  if (a.szene) oben.push(h('div.grossbild', szeneBild(a.szene)));
+  else if (a.bild) oben.push(h('div.grossbild', h('span.emoji', a.bild)));
   const platz = [];
-  const zeile = a.zeige !== undefined && typ !== 'bild-wort' ? zeigeZeile(a.zeige, platz) : null;
+  const lueckeImWort = typeof a.zeige === 'string' && /_/.test(a.zeige) && !/(^| )_( |$)/.test(a.zeige);
+  const zeile = a.zeige !== undefined && typ !== 'bild-wort' && !lueckeImWort ? zeigeZeile(a.zeige, platz) : null;
   if (zeile) oben.push(zeile);
-  if (typ === 'bild-wort') oben.push(h('div.lesetext', a.zeige));
+  let lesetext = null;
+  if (typ === 'bild-wort') {
+    lesetext = a.silben && a.silben.join('') === String(a.zeige).replace(/\s/g, '')
+      ? h('div.lesetext.silbig' + (a.silbenboegen ? '.boegen' : ''), a.silben.map((sb) => h('span.silbe', sb)))
+      : h('div.lesetext', a.zeige);
+    oben.push(lesetext);
+  }
+  if (lueckeImWort) oben.push(h('div.lesetext.mit-luecke', [...a.zeige].map((c) => (c === '_' ? h('span.luecke', ' ') : c))));
+  const anlaut = a.anlautBild ? h('div.anlautbild.versteckt', h('span.emoji', a.anlautBild)) : null;
+  if (anlaut) oben.push(anlaut);
   const el = h('div.buehne.typ-wahl.' + typ, oben.length ? h('div.wahl-oben', oben) : null, h('div.wahl', karten));
-  const symbolArt = typ === 'bild-wort' ? 'auge' : typ === 'wahl-wort' && a.vorlesen ? 'ohr' : 'finger';
+  const symbolArt = typ === 'bild-wort' || lueckeImWort ? 'auge' : (typ === 'wahl-wort' && a.vorlesen) || (typ === 'wahl-bild' && a.fach === 'D' && a.namenSprechen !== false) ? 'ohr' : 'finger';
   const sichtbar = () => karten.filter((k) => !k.classList.contains('weg'));
   return {
     el, symbol: symbolArt, haken: false, karten,
@@ -406,17 +513,22 @@ function waehlen(a, api, typ) {
       const andere = () => sichtbar().map((k) => karten.indexOf(k)).filter((i) => i !== a.richtig);
       if ((karten.length === 4 || gewaehlt === null) && andere().length > 1) karten[andere()[0]].classList.add('weg');
       gewaehlt = null;
+      if (lesetext && a.silben) lesetext.classList.add('boegen');   // Silbenbögen helfen beim Lesen
+      if (anlaut) anlaut.classList.remove('versteckt');             // das Anlautbild erinnert an den Laut
     },
     zeigeLoesung() { karten.forEach((k, i) => { k.classList.toggle('richtig', i === a.richtig); k.classList.toggle('blass', i !== a.richtig); }); fuelleZeichen(a.richtig); },
     richtig() { karten[a.richtig].classList.add('richtig'); fuelleZeichen(a.richtig); },
     demo() { const i = a.richtig === 0 ? 1 : 0; return api.tippen(karten[i], 1); },
     namen: (a.namenSprechen ?? a.optionen.some((o) => o && typeof o === 'object' && o.wort)) ? a.optionen.map((o) => (o && typeof o === 'object' ? o.wort : null)) : null,
   };
-  function fuelleZeichen(i) { const p = el.querySelector('.rz-platz'); if (p && typeof a.optionen[i] === 'string') { p.textContent = a.optionen[i]; p.classList.add('voll'); } }
+  function fuelleZeichen(i) {
+    const p = el.querySelector('.rz-platz, .luecke');
+    if (p && typeof a.optionen[i] === 'string') { p.textContent = a.optionen[i]; p.classList.add('voll'); }
+  }
 }
 
 // --- Karten in Plätze legen (Reihenfolge und Legen) ---
-function legeKarten(a, api, { karten, plaetze, vorlage, kopf, loesung, eingabe, zeigeOben = null, visual = null }) {
+function legeKarten(a, api, { karten, plaetze, vorlage, kopf, loesung, eingabe, zeigeOben = null, visual = null, ende = null, bild = null, hilfe = null, lautkaesten = false }) {
   const reihenfolge = mischeAnders(karten.map((_, i) => i), (a.seed || 5) + 3);
   const kartenEl = karten.map((k) => {
     const inhalt = typeof k.inhalt === 'string' && k.inhalt.startsWith('pfeil:') ? pfeilSymbol(k.inhalt.slice(6)) : karteInhalt(k.inhalt);
@@ -436,11 +548,18 @@ function legeKarten(a, api, { karten, plaetze, vorlage, kopf, loesung, eingabe, 
     if (k.platz !== undefined && k.platz !== null) { tippPlatz(k.platz); return; }
     const frei = belegt.findIndex((x) => x === null);
     if (frei < 0) return;
+    // Hörkarte im Vorrat: zuerst anhören (leuchtet), beim zweiten Antippen legen
+    const hoer = k.inhalt && typeof k.inhalt === 'object' && k.inhalt.sprich !== undefined;
+    if (hoer && !k.gehoert) {
+      karten.forEach((x) => { if (x !== k && x.gehoert && (x.platz === null || x.platz === undefined)) { x.gehoert = false; x.el.classList.remove('gehoert'); } });
+      k.gehoert = true; k.el.classList.add('gehoert'); klang('tipp'); api.sprich(k.inhalt.sprich); return;
+    }
+    if (hoer) { k.gehoert = false; k.el.classList.remove('gehoert'); }
     klang('tipp');
     belegt[frei] = k; k.platz = frei;
     platzEl[frei].append(k.el); platzEl[frei].classList.add('voll');
     if (typeof k.inhalt === 'string' && !k.inhalt.startsWith('pfeil:') && /^\d+$/.test(k.inhalt)) api.sprich(k.inhalt);
-    else if (k.inhalt && typeof k.inhalt === 'object' && k.inhalt.wort) api.sprich(k.inhalt.wort);
+    else if (k.inhalt && typeof k.inhalt === 'object' && k.inhalt.wort && !hoer) api.sprich(k.inhalt.wort);
     api.aenderung();
   }
   function tippPlatz(i) {
@@ -453,9 +572,11 @@ function legeKarten(a, api, { karten, plaetze, vorlage, kopf, loesung, eingabe, 
     reihenfolge.forEach((j) => { if (karten[j].platz === null || karten[j].platz === undefined) pool.append(kartenEl[j]); });
     api.aenderung();
   }
-  const ziel = h('div.lziel', kopf, zeile);
+  const ziel = h('div.lziel' + (lautkaesten ? '.laute' : ''), kopf, zeile, ende ? h('span.lfest.ende', ende) : null);
   const vis = visual ? darstellung(visual).el : null;
-  const el = h('div.buehne.typ-legen', vis, zeigeOben, ziel, pool);
+  const grossbild = bild ? h('div.grossbild', typeof bild === 'string' ? h('span.emoji', bild) : szeneBild(bild)) : null;
+  const el = h('div.buehne.typ-legen', vis, grossbild, zeigeOben, ziel, pool);
+  // Hörkarten im Vorrat: Antippen spielt sie zuerst ab (auch bevor sie gelegt werden)
   return {
     el, symbol: 'hand', haken: true,
     bereit: () => belegt.every((x) => x !== null),
@@ -475,7 +596,13 @@ function legeKarten(a, api, { karten, plaetze, vorlage, kopf, loesung, eingabe, 
       });
     },
     richtig() { platzEl.forEach((p) => p.classList.add('ok')); },
-    demo() { const k = karten.find((x) => x.platz === null || x.platz === undefined); const p = platzEl[belegt.findIndex((x) => x === null)]; return k && p ? api.ziehen(k.el, p) : Promise.resolve(); },
+    demo() {
+      const k = karten.find((x) => x.platz === null || x.platz === undefined); const p = platzEl[belegt.findIndex((x) => x === null)];
+      if (!k || !p) return Promise.resolve();
+      // Hörkarten: zuerst antippen zum Anhören, dann legen
+      return k.inhalt && typeof k.inhalt === 'object' && k.inhalt.sprich !== undefined ? api.tippen(k.el, 2) : api.ziehen(k.el, p);
+    },
+    hilfe,
   };
 }
 
@@ -527,6 +654,112 @@ function zehnerEinerLegen(a, api) {
   };
 }
 
+
+// --- Laut- oder Wortreihe: für jeden Laut ein Plättchen, für jedes Wort eine Karte ---
+function reiheLegen(a, api) {
+  const max = a.feld === 'lautreihe' ? 8 : 7;
+  const belegt = new Set();
+  const plaetze = Array.from({ length: max }, (_, i) => {
+    const p = h('button.rplatz' + (a.feld === 'wortreihe' ? '.karte' : ''), { type: 'button', 'aria-label': 'Platz ' + (i + 1), 'data-i': String(i), onclick: () => {
+      if (belegt.has(i)) belegt.delete(i); else belegt.add(i);
+      p.classList.toggle('voll', belegt.has(i)); klang('tipp'); api.aenderung();
+    } });
+    return p;
+  });
+  const bild = a.bild ? h('div.grossbild', h('span.emoji', a.bild)) : null;
+  const el = h('div.buehne.typ-reihe', bild, h('div.rreihe', plaetze));
+  return {
+    el, symbol: 'ohr', haken: true,
+    bereit: () => belegt.size > 0, eingabe: () => ({ anzahl: belegt.size }),
+    erleichtere() { belegt.clear(); plaetze.forEach((p) => p.classList.remove('voll')); api.aenderung(); },
+    zeigeLoesung() { belegt.clear(); plaetze.forEach((p, i) => { p.classList.toggle('voll', i < a.ziel); p.classList.toggle('loesung', i < a.ziel); if (i < a.ziel) belegt.add(i); }); },
+    richtig() { plaetze.forEach((p) => { if (p.classList.contains('voll')) p.classList.add('ok'); }); },
+    demo() { return api.tippen(plaetze[0], 1); },
+  };
+}
+
+// --- Text mit antippbaren Buchstaben oder Wörtern ---
+function textTippbar(text, einheit = 'buchstabe') {
+  const tippbare = [];
+  let teile;
+  if (einheit === 'wort') {
+    teile = String(text).split(' ').map((w, i) => { const el = h('span.tteil.wort', { 'data-wert': String(i), role: 'button' }, w); tippbare.push({ el, wert: String(i) }); return el; });
+    teile = teile.flatMap((t, i) => (i ? [' ', t] : [t]));
+  } else {
+    teile = [...String(text)].map((c, i) => { if (c === ' ') return h('span.tleer', ' '); const el = h('span.tteil', { 'data-wert': String(i), role: 'button' }, c); tippbare.push({ el, wert: String(i) }); return el; });
+  }
+  return { el: h('div.lesetext.tippbar' + (einheit === 'wort' ? '.woerter' : ''), teile), felder: [], tippbare };
+}
+
+// --- Anlauttabelle mit den eingeführten Buchstaben (Hilfe beim Wort-Legen) ---
+function anlauttabelle(api) {
+  const liste = api.anlaute ? api.anlaute() : [];
+  const zu = () => box.remove();
+  const box = h('div.anlauttabelle', { role: 'dialog', 'aria-label': 'Anlauttabelle' },
+    h('div.at-gitter', liste.map((x) => h('button.at-feld', { type: 'button', 'aria-label': x.wort, onclick: () => api.sprich(x.wort) }, h('span.at-zeichen', x.zeichen), h('span.emoji', x.bild)))),
+    h('button.kk.klein.at-zu', { type: 'button', 'aria-label': 'Schliessen', onclick: zu }, symbol('haken')));
+  document.body.append(box);
+}
+
+// --- Dinge an einen Ort bringen: zuerst das Ding antippen, dann den Ort ---
+function ziehenBuehne(a, api) {
+  const sz = a.szene;
+  const platz = {};
+  let gewaehlt = null;
+  const feld = h('div.hfrei.mit-orten');
+  const elemente = new Map(), orte = new Map();
+  const setze = (el, x, y, w, z) => { el.style.left = (x * 100) + '%'; el.style.top = (y * 100) + '%'; if (w) el.style.setProperty('--w', String(w)); if (z) el.style.zIndex = String(z); };
+  for (const o of sz.orte || []) {
+    const z = h('button.hort', { type: 'button', 'data-ort': o.id, 'aria-label': o.name || 'Ort', onclick: () => waehleOrt(o.id) });
+    z.style.left = ((o.x - o.w / 2) * 100) + '%'; z.style.top = ((o.y - o.h / 2) * 100) + '%'; z.style.width = (o.w * 100) + '%'; z.style.height = (o.h * 100) + '%';
+    orte.set(o.id, { z, o }); feld.append(z);
+  }
+  for (const e of sz.elemente) {
+    const b = e.deko ? h('span.hding.deko', h('span.emoji', e.bild)) : h('button.hding', { type: 'button', 'data-id': e.id, 'aria-label': e.name || 'Bild', onclick: () => waehleEl(e.id) }, h('span.emoji', e.bild));
+    setze(b, e.x, e.y, e.w, e.deko ? (e.z || 1) : (e.z || 3) + 2);
+    elemente.set(e.id, { b, e }); feld.append(b);
+  }
+  const markiere = () => elemente.forEach(({ b }, id) => b.classList.toggle('gewaehlt', id === gewaehlt));
+  function waehleEl(id) { klang('tipp'); gewaehlt = gewaehlt === id ? null : id; markiere(); }
+  function waehleOrt(oid) {
+    if (!gewaehlt) return;
+    klang('tipp');
+    platz[gewaehlt] = oid;
+    const { b, e } = elemente.get(gewaehlt), { o } = orte.get(oid);
+    setze(b, o.x, o.y, e.w, 20);
+    gewaehlt = null; markiere(); api.aenderung();
+  }
+  const zurueck = (id) => { const { b, e } = elemente.get(id); setze(b, e.x, e.y, e.w, (e.z || 3) + 2); delete platz[id]; };
+  const el = h('div.buehne.typ-hoeren', feld);
+  return {
+    el, symbol: 'ohr', haken: true,
+    bereit: () => Object.keys(platz).length >= a.ziehen.length, eingabe: () => ({ ...platz }),
+    erleichtere() { for (const id of Object.keys(platz)) if (!a.ziehen.some((z) => z.element === id && z.ort === platz[id])) zurueck(id); api.aenderung(); },
+    zeigeLoesung() { for (const z of a.ziehen) { const { b, e } = elemente.get(z.element), { o } = orte.get(z.ort); setze(b, o.x, o.y, e.w, 20); b.classList.add('loesung'); } },
+    richtig() { for (const id of Object.keys(platz)) elemente.get(id)?.b.classList.add('ok'); },
+    demo() { const z = a.ziehen[0]; return api.ziehen(elemente.get(z.element).b, orte.get(z.ort).z); },
+  };
+}
+
+// --- Kleine Zeichnungen: Trommel, Wagen, «gar nicht» ---
+function trommelSvg() {
+  return s('svg', { viewBox: '0 0 120 100', class: 'trommel-svg', 'aria-hidden': 'true' },
+    s('ellipse', { cx: 60, cy: 30, rx: 48, ry: 16, class: 'tr-fell' }),
+    s('path', { d: 'M12 30 V70 A48 16 0 0 0 108 70 V30 A48 16 0 0 1 12 30 Z', class: 'tr-koerper' }),
+    s('path', { d: 'M12 40 L36 78 L60 46 L84 78 L108 40', class: 'tr-schnur' }));
+}
+function wagenSvg(lok) {
+  return s('svg', { viewBox: '0 0 120 90', class: 'wagen-svg', 'aria-hidden': 'true' },
+    lok ? s('path', { d: 'M10 20 H70 V30 H100 L110 50 V66 H10 Z', class: 'wg-lok' }) : s('rect', { x: 8, y: 22, width: 104, height: 44, rx: 8, class: 'wg-wagen' }),
+    lok ? s('rect', { x: 20, y: 28, width: 30, height: 18, rx: 3, class: 'wg-fenster' }) : s('rect', { x: 22, y: 30, width: 76, height: 18, rx: 3, class: 'wg-fenster' }),
+    s('circle', { cx: 32, cy: 72, r: 10, class: 'wg-rad' }), s('circle', { cx: 88, cy: 72, r: 10, class: 'wg-rad' }));
+}
+function nichtSvg() {
+  return s('svg', { viewBox: '0 0 120 90', class: 'wagen-svg', 'aria-hidden': 'true' },
+    s('rect', { x: 18, y: 14, width: 84, height: 62, rx: 10, class: 'wg-leer' }),
+    s('path', { d: 'M30 70 L90 20', class: 'wg-strich' }));
+}
+
 // --- Nachspuren ---
 let schrift = null;
 export async function ladeSchrift() {
@@ -535,24 +768,43 @@ export async function ladeSchrift() {
 }
 function nachspurBuehne(a, api) {
   const S = api.schrift;
-  const z = S.zeichen[a.zeichen];
-  const B = z.breite, H = 100, RAND = 18;
-  const vb = `${-RAND} ${-RAND} ${B + 2 * RAND} ${H + 2 * RAND}`;
-  const linien = [0, 50, 100].map((y) => s('path', { d: `M${-RAND} ${y} H${B + RAND}`, class: 'ns-linie' + (y === 50 ? ' mitte' : '') }));
-  const vorlagen = z.striche.map((st) => s('path', { d: st.d, class: 'ns-vorlage' }));
-  const hilfen = [];
-  if (a.hilfe !== 'keine') z.striche.forEach((st, i) => {
-    const [x, y] = st.punkte[0];
-    hilfen.push(s('circle', { cx: x, cy: y, r: 5.5, class: 'ns-start' }), s('text', { x, y: y + 3.5, class: 'ns-nr' }, String(i + 1)));
-    if (a.hilfe === 'pfeile') {
-      // kleine Pfeilspitzen entlang des Strichs
-      for (let k = 12; k < st.punkte.length - 4; k += 22) {
-        const p = st.punkte[k], q = st.punkte[k + 2];
-        const w = Math.atan2(q[1] - p[1], q[0] - p[0]) * 180 / Math.PI;
-        hilfen.push(s('path', { d: 'M-3 -3 L2 0 L-3 3', class: 'ns-pfeil', transform: `translate(${p[0]} ${p[1]}) rotate(${w})` }));
-      }
-    }
+  // Ein Zeichen oder ein Wort: die Zeichen stehen mit festem Abstand nebeneinander
+  const zeichenListe = a.wort ? [...a.wort] : [a.zeichen];
+  const ABSTAND = 10;
+  let x = 0;
+  const glyphen = zeichenListe.map((c) => {
+    const z = S.zeichen[c];
+    if (!z) throw new Error('Keine Nachspur-Vorlage für «' + c + '»');
+    const g = { z, dx: x };
+    x += z.breite + ABSTAND;
+    return g;
   });
+  const B = x - ABSTAND, RAND = 18;
+  const alle = glyphen.flatMap((g) => g.z.striche.flatMap((st) => st.punkte));
+  const minY = Math.min(0, ...alle.map((p) => p[1])), maxY = Math.max(100, ...alle.map((p) => p[1]));
+  const unten = maxY > 104 ? 135 : 100;
+  const vb = `${-RAND} ${minY - RAND} ${B + 2 * RAND} ${unten - minY + 2 * RAND}`;
+  const linien = [0, 50, 100, ...(unten > 100 ? [135] : [])].map((y) => s('path', { d: `M${-RAND} ${y} H${B + RAND}`, class: 'ns-linie' + (y === 50 ? ' mitte' : '') }));
+  // Striche in Wortkoordinaten (für Zeichnung und Prüfung)
+  const striche = glyphen.flatMap((g) => g.z.striche.map((st) => ({ d: st.d, dx: g.dx, punkte: st.punkte.map(([px, py]) => [px + g.dx, py]) })));
+  const z = { striche };
+  const vorlagen = striche.map((st) => s('path', { d: st.d, class: 'ns-vorlage', transform: st.dx ? `translate(${st.dx} 0)` : null }));
+  const hilfen = [];
+  if (a.hilfe !== 'keine') {
+    let nr = 0;
+    glyphen.forEach((g) => g.z.striche.forEach((st, i) => {
+      nr++;
+      const [px, py] = st.punkte[0];
+      hilfen.push(s('circle', { cx: px + g.dx, cy: py, r: 5.5, class: 'ns-start' }), s('text', { x: px + g.dx, y: py + 3.5, class: 'ns-nr' }, String(zeichenListe.length > 1 ? i + 1 : nr)));
+      if (a.hilfe === 'pfeile') {
+        for (let k = 12; k < st.punkte.length - 4; k += 22) {
+          const p = st.punkte[k], q = st.punkte[k + 2];
+          const w = Math.atan2(q[1] - p[1], q[0] - p[0]) * 180 / Math.PI;
+          hilfen.push(s('path', { d: 'M-3 -3 L2 0 L-3 3', class: 'ns-pfeil', transform: `translate(${p[0] + g.dx} ${p[1]}) rotate(${w})` }));
+        }
+      }
+    }));
+  }
   const tinte = s('g', { class: 'ns-tinte' });
   const flaeche = s('svg', { viewBox: vb, class: 'ns-flaeche', 'aria-label': 'Zeichenfläche' }, ...linien, ...vorlagen, ...hilfen, tinte);
   let spuren = [], aktuell = null, linie = null, versuch = 0;
@@ -573,7 +825,8 @@ function nachspurBuehne(a, api) {
   flaeche.addEventListener('pointerup', ende); flaeche.addEventListener('pointercancel', ende);
   const loeschen = () => { spuren = []; tinte.replaceChildren(); api.aenderung(); };
   const nochmal = h('button.kk.klein.k-nochmal', { type: 'button', 'aria-label': 'Nochmals', onclick: () => { klang('tipp'); loeschen(); } }, symbol('nochmal'));
-  const el = h('div.buehne.typ-nachspuren', h('div.ns-rahmen', flaeche), nochmal);
+  const el = h('div.buehne.typ-nachspuren' + (zeichenListe.length > 1 ? '.wort' : ''), h('div.ns-rahmen', flaeche), nochmal);
+  if (zeichenListe.length > 1) flaeche.style.setProperty('--seiten', String((B + 2 * RAND) / (unten - minY + 2 * RAND)));
   return {
     el, symbol: 'stift', haken: true, nachspuren: true,
     bereit: () => spuren.some((sp) => sp.length > 3),

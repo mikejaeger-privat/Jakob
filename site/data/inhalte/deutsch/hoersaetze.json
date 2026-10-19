@@ -1,0 +1,1834 @@
+{
+ "fach": "D",
+ "teil": "hoersaetze",
+ "stand": "2026-10-19",
+ "hinweis": "Gehörte Sätze für D-HB-08 (Wörter im Satz zählen). Das Kind sieht den Satz nicht.",
+ "saetze": [
+  {
+   "id": "HS-001",
+   "satz": "Die Katze schläft.",
+   "woerter": [
+    "Die",
+    "Katze",
+    "schläft",
+    "."
+   ],
+   "bild": "🐱",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "k",
+    "a",
+    "tz",
+    "e",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-002",
+   "satz": "Der Hund bellt.",
+   "woerter": [
+    "Der",
+    "Hund",
+    "bellt",
+    "."
+   ],
+   "bild": "🐶",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "h",
+    "u",
+    "n",
+    "b",
+    "l",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-003",
+   "satz": "Die Ente schwimmt.",
+   "woerter": [
+    "Die",
+    "Ente",
+    "schwimmt",
+    "."
+   ],
+   "bild": "🦆",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "e",
+    "n",
+    "t",
+    "sch",
+    "w",
+    "i",
+    "m"
+   ]
+  },
+  {
+   "id": "HS-004",
+   "satz": "Der Ball rollt.",
+   "woerter": [
+    "Der",
+    "Ball",
+    "rollt",
+    "."
+   ],
+   "bild": "⚽",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "a",
+    "l",
+    "o",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-005",
+   "satz": "Die Sonne scheint.",
+   "woerter": [
+    "Die",
+    "Sonne",
+    "scheint",
+    "."
+   ],
+   "bild": "☀️",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "s",
+    "o",
+    "n",
+    "e",
+    "sch",
+    "ei",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-006",
+   "satz": "Die Biene summt.",
+   "woerter": [
+    "Die",
+    "Biene",
+    "summt",
+    "."
+   ],
+   "bild": "🐝",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "b",
+    "n",
+    "e",
+    "s",
+    "u",
+    "m",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-007",
+   "satz": "Die Kuh frisst.",
+   "woerter": [
+    "Die",
+    "Kuh",
+    "frisst",
+    "."
+   ],
+   "bild": "🐮",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "k",
+    "u",
+    "h",
+    "f",
+    "r",
+    "i",
+    "s",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-008",
+   "satz": "Der Vogel singt.",
+   "woerter": [
+    "Der",
+    "Vogel",
+    "singt",
+    "."
+   ],
+   "bild": "🐦",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "v",
+    "o",
+    "g",
+    "l",
+    "s",
+    "i",
+    "ng",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-009",
+   "satz": "Das Pferd rennt.",
+   "woerter": [
+    "Das",
+    "Pferd",
+    "rennt",
+    "."
+   ],
+   "bild": "🐴",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "pf",
+    "e",
+    "r",
+    "n",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-010",
+   "satz": "Die Maus piepst.",
+   "woerter": [
+    "Die",
+    "Maus",
+    "piepst",
+    "."
+   ],
+   "bild": "🐭",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "m",
+    "au",
+    "s",
+    "p",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-011",
+   "satz": "Der Zug fährt.",
+   "woerter": [
+    "Der",
+    "Zug",
+    "fährt",
+    "."
+   ],
+   "bild": "🚆",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "z",
+    "u",
+    "g",
+    "f",
+    "ä",
+    "h",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-012",
+   "satz": "Schnee fällt.",
+   "woerter": [
+    "Schnee",
+    "fällt",
+    "."
+   ],
+   "bild": "❄️",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "sch",
+    "n",
+    "e",
+    "f",
+    "ä",
+    "l",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-013",
+   "satz": "Es regnet.",
+   "woerter": [
+    "Es",
+    "regnet",
+    "."
+   ],
+   "bild": "🌧️",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "e",
+    "s",
+    "r",
+    "g",
+    "n",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-014",
+   "satz": "Die Eule schaut.",
+   "woerter": [
+    "Die",
+    "Eule",
+    "schaut",
+    "."
+   ],
+   "bild": "🦉",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "eu",
+    "l",
+    "e",
+    "sch",
+    "au",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-015",
+   "satz": "Der Hahn kräht.",
+   "woerter": [
+    "Der",
+    "Hahn",
+    "kräht",
+    "."
+   ],
+   "bild": "🐓",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "h",
+    "a",
+    "n",
+    "k",
+    "ä",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-016",
+   "satz": "Mia schläft.",
+   "woerter": [
+    "Mia",
+    "schläft",
+    "."
+   ],
+   "bild": "🛏️",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "m",
+    "i",
+    "a",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-017",
+   "satz": "Der Fisch schwimmt.",
+   "woerter": [
+    "Der",
+    "Fisch",
+    "schwimmt",
+    "."
+   ],
+   "bild": "🐟",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "f",
+    "i",
+    "sch",
+    "w",
+    "m",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-018",
+   "satz": "Das Auto hupt.",
+   "woerter": [
+    "Das",
+    "Auto",
+    "hupt",
+    "."
+   ],
+   "bild": "🚗",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "au",
+    "t",
+    "o",
+    "h",
+    "u",
+    "p"
+   ]
+  },
+  {
+   "id": "HS-019",
+   "satz": "Die Schnecke kriecht.",
+   "woerter": [
+    "Die",
+    "Schnecke",
+    "kriecht",
+    "."
+   ],
+   "bild": "🐌",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "sch",
+    "n",
+    "e",
+    "ck",
+    "k",
+    "r",
+    "ch",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-020",
+   "satz": "Der Mond scheint.",
+   "woerter": [
+    "Der",
+    "Mond",
+    "scheint",
+    "."
+   ],
+   "bild": "🌙",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "m",
+    "o",
+    "n",
+    "sch",
+    "ei",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-021",
+   "satz": "Der Igel schläft.",
+   "woerter": [
+    "Der",
+    "Igel",
+    "schläft",
+    "."
+   ],
+   "bild": "🦔",
+   "stufen": {
+    "D-HB-08": 1
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "i",
+    "g",
+    "l",
+    "sch",
+    "ä",
+    "f",
+    "t"
+   ]
+  },
+  {
+   "id": "HS-022",
+   "satz": "Die Katze trinkt Milch.",
+   "woerter": [
+    "Die",
+    "Katze",
+    "trinkt",
+    "Milch",
+    "."
+   ],
+   "bild": "🐱",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "k",
+    "a",
+    "tz",
+    "e",
+    "t",
+    "r",
+    "i",
+    "nk",
+    "m",
+    "l",
+    "ch"
+   ]
+  },
+  {
+   "id": "HS-023",
+   "satz": "Lea isst einen Apfel.",
+   "woerter": [
+    "Lea",
+    "isst",
+    "einen",
+    "Apfel",
+    "."
+   ],
+   "bild": "🍎",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "l",
+    "e",
+    "a",
+    "i",
+    "s",
+    "t",
+    "ei",
+    "n",
+    "pf"
+   ]
+  },
+  {
+   "id": "HS-024",
+   "satz": "Der Frosch springt ins Wasser.",
+   "woerter": [
+    "Der",
+    "Frosch",
+    "springt",
+    "ins",
+    "Wasser",
+    "."
+   ],
+   "bild": "🐸",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "f",
+    "o",
+    "sch",
+    "sp",
+    "i",
+    "ng",
+    "t",
+    "n",
+    "s",
+    "w",
+    "a"
+   ]
+  },
+  {
+   "id": "HS-025",
+   "satz": "Der Hase frisst eine Karotte.",
+   "woerter": [
+    "Der",
+    "Hase",
+    "frisst",
+    "eine",
+    "Karotte",
+    "."
+   ],
+   "bild": "🐇",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "h",
+    "a",
+    "s",
+    "f",
+    "i",
+    "t",
+    "ei",
+    "n",
+    "k",
+    "o"
+   ]
+  },
+  {
+   "id": "HS-026",
+   "satz": "Noah fährt mit dem Velo.",
+   "woerter": [
+    "Noah",
+    "fährt",
+    "mit",
+    "dem",
+    "Velo",
+    "."
+   ],
+   "bild": "🚲",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "n",
+    "o",
+    "a",
+    "h",
+    "f",
+    "ä",
+    "r",
+    "t",
+    "m",
+    "i",
+    "d",
+    "e",
+    "v",
+    "l"
+   ]
+  },
+  {
+   "id": "HS-027",
+   "satz": "Die Ente schwimmt im See.",
+   "woerter": [
+    "Die",
+    "Ente",
+    "schwimmt",
+    "im",
+    "See",
+    "."
+   ],
+   "bild": "🦆",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "e",
+    "n",
+    "t",
+    "sch",
+    "w",
+    "i",
+    "m",
+    "s"
+   ]
+  },
+  {
+   "id": "HS-028",
+   "satz": "Der Bär schläft im Wald.",
+   "woerter": [
+    "Der",
+    "Bär",
+    "schläft",
+    "im",
+    "Wald",
+    "."
+   ],
+   "bild": "🐻",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "ä",
+    "sch",
+    "l",
+    "f",
+    "t",
+    "i",
+    "m",
+    "w",
+    "a"
+   ]
+  },
+  {
+   "id": "HS-029",
+   "satz": "Die Biene fliegt zur Blume.",
+   "woerter": [
+    "Die",
+    "Biene",
+    "fliegt",
+    "zur",
+    "Blume",
+    "."
+   ],
+   "bild": "🐝",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "b",
+    "n",
+    "e",
+    "f",
+    "l",
+    "g",
+    "t",
+    "z",
+    "u",
+    "r",
+    "m"
+   ]
+  },
+  {
+   "id": "HS-030",
+   "satz": "Die Maus frisst Käse.",
+   "woerter": [
+    "Die",
+    "Maus",
+    "frisst",
+    "Käse",
+    "."
+   ],
+   "bild": "🐭",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "m",
+    "au",
+    "s",
+    "f",
+    "r",
+    "i",
+    "t",
+    "k",
+    "ä",
+    "e"
+   ]
+  },
+  {
+   "id": "HS-031",
+   "satz": "Das Schaf hat Wolle.",
+   "woerter": [
+    "Das",
+    "Schaf",
+    "hat",
+    "Wolle",
+    "."
+   ],
+   "bild": "🐑",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "sch",
+    "f",
+    "h",
+    "t",
+    "w",
+    "o",
+    "l",
+    "e"
+   ]
+  },
+  {
+   "id": "HS-032",
+   "satz": "Elias hat einen Hund.",
+   "woerter": [
+    "Elias",
+    "hat",
+    "einen",
+    "Hund",
+    "."
+   ],
+   "bild": "🐶",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "e",
+    "l",
+    "i",
+    "a",
+    "s",
+    "h",
+    "t",
+    "ei",
+    "n",
+    "u",
+    "d"
+   ]
+  },
+  {
+   "id": "HS-033",
+   "satz": "Die Sonne ist heiss.",
+   "woerter": [
+    "Die",
+    "Sonne",
+    "ist",
+    "heiss",
+    "."
+   ],
+   "bild": "☀️",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "s",
+    "o",
+    "n",
+    "e",
+    "i",
+    "t",
+    "h",
+    "ei"
+   ]
+  },
+  {
+   "id": "HS-034",
+   "satz": "Der Fuchs läuft schnell.",
+   "woerter": [
+    "Der",
+    "Fuchs",
+    "läuft",
+    "schnell",
+    "."
+   ],
+   "bild": "🦊",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "f",
+    "u",
+    "ch",
+    "s",
+    "l",
+    "äu",
+    "t",
+    "sch",
+    "n"
+   ]
+  },
+  {
+   "id": "HS-035",
+   "satz": "Die Schnecke kriecht langsam.",
+   "woerter": [
+    "Die",
+    "Schnecke",
+    "kriecht",
+    "langsam",
+    "."
+   ],
+   "bild": "🐌",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "sch",
+    "n",
+    "e",
+    "ck",
+    "k",
+    "r",
+    "ch",
+    "t",
+    "l",
+    "a",
+    "ng",
+    "s",
+    "m"
+   ]
+  },
+  {
+   "id": "HS-036",
+   "satz": "Am Himmel ist eine Wolke.",
+   "woerter": [
+    "Am",
+    "Himmel",
+    "ist",
+    "eine",
+    "Wolke",
+    "."
+   ],
+   "bild": "☁️",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "a",
+    "m",
+    "h",
+    "i",
+    "e",
+    "l",
+    "s",
+    "t",
+    "ei",
+    "n",
+    "w",
+    "o",
+    "k"
+   ]
+  },
+  {
+   "id": "HS-037",
+   "satz": "Der Igel sucht Futter.",
+   "woerter": [
+    "Der",
+    "Igel",
+    "sucht",
+    "Futter",
+    "."
+   ],
+   "bild": "🦔",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "i",
+    "g",
+    "l",
+    "s",
+    "u",
+    "ch",
+    "t",
+    "f"
+   ]
+  },
+  {
+   "id": "HS-038",
+   "satz": "Der Hahn kräht am Morgen.",
+   "woerter": [
+    "Der",
+    "Hahn",
+    "kräht",
+    "am",
+    "Morgen",
+    "."
+   ],
+   "bild": "🐓",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "h",
+    "a",
+    "n",
+    "k",
+    "ä",
+    "t",
+    "m",
+    "o",
+    "g"
+   ]
+  },
+  {
+   "id": "HS-039",
+   "satz": "Die Kuh gibt Milch.",
+   "woerter": [
+    "Die",
+    "Kuh",
+    "gibt",
+    "Milch",
+    "."
+   ],
+   "bild": "🐮",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "k",
+    "u",
+    "h",
+    "g",
+    "i",
+    "b",
+    "t",
+    "m",
+    "l",
+    "ch"
+   ]
+  },
+  {
+   "id": "HS-040",
+   "satz": "Mia schläft im Bett.",
+   "woerter": [
+    "Mia",
+    "schläft",
+    "im",
+    "Bett",
+    "."
+   ],
+   "bild": "🛏️",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "m",
+    "i",
+    "a",
+    "sch",
+    "l",
+    "ä",
+    "f",
+    "t",
+    "b",
+    "e"
+   ]
+  },
+  {
+   "id": "HS-041",
+   "satz": "Der Vogel sitzt im Baum.",
+   "woerter": [
+    "Der",
+    "Vogel",
+    "sitzt",
+    "im",
+    "Baum",
+    "."
+   ],
+   "bild": "🐦",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "v",
+    "o",
+    "g",
+    "l",
+    "s",
+    "i",
+    "tz",
+    "t",
+    "m",
+    "b",
+    "au"
+   ]
+  },
+  {
+   "id": "HS-042",
+   "satz": "Das Auto ist rot.",
+   "woerter": [
+    "Das",
+    "Auto",
+    "ist",
+    "rot",
+    "."
+   ],
+   "bild": "🚗",
+   "stufen": {
+    "D-HB-08": 2
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "au",
+    "t",
+    "o",
+    "i",
+    "r"
+   ]
+  },
+  {
+   "id": "HS-043",
+   "satz": "Der Hund spielt mit dem Ball.",
+   "woerter": [
+    "Der",
+    "Hund",
+    "spielt",
+    "mit",
+    "dem",
+    "Ball",
+    "."
+   ],
+   "bild": "🐶",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "h",
+    "u",
+    "n",
+    "sp",
+    "ie",
+    "l",
+    "t",
+    "m",
+    "i",
+    "b",
+    "a"
+   ]
+  },
+  {
+   "id": "HS-044",
+   "satz": "Lea isst am Morgen ein Brot.",
+   "woerter": [
+    "Lea",
+    "isst",
+    "am",
+    "Morgen",
+    "ein",
+    "Brot",
+    "."
+   ],
+   "bild": "🍞",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "l",
+    "e",
+    "a",
+    "i",
+    "s",
+    "t",
+    "m",
+    "o",
+    "r",
+    "g",
+    "n",
+    "ei",
+    "b"
+   ]
+  },
+  {
+   "id": "HS-045",
+   "satz": "Die Katze liegt auf dem Sofa.",
+   "woerter": [
+    "Die",
+    "Katze",
+    "liegt",
+    "auf",
+    "dem",
+    "Sofa",
+    "."
+   ],
+   "bild": "🐱",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "k",
+    "a",
+    "tz",
+    "e",
+    "l",
+    "g",
+    "t",
+    "au",
+    "f",
+    "m",
+    "s",
+    "o"
+   ]
+  },
+  {
+   "id": "HS-046",
+   "satz": "Der Frosch sitzt auf dem Stein.",
+   "woerter": [
+    "Der",
+    "Frosch",
+    "sitzt",
+    "auf",
+    "dem",
+    "Stein",
+    "."
+   ],
+   "bild": "🐸",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "f",
+    "o",
+    "sch",
+    "s",
+    "i",
+    "tz",
+    "t",
+    "au",
+    "m",
+    "st",
+    "ei",
+    "n"
+   ]
+  },
+  {
+   "id": "HS-047",
+   "satz": "Die Ente schwimmt auf dem See.",
+   "woerter": [
+    "Die",
+    "Ente",
+    "schwimmt",
+    "auf",
+    "dem",
+    "See",
+    "."
+   ],
+   "bild": "🦆",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "e",
+    "n",
+    "t",
+    "sch",
+    "w",
+    "i",
+    "m",
+    "au",
+    "f",
+    "s"
+   ]
+  },
+  {
+   "id": "HS-048",
+   "satz": "Mia malt eine Blume für Oma.",
+   "woerter": [
+    "Mia",
+    "malt",
+    "eine",
+    "Blume",
+    "für",
+    "Oma",
+    "."
+   ],
+   "bild": "🌼",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "m",
+    "i",
+    "a",
+    "l",
+    "t",
+    "ei",
+    "n",
+    "e",
+    "b",
+    "u",
+    "f",
+    "ü",
+    "r",
+    "o"
+   ]
+  },
+  {
+   "id": "HS-049",
+   "satz": "Der Bär sucht Honig im Wald.",
+   "woerter": [
+    "Der",
+    "Bär",
+    "sucht",
+    "Honig",
+    "im",
+    "Wald",
+    "."
+   ],
+   "bild": "🐻",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "ä",
+    "s",
+    "u",
+    "ch",
+    "t",
+    "h",
+    "o",
+    "n",
+    "i",
+    "g",
+    "m",
+    "w",
+    "a",
+    "l"
+   ]
+  },
+  {
+   "id": "HS-050",
+   "satz": "Jonas trinkt am Abend warme Milch.",
+   "woerter": [
+    "Jonas",
+    "trinkt",
+    "am",
+    "Abend",
+    "warme",
+    "Milch",
+    "."
+   ],
+   "bild": "🥛",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "j",
+    "o",
+    "n",
+    "a",
+    "s",
+    "t",
+    "r",
+    "i",
+    "nk",
+    "m",
+    "b",
+    "e",
+    "d",
+    "w",
+    "l",
+    "ch"
+   ]
+  },
+  {
+   "id": "HS-051",
+   "satz": "Die Biene sitzt auf der Blume.",
+   "woerter": [
+    "Die",
+    "Biene",
+    "sitzt",
+    "auf",
+    "der",
+    "Blume",
+    "."
+   ],
+   "bild": "🐝",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "b",
+    "n",
+    "e",
+    "s",
+    "i",
+    "tz",
+    "t",
+    "au",
+    "f",
+    "r",
+    "l",
+    "u",
+    "m"
+   ]
+  },
+  {
+   "id": "HS-052",
+   "satz": "Der Fuchs schläft unter dem Baum.",
+   "woerter": [
+    "Der",
+    "Fuchs",
+    "schläft",
+    "unter",
+    "dem",
+    "Baum",
+    "."
+   ],
+   "bild": "🦊",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "f",
+    "u",
+    "ch",
+    "s",
+    "sch",
+    "l",
+    "ä",
+    "t",
+    "n",
+    "m",
+    "b",
+    "au"
+   ]
+  },
+  {
+   "id": "HS-053",
+   "satz": "Sara gibt dem Hasen eine Karotte.",
+   "woerter": [
+    "Sara",
+    "gibt",
+    "dem",
+    "Hasen",
+    "eine",
+    "Karotte",
+    "."
+   ],
+   "bild": "🐇",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "s",
+    "a",
+    "r",
+    "g",
+    "i",
+    "b",
+    "t",
+    "d",
+    "e",
+    "m",
+    "h",
+    "n",
+    "ei",
+    "k",
+    "o"
+   ]
+  },
+  {
+   "id": "HS-054",
+   "satz": "Am Abend scheint der Mond hell.",
+   "woerter": [
+    "Am",
+    "Abend",
+    "scheint",
+    "der",
+    "Mond",
+    "hell",
+    "."
+   ],
+   "bild": "🌙",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "a",
+    "m",
+    "b",
+    "e",
+    "n",
+    "d",
+    "sch",
+    "ei",
+    "t",
+    "r",
+    "o",
+    "h",
+    "l"
+   ]
+  },
+  {
+   "id": "HS-055",
+   "satz": "Das Boot fährt über den See.",
+   "woerter": [
+    "Das",
+    "Boot",
+    "fährt",
+    "über",
+    "den",
+    "See",
+    "."
+   ],
+   "bild": "⛵",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "b",
+    "o",
+    "t",
+    "f",
+    "ä",
+    "h",
+    "r",
+    "ü",
+    "e",
+    "n"
+   ]
+  },
+  {
+   "id": "HS-056",
+   "satz": "Der Bus hält vor der Schule.",
+   "woerter": [
+    "Der",
+    "Bus",
+    "hält",
+    "vor",
+    "der",
+    "Schule",
+    "."
+   ],
+   "bild": "🚌",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "b",
+    "u",
+    "s",
+    "h",
+    "ä",
+    "l",
+    "t",
+    "v",
+    "o",
+    "sch"
+   ]
+  },
+  {
+   "id": "HS-057",
+   "satz": "Nina backt mit Papa einen Kuchen.",
+   "woerter": [
+    "Nina",
+    "backt",
+    "mit",
+    "Papa",
+    "einen",
+    "Kuchen",
+    "."
+   ],
+   "bild": "🍰",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "n",
+    "i",
+    "a",
+    "b",
+    "ck",
+    "t",
+    "m",
+    "p",
+    "ei",
+    "e",
+    "k",
+    "u",
+    "ch"
+   ]
+  },
+  {
+   "id": "HS-058",
+   "satz": "Die Kuh steht auf der Wiese.",
+   "woerter": [
+    "Die",
+    "Kuh",
+    "steht",
+    "auf",
+    "der",
+    "Wiese",
+    "."
+   ],
+   "bild": "🐮",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "k",
+    "u",
+    "h",
+    "st",
+    "e",
+    "t",
+    "au",
+    "f",
+    "r",
+    "w",
+    "s"
+   ]
+  },
+  {
+   "id": "HS-059",
+   "satz": "Der Hahn kräht laut am Morgen.",
+   "woerter": [
+    "Der",
+    "Hahn",
+    "kräht",
+    "laut",
+    "am",
+    "Morgen",
+    "."
+   ],
+   "bild": "🐓",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "h",
+    "a",
+    "n",
+    "k",
+    "ä",
+    "t",
+    "l",
+    "au",
+    "m",
+    "o",
+    "g"
+   ]
+  },
+  {
+   "id": "HS-060",
+   "satz": "Die Eule fliegt in der Nacht.",
+   "woerter": [
+    "Die",
+    "Eule",
+    "fliegt",
+    "in",
+    "der",
+    "Nacht",
+    "."
+   ],
+   "bild": "🦉",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "ie",
+    "eu",
+    "l",
+    "e",
+    "f",
+    "g",
+    "t",
+    "i",
+    "n",
+    "r",
+    "a",
+    "ch"
+   ]
+  },
+  {
+   "id": "HS-061",
+   "satz": "Der Igel schläft unter den Blättern.",
+   "woerter": [
+    "Der",
+    "Igel",
+    "schläft",
+    "unter",
+    "den",
+    "Blättern",
+    "."
+   ],
+   "bild": "🦔",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "e",
+    "r",
+    "i",
+    "g",
+    "l",
+    "sch",
+    "ä",
+    "f",
+    "t",
+    "u",
+    "n",
+    "b"
+   ]
+  },
+  {
+   "id": "HS-062",
+   "satz": "Leon isst gern Brot mit Honig.",
+   "woerter": [
+    "Leon",
+    "isst",
+    "gern",
+    "Brot",
+    "mit",
+    "Honig",
+    "."
+   ],
+   "bild": "🍯",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "l",
+    "e",
+    "o",
+    "n",
+    "i",
+    "s",
+    "t",
+    "g",
+    "r",
+    "b",
+    "m",
+    "h"
+   ]
+  },
+  {
+   "id": "HS-063",
+   "satz": "Das Pferd frisst Heu im Stall.",
+   "woerter": [
+    "Das",
+    "Pferd",
+    "frisst",
+    "Heu",
+    "im",
+    "Stall",
+    "."
+   ],
+   "bild": "🐴",
+   "stufen": {
+    "D-HB-08": 3
+   },
+   "braucht": [
+    "d",
+    "a",
+    "s",
+    "pf",
+    "e",
+    "r",
+    "f",
+    "i",
+    "t",
+    "h",
+    "eu",
+    "m",
+    "st",
+    "l"
+   ]
+  }
+ ]
+}

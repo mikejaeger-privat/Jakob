@@ -106,10 +106,7 @@ export function zeigeWeg(wurzel, { trotzdem = false } = {}) {
     if (zustand === 'erledigt') { sprich('Diesen Stein hast du schon geschafft.'); return; }
     if (zustand !== 'jetzt') { sprich('Dieser Stein kommt später. Tipp auf einen Stein, der leuchtet.'); zeigeTippen(steine[jetzt[0]], 1); return; }
     klang('hopp');
-    const art = plan.steine[i].art;
-    // Deutsch folgt in Etappe 4; bis dahin ein Hinweis
-    if (art === 'deutsch') { sprich('Die Aufgaben mit dem Buch baut der Fuchs noch. Tipp auf den Würfel.'); return; }
-    starteStein(i, art);
+    starteStein(i, plan.steine[i].art);
   }
 
   async function starteStein(i, art) {
