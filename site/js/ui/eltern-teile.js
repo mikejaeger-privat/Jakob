@@ -7,7 +7,8 @@ import { db } from '../app/db.js';
 import { L } from '../app/lernen.js';
 import { sprich } from '../app/sprache.js';
 import { status, lies, wertJetzt } from '../core/stand.js';
-import { reihenfolgeD } from '../core/plan.js';
+import { schonDran } from '../core/plan.js';
+import { abschnitte, abschnittAm, kapitelAm } from '../core/schule.js';
 import { pruefePaket, wendePaketeAn, lernwoerterAusPaket, PAKET_MAX_BYTES } from '../core/paket.js';
 import { datumText, tagNr } from '../core/util.js';
 import { zerlege } from '../deutsch/lib.js';
@@ -62,10 +63,30 @@ export async function teilUeberblick(el, neu, { sicherungsBanner = null } = {}) 
       liste,
       alleErledigt ? h('div.knopfreihe', h('button.btn', { type: 'button', onclick: zusatz }, 'Heute nochmals eine Sitzung freigeben')) : null,
       naechsteFerien ? h('p.leise.klein', `Nächste Ferien: ${naechsteFerien.name}, ${datumText(naechsteFerien.von)} bis ${datumText(naechsteFerien.bis)}.`) : null),
+    schuleJetzt(t),
     hinweiseLehrperson(t),
     schatzBerichte(),
     etappen(t),
     h('p.leise.klein', `Version ${document.documentElement.dataset.version || ''}`));
+}
+
+// Was die Lehrperson für den laufenden Abschnitt angekündigt hat (Elternbrief) und wie die App es aufnimmt
+function schuleJetzt(t) {
+  const a = abschnittAm(G.LM, t);
+  if (!a) {
+    const letzter = abschnitte(G.LM).filter((x) => x.bisT < t).at(-1);
+    return letzter ? h('section.blatt', h('h2', 'In der Schule'), h('p.leise.klein', `Der letzte Elternbrief (${letzter.name}) galt bis ${datumText(letzter.bisT)}. Bis ein neuer nachgetragen ist, schätzt die App aus der Jahresplanung und dem Datum, was dran ist.`)) : null;
+  }
+  const kap = G.LM.faecher.M.kapitel[kapitelAm(G.LM, t)]?.name;
+  const vorgabe = Number.isInteger(Z.einstellungen?.kapitel);
+  return h('section.blatt', h('h2', 'In der Schule'),
+    h('p', `${a.name}, ${datumText(a.vonT)} bis ${datumText(a.bisT)} (${a.quelle}):`),
+    h('ul.liste.klein',
+      a.D ? h('li', h('strong', 'Deutsch: '), a.D.themen.join('; ')) : null,
+      a.M ? h('li', h('strong', 'Mathematik: '), a.M.themen.join('; ')) : null,
+      (a.weitere || []).map((w) => h('li', h('strong', `${w.fach}: `), w.themen.join('; ')))),
+    h('p.leise.klein', `Die App nimmt diese Deutsch- und Mathematik-Themen zuerst dran. Mathematik verteilt die Kapitel gleichmässig über den Abschnitt; ${vorgabe ? 'unter «Mathematik» ist ein Kapitel fest eingestellt, das geht vor' : `jetzt geschätzt: «${kap || '–'}» (unter «Mathematik» änderbar)`}.`),
+    (a.weitere || []).map((w) => (w.inApp ? h('p.leise.klein', `${w.fach} in der App: ${w.inApp}`) : null)));
 }
 
 // Bleibt eine Grundfertigkeit lange schwierig, ein ruhiger Hinweis aufs Gespräch mit der Lehrperson
@@ -111,16 +132,15 @@ function etappen(t) {
   const kuenftig = K.etappen.filter((e) => e.tag >= t);
   if (!kuenftig.length) return null;
   const kap = G.LM.faecher.M.kapitel;
-  const schulMonat = (x) => (x >= 8 ? x - 8 : x + 4);
   const zeilen = kuenftig.map((e) => {
-    const m = schulMonat(new Date(e.tag * 86400000).getUTCMonth() + 1);
-    const mIds = [...new Set(kap.filter((k) => schulMonat(Number(k.monat.slice(0, 2))) <= m).flatMap((k) => k.fertigkeiten))];
-    const dIds = reihenfolgeD({ lm: G.LM, dAnteil: L.schuljahrAnteil(e.tag) }).slice(0, Math.round(L.schuljahrAnteil(e.tag) * G.LM.faecher.D.reihenfolge['1'].length) + 1);
+    // Was bis zur Etappe dran ist: laut Elternbrief, sonst nach Jahresplanung und Datum (ohne Vorgabe der Eltern)
+    const c = { lm: G.LM, heute: e.tag, dAnteil: L.schuljahrAnteil(e.tag), mKapitel: kapitelAm(G.LM, e.tag) };
+    const mIds = schonDran(c, 'M'), dIds = schonDran(c, 'D').filter((id) => fert(id)?.kern === true);
     const tr = (ids) => ids.filter((id) => fert(id) && traegt(status(Z.stand, id, Object.keys(fert(id).stufen)[0], t, B()))).length;
-    const bisKap = kap.filter((k) => schulMonat(Number(k.monat.slice(0, 2))) <= m).at(-1);
+    const brief = abschnitte(G.LM).some((a) => a.vonT <= e.tag);
     return h('li', h('strong', `${e.name} (${datumText(e.tag)})`),
-      h('div.leise.klein', `Mathematik laut Jahresplanung bis «${bisKap?.name || '–'}»: ${mIds.length} Themen; bei ${tr(mIds)} davon gelingt die erste Stufe schon meist (fast sicher, sicher oder vermutet).`),
-      h('div.leise.klein', `Deutsch nach der angenommenen Reihenfolge: ${dIds.length} Themen; bei ${tr(dIds)} davon gelingt die erste Stufe schon meist.`));
+      h('div.leise.klein', `Mathematik ${brief ? 'laut Elternbrief und Jahresplanung' : 'laut Jahresplanung'} bis «${kap[c.mKapitel]?.name || '–'}»: ${mIds.length} Themen; bei ${tr(mIds)} davon gelingt die erste Stufe schon meist (fast sicher, sicher oder vermutet).`),
+      h('div.leise.klein', `Deutsch ${brief ? 'laut Elternbrief und angenommener Reihenfolge' : 'nach der angenommenen Reihenfolge'}: ${dIds.length} Themen; bei ${tr(dIds)} davon gelingt die erste Stufe schon meist.`));
   });
   return h('section.blatt', h('h2', 'Etappen zur Orientierung'), h('p.leise.klein', G.Z.etappenHinweis), h('ul.liste', zeilen));
 }

@@ -1,11 +1,36 @@
 {
  "stand": "2026-10-19",
- "hinweis": "Reihenfolge der Themen im Schuljahr 2026/27. Mathematik nach der Jahresplanung von «Mathematik 1 Primarstufe» (LMVZ); die Zuordnung der Kapitel zu den Fertigkeiten ist eine Annahme der App. Deutsch: Lehrmittel der Klasse unbekannt, Reihenfolge ist ein Vorschlag (Annahme). Eine ID weiter nach vorn schieben heisst: Der Plan nimmt das Thema früher dran.",
+ "hinweis": "Reihenfolge der Themen im Schuljahr 2026/27. Mathematik nach der Jahresplanung von «Mathematik 1 Primarstufe» (LMVZ); die Zuordnung der Kapitel zu den Fertigkeiten ist eine Annahme der App. Deutsch: Lehrmittel der Klasse unbekannt, Reihenfolge ist ein Vorschlag (Annahme). Eine ID weiter nach vorn schieben heisst: Der Plan nimmt das Thema früher dran. Angaben der Lehrperson zu einem Abschnitt des Schuljahrs stehen unter «schule» und gehen vor.",
+ "schule": {
+  "hinweis": "Was die Lehrperson für einen Abschnitt des Schuljahrs ankündigt (Elternbrief). Gilt vom ersten bis zum letzten Tag des Abschnitts und geht der Schätzung aus Jahresplanung und Datum vor. Mathematik: die genannten Kapitel in der Reihenfolge der Jahresplanung, gleichmässig über den Abschnitt verteilt (Annahme, der Brief nennt keine Wochen). Deutsch: die genannten Fertigkeiten kommen zuerst dran und gelten ab Beginn des Abschnitts als «schon dran». Die Zuordnung der Themen zu den Fertigkeiten ist eine Annahme der App.",
+  "abschnitte": [
+   {
+    "id": "2026-q2",
+    "name": "2. Quintal",
+    "von": "2026-10-19",
+    "bis": "2026-12-18",
+    "quelle": "Elternbrief der Lehrperson zum 2. Quintal (Oktober 2026)",
+    "D": {
+     "themen": ["Laute üben und repetieren, Silben und Wörter lesen", "Phonologische Bewusstheit, Lesetraining und Grafomotorik üben", "Buchstaben, Silben und Wörter schreiben"],
+     "fertigkeiten": ["D-HB-03", "D-BU-01", "D-BU-02", "D-HB-02", "D-HB-07", "D-LE-01", "D-LE-02", "D-BU-04", "D-WS-07", "D-LE-03", "D-SC-01", "D-WS-10", "D-HB-01", "D-LE-06", "D-SC-03", "D-HB-04", "D-SC-02", "D-LE-05", "D-HB-05", "D-BU-05", "D-BU-03", "D-HB-08", "D-HB-06"]
+    },
+    "M": {
+     "themen": ["Ordnen, Zerlegen und Verdoppeln", "Plus- und Minusrechnen", "Zahlenmauern und Grundformen"],
+     "kapitel": ["Ordnen", "Zerlegen", "Verdoppeln", "Grundformen", "Plusrechnen", "Minusrechnen", "Zahlenmauern"],
+     "annahme": "Reihenfolge wie in der Jahresplanung. «Punktefeld» und «Rechengeschichten» nennt der Brief nicht; sie gelten als vor den Herbstferien behandelt."
+    },
+    "weitere": [
+     { "fach": "NMG / RKE", "themen": ["Jahreszeiten, Monate und Wochentage", "Weihnachtsritual", "Träume", "Freundschaft", "Streiten und Versöhnen"], "inApp": "Wochentage, Jahreszeiten und Monate als Wortschatz (D-WS-07, D-WS-10); die übrigen Themen nicht." }
+    ]
+   }
+  ]
+ },
  "faecher": {
   "M": {
    "lehrmittel": "Mathematik 1 Primarstufe (Lehrmittelverlag Zürich)",
    "annahme": false,
    "zuordnungAnnahme": true,
+   "bestaetigung": "Der Elternbrief zum 2. Quintal nennt Themen mit den Kapitelnamen von «Mathematik 1» (Ordnen, Zerlegen, Verdoppeln, Grundformen, Plusrechnen, Minusrechnen, Zahlenmauern); das spricht dafür, dass die Klasse mit diesem Lehrmittel arbeitet.",
    "quelle": {
     "titel": "Jahresplanung «Mathematik 1 Primarstufe» (LMVZ)",
     "url": "https://003.lmvz.ch/lehrmittelsites/mathe_primar/lp/download/m1/mathematik_1_primarstufe_jahresplanung.pdf",
@@ -59,8 +84,8 @@
     "abgerufen": "2026-10-19"
    },
    "reihenfolge": {
-    "1": ["D-HB-01", "D-HB-02", "D-HB-03", "D-BU-01", "D-BU-02", "D-BU-03", "D-BU-04", "D-WS-01", "D-WS-06", "D-HV-01", "D-HB-07", "D-LE-01", "D-LE-06", "D-LE-07", "D-SC-01", "D-HB-04", "D-LE-02", "D-LE-03", "D-SC-03", "D-SC-02", "D-BU-05", "D-HB-05", "D-WS-03", "D-WS-04", "D-HB-08", "D-WS-02", "D-LE-05", "D-WS-05", "D-HV-02", "D-HB-06", "D-BU-07", "D-SC-06"],
-    "1.5": ["D-LE-09", "D-LE-08", "D-SC-04", "D-LE-04", "D-SC-05", "D-WS-07", "D-WS-08", "D-WS-09"],
+    "1": ["D-HB-01", "D-HB-02", "D-HB-03", "D-BU-01", "D-BU-02", "D-BU-03", "D-BU-04", "D-WS-01", "D-WS-06", "D-HV-01", "D-HB-07", "D-LE-01", "D-LE-06", "D-LE-07", "D-SC-01", "D-HB-04", "D-LE-02", "D-LE-03", "D-SC-03", "D-SC-02", "D-BU-05", "D-HB-05", "D-WS-03", "D-WS-04", "D-HB-08", "D-WS-02", "D-LE-05", "D-WS-05", "D-HV-02", "D-HB-06", "D-WS-07", "D-WS-10", "D-BU-07", "D-SC-06"],
+    "1.5": ["D-LE-09", "D-LE-08", "D-SC-04", "D-LE-04", "D-SC-05", "D-WS-08", "D-WS-09"],
     "2": ["D-LE-10", "D-BU-06"]
    }
   }

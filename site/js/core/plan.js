@@ -3,6 +3,7 @@
 // Der Plan ist eine Warteschlange je Stein; wie viele Aufgaben wirklich drankommen, entscheidet die Zeit beim Spielen.
 import { lies, status, istSicher, traegt, faellig, wertJetzt, zeigBereit } from './stand.js';
 import { kartenHeute } from './kasten.js';
+import { deutschJetzt, deutschBegonnen } from './schule.js';
 
 const STUFEN = (f) => Object.keys(f.stufen).map(Number).sort((a, b) => a - b);
 const hatAntworten = (stand, f) => STUFEN(f).some((s) => { const e = lies(stand, f.id, s); return e && (e.na > 0 || e.geuebt > 0 || e.vermutet); });
@@ -40,19 +41,24 @@ export function aktuelleListe(c, fach) {
     return f && f.kern !== 'eltern' && !traegt(status(stand, id, STUFEN(f)[0], heute, B)) && stufeZumUeben(c, f) !== null;
   }).slice(0, P.plan.quoten.aktuell);
 }
-// Deutsch-Reihenfolge der Klasse 1, ab dem zweiten Halbjahr mit den Themen von 1.5
+// Deutsch-Reihenfolge der Klasse 1, ab dem zweiten Halbjahr mit den Themen von 1.5;
+// was die Lehrperson für den laufenden Abschnitt nennt (Elternbrief), kommt zuerst
+const reihenfolgeBasis = (c) => { const R = c.lm.faecher.D.reihenfolge; return [...R['1'], ...(c.dAnteil >= 0.45 ? R['1.5'] : [])]; };
 export function reihenfolgeD(c) {
-  const R = c.lm.faecher.D.reihenfolge;
-  return [...R['1'], ...(c.dAnteil >= 0.45 ? R['1.5'] : [])];
+  const schule = c.heute === undefined ? [] : deutschJetzt(c.lm, c.heute);
+  return [...new Set([...schule, ...reihenfolgeBasis(c)])];
 }
-// Was laut Lehrmittel schon dran war (für Entdeckerrunde und «Lücken»)
+// Was laut Schule oder Lehrmittel schon dran war (für Entdeckerrunde, «Lücken» und neue Themen)
 export function schonDran(c, fach) {
   if (fach === 'M') {
     const kap = c.lm.faecher.M.kapitel;
     return [...new Set(kap.slice(0, Math.max(0, c.mKapitel) + 1).flatMap((x) => x.fertigkeiten))];
   }
-  const R = reihenfolgeD(c);
-  return R.slice(0, Math.max(c.dMin ?? 8, Math.round(c.dAnteil * c.lm.faecher.D.reihenfolge['1'].length) + 2));
+  const nachZeit = reihenfolgeBasis(c).slice(0, Math.max(c.dMin ?? 8, Math.round(c.dAnteil * c.lm.faecher.D.reihenfolge['1'].length) + 2));
+  const schule = c.heute === undefined ? [] : deutschBegonnen(c.lm, c.heute);
+  // Laufender Abschnitt zuerst (in seiner Reihenfolge), dann frühere Abschnitte und die Schätzung aus dem Schuljahr
+  const jetzt = c.heute === undefined ? [] : deutschJetzt(c.lm, c.heute);
+  return [...new Set([...jetzt, ...schule, ...nachZeit])];
 }
 
 // Voraussetzungen einer Stufe erfüllt? Liefert die fehlende Voraussetzung oder null

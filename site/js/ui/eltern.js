@@ -12,6 +12,7 @@ import { symbol } from './figuren.js';
 import { spielbar } from './baustein.js';
 import { L } from '../app/lernen.js';
 import { zerlege } from '../deutsch/lib.js';
+import { kapitelAm } from '../core/schule.js';
 import { teilUeberblick, teilStand, teilRueckmeldungen, paketAbschnitt, vorsprechen } from './eltern-teile.js';
 
 const TEILE = [['ueberblick', 'Überblick'], ['stand', 'Stand'], ['buchstaben', 'Buchstaben'], ['mathematik', 'Mathematik'], ['lernwoerter', 'Lernwörter'], ['aufgaben', 'Aufgaben'], ['rueckmeldungen', 'Rückmeldungen'], ['einstellungen', 'Einstellungen'], ['daten', 'Daten'], ['grenzen', 'Grenzen']];
@@ -148,12 +149,12 @@ function teilMathematik(el, neu) {
   const kap = G.LM.faecher.M.kapitel;
   const gewaehlt = Number.isInteger(e.kapitel) ? e.kapitel : kap.findIndex((k) => k.name === e.kapitel);
   const wahl = h('select.feld', { 'aria-label': 'Aktuelles Kapitel', onchange: () => { e.kapitel = wahl.value === '' ? null : Number(wahl.value); speichere('einstellungen'); meldung('Gespeichert.'); } },
-    h('option', { value: '', selected: gewaehlt < 0 }, `Automatisch nach Datum (jetzt: ${kap[L.mKapitel()]?.name || '–'})`),
+    h('option', { value: '', selected: gewaehlt < 0 }, `Automatisch (jetzt: ${kap[kapitelAm(G.LM, heute())]?.name || '–'})`),
     kap.map((k, i) => h('option', { value: String(i), selected: gewaehlt === i }, `${k.name} (${monatText(k.monat)})`)));
   const raum = [10, 20, 100].map((n) => h('label.wahl', h('input', { type: 'radio', name: 'raum', value: n, checked: e.zahlenraum === n, onchange: () => { e.zahlenraum = n; speichere('einstellungen'); meldung(`Zahlenraum bis ${n} freigegeben.`); neu(); } }), ` bis ${n}`));
   leere(el,
     h('section.blatt', h('h2', 'Aktuelles Kapitel'),
-      h('p', `Lehrmittel: ${G.LM.faecher.M.lehrmittel}. Der Tagesplan nimmt das Kapitel, das gerade in der Schule dran ist, regelmässig dran. Ohne Angabe schätzt die App es aus der Jahresplanung und dem Datum.`),
+      h('p', `Lehrmittel: ${G.LM.faecher.M.lehrmittel}. Der Tagesplan nimmt das Kapitel, das gerade in der Schule dran ist, regelmässig dran. Ohne Angabe nimmt die App die Kapitel aus dem Elternbrief der Lehrperson (gleichmässig über dessen Zeitraum verteilt) und schätzt sonst aus der Jahresplanung und dem Datum.`),
       h('label.formular', 'Kapitel', wahl),
       h('p.leise.klein', 'Die Zuordnung der Kapitel zu den Übungen ist eine Annahme der App.')),
     h('section.blatt', h('h2', 'Zahlenraum'),

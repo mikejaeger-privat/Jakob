@@ -1550,7 +1550,7 @@
    "gruppe": "WS",
    "name": "Wochentage",
    "kurz": "Wochentage",
-   "klasse": 1.5,
+   "klasse": 1,
    "vor": [],
    "kern": true,
    "lp21": [
@@ -1662,6 +1662,46 @@
     "artikel",
     "der die das",
     "grossschreibung"
+   ]
+  },
+  {
+   "id": "D-WS-10",
+   "gruppe": "WS",
+   "name": "Jahreszeiten und Monate",
+   "kurz": "Jahreszeiten und Monate",
+   "klasse": 1,
+   "vor": [],
+   "kern": true,
+   "lp21": [
+    "D.5",
+    "MA.3.A.1"
+   ],
+   "quelle": "inhalte",
+   "stimme": "noetig",
+   "typen": [
+    "wahl-bild",
+    "wahl-hoeren"
+   ],
+   "stufen": {
+    "1": {
+     "text": "Was passt zur Jahreszeit? Bild wählen (Tulpe, Sonne, Blatt, Schneemann …)"
+    },
+    "2": {
+     "text": "Jahreszeit erkennen (gehörte Beschreibung) und welche Jahreszeit davor oder danach kommt (Hörkarten)"
+    },
+    "3": {
+     "text": "Welcher Monat kommt nach …? (Hörkarten)"
+    }
+   },
+   "stichwoerter": [
+    "jahreszeiten",
+    "monate",
+    "frühling",
+    "sommer",
+    "herbst",
+    "winter",
+    "kalender",
+    "jahr"
    ]
   },
   {

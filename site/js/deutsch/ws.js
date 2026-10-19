@@ -1,6 +1,6 @@
 // Deutsch WS: Wortschatz. Oberbegriffe, Gegenteile, Einzahl und Mehrzahl, Reimpaare, Bildergeschichten, Farben,
-// Wochentage, Zahlwörter, Nomen und Begleiter. Regeln: tools/SPEC-AUFGABEN.md (Abschnitte 6 bis 8).
-import { A, sig, auswahl, werkzeug, zerlege, reimteil, FARBE_ID, WOCHENTAGE, ZAHLWOERTER, HOERFARBEN } from './lib.js';
+// Wochentage, Zahlwörter, Nomen und Begleiter, Jahreszeiten und Monate. Regeln: tools/SPEC-AUFGABEN.md (Abschnitte 6 bis 8).
+import { A, sig, auswahl, werkzeug, zerlege, reimteil, FARBE_ID, WOCHENTAGE, JAHRESZEITEN, MONATE, ZAHLWOERTER, HOERFARBEN } from './lib.js';
 
 // Sprechfassung eines Worts (z. B. «Velo» als «Welo»)
 const sp = (w) => w.sprich || w.wort;
@@ -274,6 +274,43 @@ function farbAblenker(r, richtig, n, auch = []) {
   return aus.length === n ? aus : null;
 }
 
+// --- D-WS-10 Jahreszeiten und Monate ---
+// Dinge aus dem Lexikon, die für ein Kind klar zu einer Jahreszeit gehören. «ablenker»: Jahreszeiten, bei deren Frage das Ding
+// als falsche Karte vorkommen darf. Die Sonne und der Pilz passen auch zu anderen Jahreszeiten und sind nie Ablenker; die Tulpe
+// nie beim Sommer (Blumen blühen auch im Sommer). Schal und Handschuh (Herbst oder Winter), Erdbeere, Kirsche und
+// Schmetterling (Frühling oder Sommer) kommen nicht vor.
+const ZEIT_DINGE = [
+  { wort: 'Tulpe', zeit: 'Frühling', ablenker: ['Herbst', 'Winter'], erkl: 'Die Tulpe passt zum Frühling. Im Frühling blühen die ersten Blumen.' },
+  { wort: 'Sonne', zeit: 'Sommer', ablenker: [], erkl: 'Die Sonne passt zum Sommer. Im Sommer ist es heiss, und die Sonne scheint lange.' },
+  { wort: 'Blatt', zeit: 'Herbst', ablenker: ['Frühling', 'Sommer', 'Winter'], erkl: 'Das bunte Blatt passt zum Herbst. Im Herbst werden die Blätter bunt und fallen von den Bäumen.' },
+  { wort: 'Kürbis', zeit: 'Herbst', ablenker: ['Frühling', 'Sommer', 'Winter'], erkl: 'Der Kürbis passt zum Herbst. Im Herbst werden die Kürbisse geerntet.' },
+  { wort: 'Pilz', zeit: 'Herbst', ablenker: [], erkl: 'Der Pilz passt zum Herbst. Im Herbst wachsen im Wald viele Pilze.' },
+  { wort: 'Schneemann', zeit: 'Winter', ablenker: ['Frühling', 'Sommer', 'Herbst'], erkl: 'Der Schneemann passt zum Winter. Im Winter ist es kalt, und manchmal liegt Schnee.' },
+  { wort: 'Schlitten', zeit: 'Winter', ablenker: ['Frühling', 'Sommer', 'Herbst'], erkl: 'Der Schlitten passt zum Winter. Wenn Schnee liegt, fährt man Schlitten.' },
+];
+// Kurze Beschreibung jeder Jahreszeit (Hinweis bei der Bildwahl)
+const ZEIT_HINWEIS = {
+  Frühling: 'Im Frühling wird es wärmer, und die ersten Blumen blühen.',
+  Sommer: 'Im Sommer ist es heiss, und die Sonne scheint lange.',
+  Herbst: 'Im Herbst werden die Blätter bunt, und es wird kühler.',
+  Winter: 'Im Winter ist es kalt, und manchmal liegt Schnee.',
+};
+// Gehörte Beschreibungen: [Jahreszeit, Beschreibung, Erklärung]; jede passt für ein Kind nur zu einer Jahreszeit
+const ZEIT_BESCHREIBUNG = [
+  ['Frühling', 'Die ersten Blumen blühen, und es wird langsam wärmer.', 'Im Frühling blühen die ersten Blumen, und es wird wärmer.'],
+  ['Frühling', 'An den Bäumen wachsen wieder neue Blätter.', 'Im Frühling wachsen an den Bäumen neue Blätter.'],
+  ['Sommer', 'Es ist heiss, und wir gehen baden.', 'Im Sommer ist es heiss, und man geht baden.'],
+  ['Sommer', 'Die Sonne scheint lange, und es ist auch am Abend noch warm.', 'Im Sommer scheint die Sonne lange, und es ist warm.'],
+  ['Herbst', 'Die Blätter werden bunt und fallen von den Bäumen.', 'Im Herbst werden die Blätter bunt und fallen von den Bäumen.'],
+  ['Herbst', 'Wir sammeln Kastanien, und es wird kühler.', 'Im Herbst fallen Kastanien von den Bäumen, und es wird kühler.'],
+  ['Winter', 'Es ist kalt, und draussen liegt Schnee.', 'Im Winter ist es kalt, und manchmal liegt Schnee.'],
+  ['Winter', 'Wir fahren mit dem Schlitten den Hügel hinunter.', 'Im Winter fährt man Schlitten, wenn Schnee liegt.'],
+];
+const ZEIT_REIHE = 'Sag die Jahreszeiten leise der Reihe nach auf: Frühling, Sommer, Herbst, Winter. Danach kommt wieder der Frühling.';
+// Juni und Juli klingen ähnlich: nie zusammen auf den Karten
+const MONAT_AEHNLICH = [['Juni', 'Juli']];
+const monateAehnlich = (a, b) => MONAT_AEHNLICH.some(([x, y]) => (a === x && b === y) || (a === y && b === x));
+
 // --- D-WS-09 Begleiter ---
 // Artikel weicht in der Schweiz oft ab oder schwankt (der Radio, der Butter, der Socken, das Magnet …): nicht verwenden
 const ARTIKEL_UNSICHER = ['Tram', 'Radio', 'Butter', 'Brezel', 'Socke', 'Magnet', 'Kiwi', 'Taxi'];
@@ -483,6 +520,83 @@ export const generatoren = {
         hinweis: 'Schau dir den ersten Buchstaben genau an. Ist das Wort ein Ding, ein Tier oder ein Mensch?',
         erklaerung: `${w.wort} ist ein Nomen. Nomen schreibt man gross.`,
         sig: sig(w.wort), daten: { wort: w.wort },
+      });
+    },
+  },
+
+  'D-WS-10': {
+    // Was passt zur Jahreszeit? Ein Ding der gefragten Jahreszeit, zwei Ablenker aus zwei anderen Jahreszeiten
+    1: (r, ctx) => {
+      const T = werkzeug(ctx);
+      const dinge = ZEIT_DINGE.map((d) => ({ ...d, w: T.wort(d.wort) })).filter((d) => d.w?.bild && T.bildOk(d.w, { gesprochen: true }));
+      const zeit = r.pick(JAHRESZEITEN.filter((z) => dinge.some((d) => d.zeit === z)));
+      const ding = r.pick(dinge.filter((d) => d.zeit === zeit));
+      const falsche = [];
+      for (const z of r.shuffle(JAHRESZEITEN.filter((x) => x !== zeit))) {
+        if (falsche.length >= 2) break;
+        const k = dinge.filter((d) => d.zeit === z && d.ablenker.includes(zeit) && T.zusammenOk([ding.w, ...falsche.map((f) => f.w), d.w]));
+        if (k.length) falsche.push(r.pick(k));
+      }
+      if (falsche.length < 2) return null;
+      const { optionen, richtig } = auswahl(r, opt(ding.w), falsche.map((f) => opt(f.w)), 3);
+      return A.wahlBild({
+        frage: `Was passt zum ${zeit}? Tippe auf das Bild.`, sprich: `Was passt zum … ${zeit}? … Tippe auf das Bild.`,
+        optionen, richtig, namenSprechen: true, braucht: [],
+        hinweis: `Hör dir die Namen der Bilder an. ${ZEIT_HINWEIS[zeit]}`,
+        erklaerung: ding.erkl,
+        sig: sig(zeit, ding.wort, ...falsche.map((f) => f.wort).sort()), daten: { zeit, richtig: ding.wort, falsche: falsche.map((f) => f.wort) },
+      });
+    },
+    // Jahreszeit erkennen (Beschreibung hören) oder: welche Jahreszeit kommt davor oder danach? (Hörkarten)
+    2: (r) => {
+      const karten = (loesung, andere) => r.shuffle([loesung, ...andere]);
+      if (r.bool()) {
+        const [zeit, text, erkl] = r.pick(ZEIT_BESCHREIBUNG);
+        const andere = r.sample(JAHRESZEITEN.filter((z) => z !== zeit), 2);
+        const zeiten = karten(zeit, andere);
+        return A.wahlHoeren({
+          frage: `${text} Welche Jahreszeit ist das? Hör dir die Karten an und wähle.`,
+          sprich: `${text} … Welche Jahreszeit ist das? … Hör dir die Karten an und wähle die richtige Jahreszeit.`,
+          optionen: zeiten.map((z, k) => ({ sprich: z, farbe: HOERFARBEN[k] })), richtig: zeiten.indexOf(zeit), bild: '🗓️', braucht: [],
+          hinweis: `Hör nochmals gut zu: ${text} Denk an das Wetter und an das, was du draussen siehst.`,
+          erklaerung: erkl,
+          sig: sig('beschreibung', text, ...andere.slice().sort()), daten: { art: 'beschreibung', text, loesung: zeit, andere },
+        });
+      }
+      const i = r.int(0, 3);
+      const nach = r.bool();
+      const zeit = JAHRESZEITEN[i], loesung = JAHRESZEITEN[(i + (nach ? 1 : 3)) % 4];
+      const andere = JAHRESZEITEN.filter((z) => z !== zeit && z !== loesung);
+      const zeiten = karten(loesung, andere);
+      const frage = `Welche Jahreszeit kommt ${nach ? 'nach' : 'vor'} dem ${zeit}?`;
+      return A.wahlHoeren({
+        frage: `${frage} Hör dir die Karten an und wähle.`,
+        sprich: `${frage} … Hör dir die Karten an und wähle die richtige Jahreszeit.`,
+        optionen: zeiten.map((z, k) => ({ sprich: z, farbe: HOERFARBEN[k] })), richtig: zeiten.indexOf(loesung), bild: '🗓️', braucht: [],
+        hinweis: ZEIT_REIHE,
+        erklaerung: nach ? `Nach dem ${zeit} kommt der ${loesung}.` : `Vor dem ${zeit} kommt der ${loesung}.`,
+        sig: sig(nach ? 'nach' : 'vor', zeit), daten: { art: nach ? 'nach' : 'vor', zeit, loesung, andere },
+      });
+    },
+    // Welcher Monat kommt nach …? (Hörkarten)
+    3: (r) => {
+      const i = r.int(0, 11);
+      const monat = MONATE[i], nach = MONATE[(i + 1) % 12];
+      let andere = null;
+      for (let v = 0; v < 20 && !andere; v++) {
+        const x = r.sample(MONATE.filter((m) => m !== monat && m !== nach), 2);
+        if (!x.some((m) => monateAehnlich(m, nach)) && !monateAehnlich(x[0], x[1])) andere = x;
+      }
+      if (!andere) return null;
+      const monate = r.shuffle([nach, ...andere]);
+      const vor2 = MONATE[(i + 10) % 12], vor1 = MONATE[(i + 11) % 12];
+      return A.wahlHoeren({
+        frage: `Welcher Monat kommt nach dem ${monat}? Hör dir die Karten an und wähle.`,
+        sprich: `Welcher Monat kommt nach dem ${monat}? … Hör dir die Karten an und wähle den richtigen Monat.`,
+        optionen: monate.map((m, k) => ({ sprich: m, farbe: HOERFARBEN[k] })), richtig: monate.indexOf(nach), bild: '🗓️', braucht: [],
+        hinweis: `Sag die Monate leise der Reihe nach auf: ${vor2}, ${vor1}, ${monat} … und welcher kommt dann?`,
+        erklaerung: i === 11 ? 'Nach dem Dezember kommt der Januar. Dann beginnt ein neues Jahr.' : `Nach dem ${monat} kommt der ${nach}.`,
+        sig: sig('nach', monat, ...andere.slice().sort()), daten: { monat, loesung: nach, andere },
       });
     },
   },

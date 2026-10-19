@@ -73,4 +73,5 @@ Dateien: `site/data/katalog/deutsch.json` und `site/data/katalog/mathe.json`. Pr
 - Schweizer Rechtschreibung, nie «ß». Standarddeutsch.
 - Reihenfolge der Fertigkeiten im Katalog = Reihenfolge im Elternbereich. Die Reihenfolge im Schuljahr steht in `site/data/lehrmittel.json`.
 - Jede Mathematik-Fertigkeit kommt in mindestens einem Kapitel von `lehrmittel.json` vor, jede Deutsch-Fertigkeit genau einmal in der Deutsch-Reihenfolge.
+- Angaben der Lehrperson (Elternbriefe) stehen in `lehrmittel.json` unter `schule.abschnitte`: je Abschnitt `id`, `name`, `von`, `bis`, `quelle`, `D` (`themen`, `fertigkeiten` in Übungsreihenfolge, Voraussetzungen zuerst), `M` (`themen`, `kapitel` mit den Kapitelnamen der Jahresplanung), `weitere` (andere Fächer, nur zur Anzeige). Abschnitte überschneiden sich nicht. `tools/pruefe_katalog.mjs` prüft Daten, IDs, Kapitelnamen und die Reihenfolge der Voraussetzungen.
 - Keine Kreise in den Voraussetzungen.

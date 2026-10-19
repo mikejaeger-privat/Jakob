@@ -6,31 +6,20 @@ import { verbuche, zeigErgebnis, zeigBestanden, vermute, lies, status } from './
 import { verbucheKarte } from './kasten.js';
 import { zufall, neuerSeed, tagNr, wochentag } from './util.js';
 import { zerlege } from '../deutsch/lib.js';
+import { kapitelAm } from './schule.js';
 
 export function lernkern(W) {
   const Z = W.Z;
   const MINUS = '−';
 
   // --- Kalenderwerte ---
-  // Aktuelles Mathematik-Kapitel: Vorgabe der Eltern oder Schätzung aus dem Datum (Kapitel des Monats, über den Monat verteilt)
+  // Aktuelles Mathematik-Kapitel: Vorgabe der Eltern, sonst laut Elternbrief oder Schätzung aus dem Datum (core/schule.js)
   function mKapitel(t = W.heute()) {
     const kap = W.G.LM.faecher.M.kapitel;
     const vorgabe = Z.einstellungen?.kapitel;
     if (Number.isInteger(vorgabe) && kap[vorgabe]) return vorgabe;
     if (typeof vorgabe === 'string' && kap.some((k) => k.name === vorgabe)) return kap.findIndex((k) => k.name === vorgabe);   // ältere Fassung: Name
-    const d = new Date(t * 86400000);
-    const m = d.getUTCMonth() + 1;
-    const schulMonat = (x) => (x >= 8 ? x - 8 : x + 4); // August = 0 … Juli = 11
-    const jetzt = schulMonat(m);
-    const start = kap.map((k) => schulMonat(Number(k.monat.slice(0, 2))));
-    const imMonat = start.map((s, i) => [s, i]).filter(([s]) => s === jetzt).map(([, i]) => i);
-    if (imMonat.length) {
-      const tageImMonat = new Date(Date.UTC(d.getUTCFullYear(), m, 0)).getUTCDate();
-      return imMonat[Math.min(imMonat.length - 1, Math.floor(((d.getUTCDate() - 1) / tageImMonat) * imMonat.length))];
-    }
-    let letzt = 0;
-    start.forEach((s, i) => { if (s <= jetzt) letzt = i; });
-    return letzt;
+    return kapitelAm(W.G.LM, t);
   }
   // Anteil des Schuljahres (in Schulwochen)
   function schuljahrAnteil(t = W.heute()) {

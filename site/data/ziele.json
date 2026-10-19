@@ -30,8 +30,9 @@
   ]
  },
  "feiertage": {
-  "quelle": "Gesetzliche Feiertage Kanton Zürich; Auffahrtsbrücke angenommen.",
+  "quelle": "Gesetzliche Feiertage Kanton Zürich; Auffahrtsbrücke angenommen. Einzelne schulfreie Tage laut Elternbrief der Lehrperson (9.11.2026: Elternbrief zum 2. Quintal, Oktober 2026).",
   "liste": [
+   ["2026-11-09", "Weiterbildung der Lehrpersonen (schulfrei)"],
    ["2027-03-26", "Karfreitag"],
    ["2027-03-29", "Ostermontag"],
    ["2027-05-17", "Pfingstmontag"],

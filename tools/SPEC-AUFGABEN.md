@@ -244,6 +244,7 @@ export const generatoren = {
 | D-WS-03 | `mehrzahl` gesetzt, ohne `bildMehrere`; Einzahl und Mehrzahl müssen mit Artikel verschieden klingen (nicht «die Ananas» gegen «die Ananas»); Stufe 3 nur, wenn die Mehrzahl anders geschrieben wird | – |
 | D-WS-04 | Paare aus verschiedenen `reim`-Gruppen; Paare dürfen sich untereinander nicht reimen (Regel 2) | – |
 | D-WS-09 | Wörter mit eindeutigem Artikel, ohne `nameUnsicher` | – |
+| D-WS-10 | Stufe 1: Dinge aus der Tabelle `ZEIT_DINGE` in `ws.js` (Tulpe, Sonne, Blatt, Kürbis, Pilz, Schneemann, Schlitten), Bildnamen werden genannt | zwei Ablenker aus zwei verschiedenen anderen Jahreszeiten; Sonne und Pilz nie als Ablenker, Tulpe nie beim Sommer; Stufe 3: Juni und Juli nie zusammen auf den Karten |
 
 Für jede Fertigkeit und Stufe muss die Freigabe «alle Einzelbuchstaben, Sch, Ei, Au» mindestens 20 verschiedene Aufgaben ergeben, sonst steht die Stufe im Bericht von `tools/teste_deutsch.mjs`.
 
@@ -262,7 +263,7 @@ Für Sätze, Geschichten und Anweisungen, die sich nicht aus dem Lexikon bilden 
 - **Gegenteil** (D-WS-02): `{ "id": "GT-01", "a": { "wort": "gross", "szene": { … } }, "b": { "wort": "klein", "szene": { … } } }`
 - **Bildergeschichte** (D-WS-05): `{ "id": "BG-01", "bilder": ["🥚", "🐣", "🐥", "🐔"], "sprich": ["Zuerst ist da ein Ei.", "…"], "stufen": { "D-WS-05": 2 } }`
 
-Farben, Wochentage und Zahlwörter erzeugen Generatoren (feste Listen im Code sind dort erlaubt, weil sie sich nicht ändern).
+Farben, Wochentage, Jahreszeiten, Monate und Zahlwörter erzeugen Generatoren (feste Listen im Code sind dort erlaubt, weil sie sich nicht ändern).
 
 Regeln: Standarddeutsch in Schweizer Rechtschreibung, kurze Sätze (höchstens sechs Wörter in Lese- und Legeaufgaben), Wörter aus dem Lexikon und den Sichtwörtern, für Leseaufgaben nur eingeführte Buchstaben, eine einzige richtige Lösung. Weitere Regeln in `tools/AUFTRAG-INHALTE.md`.
 

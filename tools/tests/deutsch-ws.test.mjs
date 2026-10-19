@@ -269,6 +269,53 @@ test('D-WS-09: Artikel aus dem Lexikon, Nomen mit Begleiter, Grossschreibung', (
   }
 });
 
+// Zweiter Weg: eigene Tabelle der Jahreszeit je Ding, Jahreszeiten- und Monatsfolge
+const ZEIT = { Tulpe: 'Frühling', Sonne: 'Sommer', Blatt: 'Herbst', Kürbis: 'Herbst', Pilz: 'Herbst', Schneemann: 'Winter', Schlitten: 'Winter' };
+const NIE_ABLENKER = ['Sonne', 'Pilz'];
+const JZ = ['Frühling', 'Sommer', 'Herbst', 'Winter'];
+const MON = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+test('D-WS-10: Jahreszeit der Dinge, Beschreibung, davor und danach, Monatsfolge (nachgerechnet)', () => {
+  const l1 = alle('D-WS-10', 1);
+  assert.ok(new Set(l1.map((a) => a.sig)).size >= 15, 'Abwechslung Stufe 1');
+  for (const a of l1) {
+    nurRichtig(a);
+    assert.equal(a.optionen.length, 3);
+    assert.deepEqual(a.braucht, []);
+    const ws = a.optionen.map(wortVon);
+    const zeiten = ws.map((w) => ZEIT[w.wort]);
+    zeiten.forEach((z, i) => assert.equal(z === a.daten.zeit, i === a.richtig, `${ws[i].wort} bei ${a.daten.zeit}`));
+    // Ablenker aus zwei verschiedenen anderen Jahreszeiten; Sonne und Pilz nie, Tulpe nie beim Sommer
+    const falsch = ws.filter((_, i) => i !== a.richtig);
+    assert.notEqual(ZEIT[falsch[0].wort], ZEIT[falsch[1].wort]);
+    for (const w of falsch) assert.ok(!NIE_ABLENKER.includes(w.wort) && !(w.wort === 'Tulpe' && a.daten.zeit === 'Sommer'), w.wort);
+    assert.ok(a.frage.startsWith(`Was passt zum ${a.daten.zeit}?`));
+  }
+  const l2 = alle('D-WS-10', 2);
+  assert.ok(new Set(l2.map((a) => a.sig)).size >= 20, 'Abwechslung Stufe 2');
+  for (const a of l2) {
+    nurRichtig(a);
+    const loesung = a.optionen[a.richtig].sprich;
+    assert.equal(new Set(a.optionen.map((o) => o.sprich)).size, 3);
+    a.optionen.forEach((o) => assert.ok(JZ.includes(o.sprich)));
+    if (a.daten.art === 'beschreibung') { assert.equal(loesung, a.daten.loesung); assert.ok(a.frage.startsWith(a.daten.text)); continue; }
+    const i = JZ.indexOf(a.daten.zeit);
+    assert.equal(loesung, JZ[(i + (a.daten.art === 'nach' ? 1 : 3)) % 4]);
+    assert.ok(!a.optionen.some((o) => o.sprich === a.daten.zeit), 'gefragte Jahreszeit ist keine Karte');
+    assert.ok(a.frage.includes(`${a.daten.art} dem ${a.daten.zeit}`));
+  }
+  assert.ok(l2.some((a) => a.daten.art === 'beschreibung') && l2.some((a) => a.daten.art === 'vor') && l2.some((a) => a.daten.art === 'nach'));
+  const l3 = alle('D-WS-10', 3);
+  assert.ok(new Set(l3.map((a) => a.sig)).size >= 100, 'Abwechslung Stufe 3');
+  for (const a of l3) {
+    nurRichtig(a);
+    const i = MON.indexOf(a.daten.monat);
+    assert.equal(a.optionen[a.richtig].sprich, MON[(i + 1) % 12]);
+    const karten = a.optionen.map((o) => o.sprich);
+    assert.ok(!karten.includes(a.daten.monat));
+    assert.ok(!(karten.includes('Juni') && karten.includes('Juli')), 'Juni und Juli nie zusammen');
+  }
+});
+
 test('Kleine Freigabe: keine Ausnahme, sichtbare Buchstaben eingeführt', () => {
   for (const id of Object.keys(generatoren)) for (const s of [1, 2, 3]) {
     for (const a of alle(id, s, ctxKlein, 60)) for (const b of a.braucht) assert.ok(FREI_KLEIN.has(b), `${id}/${s}: ${b}`);

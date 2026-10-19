@@ -7,6 +7,9 @@ export const NAMEN = [['Lea', 'sie'], ['Noah', 'er'], ['Mia', 'sie'], ['Luca', '
 export const FARBEN = ['rot', 'blau', 'gelb', 'grün', 'orange', 'violett', 'braun', 'schwarz', 'weiss', 'rosa'];
 export const FARBE_ID = { rot: 'rot', blau: 'blau', gelb: 'gelb', grün: 'gruen', orange: 'orange', violett: 'violett', braun: 'braun', schwarz: 'schwarz', weiss: 'weiss', rosa: 'rosa' };
 export const WOCHENTAGE = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+// Jahreszeiten im Kreis (nach dem Winter kommt wieder der Frühling) und Monate (alle mit «der»: nach dem Oktober)
+export const JAHRESZEITEN = ['Frühling', 'Sommer', 'Herbst', 'Winter'];
+export const MONATE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 export const ZAHLWOERTER = ['null', 'eins', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun', 'zehn', 'elf', 'zwölf'];
 export const HOERFARBEN = ['blau', 'gelb', 'gruen'];   // Farben der Hörkarten (nur zur Unterscheidung, nie gefragt)
 

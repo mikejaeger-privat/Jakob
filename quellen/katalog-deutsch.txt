@@ -27,7 +27,10 @@ D.5.E.1  Rechtschreibung: Wörter lautorientiert schreiben, erste Regeln anwende
          Lernwörter richtig schreiben.
          → D-HB-06, D-SC-02, D-SC-04, D-SC-05, D-SC-06
 D.5      Sprache(n) im Fokus (Wortschatz, Wortbedeutungen, Einzahl und Mehrzahl, Gegenteile, Oberbegriffe).
-         → D-WS-01, D-WS-02, D-WS-03, D-WS-06, D-WS-07, D-WS-09 (Nomen und Begleiter)
+         → D-WS-01, D-WS-02, D-WS-03, D-WS-06, D-WS-07, D-WS-09 (Nomen und Begleiter), D-WS-10
+         D-WS-07 und D-WS-10 (Wochentage, Jahreszeiten, Monate) sind in der Schule ein NMG-Thema (Zeitbegriffe);
+         die App übt davon nur die Namen und die Reihenfolge (Wortschatz). Laut Elternbrief zum 2. Quintal 2026
+         im Unterricht von Oktober bis Dezember.
 
 Quellen
 - Lehrplan 21 Kanton Zürich, Fachbereich Deutsch: https://zh.lehrplan.ch

@@ -34,7 +34,7 @@ MA.2.C.2  Figuren abbilden, spiegeln, zerlegen und zusammensetzen.
 MA.2.C.3  Sich im Raum orientieren, Lagebeziehungen und Wege beschreiben.
           → M-FO-04, M-FO-06
 MA.3.A.1  Grössen, Begriffe: Geld (Franken, Rappen), Zeit (Uhr, Tagesablauf, Wochentage), Länge.
-          → M-GR-01, M-GR-02, M-GR-04, D-WS-07
+          → M-GR-01, M-GR-02, M-GR-04, D-WS-07, D-WS-10 (Monate)
 MA.3.A.2  Grössen vergleichen, messen und mit ihnen rechnen (Längen, Gewichte, Geldbeträge bis 20 Franken).
           → M-GR-01, M-GR-03, M-GR-05
 MA.3.C.1  Daten erheben, darstellen und lesen (Strichliste, Bilddiagramm, einfache Tabelle).

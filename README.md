@@ -129,12 +129,14 @@ Alle Dateien in `site/data/` sind JSON und mit einem Texteditor bearbeitbar. Dan
 | Datei | Was man dort ändert |
 | --- | --- |
 | `buchstaben.json` | Buchstaben und Verbindungen mit Anlautwort und Startwert «eingeführt» (im Elternbereich unter «Buchstaben» laufend nachführen) |
-| `lehrmittel.json` | Reihenfolge der Kapitel von «Mathematik 1 Primarstufe» mit Monat; Reihenfolge der Deutsch-Stufen (Annahme) |
-| `ziele.json` | Etappen des Schuljahrs, Ferien und Feiertage der Schule Schlieren |
+| `lehrmittel.json` | Reihenfolge der Kapitel von «Mathematik 1 Primarstufe» mit Monat; Reihenfolge der Deutsch-Stufen (Annahme); unter `schule.abschnitte` die Elternbriefe der Lehrperson (siehe unten) |
+| `ziele.json` | Etappen des Schuljahrs, Ferien, Feiertage und einzelne schulfreie Tage der Schule Schlieren |
 | `parameter.json` | Lernzeit (10 Minuten, 5 bis 15), Lerntage, Gewichtung Deutsch/Mathematik, Schwellen des Lernmodells, Karteikasten-Abstände, Sprechtempo, Begriffe, Sammelbild |
 | `woerter.json` | Bildwörter mit Silben, Lauten, Reim und Merkstellen (Regeln in `tools/SPEC-AUFGABEN.md`) |
 | `inhalte/deutsch/*.json` | Feste Deutsch-Inhalte: Sätze, Lesetexte, Geschichten, Anweisungen, Gegenteile, Bildergeschichten, Hörsätze (Regeln in `tools/AUFTRAG-INHALTE.md`; danach `node tools/pruefe_inhalte.mjs` und `node tools/baue.mjs`) |
 | `katalog/*.json` | Fertigkeiten und Stufen (Regeln in `tools/SPEC-KATALOG.md`) |
+
+**Neuer Elternbrief** (zum Beispiel zum 3. Quintal): in `lehrmittel.json` unter `schule.abschnitte` einen Eintrag nach dem Muster «2026-q2» anfügen: `von` und `bis` (erster und letzter Schultag des Abschnitts), `quelle`, unter `M` die Themen und die Kapitelnamen von «Mathematik 1» (in der Reihenfolge der Jahresplanung), unter `D` die Themen und die passenden Fertigkeiten (IDs aus `katalog/deutsch.json`, Voraussetzungen zuerst), unter `weitere` die übrigen Fächer. Schulfreie Tage aus dem Brief in `ziele.json` unter `feiertage` eintragen. Dann `node tools/pruefe_katalog.mjs` und `node --test tools/tests/schule.test.mjs`. Der Elternbereich zeigt den Brief unter «Überblick › In der Schule».
 
 Vieles lässt sich direkt im Elternbereich einstellen: Buchstabenplan, Lernwörter der Woche, aktuelles Mathematik-Kapitel, Zahlenraum, Minuten, Lerntage, Verteilung, Stimme und Tempo, Töne, Sammelbild, Vorlesen, Begriffe der Lehrperson.
 

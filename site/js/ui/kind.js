@@ -4,7 +4,7 @@ import { fuchs, symbol } from './figuren.js';
 import { landschaft } from './landschaft.js';
 import { zeigeTippen, versteckeHand } from './zeigehand.js';
 import { Z } from '../app/zustand.js';
-import { G, freiGrund, heute } from '../app/steuerung.js';
+import { G, K, freiGrund, heute } from '../app/steuerung.js';
 import { planHeute, sitzungFertig } from '../app/lernen.js';
 import { sprich, stopp, freischalten, stimmeDa } from '../app/sprache.js';
 import { klang, freischaltenTon } from '../app/klang.js';
@@ -148,7 +148,8 @@ const zahlwort = (n) => ZAHLWORT[n] || String(n);
 
 // --- Freier Tag ---
 function zeigeFrei(wurzel, grund) {
-  const ansage = grund === 'kein Lerntag' ? 'Heute ist frei. Der Fuchs schläft. Wenn du willst, kannst du trotzdem üben.' : 'Heute sind Ferien. Der Fuchs schläft. Wenn du willst, kannst du trotzdem üben.';
+  // Ferien heissen Ferien; ein einzelner freier Tag (Feiertag, schulfrei, kein Lerntag) ist einfach frei
+  const ansage = K.ferienAm(heute()) ? 'Heute sind Ferien. Der Fuchs schläft. Wenn du willst, kannst du trotzdem üben.' : 'Heute ist frei. Der Fuchs schläft. Wenn du willst, kannst du trotzdem üben.';
   const los = h('button.k-start.klein', { type: 'button', 'aria-label': 'Trotzdem üben', onclick: () => { klang('hopp'); zeigeWeg(wurzel, { trotzdem: true }); } }, symbol('start'));
   kindRahmen(wurzel, { klasse: 'k-frei', lautsprecher: () => sprich(ansage), rechts: elternKnopf(), inhalt: [h('div.k-fuchs', fuchs({ stimmung: 'schlaeft', klasse: 'gross' })), los] });
   if (stimmeDa()) sprich(ansage);

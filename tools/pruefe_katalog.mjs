@@ -113,9 +113,28 @@ for (const f of kat.D.fertigkeiten) if (!inD.has(f.id)) F(`Lehrmittel D: ${f.id}
 const posD = new Map([...inD.keys()].map((id, i) => [id, i]));
 for (const f of kat.D.fertigkeiten) for (const v of f.vor) if (posD.has(v) && posD.get(v) > posD.get(f.id)) W(`Lehrmittel D: ${f.id} kommt vor seiner Voraussetzung ${v}`);
 
+// Angaben der Schule (Elternbriefe): Daten, Fertigkeiten, Kapitel
+const datum = (s) => /^\d{4}-\d\d-\d\d$/.test(s) && !Number.isNaN(Date.parse(s));
+let bisVorher = '';
+for (const a of lm.schule?.abschnitte || []) {
+  const wo = `Schule «${a.name}»`;
+  if (!a.id || !a.name || !a.quelle) F(`${wo}: id, name oder quelle fehlt`);
+  if (!datum(a.von) || !datum(a.bis) || a.von > a.bis) F(`${wo}: ${a.von} bis ${a.bis}`);
+  if (a.von <= bisVorher) F(`${wo}: überschneidet den vorherigen Abschnitt`);
+  bisVorher = a.bis;
+  const d = a.D?.fertigkeiten || [];
+  if (new Set(d).size !== d.length) F(`${wo}: Deutsch-Fertigkeit doppelt`);
+  for (const id of d) if (!alle.has(id) || !id.startsWith('D-')) F(`${wo}: ${id} unbekannt`);
+  const pos = new Map(d.map((id, i) => [id, i]));
+  for (const id of d) for (const v of alle.get(id)?.vor || []) if (pos.has(v) && pos.get(v) > pos.get(id)) W(`${wo}: ${id} kommt vor seiner Voraussetzung ${v}`);
+  const namen = lm.faecher.M.kapitel.map((k) => k.name);
+  const idx = (a.M?.kapitel || []).map((n) => namen.indexOf(n));
+  idx.forEach((i, k) => { if (i < 0) F(`${wo}: Kapitel «${a.M.kapitel[k]}» unbekannt`); else if (k && i < idx[k - 1]) W(`${wo}: Kapitel «${a.M.kapitel[k]}» steht in der Jahresplanung früher`); });
+  for (const t of [...(a.D?.themen || []), ...(a.M?.themen || [])]) if (typeof t !== 'string' || !t) F(`${wo}: Thema leer`);
+}
+
 // Ziele
 const z = lies('site/data/ziele.json');
-const datum = (s) => /^\d{4}-\d\d-\d\d$/.test(s) && !Number.isNaN(Date.parse(s));
 for (const e of z.etappen) if (!datum(e.datum)) F(`Etappe ${e.id}: Datum ${e.datum}`);
 let vorher = '';
 for (const [a, b, name] of z.ferien.liste) {
