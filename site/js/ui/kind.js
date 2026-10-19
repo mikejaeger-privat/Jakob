@@ -4,11 +4,14 @@ import { fuchs, symbol } from './figuren.js';
 import { landschaft } from './landschaft.js';
 import { zeigeTippen, versteckeHand } from './zeigehand.js';
 import { Z } from '../app/zustand.js';
-import { G, planHeute, freiGrund, heute } from '../app/steuerung.js';
+import { G, freiGrund, heute } from '../app/steuerung.js';
+import { planHeute, sitzungFertig } from '../app/lernen.js';
 import { sprich, stopp, freischalten, stimmeDa } from '../app/sprache.js';
 import { klang, freischaltenTon } from '../app/klang.js';
 import { speichere } from '../app/zustand.js';
-import { spieleFolge, probeAuswahl } from './baustein.js';
+import './baustein.js';
+import { spieleStein } from './sitzung.js';
+import { zeigeSchluss, zeigeStern } from './schluss.js';
 
 // iOS lässt Sprache erst nach einer Berührung zu: Der Startbildschirm schaltet frei.
 let entsperrt = false;
@@ -96,8 +99,11 @@ export function zeigeWeg(wurzel, { trotzdem = false } = {}) {
     if (ziel) { fx.style.left = ziel.style.left; fx.style.top = ziel.style.top; }
   });
 
+  const anzahl = zahlwort(plan.steine.length);
   if (!offen.length) ansage = `Super, ${name}! Du hast heute alles geschafft. Bis morgen!`;
-  else if (plan.erledigt.length === 0) ansage = `Hallo ${name}! Heute gibt es ${zahlwort(plan.steine.length)} Steine. Tipp auf den ersten Stein.`;
+  else if (plan.erledigt.length === 0 && plan.art === 'schatz') ansage = `Hallo ${name}! Heute gibt es eine Schatzkarte. Tipp auf den ersten Stein.`;
+  else if (plan.erledigt.length === 0 && plan.art === 'entdecker' && !Z.entdecker?.tage?.length) ansage = `Hallo ${name}! Heute machen wir zusammen einen Ausflug und schauen, was du schon alles kannst. Es gibt ${anzahl} Steine. Tipp auf den ersten Stein.`;
+  else if (plan.erledigt.length === 0) ansage = `Hallo ${name}! Heute gibt es ${anzahl} Steine. Tipp auf den ersten Stein.`;
   else if (jetzt.length > 1) ansage = 'Womit willst du weitermachen? Tipp auf das Buch oder auf den Würfel.';
   else ansage = 'Tipp auf den nächsten Stein.';
   sprich(ansage).then((fertig) => { if (fertig && jetzt.length === 1) zeigeTippen(steine[jetzt[0]], 1); });
@@ -106,17 +112,21 @@ export function zeigeWeg(wurzel, { trotzdem = false } = {}) {
     if (zustand === 'erledigt') { sprich('Diesen Stein hast du schon geschafft.'); return; }
     if (zustand !== 'jetzt') { sprich('Dieser Stein kommt später. Tipp auf einen Stein, der leuchtet.'); zeigeTippen(steine[jetzt[0]], 1); return; }
     klang('hopp');
-    starteStein(i, plan.steine[i].art);
+    starteStein(i);
   }
 
-  async function starteStein(i, art) {
-    const auswahl = probeAuswahl(art);
-    if (!auswahl.length) { sprich('Hier gibt es gerade nichts zu tun.'); return; }
-    const ergebnisse = await spieleFolge(wurzel, auswahl);
-    if (!ergebnisse.abbruch && ergebnisse.length) {
-      const p = planHeute();
+  async function starteStein(i) {
+    const p = planHeute();
+    const r = await spieleStein(wurzel, p, i);
+    if (r.fertig) {
       if (!p.erledigt.includes(i)) p.erledigt.push(i);
       speichere('tagesplan');
+      if (r.stern === 'bestanden') await zeigeStern(wurzel);
+      if (p.steine.every((x, j) => p.erledigt.includes(j))) {
+        const { teil } = sitzungFertig();
+        zeigeSchluss(wurzel, { teil, aufgaben: Object.values(p.steine).reduce((n, st) => n + (st.lauf?.n || 0), 0) });
+        return;
+      }
     }
     zeigeWeg(wurzel, { trotzdem: true });
   }

@@ -1,4 +1,4 @@
-// Verbindet Grundlagen, gespeicherten Zustand und Kalender. Ab Etappe 5 auch Tagesplan, Verbuchen und Berichte.
+// Verbindet Grundlagen, gespeicherten Zustand und Kalender. Tagesplan und Verbuchen: app/lernen.js.
 import { Z, speichere } from './zustand.js';
 import { ladeGrundlagen } from './inhalte.js';
 import { speicherStatus } from './db.js';
@@ -36,13 +36,3 @@ export const heute = () => heuteFix ?? heuteNr();
 export const istLerntag = (t = heute()) => K.lerntag(t, Z.einstellungen.lernTage);
 export const freiGrund = (t = heute()) => K.ferienAm(t) || K.feiertagAm(t) || (istLerntag(t) ? null : 'kein Lerntag');
 export const begriff = (k) => Z.einstellungen?.begriffe?.[k] || G.P.begriffe[k] || k;
-
-// Tagesplan (Platzhalter bis Etappe 5): Aufwärmen, Deutsch, Mathematik, Schlussstein
-export function planHeute() {
-  const t = heute();
-  if (Z.tagesplan?.tag === t) return Z.tagesplan;
-  const steine = [{ art: 'aufwaermen' }, { art: 'deutsch' }, { art: 'mathe' }, { art: 'schluss' }];
-  Z.tagesplan = { tag: t, steine, erledigt: [] };
-  speichere('tagesplan');
-  return Z.tagesplan;
-}

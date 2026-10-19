@@ -10,7 +10,7 @@ Geschwisterprojekt der «Lernplattform» (`mikejaeger-privat/Lernplattform`): Te
 
 ## Stand
 
-**Etappe 4 von 7: Deutsch.** Lauffähig sind Einrichtung (Name, PIN, Stimme mit Hörtest), Startseite mit Fuchs, gesprochene Einführung, Lernweg, freier Tag, Elternbereich, Sicherung, Abgleich und Offline-Betrieb, dazu beide Fächer vollständig: alle 50 Mathematik- und alle 42 Deutsch-Fertigkeiten mit je drei Stufen, mit Generatoren, Darstellungen wie im Lehrmittel, festen Deutsch-Inhalten (Sätze, Lesetexte, Geschichten, Anweisungen, Gegenteile, Bildergeschichten) und Nachspur-Vorlagen in Basisschrift. Im Elternbereich lassen sich die Lernwörter der Woche eintragen, und «Aufgaben» zeigt jede Stufe so, wie das Kind sie sieht und hört. Bis der Tagesplan kommt, spielen die Steine eine vorläufige Auswahl. Es folgen Lernmodell und Tagesplan (5), Elternbereich und Pakete (6), Prüfung und Simulation (7).
+**Etappe 5 von 7: Lernmodell und Tagesplan.** Lauffähig sind Einrichtung (Name, PIN, Stimme mit Hörtest), Startseite mit Fuchs, gesprochene Einführung, Elternbereich, Sicherung, Abgleich und Offline-Betrieb, beide Fächer vollständig (50 Mathematik- und 42 Deutsch-Fertigkeiten mit je drei Stufen, feste Deutsch-Inhalte, Nachspuren in Basisschrift) und das Lernen selbst: Jeden Lerntag stellt die App aus dem Lernmodell einen Weg mit Steinen zusammen (Aufwärmen mit Karteikasten, Deutsch und Mathematik in der Reihenfolge, die das Kind wählt, Schlussstein), hält die eingestellte Zeit ein, beginnt mit einer dreitägigen Entdeckerrunde, bietet «Zeig, was du kannst»-Runden und alle sechs Schulwochen eine Schatzkarte an und schliesst mit der Schlusskarte und dem Sammelbild. Im Elternbereich lassen sich die Lernwörter der Woche eintragen, und «Aufgaben» zeigt jede Stufe so, wie das Kind sie sieht und hört. Es folgen Elternbereich mit Stand und Berichten, Sicherung und Pakete (6), Prüfung, Simulation und Dokumentation (7).
 
 ## Ordner
 
@@ -18,7 +18,7 @@ Geschwisterprojekt der «Lernplattform» (`mikejaeger-privat/Lernplattform`): Te
 | --- | --- |
 | `site/` | Die Website (Ausgabeordner für Cloudflare Pages) |
 | `site/data/` | Katalog, Wortlexikon, Buchstabenplan, Lehrmittel-Reihenfolge, Ferien, Parameter, feste Deutsch-Inhalte, Nachspur-Vorlagen (JSON) |
-| `site/js/` | `app/` Zustand, Speicher, Sprache, Klang · `core/` reine Logik (Kalender, Prüfen der Antworten, Nachspuren, Abgleichregeln) · `math/` und `deutsch/` Generatoren · `ui/` Kinder- und Elternbereich, Aufgabentypen, Darstellungen, Figuren |
+| `site/js/` | `app/` Zustand, Speicher, Sprache, Klang, Anbindung des Lernens · `core/` reine Logik (Lernmodell, Karteikasten, Tagesplan, Ablauf eines Steins, Kalender, Prüfen der Antworten, Nachspuren, Abgleichregeln) · `math/` und `deutsch/` Generatoren · `ui/` Kinder- und Elternbereich, Aufgabentypen, Darstellungen, Figuren |
 | `site/fonts/` | «Lernwelt Schrift» (Teilmenge von Andika, SIL Open Font License, siehe `LIESMICH.txt`) |
 | `functions/`, `server/` | Abgleich zwischen Geräten: Pages Function unter `/api/*` und ihre Logik (D1, Prüfung der Access-Anmeldung) |
 | `tools/` | Bau, Prüfungen, Tests, Spezifikationen (nur für die Entwicklung) |
@@ -146,13 +146,14 @@ node tools/server.mjs                   # lokal auf http://localhost:8765 (ohne 
 node tools/server.mjs --abgleich        # dasselbe mit /api/* (SQLite statt D1, Anmeldung als test@localhost)
 node tools/pruefe_katalog.mjs --bilanz  # Katalog, Lehrmittel-Reihenfolge, Ziele, Parameter
 node tools/pruefe_woerter.mjs --bilanz  # Wortlexikon und Buchstabenplan
-node --test tools/tests/*.test.mjs      # Unit-Tests (Generatoren beider Fächer mit Nachprüfung auf zweitem Weg, Nachspuren, Abgleich, Access)
+node --test tools/tests/*.test.mjs      # Unit-Tests (Generatoren mit Nachprüfung auf zweitem Weg, Lernmodell, Plan, kurze Simulation, Nachspuren, Abgleich, Access)
 node tools/teste_mathe.mjs [za me …]    # alle Mathe-Generatoren: je Stufe 200 Aufgaben in den Zahlenräumen 10, 20, 100
 node tools/zeige_mathe.mjs re 3         # Beispielaufgaben lesbar ausgeben, zum Gegenlesen
 node tools/teste_deutsch.mjs [hb bu …]  # alle Wortgeneratoren: je Stufe 200 Aufgaben, Standard- und kleine Buchstaben-Freigabe
 node tools/pruefe_inhalte.mjs           # feste Deutsch-Inhalte (site/data/inhalte/deutsch/): Schema, «braucht», Bilder, Satzlänge
 node tools/selbsttest_inhalte.mjs       # kommt jede feste Inhaltseinheit in einer Aufgabe vor?
 node tools/zeige_deutsch.mjs le 3       # Deutsch-Beispielaufgaben lesbar ausgeben (--klein: kleine Freigabe)
+node tools/sim/lauf.mjs [--md]          # drei simulierte Kinder bis Ende 1. Klasse mit echtem Plan und Ablauf (--profil mittel --bis 2026-12-18 --neu)
 node tools/aufgaben-browser.mjs         # jede Stufe beider Fächer im Browser lösen (Server auf 8765 nötig, Playwright)
                                         #   --nur D-HB,M-RE  --geraet iphone  --dunkel  --fotos ordner  --laut
 node tools/baue_schrift.mjs             # Nachspur-Vorlagen site/data/schrift/basisschrift.json erzeugen

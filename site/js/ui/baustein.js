@@ -1,12 +1,13 @@
-// Bausteine spielen: eine Folge von Aufgaben, danach zurück zum Weg.
-// Bis Etappe 5 eine vorläufige Auswahl aus beiden Fächern; Lernmodell und Tagesplan folgen dann.
+// Kontext für die Generatoren (Zahlenraum, Freigabe, Stimme), Spielbarkeit einer Stufe und die Vorschau der Eltern.
+// Den Tagesplan spielt ui/sitzung.js.
 import { erzeuge as erzeugeM, stufeFrei as raumFrei } from '../math/index.js';
 import { erzeuge as erzeugeD, stufeFrei as deutschFrei } from '../deutsch/index.js';
 import { spieleAufgabe } from './aufgabe.js';
 import { Z, protokolliere } from '../app/zustand.js';
 import { G, heute } from '../app/steuerung.js';
 import { stimmeDa } from '../app/sprache.js';
-import { neuerSeed, zufall } from '../core/util.js';
+import { neuerSeed } from '../core/util.js';
+import { setzeSpielbar } from '../app/lernen.js';
 
 export function matheCtx() {
   return { grenze: Z.einstellungen.zahlenraum || 20, begriffe: { ...G.P.begriffe, ...(Z.einstellungen.begriffe || {}) }, stimme: stimmeDa() };
@@ -63,23 +64,6 @@ export async function spieleFolge(wurzel, auswahl, { modus = 'normal' } = {}) {
   return ergebnisse;
 }
 
-// Vorläufige Auswahl (bis der Tagesplan aus dem Lernmodell kommt)
-const AUFWAERMEN = [['M-ME-01', 1], ['M-ME-01', 2], ['M-RE-14', 1], ['M-ZA-05', 1], ['M-ZE-01', 1], ['D-BU-01', 1], ['D-BU-03', 1], ['D-HB-03', 1]];
-const SCHLUSS = [['M-FO-03', 1], ['M-ZA-01', 1], ['M-ME-01', 1], ['D-BU-04', 1], ['D-HB-01', 1]];
-export function probeAuswahl(art) {
-  const r = zufall(neuerSeed());
-  const F = G.k.fertigkeiten;
-  const aus = (liste, n) => r.sample(liste.map(([id, s]) => ({ f: F.get(id), s: String(s) })).filter((x) => x.f && spielbar(x.f, x.s)), n);
-  if (art === 'aufwaermen') return aus(AUFWAERMEN, 3);
-  if (art === 'schluss') return aus(SCHLUSS, 2);
-  const katalog = art === 'deutsch' ? G.k.D : G.k.M;
-  const kandidaten = katalog.fertigkeiten.filter((f) => f.kern === true && f.klasse === 1)
-    .flatMap((f) => ['1', '2'].map((s) => ({ f, s }))).filter((x) => spielbar(x.f, x.s));
-  const gewaehlt = [];
-  for (const x of r.shuffle(kandidaten)) { if (!gewaehlt.some((g) => g.f.id === x.f.id)) gewaehlt.push(x); if (gewaehlt.length >= 5) break; }
-  return gewaehlt;
-}
-
 // Vorschau für die Eltern: drei Aufgaben einer Stufe, nichts wird gespeichert
 export async function zeigeVorschau(wurzel, id, s) {
   const f = G.k.fertigkeiten.get(id);
@@ -87,3 +71,5 @@ export async function zeigeVorschau(wurzel, id, s) {
   await spieleFolge(wurzel, [{ f, s }, { f, s }, { f, s }], { modus: 'vorschau' });
   location.hash = '#/eltern/aufgaben';
 }
+
+setzeSpielbar(spielbar);

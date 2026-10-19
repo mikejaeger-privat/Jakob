@@ -478,8 +478,6 @@ button.ze-einer { padding: 0; min-width: 44px; min-height: 44px; background-clip
   .rechnung { font-size: 40px; gap: 8px; }
   .af { min-width: 64px; height: 64px; font-size: 34px; }
   .lplatz { min-width: 70px; height: 70px; } .lkarte { min-width: 64px; height: 64px; } .lkarte .k-text { font-size: 32px; }
-  .typ-zuordnen { gap: 28px; } .zspalte { gap: 10px; } .zkarte { min-width: 112px; min-height: 72px; padding: 6px 10px; } .zkarte .emoji { font-size: 44px; } .zkarte .k-text { font-size: 32px; }
-  .lp-oben { flex-wrap: wrap; gap: 14px; } .lp-laut { min-width: 88px; height: 88px; font-size: 60px; } .lp-zug { gap: 4px; } .wagen { width: 78px; height: 60px; } .lp-trenner { width: 10px; }
   .zaehlfeld { aspect-ratio: 4 / 5; }
 }
 @media (max-height: 700px) and (orientation: landscape) {
@@ -534,6 +532,10 @@ button.ze-einer { padding: 0; min-width: 44px; min-height: 44px; background-clip
 .wg-lok { fill: var(--beere); } .wg-wagen { fill: #c46fc4; } .wg-fenster { fill: #fff6fb; } .wg-rad { fill: #3b2a1f; } .wg-leer { fill: none; stroke: var(--rinde-2); stroke-width: 5; stroke-dasharray: 10 7; } .wg-strich { stroke: var(--rinde-2); stroke-width: 6; stroke-linecap: round; }
 .wagen.ok { box-shadow: 0 0 0 6px var(--gut); } .wagen.loesung { box-shadow: 0 0 0 6px var(--sonne); background: rgba(244, 197, 66, .2); } .wagen.weg-leise { opacity: .35; }
 .lp-trenner { width: 28px; }
+@media (max-width: 640px) {
+  .typ-zuordnen { gap: 28px; } .zspalte { gap: 10px; } .zkarte { min-width: 112px; min-height: 72px; padding: 6px 10px; } .zkarte .emoji { font-size: 44px; } .zkarte .k-text { font-size: 32px; }
+  .lp-oben { flex-wrap: wrap; gap: 14px; } .lp-laut { min-width: 88px; height: 88px; font-size: 56px; padding: 0 10px; } .lp-zug { gap: 4px; flex-wrap: wrap; justify-content: center; } .wagen { width: 76px; height: 58px; } .lp-trenner { width: 8px; }
+}
 
 /* Vorlesen (mit einer erwachsenen Person) */
 .vorlese-text { font-size: clamp(48px, 8vw, 84px); text-align: center; max-width: 90vw; }
